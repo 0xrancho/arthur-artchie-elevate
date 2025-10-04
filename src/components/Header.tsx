@@ -6,7 +6,7 @@ export const Header = () => {
       <div className="max-w-[1200px] mx-auto px-6 py-6">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-4">
-            <img src={logo} alt="Arthur & Archie - Est. 1828" className="h-16 w-auto" />
+            <img src={logo} alt="Arthur & Archie - Est. 1828" className="h-64 w-auto" />
           </div>
           <nav className="hidden md:flex gap-8 items-center">
             <a href="#services" className="text-navy font-semibold text-base hover:text-terracotta transition-colors">
