@@ -6,11 +6,11 @@ export const Header = () => {
       <div className="max-w-[1200px] mx-auto px-6 py-6">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-4">
-            <div className="h-16 w-auto flex items-center" aria-label="Arthur & Archie logo">
+            <div className="h-16 w-[400px] overflow-hidden flex items-center" aria-label="Arthur & Archie logo">
               <img
                 src={logo}
                 alt="Arthur & Archie - Est. 1828"
-                className="h-full w-auto"
+                className="h-full w-auto transform origin-left scale-[4]"
                 loading="eager"
                 decoding="sync"
               />
