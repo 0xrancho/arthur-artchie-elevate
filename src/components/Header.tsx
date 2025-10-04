@@ -11,7 +11,7 @@ export const Header = () => {
                 src={logo}
                 alt="Arthur & Archie - Est. 1828"
                 className="h-16 w-auto transform"
-                style={{ transform: 'scale(5)', transformOrigin: 'left center' }}
+                style={{ transform: 'scale(5)', transformOrigin: 'center' }}
                 loading="eager"
                 decoding="sync"
               />
