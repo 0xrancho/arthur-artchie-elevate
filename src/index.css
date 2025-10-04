@@ -46,8 +46,15 @@ All colors MUST be HSL.
     
     --radius: 0.5rem;
     
+    /* Elevation & Shadows */
+    --shadow-subtle: 0 2px 8px rgba(27, 58, 95, 0.05);
+    --shadow-soft: 0 2px 8px rgba(27, 58, 95, 0.08);
+    --shadow-medium: 0 8px 16px rgba(212, 116, 94, 0.4);
+    --shadow-heavy: 0 8px 32px rgba(0, 0, 0, 0.3);
+    
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
@@ -78,6 +85,11 @@ All colors MUST be HSL.
     font-family: 'IBM Plex Mono', monospace;
   }
   
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -89,7 +101,60 @@ All colors MUST be HSL.
     }
   }
   
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 4px 16px rgba(212, 116, 94, 0.4);
+    }
+    50% {
+      transform: scale(1.1);
+      box-shadow: 0 6px 24px rgba(212, 116, 94, 0.6);
+    }
+  }
+  
   .animate-fadeIn {
     animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  .animate-slideIn {
+    animation: slideIn 0.5s ease-out forwards;
+  }
+  
+  .animate-pulse-custom {
+    animation: pulse 2s infinite;
+  }
+  
+  /* Custom scrollbar for demo panels */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .custom-scrollbar-amber::-webkit-scrollbar-track {
+    background: #FEF3C7;
+  }
+  
+  .custom-scrollbar-amber::-webkit-scrollbar-thumb {
+    background: #F59E0B;
+    border-radius: 4px;
+  }
+  
+  .custom-scrollbar-slate::-webkit-scrollbar-track {
+    background: #1E293B;
+  }
+  
+  .custom-scrollbar-slate::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 4px;
   }
 }

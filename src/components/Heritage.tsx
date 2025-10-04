@@ -28,20 +28,20 @@ export const Heritage = () => {
   
   return (
     <section id="heritage" className="py-24 bg-cream">
-      <div className="container mx-auto px-6">
-        <div className="mb-6">
+      <div className="max-w-[1200px] mx-auto px-6">
+        <div className="mb-4">
           <span className="font-mono text-sm text-terracotta font-semibold uppercase tracking-wider">Our Legacy</span>
         </div>
-        <h2 className="text-4xl md:text-5xl font-bold mb-6">
+        <h2 className="text-[42px] font-bold leading-[1.2] mb-6">
           Seven Generations of Methodical Impressionism
         </h2>
-        <p className="text-xl text-slate mb-12 max-w-3xl leading-relaxed">
+        <p className="text-xl text-slate mb-12 max-w-[700px] leading-relaxed">
           Arthur & Archie honors two family lineages spanning 200 years of professional services excellence—what we call{' '}
           <strong>Methodical Impressionism</strong>: analytical rigor meets creative vision.
         </p>
         
-        <div className="bg-card p-12 rounded-lg border-l-4 border-gold shadow-sm mb-16">
-          <p className="text-lg italic text-navy leading-relaxed">
+        <div className="bg-card p-12 rounded-lg border-l-4 border-gold mb-12" style={{ boxShadow: '0 2px 8px rgba(27, 58, 95, 0.08)' }}>
+          <p className="text-lg italic text-navy leading-[1.8]">
             "Seven generations. Two family lineages. One thread: building systems that preserve trust and scale expertise. 
             From lending law books to Lincoln in 1828, to mainframe accounting in the 1960s, to AI-powered Relationship Intelligence today."
           </p>
@@ -53,12 +53,12 @@ export const Heritage = () => {
               <div className="flex-shrink-0 relative">
                 <div className="w-3 h-3 bg-terracotta rounded-full mt-2" />
                 {index < timeline.length - 1 && (
-                  <div className="absolute top-3 left-1.5 w-0.5 h-full bg-terracotta/30" style={{ height: 'calc(100% + 2rem)' }} />
+                  <div className="absolute top-[12px] left-[5px] w-0.5 h-[60px] bg-terracotta/30" />
                 )}
               </div>
               <div className="pb-8">
                 <h4 className="text-xl font-bold mb-2">{item.name}</h4>
-                <p className="text-slate leading-relaxed">{item.description}</p>
+                <p className="text-slate leading-relaxed text-base">{item.description}</p>
               </div>
             </div>
           ))}
