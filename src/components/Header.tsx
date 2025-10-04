@@ -2,7 +2,7 @@ import logo from "@/assets/logo-header-transparent.png";
 
 export const Header = () => {
   return (
-    <header className="sticky top-0 z-50 bg-card border-b border-border" style={{ boxShadow: '0 2px 8px rgba(27, 58, 95, 0.05)' }}>
+    <header className="sticky top-0 z-50 bg-card border-b border-border shadow-subtle-navy">
       <div className="max-w-[1200px] mx-auto px-6 py-6">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-4">
@@ -10,11 +10,7 @@ export const Header = () => {
               <img
                 src={logo}
                 alt="Arthur & Archie - Est. 1828"
-                className="h-full w-auto transform"
-                style={{ 
-                  transform: 'scale(4)', 
-                  transformOrigin: 'left center'
-                }}
+                className="h-full w-auto transform origin-left scale-[4]"
                 loading="eager"
                 decoding="sync"
               />

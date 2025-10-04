@@ -12,8 +12,7 @@ export const CTA = () => {
         </p>
         <Button 
           size="lg" 
-          className="bg-terracotta hover:bg-[#C0654E] text-cream font-semibold px-8 py-4 text-base rounded-md transition-all hover:-translate-y-0.5"
-          style={{ boxShadow: '0 8px 16px rgba(212, 116, 94, 0.4)' }}
+          className="bg-terracotta hover:bg-terracotta/90 text-cream font-semibold px-8 py-4 text-base rounded-md transition-all hover:-translate-y-0.5 shadow-terracotta-glow"
         >
           Contact Us
         </Button>

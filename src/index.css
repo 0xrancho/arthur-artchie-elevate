@@ -157,4 +157,7 @@ All colors MUST be HSL.
     background: #475569;
     border-radius: 4px;
   }
+  /* Shadow utilities using HSL tokens */
+  .shadow-subtle-navy { box-shadow: 0 2px 8px hsl(var(--navy) / 0.05); }
+  .shadow-terracotta-glow { box-shadow: 0 8px 16px hsl(var(--terracotta) / 0.4); }
 }
