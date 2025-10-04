@@ -2,7 +2,7 @@ import logo from "@/assets/logo-header-transparent.png";
 
 export const Header = () => {
   return (
-    <header className="sticky top-0 z-50 bg-card border-b border-border shadow-subtle-navy">
+    <header className="sticky top-0 z-50 bg-white border-b border-border shadow-subtle-navy">
       <div className="max-w-[1200px] mx-auto px-6 py-6">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-4">
