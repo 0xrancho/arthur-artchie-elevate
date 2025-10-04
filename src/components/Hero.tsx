@@ -15,9 +15,6 @@ export const Hero = () => {
       
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
         <div className="max-w-4xl pt-24 pb-16">
-          <div className="inline-block bg-cream/15 px-4 py-2 rounded-full mb-6 border border-cream/20">
-            <span className="font-semibold text-sm text-cream">Est. 1828 - Present</span>
-          </div>
           
           <h1 className="text-5xl md:text-[56px] font-bold leading-[1.2] mb-6 text-cream">
             <span className="relative inline-block">
