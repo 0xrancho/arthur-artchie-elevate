@@ -1,7 +1,13 @@
+import logo from "@/assets/logo-footer.png";
+
 export const Footer = () => {
   return (
     <footer className="bg-navy text-cream py-12">
       <div className="max-w-[1200px] mx-auto px-6">
+        <div className="mb-12">
+          <img src={logo} alt="Arthur & Archie - Est. 1828" className="h-16 w-auto" />
+        </div>
+        
         <div className="grid md:grid-cols-4 gap-12 mb-8">
           <div>
             <h4 className="font-bold mb-4 text-cream">Services</h4>
