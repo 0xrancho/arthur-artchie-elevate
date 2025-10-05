@@ -16,13 +16,21 @@ export const Hero = () => {
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
         <div className="max-w-4xl pt-24 pb-16">
           
-          <h1 className="text-5xl md:text-[56px] font-bold leading-[1.2] mb-6 text-cream">
-            <span className="relative inline-block">
-              <span className="relative z-10">Trust-Based Revenue Growth</span>
-              <span className="absolute -bottom-1 left-0 right-0 h-1 bg-terracotta opacity-50" />
-            </span>
-            {' '}for Professional Services
-          </h1>
+          <div className="relative mb-10">
+            <div className="absolute -top-8 left-0">
+              <span className="inline-flex items-center gap-2 rounded-full bg-cream text-navy border border-gold px-4 py-1 text-sm font-semibold shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-terracotta" aria-hidden="true"></span>
+                Est. 1828 – Present
+              </span>
+            </div>
+            <h1 className="text-5xl md:text-[56px] font-bold leading-[1.2] mb-6 text-cream">
+              <span className="relative inline-block">
+                <span className="relative z-10">Trust-Based Revenue Growth</span>
+                <span className="absolute -bottom-1 left-0 right-0 h-1 bg-terracotta opacity-50" />
+              </span>
+              {' '}for Professional Services
+            </h1>
+          </div>
           
           <p className="text-xl text-cream/95 mb-12 max-w-[700px] leading-relaxed">
             Your senior partners hold millions in relationship intelligence. When they retire, it walks out the door. 
