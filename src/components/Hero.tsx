@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export const Hero = () => {
   return (
-    <section className="bg-navy relative overflow-hidden py-24">
+    <section className="bg-navy relative overflow-hidden py-8">
       {/* Background pattern */}
       <div 
         className="absolute inset-0 opacity-30 pointer-events-none"
@@ -14,7 +14,7 @@ export const Hero = () => {
       />
       
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
-        <div className="max-w-4xl pt-[15px] pb-16">
+        <div className="max-w-4xl pt-[15px] pb-4">
           
           <h1 className="text-5xl md:text-[56px] font-bold leading-[1.2] mb-6 text-cream">
             <span className="relative inline-block">
@@ -31,7 +31,7 @@ export const Hero = () => {
         </div>
         
         {/* Demo Section */}
-        <div className="mt-16 mb-12 grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-6 items-stretch">
+        <div className="mt-6 mb-12 grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-6 items-stretch">
           {/* Discovery Note */}
           <div className="relative">
             <div className="absolute -top-3 left-6 bg-navy px-4 py-1.5 rounded border border-terracotta/30 z-10">
