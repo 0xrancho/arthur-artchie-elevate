@@ -15,14 +15,8 @@ export const Header = () => {
             />
           </div>
           <nav className="hidden md:flex gap-8 items-center">
-            <a href="#services" className="text-navy font-semibold text-base hover:text-terracotta transition-colors">
-              Services
-            </a>
             <a href="#solution" className="text-navy font-semibold text-base hover:text-terracotta transition-colors">
               About
-            </a>
-            <a href="#heritage" className="text-navy font-semibold text-base hover:text-terracotta transition-colors">
-              Heritage
             </a>
             <a href="#contact" className="text-navy font-semibold text-base hover:text-terracotta transition-colors">
               Contact
