@@ -33,11 +33,11 @@ export const Heritage = () => {
           <span className="font-mono text-sm text-terracotta font-semibold uppercase tracking-wider">Our Legacy</span>
         </div>
         <h2 className="text-[42px] font-bold leading-[1.2] mb-6">
-          Seven Generations of Methodical Impressionism
+          Seven Generations of <span className="italic text-[#6B9BD1]">Methodical Impressionism</span>
         </h2>
         <p className="text-xl text-slate mb-12 max-w-[700px] leading-relaxed">
           Arthur & Archie honors two family lineages spanning 200 years of professional services excellence—what we call{' '}
-          <strong>Methodical Impressionism</strong>: analytical rigor meets creative vision.
+          <strong className="italic text-[#6B9BD1]">Methodical Impressionism</strong>: analytical rigor meets creative vision.
         </p>
         
         <div className="bg-card p-12 rounded-lg border-l-4 border-gold mb-12" style={{ boxShadow: '0 2px 8px rgba(27, 58, 95, 0.08)' }}>

@@ -14,7 +14,7 @@ export const Hero = () => {
       />
       
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
-        <div className="max-w-4xl pt-24 pb-16">
+        <div className="max-w-4xl pt-[82px] pb-16">
           
           <h1 className="text-5xl md:text-[56px] font-bold leading-[1.2] mb-6 text-cream">
             <span className="relative inline-block">
@@ -24,7 +24,7 @@ export const Hero = () => {
             {' '}for Professional Services
           </h1>
           
-          <p className="text-xl text-cream/95 mb-12 max-w-[700px] leading-relaxed">
+          <p className="text-xl text-cream/95 mb-[43px] max-w-[700px] leading-relaxed">
             Your senior partners hold millions in relationship intelligence. When they retire, it walks out the door. 
             We architect Relationship Intelligence systems that preserve institutional knowledge and enable growth without losing what made you successful.
           </p>
@@ -175,7 +175,17 @@ Follow-up: LinkedIn Marcus by Fri, Tom intro convo, Jake call for Boston contact
             size="lg" 
             className="bg-terracotta hover:bg-[#C0654E] text-cream font-semibold px-8 py-4 text-base rounded-md transition-all hover:-translate-y-0.5"
             style={{ boxShadow: '0 4px 16px rgba(212, 116, 94, 0.3)' }}
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => {
+              const ctaSection = document.getElementById('contact');
+              if (ctaSection) {
+                ctaSection.scrollIntoView({ behavior: 'smooth' });
+                // Small delay to allow scroll to complete before opening form
+                setTimeout(() => {
+                  const contactButton = ctaSection.querySelector('button');
+                  contactButton?.click();
+                }, 500);
+              }
+            }}
           >
             Contact Us
           </Button>
