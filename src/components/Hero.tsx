@@ -15,7 +15,14 @@ export const Hero = () => {
       
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
         <div className="max-w-4xl pt-[15px] pb-4">
-          
+
+          {/* Establishment Badge */}
+          <div className="inline-block mb-6">
+            <div className="bg-cream/10 backdrop-blur-sm border border-cream/20 rounded-full px-4 py-2">
+              <span className="font-mono text-sm text-cream/90 tracking-wide">Est. 1828 - Present</span>
+            </div>
+          </div>
+
           <h1 className="text-5xl md:text-[56px] font-bold leading-[1.2] mb-6 text-cream">
             <span className="relative inline-block">
               <span className="relative z-10">Trust-Based Revenue Growth</span>
