@@ -1,20 +1,19 @@
-import logo from "@/assets/logo-header-transparent.png";
+import logo from "@/assets/logo-header-clean.png";
 
 export const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-border shadow-subtle-navy">
       <div className="max-w-[1200px] mx-auto px-6 py-6">
         <div className="flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <div className="h-16 w-[400px] overflow-hidden flex items-center justify-start" aria-label="Arthur & Archie logo">
-              <img
-                src={logo}
-                alt="Arthur & Archie - Est. 1828"
-                className="h-full w-auto transform origin-left scale-[8] -translate-x-24"
-                loading="eager"
-                decoding="sync"
-              />
-            </div>
+          <div className="flex flex-col gap-1">
+            <img
+              src={logo}
+              alt="Arthur & Archie"
+              className="h-12 w-auto"
+              loading="eager"
+              decoding="sync"
+            />
+            <p className="font-mono text-[10px] text-navy/70 tracking-wide">Est. 1828</p>
           </div>
           <nav className="hidden md:flex gap-8 items-center">
             <a href="#services" className="text-navy font-semibold text-base hover:text-terracotta transition-colors">
