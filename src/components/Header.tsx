@@ -10,7 +10,7 @@ export const Header = () => {
               <img
                 src={logo}
                 alt="Arthur & Archie - Est. 1828"
-                className="h-full w-auto transform origin-left scale-[8] -translate-x-12"
+                className="h-full w-auto transform origin-left scale-[8] -translate-x-24"
                 loading="eager"
                 decoding="sync"
               />
