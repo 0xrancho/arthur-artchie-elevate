@@ -32,19 +32,55 @@ export const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrors({});
-    
+
     try {
       const validated = contactSchema.parse(formData);
       setIsSubmitting(true);
-      
-      // Here you would send the data to your backend
-      console.log("Form submitted:", validated);
-      
+
+      // Send to Airtable
+      const airtableApiKey = import.meta.env.VITE_AIRTABLE_API_KEY;
+      const airtableBaseId = import.meta.env.VITE_AIRTABLE_BASE_ID;
+      const airtableTableName = import.meta.env.VITE_AIRTABLE_TABLE_NAME || 'Contacts';
+
+      if (!airtableApiKey || !airtableBaseId) {
+        console.error("Airtable credentials not configured");
+        toast({
+          title: "Configuration Error",
+          description: "Contact form is not properly configured. Please contact support.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      const response = await fetch(
+        `https://api.airtable.com/v0/${airtableBaseId}/${airtableTableName}`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${airtableApiKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            fields: {
+              Name: validated.name,
+              Email: validated.email,
+              Company: validated.company,
+              Description: validated.description,
+              'Submitted At': new Date().toISOString(),
+            },
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+
       toast({
         title: "Message sent!",
         description: "We'll get back to you soon.",
       });
-      
+
       setFormData({ name: "", email: "", company: "", description: "" });
       onClose();
     } catch (error) {
@@ -56,6 +92,12 @@ export const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
           }
         });
         setErrors(fieldErrors);
+      } else {
+        toast({
+          title: "Error",
+          description: "Failed to send message. Please try again.",
+          variant: "destructive",
+        });
       }
     } finally {
       setIsSubmitting(false);
