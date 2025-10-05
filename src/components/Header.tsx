@@ -1,4 +1,4 @@
-import logo from "@/assets/logo-header-final.png";
+import logo from "@/assets/logo-header-transparent.png";
 
 export const Header = () => {
   return (
@@ -6,13 +6,15 @@ export const Header = () => {
       <div className="max-w-[1200px] mx-auto px-6 py-6">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-4">
-            <img
-              src={logo}
-              alt="Arthur & Archie - Est. 1828 - Present"
-              className="h-20 w-auto"
-              loading="eager"
-              decoding="sync"
-            />
+            <div className="h-16 w-[400px] overflow-hidden flex items-center justify-start" aria-label="Arthur & Archie logo">
+              <img
+                src={logo}
+                alt="Arthur & Archie - Est. 1828"
+                className="h-full w-auto transform origin-left scale-[8] -translate-x-24"
+                loading="eager"
+                decoding="sync"
+              />
+            </div>
           </div>
           <nav className="hidden md:flex gap-8 items-center">
             <a href="#services" className="text-navy font-semibold text-base hover:text-terracotta transition-colors">
