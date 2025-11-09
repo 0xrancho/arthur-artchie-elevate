@@ -31,7 +31,7 @@ export const Hero = () => {
           </div>
 
           <p className="text-2xl text-cream/95 mb-[43px] max-w-[700px] leading-relaxed">
-            Your team knows where the next deal is. Your systems don't.
+            We build new-generation relationship management software for trust-based business development and revenue operations.
           </p>
         </div>
         
