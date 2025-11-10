@@ -14,8 +14,7 @@ export const Solution = () => {
           Relationship Intelligence Architecture
         </h2>
         <p className="text-xl text-slate mb-12 max-w-[700px] leading-relaxed">
-          We don't force your relationships into a CRM. We build intelligence systems that work how trust-based 
-          businesses actually operate—then use AI to make it accessible across your organization.
+          Intelligence infrastructure that saves knowledge to a locally owned relational graph, add LLM embeddings to make it accessible, and conversational interfaces for different users across the organization.
         </p>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
@@ -23,15 +22,15 @@ export const Solution = () => {
             <div className="font-mono text-sm text-terracotta mb-2 font-semibold">01</div>
             <h3 className="text-2xl font-bold mb-4">Conversational Interface</h3>
             <p className="text-slate leading-relaxed text-base">
-              Natural, human-centered interaction that feels like working with a trusted colleague, not a database.
+              Reporting and chat UIs with role and tool based access.
             </p>
           </div>
-          
+
           <div className="bg-cream p-8 rounded-lg border-t-4 border-terracotta">
             <div className="font-mono text-sm text-terracotta mb-2 font-semibold">02</div>
             <h3 className="text-2xl font-bold mb-4">Functional Tools</h3>
             <p className="text-slate leading-relaxed text-base">
-              AI handles research and analysis while humans handle judgment and relationships.
+              AI tools for enrichment, research, writing, and computation so humans have more time for judgement and execution.
             </p>
           </div>
           
@@ -47,7 +46,7 @@ export const Solution = () => {
             <div className="font-mono text-sm text-terracotta mb-2 font-semibold">04</div>
             <h3 className="text-2xl font-bold mb-4">Orchestrated Context</h3>
             <p className="text-slate leading-relaxed text-base">
-              AI reasoning that serves human connection, preserving what makes your relationships valuable.
+              Agency owned configuration over roles and permissions, integrations, agents, tools, and reporting logic.
             </p>
           </div>
         </div>

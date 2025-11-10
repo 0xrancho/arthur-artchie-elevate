@@ -13,24 +13,21 @@ export const Problem = () => {
           <div className="bg-card p-8 rounded-lg border-l-4 border-terracotta transition-shadow" style={{ boxShadow: '0 2px 8px rgba(27, 58, 95, 0.08)' }}>
             <h3 className="text-2xl font-bold mb-4">The Knowledge Crisis</h3>
             <p className="text-slate leading-relaxed text-base">
-              $50M+ in relationship intelligence lives in your senior partners' heads—client decision patterns, 
-              personal connections, years of earned trust. When they retire or leave, that institutional knowledge walks out the door.
+              42% of the knowledge needed to perform a job exists only in the person doing it. In professional services, that includes the client relationships that drive revenue per employee. When partners retire or leave, decades of earned trust, decision patterns, and relational intelligence walk out the door.
             </p>
           </div>
           
           <div className="bg-card p-8 rounded-lg border-l-4 border-terracotta transition-shadow" style={{ boxShadow: '0 2px 8px rgba(27, 58, 95, 0.08)' }}>
             <h3 className="text-2xl font-bold mb-4">The Growth Ceiling</h3>
             <p className="text-slate leading-relaxed text-base">
-              You can't scale what lives in people's heads. Revenue hits a ceiling when your processes and expertise 
-              can't transfer beyond founding partners. Growth requires systems, not just more talented people.
+              You can't scale what lives in people's heads. Revenue hits a ceiling when your processes and expertise can't transfer beyond siloed teams and individuals. Growth requires systems, not just more talented people.
             </p>
           </div>
-          
+
           <div className="bg-card p-8 rounded-lg border-l-4 border-terracotta transition-shadow" style={{ boxShadow: '0 2px 8px rgba(27, 58, 95, 0.08)' }}>
             <h3 className="text-2xl font-bold mb-4">Why CRM Fails</h3>
             <p className="text-slate leading-relaxed text-base">
-              Built for transactional widget sales, not trust-based professional services. CRMs force relationships 
-              into rigid schemas designed for a completely different business model.
+              CRMs were designed for transactional widget sales, not complex trust-based professional services. CRMs force relationships into rigid schemas designed for a completely different business model.
             </p>
           </div>
         </div>

@@ -17,17 +17,13 @@ export const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-border shadow-subtle-navy">
-      <div className="max-w-[1200px] mx-auto px-6 py-6">
+      <div className="max-w-[1200px] mx-auto px-4 py-[27px]">
         <div className="flex justify-between items-center">
           {/* Logo - Left aligned */}
           <div className="flex items-center gap-4">
-            <img
-              src="/Gemini_AAlogo2.png"
-              alt="Arthur & Archie - Est. 1828 - Present"
-              className="h-[72px] w-auto"
-              loading="eager"
-              decoding="sync"
-            />
+            <h1 className="text-navy font-bold leading-none" style={{ fontFamily: 'IBM Plex Serif, serif', fontSize: '2.5rem' }}>
+              Arthur & Archie
+            </h1>
           </div>
 
           {/* Desktop Navigation */}
