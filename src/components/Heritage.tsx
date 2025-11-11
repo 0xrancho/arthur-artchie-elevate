@@ -13,7 +13,7 @@ export const Heritage = () => {
       description: "Teacher, musician, and farmer from Nebo, Illinois who became Pike County Area Superintendent—methodical systems thinking that transforms communities."
     },
     {
-      name: "Arthur Dean Austin (1929-Present)",
+      name: "Arthur Dean Austin (1929-2025)",
       description: "Pioneer of technology-enabled accounting, adopting IBM 1401 mainframe systems to transform his practice in the 1960s."
     },
     {

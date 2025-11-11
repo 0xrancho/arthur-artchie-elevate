@@ -21,7 +21,7 @@ export const Header = () => {
         <div className="flex justify-between items-center">
           {/* Logo - Left aligned */}
           <div className="flex items-center gap-4">
-            <h1 className="text-navy font-bold leading-none" style={{ fontFamily: 'IBM Plex Serif, serif', fontSize: '2.5rem' }}>
+            <h1 className="text-navy font-bold leading-none" style={{ fontFamily: 'IBM Plex Serif, serif', fontSize: '2rem' }}>
               Arthur & Archie
             </h1>
           </div>

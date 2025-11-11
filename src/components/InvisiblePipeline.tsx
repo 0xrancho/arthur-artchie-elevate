@@ -203,7 +203,7 @@ export const InvisiblePipeline = () => {
           <ArrowDown className="w-8 h-8 text-cream animate-bounce" />
           <Button
             size="lg"
-            className="bg-navy hover:bg-[#1B3A5F] text-cream font-semibold px-8 py-6 text-lg rounded-md transition-all hover:-translate-y-0.5"
+            className="bg-navy hover:bg-[#1B3A5F] text-cream font-semibold px-4 py-4 md:px-8 md:py-6 text-sm md:text-lg rounded-md transition-all hover:-translate-y-0.5 w-full max-w-[90%] md:max-w-2xl text-center whitespace-normal leading-relaxed min-h-[3rem]"
             style={{ boxShadow: '0 4px 16px rgba(0, 0, 0, 0.3)' }}
             onClick={() => {
               const ctaSection = document.getElementById('contact');
