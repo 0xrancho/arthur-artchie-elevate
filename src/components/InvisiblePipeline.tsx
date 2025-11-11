@@ -23,7 +23,7 @@ const carouselData = [
     title: "🎫 Jira - January 7, 2025",
     image: jiraImage,
     signals: [
-      "Budget confirmed: $50M Q2",
+      "Budget confirmed: $5M Q2",
       "Timeline: 6-8 week approval window",
       "Decision-maker confirmed: Janet Rodriguez (CFO), buyer",
       "Urgency factor: Q2 closing soon",
