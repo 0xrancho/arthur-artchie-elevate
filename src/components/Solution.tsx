@@ -33,8 +33,8 @@ export const Solution = () => {
           </div>
 
           {/* Right: Console Taxonomy */}
-          <div className="bg-[#0F172A] p-6 rounded-lg border-2 border-[#334155]" style={{ boxShadow: '0 4px 16px rgba(0, 0, 0, 0.3)' }}>
-            <pre className="font-mono text-[11px] text-cyan-400 leading-relaxed overflow-x-auto pl-8">
+          <div className="bg-[#0F172A] p-4 md:p-6 rounded-lg border-2 border-[#334155] overflow-hidden" style={{ boxShadow: '0 4px 16px rgba(0, 0, 0, 0.3)' }}>
+            <pre className="font-mono text-[9px] md:text-[11px] text-cyan-400 leading-relaxed overflow-x-auto md:pl-8">
 {`┌─────────────────────────────────────────────────────────┐
 │              OPPORTUNITY INTELLIGENCE (OI)              │
 │                                                         │
