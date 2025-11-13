@@ -31,7 +31,7 @@ export const Hero = () => {
           </div>
 
           <p className="text-2xl text-cream/95 mb-[43px] max-w-[700px] leading-relaxed">
-            We build new-generation relationship management software for trust-based business development and revenue operations.
+            Agencies run on relationships, not lead funnels. We are building new-generation opportunity management solutions for trust-based business development and revenue operations.
           </p>
         </div>
         

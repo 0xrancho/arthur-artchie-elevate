@@ -13,21 +13,21 @@ export const Problem = () => {
           <div className="bg-card p-8 rounded-lg border-l-4 border-terracotta transition-shadow" style={{ boxShadow: '0 2px 8px rgba(27, 58, 95, 0.08)' }}>
             <h3 className="text-2xl font-bold mb-4">The Knowledge Crisis</h3>
             <p className="text-slate leading-relaxed text-base">
-              42% of the knowledge needed to perform a job exists only in the person doing it. In professional services, that includes the client relationships that drive revenue per employee. When partners retire or leave, decades of earned trust, decision patterns, and relational intelligence walk out the door.
+              42% of the knowledge needed to perform a job exists only in the person doing it. In professional services, that includes the client relationships that drive revenue per employee. When consultants leave or retire, they take the client context, technical decisions, and expansion signals that could have generated your next 3 deals.
             </p>
           </div>
           
           <div className="bg-card p-8 rounded-lg border-l-4 border-terracotta transition-shadow" style={{ boxShadow: '0 2px 8px rgba(27, 58, 95, 0.08)' }}>
             <h3 className="text-2xl font-bold mb-4">The Growth Ceiling</h3>
             <p className="text-slate leading-relaxed text-base">
-              You can't scale what lives in people's heads. Revenue hits a ceiling when your processes and expertise can't transfer beyond siloed teams and individuals. Growth requires systems, not just more talented people.
+              Revenue hits a ceiling when client knowledge is trapped in silos. It shouldn't be buried in Navigator, Slack channels, email, project notes, or messy CRMs. Growth requires access and contribution to agency-owned relationship intelligence.
             </p>
           </div>
 
           <div className="bg-card p-8 rounded-lg border-l-4 border-terracotta transition-shadow" style={{ boxShadow: '0 2px 8px rgba(27, 58, 95, 0.08)' }}>
-            <h3 className="text-2xl font-bold mb-4">Why CRM Fails</h3>
+            <h3 className="text-2xl font-bold mb-4">Why CRMs Fail Consultants</h3>
             <p className="text-slate leading-relaxed text-base">
-              CRMs were designed for transactional widget sales, not complex trust-based professional services. CRMs force relationships into rigid schemas designed for a completely different business model.
+              CRMs were designed for transactional widget sales, not complex trust-based professional services. Trust is what closes a 6-7 figure deal. Trust is quantified by semantic signals, not deterministic {'{budget, authority, need, timeline}'} lead values.
             </p>
           </div>
         </div>
