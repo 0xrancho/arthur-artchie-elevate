@@ -1,6 +1,6 @@
 # Arthur & Archie - Trust-Based Revenue Growth
 
-Relationship Intelligence systems that preserve institutional knowledge and enable growth for professional services firms.
+Opportunity Intelligence systems that preserve institutional knowledge and enable growth for professional services firms.
 
 ## Technologies
 

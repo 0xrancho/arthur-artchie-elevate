@@ -13,7 +13,7 @@ export const CTA = () => {
             Ready to Scale Trust-Based Revenue?
           </h2>
           <p className="text-xl text-slate mb-8">
-            Let's discuss how Relationship Intelligence can transform your firm.
+            Let's discuss how Opportunity Intelligence can transform your firm.
           </p>
           <Button 
             size="lg" 

@@ -22,7 +22,7 @@ export const Heritage = () => {
     },
     {
       name: "Joel Austin (1986-Present)",
-      description: "AI-powered Relationship Intelligence—the same DNA that built justice systems and education frameworks now builds trust-based revenue operations."
+      description: "AI-powered Opportunity Intelligence—the same DNA that built justice systems and education frameworks now builds trust-based revenue operations."
     }
   ];
   
@@ -42,8 +42,8 @@ export const Heritage = () => {
         
         <div className="bg-card p-12 rounded-lg border-l-4 border-gold mb-12" style={{ boxShadow: '0 2px 8px rgba(27, 58, 95, 0.08)' }}>
           <p className="text-lg italic text-navy leading-[1.8]">
-            "Seven generations. Two family lineages. One thread: building systems that preserve trust and scale expertise. 
-            From lending law books to Lincoln in 1828, to mainframe accounting in the 1960s, to AI-powered Relationship Intelligence today."
+            "Seven generations. Two family lineages. One thread: building systems that preserve trust and scale expertise.
+            From lending law books to Lincoln in 1828, to mainframe accounting in the 1960s, to AI-powered Opportunity Intelligence today."
           </p>
         </div>
         
