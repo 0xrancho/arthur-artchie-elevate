@@ -24,14 +24,16 @@ export const Hero = () => {
           </div>
 
           <h1 className="text-5xl md:text-[56px] font-bold leading-[1.2] mb-2 text-cream">
-            Trust-Based Revenue Growth for Professional Services
+            Your Revenue Grows on Trust.
           </h1>
           <div className="mb-6">
             <span className="h-1 bg-terracotta opacity-50 block" style={{ width: '460px' }} />
           </div>
 
           <p className="text-2xl text-cream/95 mb-[43px] max-w-[700px] leading-relaxed">
-            Agencies run on relationships, not lead funnels. We are building new-generation opportunity management solutions for trust-based business development and revenue operations.
+            Firms that sell custom solutions grow by scaling contract scope and contact depth—both leading indicators of trust.
+            <br /><br />
+            We help business development leaders build trust with AI-powered Opportunity Intelligence that surfaces market signal and relational context.
           </p>
         </div>
         
