@@ -46,7 +46,7 @@ const carouselData = [
   {
     title: "📄 SharePoint - 2023 Success Story",
     image: sharepointImage,
-    summary: "The team could access this 2023 case study with details the prospect would love to have, but knowing to surface this depends on human coordination, memory, and context, that does not yet align.",
+    summary: "Surfacing this case study to the prospect depends on humans coordinating across contexts to know its relevance.",
     signals: [
       "Proven 18-month payback, $12M annual savings",
       "Other case references: Target, Macy's, Nordstrom",
