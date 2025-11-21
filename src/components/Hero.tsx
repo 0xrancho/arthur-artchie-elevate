@@ -33,7 +33,7 @@ export const Hero = () => {
           <p className="text-2xl text-cream/95 mb-[43px] max-w-[700px] leading-relaxed">
             Firms that sell custom solutions grow by scaling contract scope and contact depth—both leading indicators of trust.
             <br /><br />
-            We help business development leaders build trust with AI-powered Opportunity Intelligence that surfaces market signal and relational context.
+            We help engagement leaders build trust with AI-powered Opportunity Intelligence that surfaces market signal and relational context.
           </p>
         </div>
         

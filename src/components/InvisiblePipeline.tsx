@@ -11,50 +11,48 @@ const carouselData = [
   {
     title: "📧 Outlook - December 5, 2024",
     image: outlookImage,
+    summary: "Jim gets notice that the inventory feature request in a current project might fall out of scope with additional pain, risk, and budget parameters.",
     signals: [
-      "New buyers/approvers identified: Janet Rodriguez (CFO), Mike Chen (CIO)",
-      "Budget being determined for Oracle/ERP work",
-      "Technical pain confirmed: 4-hour batch window",
-      "Positioning risk: Mike Chen skeptical of consultants",
-      "→ Create \"Nike ERP Modernization\" opportunity"
-    ]
+      "New buyers/approvers identified",
+      "Contact mentions out of scope budget",
+      "Pain point mentioned: 4-hour batch window",
+      "Risk identified: Mike Chen \"skeptical of consultant\""
+    ],
+    miss: "This should have created \"Nike ERP Inventory\" as a buying intent signal, but it doesn't qualify as a new Opportunity yet, so it will stay in Jim's head as \"relational context\"."
   },
   {
     title: "🎫 Jira - January 7, 2025",
     image: jiraImage,
+    summary: "Client sandwiches high sales signals to an engineer within a Jira task. Andrew tags the PM, and continues his work.",
     signals: [
-      "Budget confirmed: $5M Q2",
-      "Timeline: 6-8 week approval window",
-      "Decision-maker confirmed: Janet Rodriguez (CFO), buyer",
-      "Urgency factor: Q2 closing soon",
-      "→ Update to \"Oracle Inventory Transformation\"",
-      "→ Status: Active - Qualifying"
-    ]
+      "New Budget identified: $5M Q2",
+      "New Timeline and Urgency identified: 6-8 weeks with Q2 close",
+      "New DM confirmed: Janet Rodriguez, buyer"
+    ],
+    miss: "This should have instantly updated the ERP Inventory signal to an Active Opportunity, with high urgency."
   },
   {
     title: "💬 Slack - January 9, 2025",
     image: slackImage,
+    summary: "Jim and Sarah discuss the Target case study and solution fit for the potential Nike opportunity.",
     signals: [
       "Proof point identified: Target success story (2023)",
-      "Technical fit confirmed: Solved this exact problem 4x",
-      "ROI available: 18-month payback model",
-      "Resource allocation: Sarah has relevant expertise",
-      "→ Add Target case study to opportunity",
-      "→ Assign Sarah Nguyen to presales",
-      "→ Next step: Jim to get intro to Janet and Mike"
-    ]
+      "Risk mitigation identified: Solved exact problem 4x",
+      "ROI defined: 18-month payback model",
+      "Resource allocation: Sarah has relevant experience"
+    ],
+    miss: "The Opportunity should have added solution, resourcing, and proof point knowledge, but Jim thinks they don't have clear BANT yet, and Sarah likely did not read the full Jira notes."
   },
   {
     title: "📄 SharePoint - 2023 Success Story",
     image: sharepointImage,
+    summary: "The team could access this 2023 case study with details the prospect would love to have, but knowing to surface this depends on human coordination, memory, and context, that does not yet align.",
     signals: [
-      "Proven ROI model: 18-month payback, $12M annual savings",
-      "Technical approach documented",
-      "References available: Target, Macy's, Nordstrom",
-      "Addresses buyer requirements: Janet needs ROI model",
-      "→ Include in proposal materials",
-      "→ Prep for CFO-level presentation"
-    ]
+      "Proven 18-month payback, $12M annual savings",
+      "Other case references: Target, Macy's, Nordstrom",
+      "ERP Inventory transformation approach detailed"
+    ],
+    miss: "There should be a red hot \"Nike ERP Inventory\" Opportunity at the top of Jim's pipeline with budget, authority, need, timeline, proof, and solutioning. By the time they figure it out, it may be too late."
   }
 ];
 
@@ -132,21 +130,29 @@ export const InvisiblePipeline = () => {
 
                       {/* Sales Signals */}
                       <div className="flex flex-col justify-center">
-                        <h4 className="text-lg font-bold mb-4 text-navy">Sales Signals</h4>
-                        <ul className="space-y-3">
+                        {/* Summary Header - prominent text */}
+                        <p className="text-2xl font-semibold text-navy leading-relaxed mb-8">
+                          {card.summary}
+                        </p>
+
+                        <h4 className="text-base font-bold mb-3 text-navy uppercase tracking-wide">Sales Signals</h4>
+                        <ul className="space-y-2 mb-6">
                           {card.signals.map((signal, idx) => (
                             <li
                               key={idx}
-                              className={`text-lg leading-relaxed ${
-                                signal.startsWith('→')
-                                  ? 'font-semibold text-terracotta ml-4'
-                                  : 'text-slate'
-                              }`}
+                              className="text-base leading-relaxed text-slate-600 flex items-start gap-2"
                             >
-                              {signal.startsWith('→') ? signal : `• ${signal}`}
+                              <span className="text-green-600 font-bold flex-shrink-0">✓</span>
+                              <span>{signal}</span>
                             </li>
                           ))}
                         </ul>
+
+                        <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded">
+                          <p className="text-base leading-relaxed text-red-700">
+                            ❌ Opportunity Miss: {card.miss}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
