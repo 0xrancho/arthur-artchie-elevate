@@ -56,7 +56,11 @@ const carouselData = [
   }
 ];
 
-export const InvisiblePipeline = () => {
+interface InvisiblePipelineProps {
+  onOpenForm: (source: 'general' | 'prototype' | 'revenue') => void;
+}
+
+export const InvisiblePipeline = ({ onOpenForm }: InvisiblePipelineProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -211,18 +215,9 @@ export const InvisiblePipeline = () => {
             size="lg"
             className="bg-navy hover:bg-[#1B3A5F] text-cream font-semibold px-8 py-4 text-base rounded-md transition-all hover:-translate-y-0.5"
             style={{ boxShadow: '0 4px 16px rgba(0, 0, 0, 0.3)' }}
-            onClick={() => {
-              const ctaSection = document.getElementById('contact');
-              if (ctaSection) {
-                ctaSection.scrollIntoView({ behavior: 'smooth' });
-                setTimeout(() => {
-                  const contactButton = ctaSection.querySelector('button');
-                  contactButton?.click();
-                }, 500);
-              }
-            }}
+            onClick={() => onOpenForm('revenue')}
           >
-            👋 Help me find invisible revenue
+            👋 Help me find invisible revenue!
           </Button>
         </div>
       </div>

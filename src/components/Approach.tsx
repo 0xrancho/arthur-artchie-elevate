@@ -1,6 +1,10 @@
 import { Button } from "@/components/ui/button";
 
-export const Approach = () => {
+interface ApproachProps {
+  onOpenForm: (source: 'general' | 'prototype' | 'revenue') => void;
+}
+
+export const Approach = ({ onOpenForm }: ApproachProps) => {
   return (
     <section className="py-24 bg-navy relative overflow-hidden">
       {/* Background grid pattern */}
@@ -166,26 +170,14 @@ export const Approach = () => {
 
         {/* Footer Callout */}
         <div className="flex justify-center">
-          <div className="border-2 border-terracotta/40 bg-cream/5 rounded-lg px-8 py-6 text-center backdrop-blur-sm">
-            <p className="text-lg text-cream/90 mb-4 font-semibold">—OR—</p>
-            <Button
-              size="lg"
-              className="bg-terracotta hover:bg-[#C0654E] text-cream font-semibold px-8 py-4 text-base rounded-md transition-all hover:-translate-y-0.5"
-              style={{ boxShadow: '0 4px 16px rgba(212, 116, 94, 0.3)' }}
-              onClick={() => {
-                const ctaSection = document.getElementById('contact');
-                if (ctaSection) {
-                  ctaSection.scrollIntoView({ behavior: 'smooth' });
-                  setTimeout(() => {
-                    const contactButton = ctaSection.querySelector('button');
-                    contactButton?.click();
-                  }, 500);
-                }
-              }}
-            >
-              👋 Build us a ROGER prototype model
-            </Button>
-          </div>
+          <Button
+            size="lg"
+            className="bg-terracotta hover:bg-[#C0654E] text-cream font-semibold px-8 py-4 text-base rounded-md transition-all hover:-translate-y-0.5"
+            style={{ boxShadow: '0 4px 16px rgba(212, 116, 94, 0.3)' }}
+            onClick={() => onOpenForm('prototype')}
+          >
+            👋 Ask about our killer prototypes!
+          </Button>
         </div>
       </div>
 

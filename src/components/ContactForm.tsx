@@ -16,9 +16,20 @@ const contactSchema = z.object({
 interface ContactFormProps {
   isOpen: boolean;
   onClose: () => void;
+  source?: 'general' | 'prototype' | 'revenue';
 }
 
-export const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
+export const ContactForm = ({ isOpen, onClose, source = 'general' }: ContactFormProps) => {
+  const getDescription = () => {
+    switch (source) {
+      case 'prototype':
+        return "Let's talk about building an enrichment prototype.";
+      case 'revenue':
+        return "Let's talk about finding invisible revenue.";
+      default:
+        return "Let's discuss how we can help your firm.";
+    }
+  };
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -66,6 +77,7 @@ export const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
               Email: validated.email,
               Company: validated.company,
               Description: validated.description,
+              Source: source,
               'Submitted At': new Date().toISOString(),
             },
           }),
@@ -125,7 +137,7 @@ export const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
         
         <div className="p-8">
           <h3 className="text-2xl font-bold mb-2">Contact Us</h3>
-          <p className="text-slate mb-6">Let's discuss how we can help your firm.</p>
+          <p className="text-slate mb-6">{getDescription()}</p>
           
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
