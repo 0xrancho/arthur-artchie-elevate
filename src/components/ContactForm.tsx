@@ -48,41 +48,20 @@ export const ContactForm = ({ isOpen, onClose, source = 'general' }: ContactForm
       const validated = contactSchema.parse(formData);
       setIsSubmitting(true);
 
-      // Send to Airtable
-      const airtableApiKey = import.meta.env.VITE_AIRTABLE_API_KEY;
-      const airtableBaseId = import.meta.env.VITE_AIRTABLE_BASE_ID;
-      const airtableTableName = import.meta.env.VITE_AIRTABLE_TABLE_NAME || 'Contacts';
-
-      if (!airtableApiKey || !airtableBaseId) {
-        console.error("Airtable credentials not configured");
-        toast({
-          title: "Configuration Error",
-          description: "Contact form is not properly configured. Please contact support.",
-          variant: "destructive",
-        });
-        return;
-      }
-
-      const response = await fetch(
-        `https://api.airtable.com/v0/${airtableBaseId}/${airtableTableName}`,
-        {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${airtableApiKey}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            fields: {
-              Name: validated.name,
-              Email: validated.email,
-              Company: validated.company,
-              Description: validated.description,
-              Source: source,
-              'Submitted At': new Date().toISOString(),
-            },
-          }),
-        }
-      );
+      // Send to API endpoint
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: validated.name,
+          email: validated.email,
+          company: validated.company,
+          description: validated.description,
+          source: source,
+        }),
+      });
 
       if (!response.ok) {
         throw new Error('Failed to submit form');
