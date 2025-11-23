@@ -5,6 +5,7 @@ export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
+    { href: "/", label: "Home" },
     { href: "#services", label: "Services" },
     { href: "/heritage", label: "Heritage" },
     { href: "/faq", label: "FAQ" },
@@ -28,22 +29,9 @@ export const Header = () => {
             <p className="font-mono text-xs text-navy/70 mt-1">1876 – Present • Seven generations of service excellence</p>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex gap-8 items-center">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-navy font-semibold text-base hover:text-terracotta transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Mobile Hamburger Menu - Right aligned */}
+          {/* Hamburger Menu - Right aligned */}
           <button
-            className="md:hidden flex flex-col gap-1.5 p-2"
+            className="flex flex-col gap-1.5 p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -58,9 +46,9 @@ export const Header = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Menu */}
         {mobileMenuOpen && (
-          <nav className="md:hidden mt-6 pb-4 border-t border-border pt-4">
+          <nav className="mt-6 pb-4 border-t border-border pt-4">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
