@@ -31,7 +31,7 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
           </p>
 
           <p className="text-xl text-cream/90 mb-8 max-w-[800px] leading-relaxed">
-            We reveal undermonetized accounts, vulnerable relationships, and high-potential prospects. <span className="font-semibold text-cream">5 weeks. 5x ROI or you don't pay.</span>
+            We reveal undermonetized accounts, vulnerable relationships, and high-potential prospects. <span className="font-semibold text-cream">5 weeks. 5x ROI in 1 report, or you don't pay.</span>
           </p>
 
           <div className="mb-12">
@@ -154,20 +154,20 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
             </div>
             <div className="bg-[#0F172A] p-6 rounded-lg border-2 border-[#334155] h-[550px] overflow-y-auto custom-scrollbar custom-scrollbar-slate" style={{ boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)' }}>
 
-              {/* PharmaCorp Node - Green */}
-              <div className="mb-6 bg-[#1E293B] border-2 border-green-500 rounded-lg p-4">
+              {/* PharmaCorp Node - Cyan */}
+              <div className="mb-6 bg-[#1E293B] border-2 border-[#00D9FF] rounded-lg p-4">
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="w-4 h-4 bg-green-500 rounded-full"></div>
-                  <div className="text-green-400 font-bold text-lg">PharmaCorp</div>
+                  <div className="w-4 h-4 bg-[#00D9FF] rounded-full"></div>
+                  <div className="text-[#00D9FF] font-bold text-lg">PharmaCorp</div>
                 </div>
                 <div className="font-mono text-xs space-y-1 text-gray-300">
-                  <div>Trust Score: <span className="text-green-400 font-bold">8.2</span></div>
-                  <div>Revenue Gap: <span className="text-yellow-300">$320K</span></div>
-                  <div>RRP: <span className="text-blue-300">13.3</span> (High delegation)</div>
-                  <div>RR: <span className="text-blue-300">4.2</span> (Strong engagement)</div>
+                  <div>Trust Score: <span className="text-[#00D9FF] font-bold">8.2</span></div>
+                  <div>Revenue Gap: <span className="text-[#FFD700]">$320K</span></div>
+                  <div>RRP: <span className="text-[#A855F7]">13.3</span> (High delegation)</div>
+                  <div>RR: <span className="text-[#A855F7]">4.2</span> (Strong engagement)</div>
                 </div>
-                <div className="mt-3 pl-4 border-l-2 border-green-500/50">
-                  <div className="text-green-400 font-semibold text-sm mb-2">→ [EXPAND]</div>
+                <div className="mt-3 pl-4 border-l-2 border-[#00D9FF]/50">
+                  <div className="text-[#00D9FF] font-semibold text-sm mb-2">→ [EXPAND]</div>
                   <div className="font-mono text-xs space-y-1 text-gray-400">
                     <div>├─ 12 warm intro paths</div>
                     <div>├─ VP Product (mobile app opp)</div>
@@ -177,20 +177,20 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
                 </div>
               </div>
 
-              {/* Cunnings Inc. Node - Red */}
-              <div className="mb-6 bg-[#1E293B] border-2 border-red-500 rounded-lg p-4">
+              {/* Cunnings Inc. Node - Magenta */}
+              <div className="mb-6 bg-[#1E293B] border-2 border-[#FF006E] rounded-lg p-4">
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="w-4 h-4 bg-red-500 rounded-full"></div>
-                  <div className="text-red-400 font-bold text-lg">Cunnings Inc.</div>
+                  <div className="w-4 h-4 bg-[#FF006E] rounded-full"></div>
+                  <div className="text-[#FF006E] font-bold text-lg">Cunnings Inc.</div>
                 </div>
                 <div className="font-mono text-xs space-y-1 text-gray-300">
-                  <div>Trust Score: <span className="text-red-400 font-bold">2.1</span></div>
-                  <div>Churn Risk: <span className="text-red-400 font-bold">HIGH</span></div>
-                  <div>RRP: <span className="text-orange-300">3.2</span> (Low delegation)</div>
-                  <div>RR: <span className="text-orange-300">0.8</span> (Transactional)</div>
+                  <div>Trust Score: <span className="text-[#FF006E] font-bold">2.1</span></div>
+                  <div>Churn Risk: <span className="text-[#FF006E] font-bold">HIGH</span></div>
+                  <div>RRP: <span className="text-[#FF8C00]">3.2</span> (Low delegation)</div>
+                  <div>RR: <span className="text-[#FF8C00]">0.8</span> (Transactional)</div>
                 </div>
-                <div className="mt-3 pl-4 border-l-2 border-red-500/50">
-                  <div className="text-red-400 font-semibold text-sm mb-2">→ [PROTECT]</div>
+                <div className="mt-3 pl-4 border-l-2 border-[#FF006E]/50">
+                  <div className="text-[#FF006E] font-semibold text-sm mb-2">→ [PROTECT]</div>
                   <div className="font-mono text-xs space-y-1 text-gray-400">
                     <div>├─ Relationship intervention</div>
                     <div>└─ Stakeholder expansion needed</div>
@@ -198,18 +198,18 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
                 </div>
               </div>
 
-              {/* DefenseInc Node - Blue */}
-              <div className="bg-[#1E293B] border-2 border-blue-500 rounded-lg p-4">
+              {/* DefenseInc Node - Purple */}
+              <div className="bg-[#1E293B] border-2 border-[#A855F7] rounded-lg p-4">
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-                  <div className="text-blue-400 font-bold text-lg">DefenseInc</div>
+                  <div className="w-4 h-4 bg-[#A855F7] rounded-full"></div>
+                  <div className="text-[#A855F7] font-bold text-lg">DefenseInc</div>
                 </div>
                 <div className="font-mono text-xs space-y-1 text-gray-300">
-                  <div>Trust Score: <span className="text-blue-400 font-bold">9.1</span></div>
+                  <div>Trust Score: <span className="text-[#A855F7] font-bold">9.1</span></div>
                   <div>Perfect Profile Match</div>
                 </div>
-                <div className="mt-3 pl-4 border-l-2 border-blue-500/50">
-                  <div className="text-blue-400 font-semibold text-sm mb-2">→ [ACQUIRE]</div>
+                <div className="mt-3 pl-4 border-l-2 border-[#A855F7]/50">
+                  <div className="text-[#A855F7] font-semibold text-sm mb-2">→ [ACQUIRE]</div>
                   <div className="font-mono text-xs space-y-1 text-gray-400">
                     <div>├─ 247 lookalike companies</div>
                     <div>└─ 67 warm intro paths available</div>
@@ -217,7 +217,7 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
                 </div>
               </div>
 
-              <div className="mt-6 text-center text-xs text-green-400 font-semibold">
+              <div className="mt-6 text-center text-xs text-[#00D9FF] font-semibold">
                 Intelligence → Opportunity → Actionable pathways
               </div>
             </div>
