@@ -30,9 +30,20 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
             Custom solution firms differentiate through client-level trust.
           </p>
 
-          <p className="text-xl text-cream/90 mb-[43px] max-w-[800px] leading-relaxed">
+          <p className="text-xl text-cream/90 mb-8 max-w-[800px] leading-relaxed">
             We reveal undermonetized accounts, vulnerable relationships, and high-potential prospects. <span className="font-semibold text-cream">5 weeks. 5x ROI or you don't pay.</span>
           </p>
+
+          <div className="mb-12">
+            <Button
+              size="lg"
+              className="bg-terracotta hover:bg-[#C0654E] text-cream font-semibold px-8 py-4 text-base rounded-md transition-all hover:-translate-y-0.5"
+              style={{ boxShadow: '0 4px 16px rgba(212, 116, 94, 0.3)' }}
+              onClick={() => onOpenForm('general')}
+            >
+              Schedule Discovery Call
+            </Button>
+          </div>
         </div>
 
         {/* Two-Panel Demo */}
@@ -211,23 +222,6 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="text-center mb-8">
-          <p className="text-lg text-cream/80 italic">
-            "From scattered data to connected growth intelligence"
-          </p>
-        </div>
-
-        <div className="flex justify-center">
-          <Button
-            size="lg"
-            className="bg-terracotta hover:bg-[#C0654E] text-cream font-semibold px-8 py-4 text-base rounded-md transition-all hover:-translate-y-0.5"
-            style={{ boxShadow: '0 4px 16px rgba(212, 116, 94, 0.3)' }}
-            onClick={() => onOpenForm('general')}
-          >
-            Schedule Discovery Call
-          </Button>
         </div>
       </div>
     </section>

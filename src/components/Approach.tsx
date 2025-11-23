@@ -32,13 +32,13 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
 
         {/* Two Column Layout */}
         <div className="grid md:grid-cols-2 gap-12 mb-12">
-          {/* Left: Animated Concentric Half-Circles */}
+          {/* Left: Animated Concentric Circles */}
           <div className="flex items-center justify-center py-12">
             <svg width="400" height="400" viewBox="0 0 400 400" className="w-full max-w-md">
-              {/* Outer circle (GROW) - Gold - 90% */}
+              {/* Outer arc - Revenue - Gold */}
               <g>
                 <path
-                  d="M 200 30 A 170 170 0 1 1 47 117"
+                  d="M 200 50 A 150 150 0 1 1 90 290"
                   fill="none"
                   stroke="#C4A35A"
                   strokeWidth="3"
@@ -46,19 +46,19 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
                   opacity="0.8"
                   style={{
                     filter: 'drop-shadow(0 0 8px rgba(196, 163, 90, 0.6))',
-                    animation: 'rotateRight 26s linear infinite',
+                    animation: 'rotateRight 30s linear infinite',
                     transformOrigin: '200px 200px'
                   }}
                 />
-                <text x="200" y="60" textAnchor="middle" fill="#C4A35A" fontSize="16" fontWeight="bold" fontFamily="IBM Plex Mono, monospace">
-                  GROW
+                <text x="200" y="65" textAnchor="middle" fill="#C4A35A" fontSize="16" fontWeight="bold" fontFamily="IBM Plex Mono, monospace">
+                  REVENUE
                 </text>
               </g>
 
-              {/* Middle circle (BUILD) - Terracotta - 85% */}
+              {/* Middle arc - Intelligence - Terracotta */}
               <g>
                 <path
-                  d="M 200 90 A 110 110 0 1 1 109 257"
+                  d="M 200 100 A 100 100 0 1 1 120 260"
                   fill="none"
                   stroke="#D4745E"
                   strokeWidth="3"
@@ -70,15 +70,12 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
                     transformOrigin: '200px 200px'
                   }}
                 />
-                <text x="200" y="125" textAnchor="middle" fill="#D4745E" fontSize="14" fontWeight="bold" fontFamily="IBM Plex Mono, monospace">
-                  BUILD
-                </text>
-                <text x="200" y="143" textAnchor="middle" fill="#D4745E" fontSize="11" fontFamily="IBM Plex Mono, monospace" opacity="0.8">
-                  6-9 weeks
+                <text x="200" y="115" textAnchor="middle" fill="#D4745E" fontSize="14" fontWeight="bold" fontFamily="IBM Plex Mono, monospace">
+                  INTELLIGENCE
                 </text>
               </g>
 
-              {/* Inner circle (AUDIT) - White - 75% (centered at 200,200) */}
+              {/* Inner arc - Trust - Cream/White */}
               <g>
                 <path
                   d="M 200 150 A 50 50 0 1 1 150 200"
@@ -88,15 +85,12 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
                   strokeLinecap="round"
                   style={{
                     filter: 'drop-shadow(0 0 8px rgba(248, 246, 242, 0.8))',
-                    animation: 'rotateRight 13s linear infinite',
+                    animation: 'rotateRight 15s linear infinite',
                     transformOrigin: '200px 200px'
                   }}
                 />
-                <text x="200" y="195" textAnchor="middle" fill="#F8F6F2" fontSize="12" fontWeight="bold" fontFamily="IBM Plex Mono, monospace">
-                  AUDIT
-                </text>
-                <text x="200" y="210" textAnchor="middle" fill="#F8F6F2" fontSize="10" fontFamily="IBM Plex Mono, monospace" opacity="0.7">
-                  2-3 weeks
+                <text x="200" y="205" textAnchor="middle" fill="#F8F6F2" fontSize="14" fontWeight="bold" fontFamily="IBM Plex Mono, monospace">
+                  TRUST
                 </text>
               </g>
             </svg>
@@ -113,7 +107,7 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
               </svg>
               <div>
                 <h3 className="text-2xl font-bold mb-2 text-cream">
-                  <span className="text-terracotta">R</span>isk & <span className="text-terracotta">R</span>eciprocity
+                  <span className="text-terracotta">R</span>isk & Reciprocity
                 </h3>
                 <p className="text-lg text-cream/90 leading-relaxed">
                   Trust assessment across your portfolio—quantifies relationship depth for every account.
@@ -130,7 +124,7 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
               </svg>
               <div>
                 <h3 className="text-2xl font-bold mb-2 text-cream">
-                  <span className="text-terracotta">O</span>pportunity <span className="text-terracotta">I</span>ntelligence
+                  <span className="text-terracotta">O</span>pportunity Intelligence
                 </h3>
                 <p className="text-lg text-cream/90 leading-relaxed">
                   Synthesis of trust data with CRM analysis—reveals undermonetized accounts and vulnerable relationships.
@@ -164,7 +158,7 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
               </svg>
               <div>
                 <h3 className="text-2xl font-bold mb-2 text-cream">
-                  <span className="text-terracotta">R</span>evenue <span className="text-terracotta">S</span>ystems
+                  <span className="text-terracotta">R</span>evenue Systems
                 </h3>
                 <p className="text-lg text-cream/90 leading-relaxed">
                   Campaign-ready playbooks with talk tracks and ROI projections—optional ongoing partnership for institutional adoption and system integration.
@@ -203,6 +197,15 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
           }
           to {
             transform: rotate(-360deg);
+          }
+        }
+
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 0.3;
+          }
+          50% {
+            opacity: 1;
           }
         }
       `}</style>
