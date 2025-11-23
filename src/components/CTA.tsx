@@ -12,7 +12,7 @@ export const CTA = ({ onOpenForm }: CTAProps) => {
           Ready to Unlock Hidden Revenue?
         </h2>
         <p className="text-xl text-slate mb-6 leading-relaxed">
-          5 weeks. 5x ROI or you don't pay.
+          5 weeks. 5x ROI in 1 report, or you don't pay.
         </p>
         <p className="text-lg text-slate/80 mb-8 max-w-[700px] mx-auto leading-relaxed">
           We'll analyze your client relationships, identify undermonetized accounts, reveal vulnerable relationships, and deliver 50-100 high-conversion expansion contacts plus 200+ warm prospect pathways.

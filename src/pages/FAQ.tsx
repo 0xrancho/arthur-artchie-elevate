@@ -14,16 +14,16 @@ const FAQ = () => {
       answer: "The ROGER Framework is our four-stage process that transforms relationship data into campaign-ready revenue opportunities. It consists of: Risk & Reciprocity (trust assessment), Opportunity Intelligence (synthesis of trust and CRM data), Growth Enrichment (contact mapping and lookalike targeting), and Revenue Systems (campaign-ready playbooks with ongoing partnership options)."
     },
     {
-      question: "How long does the engagement take?",
-      answer: "Our standard engagement is 5 weeks from start to finish. The Audit phase takes 2-3 weeks, followed by the Build phase which takes 6-9 weeks. We deliver actionable intelligence quickly while maintaining the rigor needed for strategic decision-making."
+      question: "How long does an engagement take?",
+      answer: "Standard engagement is 5 weeks from start to finish. Week 1 for assessment and data collection, Weeks 2-3 for analysis and enrichment, Week 4-5 for synthesis and delivery with strategy session. If we run your motions it's typically an additional 6 - 9 weeks."
     },
     {
-      question: "What is the 5x ROI guarantee?",
-      answer: "We're so confident in our approach that we guarantee 5x ROI on your engagement. If you don't see at least 5 times your investment in identified revenue opportunities and relationship intelligence, you don't pay. This guarantee reflects our commitment to delivering tangible, measurable value."
+      question: "What is the 5x ROI Guarantee?",
+      answer: "We're so confident in our approach that we guarantee 5x ROI on your engagement. If you don't see at least 5 times your investment in ROI (an agreed close rate over the opportunities and relationship intelligence we find), you don't pay. This guarantee reflects our commitment to delivering tangible, measurable value."
     },
     {
       question: "What kind of data do you need from us?",
-      answer: "We work with your existing data sources: CRM exports (even if messy or fragmented), notes from Slack/email/documents, Jira tickets, SharePoint files, and any assessment or engagement data you have. We're designed to synthesize scattered signals into coherent intelligence—you don't need perfect data to get started."
+      answer: "We start with your existing data sources: CRM exports or read only APIs (even if messy or fragmented), notes from Slack/email/documents, Jira tickets, Project or SharePoint files. We plug this data into our Trust Analysis and deliver an Assessment tool survey to all customer facing employees to better understand specific nuances about who you engage and how much risk and authority your clients are delegating to your team. This is how we collectively quantify trust with each of your clients to build the base growth model."
     },
     {
       question: "How is this different from traditional CRM consulting?",
@@ -56,7 +56,7 @@ const FAQ = () => {
               Frequently Asked Questions
             </h2>
             <p className="text-xl text-slate mb-12 max-w-[700px] leading-relaxed">
-              Everything you need to know about our Opportunity Intelligence services.
+              Everything you need to know about our Growth Analysis services.
             </p>
 
             <Accordion type="single" collapsible className="w-full">

@@ -23,7 +23,7 @@ export const Solution = () => {
           </div>
 
           {/* Right: Analysis Hub Visualization */}
-          <div className="relative w-full h-[800px] flex items-center justify-center">
+          <div className="relative w-full h-[500px] md:h-[800px] flex items-center justify-center">
             <svg viewBox="0 0 600 800" className="w-full max-w-3xl h-full" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 {/* Gradients */}

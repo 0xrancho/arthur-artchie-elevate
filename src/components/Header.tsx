@@ -26,7 +26,13 @@ export const Header = () => {
             <h1 className="text-navy font-bold leading-none" style={{ fontFamily: 'IBM Plex Serif, serif', fontSize: '2rem' }}>
               Arthur & Archie
             </h1>
-            <p className="font-mono text-xs text-navy/70 mt-1">1876 – Present • Seven generations of service excellence</p>
+          </div>
+
+          {/* Center tagline - Hidden on mobile, shown on larger screens */}
+          <div className="hidden md:flex flex-1 justify-center mx-8">
+            <p className="text-navy/70 text-sm italic text-center">
+              Seven generations of service excellence
+            </p>
           </div>
 
           {/* Hamburger Menu - Right aligned */}

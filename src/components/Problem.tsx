@@ -20,7 +20,7 @@ export const Problem = () => {
 
         <div className="max-w-[900px] mb-12">
           <p className="text-xl text-cream/95 leading-relaxed mb-4">
-            In 2002, the Oakland A's proved that empirical analysis beats scout intuition. They couldn't outspend the Yankees, so they out-analyzed them. Sabermetrics revealed which players actually drove wins—not the ones who looked good in batting practice.
+            In 2002, the Oakland A's proved that empirical analysis beats scout intuition. They couldn't outspend the Yankees, so they out-analyzed them. Sabermetrics revealed who actually got on base and who just looked good in batting practice.
           </p>
           <p className="text-xl text-cream/95 leading-relaxed mb-4">
             Professional services firms are still running BD the old way: gut feel, relationship memory, and good ol' boy networks. Your best rainmakers know their clients deeply. Everyone else is guessing.
@@ -34,14 +34,14 @@ export const Problem = () => {
           <div className="bg-cream p-8 rounded-lg border-l-4 border-navy transition-shadow" style={{ boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2)' }}>
             <h3 className="text-2xl font-bold mb-4 text-navy">Hidden Signals</h3>
             <p className="text-slate leading-relaxed text-base">
-              A small client just raised at a 10x valuation and is on a hiring spree—did you know? Another client mentions budget for a new project in an unrelated Jira ticket to a SWE. Your EM doesn't pursue an RFP because he's missing a connection and case study that one of his coworkers might have.
+              A small client just raised at a 10x valuation and is on a hiring spree—did you know? Another client mentions budget for a new project in an unrelated Jira ticket to an engineer. Your Engagement Manager doesn't pursue an RFP because he's missing a connection or case study that one of his coworkers might have.
             </p>
           </div>
 
           <div className="bg-cream p-8 rounded-lg border-l-4 border-navy transition-shadow" style={{ boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2)' }}>
             <h3 className="text-2xl font-bold mb-4 text-navy">Lagging Success Metrics</h3>
             <p className="text-slate leading-relaxed text-base">
-              You track revenue, hourly utilization, and project deliverables. You don't track delegated authority, risk mitigation, or contact-level reciprocity. You can't answer: Which $150K client would happily spend $600K? Which $1M account is quietly leaving?
+              You track revenue, hourly utilization, and project deliverables. You don't track delegated authority, risk mitigation, or contact-level reciprocity. Which $150K client would happily spend $600K? Which $1M account is quietly leaving?
             </p>
           </div>
 

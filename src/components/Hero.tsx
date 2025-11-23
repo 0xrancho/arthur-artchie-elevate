@@ -19,6 +19,9 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
 
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
         <div className="max-w-4xl pt-[15px] pb-4">
+          <span className="inline-block w-fit font-mono text-xs text-cream/80 mb-4 px-3 py-1 bg-cream/10 rounded-full border border-cream/20">
+            1876 – Present
+          </span>
           <h1 className="text-5xl md:text-[56px] font-bold leading-[1.2] mb-2 text-cream">
             Revenue Grows on Trust
           </h1>
@@ -58,42 +61,44 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
               {/* Component 1: CRM Export */}
               <div className="mb-6 bg-white p-4 rounded border border-gray-300">
                 <div className="text-xs font-mono text-gray-500 mb-2">CRM_Export.csv</div>
-                <table className="w-full text-sm font-mono">
-                  <thead className="border-b-2 border-gray-300">
-                    <tr>
-                      <th className="text-left pb-2 pr-4">Account Name</th>
-                      <th className="text-left pb-2 pr-4">Annual Revenue</th>
-                      <th className="text-left pb-2 pr-4">Tenure</th>
-                      <th className="text-left pb-2">Contacts</th>
-                    </tr>
-                  </thead>
-                  <tbody className="text-gray-700">
-                    <tr className="border-b border-gray-200">
-                      <td className="py-2 pr-4">PharmaCorp</td>
-                      <td className="py-2 pr-4">$180,000</td>
-                      <td className="py-2 pr-4">3 yrs</td>
-                      <td className="py-2">3</td>
-                    </tr>
-                    <tr className="border-b border-gray-200">
-                      <td className="py-2 pr-4">Cunnings Inc.</td>
-                      <td className="py-2 pr-4">$450,000</td>
-                      <td className="py-2 pr-4">5 yrs</td>
-                      <td className="py-2">2</td>
-                    </tr>
-                    <tr className="border-b border-gray-200">
-                      <td className="py-2 pr-4">DefenseInc</td>
-                      <td className="py-2 pr-4">$820,000</td>
-                      <td className="py-2 pr-4">2 yrs</td>
-                      <td className="py-2">4</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2 pr-4">EnergyCo</td>
-                      <td className="py-2 pr-4">$220,000</td>
-                      <td className="py-2 pr-4">4 yrs</td>
-                      <td className="py-2">5</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div className="overflow-x-auto -mx-4 px-4">
+                  <table className="w-full text-sm font-mono min-w-[500px]">
+                    <thead className="border-b-2 border-gray-300">
+                      <tr>
+                        <th className="text-left pb-2 pr-4">Account Name</th>
+                        <th className="text-left pb-2 pr-4">Annual Revenue</th>
+                        <th className="text-left pb-2 pr-4">Tenure</th>
+                        <th className="text-left pb-2">Contacts</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-gray-700">
+                      <tr className="border-b border-gray-200">
+                        <td className="py-2 pr-4">PharmaCorp</td>
+                        <td className="py-2 pr-4">$180,000</td>
+                        <td className="py-2 pr-4">3 yrs</td>
+                        <td className="py-2">3</td>
+                      </tr>
+                      <tr className="border-b border-gray-200">
+                        <td className="py-2 pr-4">Cunnings Inc.</td>
+                        <td className="py-2 pr-4">$450,000</td>
+                        <td className="py-2 pr-4">5 yrs</td>
+                        <td className="py-2">2</td>
+                      </tr>
+                      <tr className="border-b border-gray-200">
+                        <td className="py-2 pr-4">DefenseInc</td>
+                        <td className="py-2 pr-4">$820,000</td>
+                        <td className="py-2 pr-4">2 yrs</td>
+                        <td className="py-2">4</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 pr-4">EnergyCo</td>
+                        <td className="py-2 pr-4">$220,000</td>
+                        <td className="py-2 pr-4">4 yrs</td>
+                        <td className="py-2">5</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
               {/* Component 2: Assessment Data */}
@@ -164,7 +169,7 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
                   <div>Trust Score: <span className="text-[#00D9FF] font-bold">8.2</span></div>
                   <div>Revenue Gap: <span className="text-[#FFD700]">$320K</span></div>
                   <div>RRP: <span className="text-[#A855F7]">13.3</span> (High delegation)</div>
-                  <div>RR: <span className="text-[#A855F7]">4.2</span> (Strong engagement)</div>
+                  <div>RR: <span className="text-[#FF8C00]">2.8</span> (Moderate engagement)</div>
                 </div>
                 <div className="mt-3 pl-4 border-l-2 border-[#00D9FF]/50">
                   <div className="text-[#00D9FF] font-semibold text-sm mb-2">→ [EXPAND]</div>
@@ -185,6 +190,7 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
                 </div>
                 <div className="font-mono text-xs space-y-1 text-gray-300">
                   <div>Trust Score: <span className="text-[#FF006E] font-bold">2.1</span></div>
+                  <div>Revenue at risk: <span className="text-[#FF006E]">$940,000</span></div>
                   <div>Churn Risk: <span className="text-[#FF006E] font-bold">HIGH</span></div>
                   <div>RRP: <span className="text-[#FF8C00]">3.2</span> (Low delegation)</div>
                   <div>RR: <span className="text-[#FF8C00]">0.8</span> (Transactional)</div>
@@ -206,7 +212,9 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
                 </div>
                 <div className="font-mono text-xs space-y-1 text-gray-300">
                   <div>Trust Score: <span className="text-[#A855F7] font-bold">9.1</span></div>
-                  <div>Perfect Profile Match</div>
+                  <div>Revenue Gap: <span className="text-[#FFD700]">$34,000</span></div>
+                  <div>RRP: <span className="text-[#A855F7]">20</span> (High delegation)</div>
+                  <div>RR: <span className="text-[#A855F7]">10</span> (High engagement)</div>
                 </div>
                 <div className="mt-3 pl-4 border-l-2 border-[#A855F7]/50">
                   <div className="text-[#A855F7] font-semibold text-sm mb-2">→ [ACQUIRE]</div>
