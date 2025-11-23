@@ -36,63 +36,59 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
           <div className="flex items-center justify-center py-12">
             <svg width="400" height="400" viewBox="0 0 400 400" className="w-full max-w-md">
               {/* Outer arc - Revenue - Gold */}
-              <g>
-                <path
-                  d="M 200 50 A 150 150 0 1 1 90 290"
-                  fill="none"
-                  stroke="#C4A35A"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  opacity="0.8"
-                  style={{
-                    filter: 'drop-shadow(0 0 8px rgba(196, 163, 90, 0.6))',
-                    animation: 'rotateRight 30s linear infinite',
-                    transformOrigin: '200px 200px'
-                  }}
-                />
-                <text x="200" y="65" textAnchor="middle" fill="#C4A35A" fontSize="16" fontWeight="bold" fontFamily="IBM Plex Mono, monospace">
-                  REVENUE
-                </text>
-              </g>
+              <path
+                d="M 200 50 A 150 150 0 1 1 112 79"
+                fill="none"
+                stroke="#C4A35A"
+                strokeWidth="3"
+                strokeLinecap="round"
+                opacity="0.8"
+                style={{
+                  filter: 'drop-shadow(0 0 8px rgba(196, 163, 90, 0.6))',
+                  animation: 'rotateRight 30s linear infinite',
+                  transformOrigin: '200px 200px'
+                }}
+              />
 
               {/* Middle arc - Intelligence - Terracotta */}
-              <g>
-                <path
-                  d="M 200 100 A 100 100 0 1 1 120 260"
-                  fill="none"
-                  stroke="#D4745E"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  opacity="0.9"
-                  style={{
-                    filter: 'drop-shadow(0 0 8px rgba(212, 116, 94, 0.6))',
-                    animation: 'rotateLeft 20s linear infinite',
-                    transformOrigin: '200px 200px'
-                  }}
-                />
-                <text x="200" y="115" textAnchor="middle" fill="#D4745E" fontSize="14" fontWeight="bold" fontFamily="IBM Plex Mono, monospace">
-                  INTELLIGENCE
-                </text>
-              </g>
+              <path
+                d="M 200 100 A 100 100 0 1 1 109 158"
+                fill="none"
+                stroke="#D4745E"
+                strokeWidth="3"
+                strokeLinecap="round"
+                opacity="0.9"
+                style={{
+                  filter: 'drop-shadow(0 0 8px rgba(212, 116, 94, 0.6))',
+                  animation: 'rotateLeft 20s linear infinite',
+                  transformOrigin: '200px 200px'
+                }}
+              />
 
               {/* Inner arc - Trust - Cream/White */}
-              <g>
-                <path
-                  d="M 200 150 A 50 50 0 1 1 150 200"
-                  fill="none"
-                  stroke="#F8F6F2"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  style={{
-                    filter: 'drop-shadow(0 0 8px rgba(248, 246, 242, 0.8))',
-                    animation: 'rotateRight 15s linear infinite',
-                    transformOrigin: '200px 200px'
-                  }}
-                />
-                <text x="200" y="205" textAnchor="middle" fill="#F8F6F2" fontSize="14" fontWeight="bold" fontFamily="IBM Plex Mono, monospace">
-                  TRUST
-                </text>
-              </g>
+              <path
+                d="M 200 150 A 50 50 0 1 1 150 200"
+                fill="none"
+                stroke="#F8F6F2"
+                strokeWidth="3"
+                strokeLinecap="round"
+                style={{
+                  filter: 'drop-shadow(0 0 8px rgba(248, 246, 242, 0.8))',
+                  animation: 'rotateRight 15s linear infinite',
+                  transformOrigin: '200px 200px'
+                }}
+              />
+
+              {/* Text labels - drawn last so they appear on top */}
+              <text x="200" y="40" textAnchor="middle" fill="#C4A35A" fontSize="16" fontWeight="bold" fontFamily="IBM Plex Mono, monospace">
+                REVENUE
+              </text>
+              <text x="200" y="90" textAnchor="middle" fill="#D4745E" fontSize="14" fontWeight="bold" fontFamily="IBM Plex Mono, monospace">
+                INTELLIGENCE
+              </text>
+              <text x="200" y="205" textAnchor="middle" fill="#F8F6F2" fontSize="14" fontWeight="bold" fontFamily="IBM Plex Mono, monospace">
+                TRUST
+              </text>
             </svg>
           </div>
 

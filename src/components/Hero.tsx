@@ -69,25 +69,25 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
                   </thead>
                   <tbody className="text-gray-700">
                     <tr className="border-b border-gray-200">
-                      <td className="py-2 pr-4">TechCorp</td>
+                      <td className="py-2 pr-4">PharmaCorp</td>
                       <td className="py-2 pr-4">$180,000</td>
                       <td className="py-2 pr-4">3 yrs</td>
                       <td className="py-2">3</td>
                     </tr>
                     <tr className="border-b border-gray-200">
-                      <td className="py-2 pr-4">DataCo</td>
+                      <td className="py-2 pr-4">Cunnings Inc.</td>
                       <td className="py-2 pr-4">$450,000</td>
                       <td className="py-2 pr-4">5 yrs</td>
                       <td className="py-2">2</td>
                     </tr>
                     <tr className="border-b border-gray-200">
-                      <td className="py-2 pr-4">CloudInc</td>
+                      <td className="py-2 pr-4">DefenseInc</td>
                       <td className="py-2 pr-4">$820,000</td>
                       <td className="py-2 pr-4">2 yrs</td>
                       <td className="py-2">4</td>
                     </tr>
                     <tr>
-                      <td className="py-2 pr-4">SaaSCo</td>
+                      <td className="py-2 pr-4">EnergyCo</td>
                       <td className="py-2 pr-4">$220,000</td>
                       <td className="py-2 pr-4">4 yrs</td>
                       <td className="py-2">5</td>
@@ -102,7 +102,7 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
                 <div className="font-mono text-sm space-y-2 text-gray-700">
                   <div className="flex justify-between border-b border-gray-200 pb-1">
                     <span className="font-semibold">ACCOUNT:</span>
-                    <span>TechCorp</span>
+                    <span>PharmaCorp</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-200 pb-1">
                     <span className="font-semibold">Risk Delegated:</span>
@@ -154,11 +154,11 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
             </div>
             <div className="bg-[#0F172A] p-6 rounded-lg border-2 border-[#334155] h-[550px] overflow-y-auto custom-scrollbar custom-scrollbar-slate" style={{ boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)' }}>
 
-              {/* TechCorp Node - Green */}
+              {/* PharmaCorp Node - Green */}
               <div className="mb-6 bg-[#1E293B] border-2 border-green-500 rounded-lg p-4">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-4 h-4 bg-green-500 rounded-full"></div>
-                  <div className="text-green-400 font-bold text-lg">TechCorp</div>
+                  <div className="text-green-400 font-bold text-lg">PharmaCorp</div>
                 </div>
                 <div className="font-mono text-xs space-y-1 text-gray-300">
                   <div>Trust Score: <span className="text-green-400 font-bold">8.2</span></div>
@@ -177,11 +177,11 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
                 </div>
               </div>
 
-              {/* DataCo Node - Red */}
+              {/* Cunnings Inc. Node - Red */}
               <div className="mb-6 bg-[#1E293B] border-2 border-red-500 rounded-lg p-4">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-4 h-4 bg-red-500 rounded-full"></div>
-                  <div className="text-red-400 font-bold text-lg">DataCo</div>
+                  <div className="text-red-400 font-bold text-lg">Cunnings Inc.</div>
                 </div>
                 <div className="font-mono text-xs space-y-1 text-gray-300">
                   <div>Trust Score: <span className="text-red-400 font-bold">2.1</span></div>
@@ -198,11 +198,11 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
                 </div>
               </div>
 
-              {/* CloudInc Node - Blue */}
+              {/* DefenseInc Node - Blue */}
               <div className="bg-[#1E293B] border-2 border-blue-500 rounded-lg p-4">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-                  <div className="text-blue-400 font-bold text-lg">CloudInc</div>
+                  <div className="text-blue-400 font-bold text-lg">DefenseInc</div>
                 </div>
                 <div className="font-mono text-xs space-y-1 text-gray-300">
                   <div>Trust Score: <span className="text-blue-400 font-bold">9.1</span></div>
