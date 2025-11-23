@@ -6,9 +6,10 @@ export const Header = () => {
 
   const navLinks = [
     { href: "#services", label: "Services" },
-    { href: "#solution", label: "About" },
-    { href: "#heritage", label: "Heritage" },
+    { href: "/heritage", label: "Heritage" },
+    { href: "/faq", label: "FAQ" },
     { href: "#contact", label: "Contact" },
+    { href: "/team", label: "Team" },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -20,10 +21,11 @@ export const Header = () => {
       <div className="max-w-[1200px] mx-auto px-4 py-[27px]">
         <div className="flex justify-between items-center">
           {/* Logo - Left aligned */}
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col">
             <h1 className="text-navy font-bold leading-none" style={{ fontFamily: 'IBM Plex Serif, serif', fontSize: '2rem' }}>
               Arthur & Archie
             </h1>
+            <p className="font-mono text-xs text-navy/70 mt-1">1876 – Present • Seven generations of service excellence</p>
           </div>
 
           {/* Desktop Navigation */}
