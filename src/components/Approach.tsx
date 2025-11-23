@@ -27,7 +27,7 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
         </h2>
 
         <p className="text-xl text-cream/95 leading-relaxed mb-12 max-w-[900px]">
-          We build Opportunity Intelligence systems for custom solution firms—in three phases, or start wherever makes sense for you.
+          Four stages that transform relationship data into campaign-ready revenue opportunities.
         </p>
 
         {/* Two Column Layout */}
@@ -104,7 +104,7 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
 
           {/* Right: Content */}
           <div className="space-y-8">
-            {/* Revenue Operations */}
+            {/* Risk & Reciprocity */}
             <div className="flex gap-4 items-start">
               <svg width="32" height="32" viewBox="0 0 32 32" className="flex-shrink-0 mt-1">
                 <circle cx="16" cy="16" r="14" fill="none" stroke="#D4745E" strokeWidth="2" opacity="0.3" />
@@ -113,19 +113,15 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
               </svg>
               <div>
                 <h3 className="text-2xl font-bold mb-2 text-cream">
-                  <span className="text-terracotta">R</span>evenue{" "}
-                  <span className="text-terracotta">O</span>perations
+                  <span className="text-terracotta">R</span>isk & <span className="text-terracotta">R</span>eciprocity
                 </h3>
-                <p className="text-lg text-cream/90 leading-relaxed mb-2">
-                  Understand your Risk and Reciprocity ROIs and how they project both client success and contract growth for trust-based firms.
-                </p>
-                <p className="text-sm font-mono text-cream/70">
-                  Deliverable: Growth audit and forecasting method.
+                <p className="text-lg text-cream/90 leading-relaxed">
+                  Trust assessment across your portfolio—quantifies relationship depth for every account.
                 </p>
               </div>
             </div>
 
-            {/* Growth Enablement */}
+            {/* Opportunity Intelligence */}
             <div className="flex gap-4 items-start">
               <svg width="32" height="32" viewBox="0 0 32 32" className="flex-shrink-0 mt-1">
                 <circle cx="16" cy="16" r="14" fill="none" stroke="#D4745E" strokeWidth="2" opacity="0.3" />
@@ -134,19 +130,15 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
               </svg>
               <div>
                 <h3 className="text-2xl font-bold mb-2 text-cream">
-                  <span className="text-terracotta">G</span>rowth{" "}
-                  <span className="text-terracotta">E</span>nablement
+                  <span className="text-terracotta">O</span>pportunity <span className="text-terracotta">I</span>ntelligence
                 </h3>
-                <p className="text-lg text-cream/90 leading-relaxed mb-2">
-                  Surface buyer intent and market signals with automatic enrichment flows across the org. Never let context slip through the cracks again.
-                </p>
-                <p className="text-sm font-mono text-cream/70">
-                  Deliverable: Your custom Opportunity Intelligence (OI) system and interface build out.
+                <p className="text-lg text-cream/90 leading-relaxed">
+                  Synthesis of trust data with CRM analysis—reveals undermonetized accounts and vulnerable relationships.
                 </p>
               </div>
             </div>
 
-            {/* Resources */}
+            {/* Growth Enrichment */}
             <div className="flex gap-4 items-start">
               <svg width="32" height="32" viewBox="0 0 32 32" className="flex-shrink-0 mt-1">
                 <circle cx="16" cy="16" r="14" fill="none" stroke="#D4745E" strokeWidth="2" opacity="0.3" />
@@ -155,13 +147,27 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
               </svg>
               <div>
                 <h3 className="text-2xl font-bold mb-2 text-cream">
-                  <span className="text-terracotta">R</span>esources
+                  <span className="text-terracotta">G</span>rowth <span className="text-terracotta">E</span>nrichment
                 </h3>
-                <p className="text-lg text-cream/90 leading-relaxed mb-2">
-                  Own and customize the system. Partner with us to manage the agent orchestration infrastructure and strategic guidance.
+                <p className="text-lg text-cream/90 leading-relaxed">
+                  Contact mapping and lookalike targeting—delivers 50-100 high-conversion expansion contacts plus 200+ prospect companies with intro pathways.
                 </p>
-                <p className="text-sm font-mono text-cream/70">
-                  Deliverable: Agent and knowledge base configuration module.
+              </div>
+            </div>
+
+            {/* Revenue Systems */}
+            <div className="flex gap-4 items-start">
+              <svg width="32" height="32" viewBox="0 0 32 32" className="flex-shrink-0 mt-1">
+                <circle cx="16" cy="16" r="14" fill="none" stroke="#D4745E" strokeWidth="2" opacity="0.3" />
+                <circle cx="16" cy="16" r="10" fill="none" stroke="#D4745E" strokeWidth="2" opacity="0.5" />
+                <circle cx="16" cy="16" r="6" fill="#D4745E" />
+              </svg>
+              <div>
+                <h3 className="text-2xl font-bold mb-2 text-cream">
+                  <span className="text-terracotta">R</span>evenue <span className="text-terracotta">S</span>ystems
+                </h3>
+                <p className="text-lg text-cream/90 leading-relaxed">
+                  Campaign-ready playbooks with talk tracks and ROI projections—optional ongoing partnership for institutional adoption and system integration.
                 </p>
               </div>
             </div>
