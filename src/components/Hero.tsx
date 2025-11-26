@@ -49,97 +49,76 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
           </div>
         </div>
 
-        {/* Two-Panel Demo */}
+        {/* Two-Panel Demo: Before/After Trust */}
         <div className="mt-6 mb-12 grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-6 items-stretch">
-          {/* LEFT PANEL: YOUR DATA */}
+          {/* LEFT PANEL: THE GUT FEEL */}
           <div className="relative">
             <div className="absolute -top-3 left-6 bg-navy px-4 py-1.5 rounded border border-terracotta/30 z-10">
-              <span className="font-mono text-xs font-semibold text-terracotta tracking-wide">YOUR DATA</span>
+              <span className="font-mono text-xs font-semibold text-terracotta tracking-wide">THE GUT FEEL</span>
             </div>
-            <div className="bg-[#F5F5F5] p-6 rounded-lg border-2 border-[#D1D5DB] h-[550px] overflow-y-auto custom-scrollbar" style={{ boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)' }}>
+            <div className="bg-[#FEF3C7] p-6 rounded-lg border-2 border-[#FDE68A] h-[550px] overflow-y-auto custom-scrollbar" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)', transform: 'rotate(-0.5deg)' }}>
 
-              {/* Component 1: CRM Export */}
-              <div className="mb-6 bg-white p-4 rounded border border-gray-300">
-                <div className="text-xs font-mono text-gray-500 mb-2">CRM_Export.csv</div>
-                <div className="overflow-x-auto -mx-4 px-4">
-                  <table className="w-full text-sm font-mono min-w-[500px]">
-                    <thead className="border-b-2 border-gray-300">
-                      <tr>
-                        <th className="text-left pb-2 pr-4">Account Name</th>
-                        <th className="text-left pb-2 pr-4">Annual Revenue</th>
-                        <th className="text-left pb-2 pr-4">Tenure</th>
-                        <th className="text-left pb-2">Contacts</th>
-                      </tr>
-                    </thead>
-                    <tbody className="text-gray-700">
-                      <tr className="border-b border-gray-200">
-                        <td className="py-2 pr-4">PharmaCorp</td>
-                        <td className="py-2 pr-4">$180,000</td>
-                        <td className="py-2 pr-4">3 yrs</td>
-                        <td className="py-2">3</td>
-                      </tr>
-                      <tr className="border-b border-gray-200">
-                        <td className="py-2 pr-4">Cunnings Inc.</td>
-                        <td className="py-2 pr-4">$450,000</td>
-                        <td className="py-2 pr-4">5 yrs</td>
-                        <td className="py-2">2</td>
-                      </tr>
-                      <tr className="border-b border-gray-200">
-                        <td className="py-2 pr-4">DefenseInc</td>
-                        <td className="py-2 pr-4">$820,000</td>
-                        <td className="py-2 pr-4">2 yrs</td>
-                        <td className="py-2">4</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2 pr-4">EnergyCo</td>
-                        <td className="py-2 pr-4">$220,000</td>
-                        <td className="py-2 pr-4">4 yrs</td>
-                        <td className="py-2">5</td>
-                      </tr>
-                    </tbody>
-                  </table>
+              {/* Example 1: Acme Manufacturing */}
+              <div className="mb-8 p-5 bg-white rounded-lg border border-gray-200 shadow-sm">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-orange-500 rounded flex items-center justify-center text-white font-bold text-lg">A</div>
+                  <div className="text-lg font-semibold text-gray-900">Acme Manufacturing</div>
+                </div>
+                <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm mb-3">
+                  <div><span className="text-gray-500">LTV:</span> <span className="font-medium">$1.2M</span></div>
+                  <div><span className="text-gray-500">Customer Since:</span> 2021</div>
+                  <div><span className="text-gray-500">Active Contract:</span> <span className="font-medium">$280K/ytd</span></div>
+                  <div><span className="text-gray-500">Open Deals:</span> 1</div>
+                  <div><span className="text-gray-500">Contacts:</span> 5</div>
+                </div>
+                <div className="bg-gray-50 p-3 rounded text-sm text-gray-600 italic leading-relaxed">
+                  "Good relationship" <br/>
+                  "Should probably check in" <br/>
+                  "Think Sarah still runs IT?" <br/>
+                  "Probably room to grow?"
                 </div>
               </div>
 
-              {/* Component 2: Assessment Data */}
-              <div className="mb-6 bg-white p-4 rounded border border-gray-300">
-                <div className="text-xs font-mono text-gray-500 mb-3">Assessment_Data.xlsx</div>
-                <div className="font-mono text-sm space-y-2 text-gray-700">
-                  <div className="flex justify-between border-b border-gray-200 pb-1">
-                    <span className="font-semibold">ACCOUNT:</span>
-                    <span>PharmaCorp</span>
-                  </div>
-                  <div className="flex justify-between border-b border-gray-200 pb-1">
-                    <span className="font-semibold">Risk Delegated:</span>
-                    <span>$8M</span>
-                  </div>
-                  <div className="flex justify-between border-b border-gray-200 pb-1">
-                    <span className="font-semibold">Annual Spend:</span>
-                    <span>$180K</span>
-                  </div>
-                  <div className="flex justify-between border-b border-gray-200 pb-1">
-                    <span className="font-semibold">Strategic Contacts:</span>
-                    <span>10</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-semibold">Avg Engagement Signals:</span>
-                    <span>4.2/year</span>
-                  </div>
+              {/* Example 2: Titan Healthcare */}
+              <div className="mb-8 p-5 bg-white rounded-lg border border-gray-200 shadow-sm">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-orange-500 rounded flex items-center justify-center text-white font-bold text-lg">T</div>
+                  <div className="text-lg font-semibold text-gray-900">Titan Healthcare</div>
+                </div>
+                <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm mb-3">
+                  <div><span className="text-gray-500">LTV:</span> <span className="font-medium">$1.8M</span></div>
+                  <div><span className="text-gray-500">Customer Since:</span> 2019</div>
+                  <div><span className="text-gray-500">Active Contract:</span> <span className="font-medium">$420K/yr</span></div>
+                  <div><span className="text-gray-500">Open Deals:</span> 2</div>
+                  <div><span className="text-gray-500">Contacts:</span> 4</div>
+                </div>
+                <div className="bg-gray-50 p-3 rounded text-sm text-gray-600 italic leading-relaxed">
+                  "Love working with them" <br/>
+                  "Marcus always takes my call" <br/>
+                  "They've mentioned other projects" <br/>
+                  "Should ask about Q2 budget?"
                 </div>
               </div>
 
-              {/* Component 3: Scattered Notes */}
-              <div className="bg-[#FFFBEB] p-4 rounded border border-[#FCD34D]">
-                <div className="text-xs font-mono text-amber-700 mb-2">notes.txt</div>
-                <div className="font-mono text-sm space-y-2 text-gray-600">
-                  <p className="italic">"CTO mentioned mobile app project..."</p>
-                  <p className="italic">"VP Eng refers us constantly..."</p>
-                  <p className="italic">"Only working with engineering, not product..."</p>
+              {/* Example 3: Meridian Financial */}
+              <div className="mb-4 p-5 bg-white rounded-lg border border-gray-200 shadow-sm">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-orange-500 rounded flex items-center justify-center text-white font-bold text-lg">M</div>
+                  <div className="text-lg font-semibold text-gray-900">Meridian Financial</div>
                 </div>
-              </div>
-
-              <div className="mt-4 text-center text-xs text-gray-500 font-semibold">
-                Disconnected signals, no synthesis
+                <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm mb-3">
+                  <div><span className="text-gray-500">LTV:</span> <span className="font-medium">$3.2M</span></div>
+                  <div><span className="text-gray-500">Customer Since:</span> 2017</div>
+                  <div><span className="text-gray-500">Active Contract:</span> <span className="font-medium">$650K/ytd</span></div>
+                  <div><span className="text-gray-500">Open Deals:</span> 0</div>
+                  <div><span className="text-gray-500">Contacts:</span> 3</div>
+                </div>
+                <div className="bg-gray-50 p-3 rounded text-sm text-gray-600 italic leading-relaxed">
+                  "Biggest account" <br/>
+                  "Been quiet lately" <br/>
+                  "Renewal is... soon?" <br/>
+                  "Fine, I think"
+                </div>
               </div>
             </div>
           </div>
@@ -152,81 +131,149 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
             <span className="font-mono text-sm font-bold text-cream">5 weeks</span>
           </div>
 
-          {/* RIGHT PANEL: OUR GROWTH SYSTEM */}
+          {/* RIGHT PANEL: TRUST INTELLIGENCE */}
           <div className="relative">
-            <div className="absolute -top-3 left-6 bg-navy px-4 py-1.5 rounded border border-green-500/30 z-10">
-              <span className="font-mono text-xs font-semibold text-green-400 tracking-wide">OUR GROWTH SYSTEM</span>
+            <div className="absolute -top-3 left-6 bg-navy px-4 py-1.5 rounded border border-cyan-500/30 z-10">
+              <span className="font-mono text-xs font-semibold text-cyan-400 tracking-wide">TRUST INTELLIGENCE</span>
             </div>
             <div className="bg-[#0F172A] p-6 rounded-lg border-2 border-[#334155] h-[550px] overflow-y-auto custom-scrollbar custom-scrollbar-slate" style={{ boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)' }}>
 
-              {/* PharmaCorp Node - Cyan */}
-              <div className="mb-6 bg-[#1E293B] border-2 border-[#00D9FF] rounded-lg p-4">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-4 h-4 bg-[#00D9FF] rounded-full"></div>
-                  <div className="text-[#00D9FF] font-bold text-lg">PharmaCorp</div>
-                </div>
-                <div className="font-mono text-xs space-y-1 text-gray-300">
-                  <div>Trust Score: <span className="text-[#00D9FF] font-bold">8.2</span></div>
-                  <div>Revenue Gap: <span className="text-[#FFD700]">$320K</span></div>
-                  <div>RRP: <span className="text-[#A855F7]">13.3</span> (High delegation)</div>
-                  <div>RR: <span className="text-[#FF8C00]">2.8</span> (Moderate engagement)</div>
-                </div>
-                <div className="mt-3 pl-4 border-l-2 border-[#00D9FF]/50">
-                  <div className="text-[#00D9FF] font-semibold text-sm mb-2">→ [EXPAND]</div>
-                  <div className="font-mono text-xs space-y-1 text-gray-400">
-                    <div>├─ 12 warm intro paths</div>
-                    <div>├─ VP Product (mobile app opp)</div>
-                    <div>└─ Head of Data (platform rebuild)</div>
-                  </div>
-                  <div className="mt-2 text-xs text-gray-400">Network: 10 strategic contacts, know 3</div>
-                </div>
-              </div>
+              {/* Example 1: Acme Manufacturing (RE-ENGAGE) */}
+              <div className="mb-6 bg-[#1E293B] rounded-lg p-5" style={{ boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6), 0 -1px 0 rgba(255, 255, 255, 0.05)' }}>
+                <div className="font-mono text-sm font-bold text-white tracking-wider mb-3">ACME MANUFACTURING</div>
+                <div className="border-t border-gray-700 pt-3 mb-3"></div>
 
-              {/* Cunnings Inc. Node - Magenta */}
-              <div className="mb-6 bg-[#1E293B] border-2 border-[#FF006E] rounded-lg p-4">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-4 h-4 bg-[#FF006E] rounded-full"></div>
-                  <div className="text-[#FF006E] font-bold text-lg">Cunnings Inc.</div>
-                </div>
-                <div className="font-mono text-xs space-y-1 text-gray-300">
-                  <div>Trust Score: <span className="text-[#FF006E] font-bold">2.1</span></div>
-                  <div>Revenue at risk: <span className="text-[#FF006E]">$940,000</span></div>
-                  <div>Churn Risk: <span className="text-[#FF006E] font-bold">HIGH</span></div>
-                  <div>RRP: <span className="text-[#FF8C00]">3.2</span> (Low delegation)</div>
-                  <div>RR: <span className="text-[#FF8C00]">0.8</span> (Transactional)</div>
-                </div>
-                <div className="mt-3 pl-4 border-l-2 border-[#FF006E]/50">
-                  <div className="text-[#FF006E] font-semibold text-sm mb-2">→ [PROTECT]</div>
-                  <div className="font-mono text-xs space-y-1 text-gray-400">
-                    <div>├─ Relationship intervention</div>
-                    <div>└─ Stakeholder expansion needed</div>
+                <div className="font-mono text-xs space-y-2 text-gray-300 mb-3">
+                  <div className="flex justify-between">
+                    <span>Trust Score</span>
+                    <span><span className="text-[#F472B6] font-bold">6.4</span> Embedded Utility</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Trajectory</span>
+                    <span className="text-[#F472B6]">↘ Commoditizing</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Revenue Gap</span>
+                    <span className="text-[#F59E0B]">$145K</span>
                   </div>
                 </div>
-              </div>
 
-              {/* DefenseInc Node - Purple */}
-              <div className="bg-[#1E293B] border-2 border-[#A855F7] rounded-lg p-4">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-4 h-4 bg-[#A855F7] rounded-full"></div>
-                  <div className="text-[#A855F7] font-bold text-lg">DefenseInc</div>
+                <div className="font-mono text-xs space-y-2 text-gray-300 mb-3">
+                  <div className="flex justify-between">
+                    <span>Coverage</span>
+                    <span>34% (5 of 15 buyers known)</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>New Contacts</span>
+                    <span className="text-cyan-400">+10 mapped</span>
+                  </div>
                 </div>
-                <div className="font-mono text-xs space-y-1 text-gray-300">
-                  <div>Trust Score: <span className="text-[#A855F7] font-bold">9.1</span></div>
-                  <div>Revenue Gap: <span className="text-[#FFD700]">$34,000</span></div>
-                  <div>RRP: <span className="text-[#A855F7]">20</span> (High delegation)</div>
-                  <div>RR: <span className="text-[#A855F7]">10</span> (High engagement)</div>
+
+                <div className="border-t border-gray-700 pt-3 mb-3"></div>
+
+                <div className="font-mono text-xs space-y-1 text-gray-400 mb-3">
+                  <div>⚠ Champion changed roles (4 mo ago)</div>
+                  <div>⚠ 2 job posts mention "vendor consolidation"</div>
                 </div>
-                <div className="mt-3 pl-4 border-l-2 border-[#A855F7]/50">
-                  <div className="text-[#A855F7] font-semibold text-sm mb-2">→ [ACQUIRE]</div>
-                  <div className="font-mono text-xs space-y-1 text-gray-400">
-                    <div>├─ 247 lookalike companies</div>
-                    <div>└─ 67 warm intro paths available</div>
+
+                <div className="border-t border-gray-700 pt-3"></div>
+
+                <div className="mt-3">
+                  <div className="text-[#F472B6] font-mono font-semibold text-sm mb-1">→ [RE-ENGAGE]</div>
+                  <div className="font-mono text-xs text-gray-400 pl-3 space-y-1">
+                    <div>New VP Engineering — intro by Feb 15</div>
+                    <div>Reconnect path: 3 warm intros available</div>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-6 text-center text-xs text-[#00D9FF] font-semibold">
-                Intelligence → Opportunity → Actionable pathways
+              {/* Example 2: Titan Healthcare (EXPAND) */}
+              <div className="mb-6 bg-[#1E293B] rounded-lg p-5" style={{ boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6), 0 -1px 0 rgba(255, 255, 255, 0.05)' }}>
+                <div className="font-mono text-sm font-bold text-white tracking-wider mb-3">TITAN HEALTHCARE</div>
+                <div className="border-t border-gray-700 pt-3 mb-3"></div>
+
+                <div className="font-mono text-xs space-y-2 text-gray-300 mb-3">
+                  <div className="flex justify-between">
+                    <span>Trust Score</span>
+                    <span><span className="text-[#22D3EE] font-bold">8.1</span> Strategic Partner</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Trajectory</span>
+                    <span className="text-[#22D3EE]">↗ Strategic Growth</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Revenue Gap</span>
+                    <span className="text-[#F59E0B]">$340K</span>
+                  </div>
+                </div>
+
+                <div className="font-mono text-xs space-y-2 text-gray-300 mb-3">
+                  <div className="flex justify-between">
+                    <span>Coverage</span>
+                    <span>24% (4 of 17 buyers known)</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>New Contacts</span>
+                    <span className="text-cyan-400">+13 mapped</span>
+                  </div>
+                </div>
+
+                <div className="border-t border-gray-700 pt-3 mb-3"></div>
+
+                <div className="font-mono text-xs space-y-1 text-gray-400 mb-3">
+                  <div>✓ 3 champions actively referring</div>
+                  <div>✓ Series C closed — $40M, expanding platform</div>
+                  <div>✓ 4 open roles in your service area</div>
+                </div>
+
+                <div className="border-t border-gray-700 pt-3"></div>
+
+                <div className="mt-3">
+                  <div className="text-[#22D3EE] font-mono font-semibold text-sm mb-1">→ [EXPAND]</div>
+                  <div className="font-mono text-xs text-gray-400 pl-3 space-y-1">
+                    <div>VP Product + Head of Data — warm intro path exists</div>
+                    <div>Budget cycle: Q2 planning starts in 6 weeks</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Example 3: Meridian Financial (PROTECT) */}
+              <div className="mb-4 bg-[#1E293B] rounded-lg p-5" style={{ boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6), 0 -1px 0 rgba(255, 255, 255, 0.05)' }}>
+                <div className="font-mono text-sm font-bold text-white tracking-wider mb-3">MERIDIAN FINANCIAL</div>
+                <div className="border-t border-gray-700 pt-3 mb-3"></div>
+
+                <div className="font-mono text-xs space-y-2 text-gray-300 mb-3">
+                  <div className="flex justify-between">
+                    <span>Trust Score</span>
+                    <span><span className="text-[#EF4444] font-bold">3.2</span> Embedded Utility</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Trajectory</span>
+                    <span className="text-[#EF4444]">↙ Decay</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Revenue at Risk</span>
+                    <span className="text-[#EF4444]">$450K</span>
+                  </div>
+                </div>
+
+                <div className="border-t border-gray-700 pt-3 mb-3"></div>
+
+                <div className="font-mono text-xs space-y-1 text-gray-400 mb-3">
+                  <div>⚠ Primary contact "Open to Work" on LinkedIn</div>
+                  <div>⚠ New CTO hired from competitor's client list</div>
+                  <div>⚠ Renewal in 47 days — no exec touchpoint in 6 mo</div>
+                </div>
+
+                <div className="border-t border-gray-700 pt-3"></div>
+
+                <div className="mt-3">
+                  <div className="text-[#EF4444] font-mono font-semibold text-sm mb-1">→ [PROTECT]</div>
+                  <div className="font-mono text-xs text-gray-400 pl-3 space-y-1">
+                    <div>Executive outreach — THIS WEEK</div>
+                    <div>Competitive displacement risk: HIGH</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

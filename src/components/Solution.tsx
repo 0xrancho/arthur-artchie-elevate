@@ -41,8 +41,8 @@ export const Solution = () => {
           </div>
 
           {/* Right: Analysis Hub Visualization */}
-          <div className="relative w-full h-[500px] md:h-[800px] flex items-center justify-center">
-            <svg viewBox="0 0 600 800" className="w-full max-w-3xl h-full" xmlns="http://www.w3.org/2000/svg">
+          <div className="relative w-full min-h-[600px] md:h-[800px] flex items-center justify-center">
+            <svg viewBox="0 0 600 800" className="w-full h-auto md:h-full md:max-w-3xl" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 {/* Gradients */}
                 <linearGradient id="terracotta-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
