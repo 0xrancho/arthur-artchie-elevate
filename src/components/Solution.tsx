@@ -41,8 +41,8 @@ export const Solution = () => {
           </div>
 
           {/* Right: Analysis Hub Visualization */}
-          <div className="relative w-full min-h-[600px] md:h-[800px] flex items-center justify-center">
-            <svg viewBox="0 0 600 800" className="w-full h-auto md:h-full md:max-w-3xl" xmlns="http://www.w3.org/2000/svg">
+          <div className="relative w-full flex items-center justify-center">
+            <svg viewBox="0 0 600 640" className="w-full h-auto min-h-[400px] md:min-h-[550px]" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 {/* Gradients */}
                 <linearGradient id="terracotta-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -80,12 +80,23 @@ export const Solution = () => {
                 </marker>
               </defs>
 
+              {/* Dotted connection lines from INPUTS to ANALYSIS - drawn first so nodes cover them */}
+              <path d="M 220 120 L 280 260" stroke="#5A6C7D" strokeWidth="2" fill="none" opacity="0.5" strokeDasharray="5,5" />
+              <path d="M 380 120 L 320 260" stroke="#5A6C7D" strokeWidth="2" fill="none" opacity="0.5" strokeDasharray="5,5" />
+
+              {/* OUTPUT connection lines - drawn before output nodes so nodes cover them */}
+              <line x1="300" y1="300" x2="130" y2="420" stroke="#D4745E" strokeWidth="2" opacity="0.6" />
+              <line x1="300" y1="300" x2="470" y2="420" stroke="#D4745E" strokeWidth="2" opacity="0.6" />
+              <line x1="300" y1="300" x2="400" y2="540" stroke="#D4745E" strokeWidth="2" opacity="0.6" />
+              <line x1="300" y1="300" x2="200" y2="540" stroke="#D4745E" strokeWidth="2" opacity="0.6" />
+
               {/* INPUT LAYER - Top */}
               <g className="input-layer">
                 {/* Assessment Node */}
-                <g transform="translate(200, 100)">
-                  <text x="0" y="-55" textAnchor="middle" fill="#5A6C7D" fontSize="11" fontWeight="600" fontFamily="IBM Plex Mono, monospace">Assessment</text>
-                  <circle cx="0" cy="0" r="40" fill="#5A6C7D" opacity="0.9" filter="url(#soft-shadow)" />
+                <g transform="translate(200, 80)">
+                  <text x="0" y="-50" textAnchor="middle" fill="#5A6C7D" fontSize="11" fontWeight="600" fontFamily="IBM Plex Mono, monospace">Assessment</text>
+                  <circle cx="0" cy="0" r="40" fill="#F8F6F2" /> {/* White background to mask lines */}
+                  <circle cx="0" cy="0" r="40" fill="#5A6C7D" filter="url(#soft-shadow)" />
                   <circle cx="0" cy="0" r="39" fill="none" stroke="#F8F6F2" strokeWidth="2" opacity="0.3" />
                   {/* Checklist icon */}
                   <rect x="-10" y="-12" width="20" height="24" fill="none" stroke="#F8F6F2" strokeWidth="2" rx="2" />
@@ -96,9 +107,10 @@ export const Solution = () => {
                 </g>
 
                 {/* Sales Data Node */}
-                <g transform="translate(400, 100)">
-                  <text x="0" y="-55" textAnchor="middle" fill="#5A6C7D" fontSize="11" fontWeight="600" fontFamily="IBM Plex Mono, monospace">Sales Data</text>
-                  <circle cx="0" cy="0" r="40" fill="#5A6C7D" opacity="0.9" filter="url(#soft-shadow)" />
+                <g transform="translate(400, 80)">
+                  <text x="0" y="-50" textAnchor="middle" fill="#5A6C7D" fontSize="11" fontWeight="600" fontFamily="IBM Plex Mono, monospace">Sales Data</text>
+                  <circle cx="0" cy="0" r="40" fill="#F8F6F2" /> {/* White background to mask lines */}
+                  <circle cx="0" cy="0" r="40" fill="#5A6C7D" filter="url(#soft-shadow)" />
                   <circle cx="0" cy="0" r="39" fill="none" stroke="#F8F6F2" strokeWidth="2" opacity="0.3" />
                   {/* Database icon */}
                   <ellipse cx="0" cy="-8" rx="12" ry="4" fill="none" stroke="#F8F6F2" strokeWidth="2" />
@@ -107,16 +119,14 @@ export const Solution = () => {
                 </g>
               </g>
 
-              {/* Dotted connection lines from INPUTS to ANALYSIS */}
-              <path d="M 220 140 L 280 300" stroke="#5A6C7D" strokeWidth="2" fill="none" opacity="0.5" strokeDasharray="5,5" />
-              <path d="M 380 140 L 320 300" stroke="#5A6C7D" strokeWidth="2" fill="none" opacity="0.5" strokeDasharray="5,5" />
-
               {/* PROCESSING LAYER - Analysis Hub */}
               <g className="processing-layer">
-                <g transform="translate(300, 350)">
+                <g transform="translate(300, 300)">
                   {/* Outer glow */}
                   <circle cx="0" cy="0" r="90" fill="url(#glow-terracotta)" className="animate-pulse" style={{ animationDuration: '4s' }} />
 
+                  {/* White background to mask lines */}
+                  <circle cx="0" cy="0" r="70" fill="#F8F6F2" />
                   {/* Main hub circle */}
                   <circle cx="0" cy="0" r="70" fill="url(#terracotta-gradient)" filter="url(#soft-shadow)" />
                   <circle cx="0" cy="0" r="69" fill="none" stroke="#F8F6F2" strokeWidth="1" opacity="0.4" />
@@ -145,15 +155,10 @@ export const Solution = () => {
 
               {/* OUTPUT LAYER - Hub spoke pattern */}
               <g className="output-layer">
-                {/* Connection lines from ANALYSIS to each OUTPUT */}
-                <line x1="300" y1="350" x2="150" y2="450" stroke="#D4745E" strokeWidth="2" opacity="0.6" />
-                <line x1="300" y1="350" x2="450" y2="450" stroke="#D4745E" strokeWidth="2" opacity="0.6" />
-                <line x1="300" y1="350" x2="370" y2="560" stroke="#D4745E" strokeWidth="2" opacity="0.6" />
-                <line x1="300" y1="350" x2="200" y2="620" stroke="#D4745E" strokeWidth="2" opacity="0.6" />
-
                 {/* Trust Scores (Left) */}
-                <g transform="translate(150, 450)">
-                  <circle cx="0" cy="0" r="38" fill="#4A90E2" opacity="0.9" filter="url(#soft-shadow)" />
+                <g transform="translate(130, 420)">
+                  <circle cx="0" cy="0" r="38" fill="#F8F6F2" /> {/* White background to mask lines */}
+                  <circle cx="0" cy="0" r="38" fill="#4A90E2" filter="url(#soft-shadow)" />
                   {/* Shield icon */}
                   <path d="M 0 -14 L 8 -10 L 8 -2 C 8 4 4 8 0 11 C -4 8 -8 4 -8 -2 L -8 -10 Z" fill="none" stroke="#F8F6F2" strokeWidth="2.5" />
                   <path d="M -5 -2 L -2 2 L 5 -6" stroke="#F8F6F2" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
@@ -161,8 +166,9 @@ export const Solution = () => {
                 </g>
 
                 {/* Growth Motions (Right) */}
-                <g transform="translate(450, 450)">
-                  <circle cx="0" cy="0" r="38" fill="#9b87f5" opacity="0.9" filter="url(#soft-shadow)" />
+                <g transform="translate(470, 420)">
+                  <circle cx="0" cy="0" r="38" fill="#F8F6F2" /> {/* White background to mask lines */}
+                  <circle cx="0" cy="0" r="38" fill="#9b87f5" filter="url(#soft-shadow)" />
                   {/* Gear icon */}
                   <circle cx="0" cy="0" r="8" fill="none" stroke="#F8F6F2" strokeWidth="2.5" />
                   <circle cx="0" cy="0" r="4" fill="none" stroke="#F8F6F2" strokeWidth="2" />
@@ -174,8 +180,9 @@ export const Solution = () => {
                 </g>
 
                 {/* New Targets (Lower right) */}
-                <g transform="translate(370, 560)">
-                  <circle cx="0" cy="0" r="38" fill="#C4A35A" opacity="0.9" filter="url(#soft-shadow)" />
+                <g transform="translate(400, 540)">
+                  <circle cx="0" cy="0" r="38" fill="#F8F6F2" /> {/* White background to mask lines */}
+                  <circle cx="0" cy="0" r="38" fill="#C4A35A" filter="url(#soft-shadow)" />
                   {/* Target icon */}
                   <circle cx="0" cy="0" r="12" fill="none" stroke="#F8F6F2" strokeWidth="2.5" />
                   <circle cx="0" cy="0" r="7" fill="none" stroke="#F8F6F2" strokeWidth="2.5" />
@@ -184,8 +191,9 @@ export const Solution = () => {
                 </g>
 
                 {/* Revenue Gaps (Lower left) */}
-                <g transform="translate(200, 620)">
-                  <circle cx="0" cy="0" r="38" fill="#10b981" opacity="0.9" filter="url(#soft-shadow)" />
+                <g transform="translate(200, 540)">
+                  <circle cx="0" cy="0" r="38" fill="#F8F6F2" /> {/* White background to mask lines */}
+                  <circle cx="0" cy="0" r="38" fill="#10b981" filter="url(#soft-shadow)" />
                   {/* Upward arrows icon */}
                   <path d="M -8 4 L -8 -5 L -11 -5 L -5 -12 L 1 -5 L -2 -5 L -2 4 Z" fill="#F8F6F2" />
                   <path d="M 3 7 L 3 0 L 1 0 L 6 -5 L 11 0 L 9 0 L 9 7 Z" fill="#F8F6F2" opacity="0.7" />

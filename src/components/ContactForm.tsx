@@ -3,15 +3,42 @@ import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
+import { submitToAirtable } from "@/lib/airtable";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
   email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
   company: z.string().trim().min(1, "Company is required").max(100, "Company must be less than 100 characters"),
+  teamSize: z.string().min(1, "Team size is required"),
+  industry: z.string().min(1, "Industry is required"),
   description: z.string().trim().min(1, "Description is required").max(1000, "Description must be less than 1000 characters")
 });
+
+const industries = [
+  { value: "custom-tech-consulting", label: "Custom Technology Consulting" },
+  { value: "it-services", label: "IT Services" },
+  { value: "system-integration", label: "System Integration" },
+  { value: "business-consulting", label: "Business Management Consulting" },
+  { value: "ml-data-services", label: "ML and Data Services" },
+  { value: "other-professional", label: "Other Professional Services" },
+];
+
+const teamSizes = [
+  { value: "1-10", label: "1-10 employees" },
+  { value: "11-50", label: "11-50 employees" },
+  { value: "51-200", label: "51-200 employees" },
+  { value: "201-500", label: "201-500 employees" },
+  { value: "500+", label: "500+ employees" },
+];
 
 interface ContactFormProps {
   isOpen: boolean;
@@ -35,6 +62,8 @@ export const ContactForm = ({ isOpen, onClose, source = 'general' }: ContactForm
     name: "",
     email: "",
     company: "",
+    teamSize: "",
+    industry: "",
     description: ""
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -48,23 +77,28 @@ export const ContactForm = ({ isOpen, onClose, source = 'general' }: ContactForm
       const validated = contactSchema.parse(formData);
       setIsSubmitting(true);
 
-      // Send to API endpoint
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: validated.name,
-          email: validated.email,
-          company: validated.company,
-          description: validated.description,
-          source: source,
-        }),
+      // Map source to CTA name
+      const ctaNames: Record<string, string> = {
+        'general': 'Schedule Discovery Call',
+        'prototype': 'Ask About Prototypes',
+        'revenue': 'Find Invisible Revenue',
+      };
+
+      // Submit to Airtable
+      const result = await submitToAirtable({
+        name: validated.name,
+        email: validated.email,
+        company: validated.company,
+        teamSize: validated.teamSize,
+        industry: validated.industry,
+        description: validated.description,
+        source: source,
+        sourceUrl: window.location.href,
+        sourceCta: ctaNames[source] || source,
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to submit form');
+      if (!result.success) {
+        throw new Error(result.error || 'Failed to submit form');
       }
 
       toast({
@@ -72,7 +106,7 @@ export const ContactForm = ({ isOpen, onClose, source = 'general' }: ContactForm
         description: "We'll get back to you soon.",
       });
 
-      setFormData({ name: "", email: "", company: "", description: "" });
+      setFormData({ name: "", email: "", company: "", teamSize: "", industry: "", description: "" });
       onClose();
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -154,7 +188,41 @@ export const ContactForm = ({ isOpen, onClose, source = 'general' }: ContactForm
               />
               {errors.company && <p className="text-red-500 text-sm mt-1">{errors.company}</p>}
             </div>
-            
+
+            <div>
+              <label htmlFor="teamSize" className="block text-sm font-semibold mb-2">Team Size</label>
+              <Select value={formData.teamSize} onValueChange={(value) => handleChange("teamSize", value)}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select team size" />
+                </SelectTrigger>
+                <SelectContent>
+                  {teamSizes.map((size) => (
+                    <SelectItem key={size.value} value={size.value}>
+                      {size.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              {errors.teamSize && <p className="text-red-500 text-sm mt-1">{errors.teamSize}</p>}
+            </div>
+
+            <div>
+              <label htmlFor="industry" className="block text-sm font-semibold mb-2">Industry</label>
+              <Select value={formData.industry} onValueChange={(value) => handleChange("industry", value)}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select your industry" />
+                </SelectTrigger>
+                <SelectContent>
+                  {industries.map((ind) => (
+                    <SelectItem key={ind.value} value={ind.value}>
+                      {ind.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              {errors.industry && <p className="text-red-500 text-sm mt-1">{errors.industry}</p>}
+            </div>
+
             <div>
               <label htmlFor="description" className="block text-sm font-semibold mb-2">Description</label>
               <Textarea

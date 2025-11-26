@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 interface HeroProps {
   onOpenForm: (source: 'general' | 'prototype' | 'revenue') => void;
@@ -37,7 +38,7 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
             We assess trust, enrich client data, and reveal undermonetized accounts, vulnerable relationships, and high-potential prospects. <span className="font-semibold text-cream">5 weeks. 5x ROI in 1 report, or you don't pay.</span>
           </p>
 
-          <div className="mb-12">
+          <div className="mb-12 flex flex-col sm:flex-row gap-4">
             <Button
               size="lg"
               className="bg-terracotta hover:bg-[#C0654E] text-cream font-semibold px-8 py-4 text-base rounded-md transition-all hover:-translate-y-0.5"
@@ -46,6 +47,15 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
             >
               Schedule Discovery Call
             </Button>
+            <Link to="/assessment">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-cream text-cream bg-transparent hover:bg-cream hover:text-navy font-semibold px-8 py-4 text-base rounded-md transition-all w-full sm:w-auto"
+              >
+                Try the Growth Assessment
+              </Button>
+            </Link>
           </div>
         </div>
 
@@ -56,7 +66,7 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
             <div className="absolute -top-3 left-6 bg-navy px-4 py-1.5 rounded border border-terracotta/30 z-10">
               <span className="font-mono text-xs font-semibold text-terracotta tracking-wide">THE GUT FEEL</span>
             </div>
-            <div className="bg-[#FEF3C7] p-6 rounded-lg border-2 border-[#FDE68A] h-[550px] overflow-y-auto custom-scrollbar" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)', transform: 'rotate(-0.5deg)' }}>
+            <div className="bg-[#F8FAFC] p-6 rounded-lg border border-gray-200 h-[550px] overflow-y-auto custom-scrollbar" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06)', transform: 'rotate(-0.5deg)' }}>
 
               {/* Example 1: Acme Manufacturing */}
               <div className="mb-8 p-5 bg-white rounded-lg border border-gray-200 shadow-sm">
@@ -277,6 +287,14 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Demo CTA */}
+        <div className="text-center mt-12 pt-8 border-t border-cream/10">
+          <p className="text-lg text-cream/70 mb-4">That's the output. Want to see yours?</p>
+          <Link to="/assessment" className="text-cyan-400 font-semibold text-base hover:underline transition-all">
+            Run it on your account →
+          </Link>
         </div>
       </div>
     </section>

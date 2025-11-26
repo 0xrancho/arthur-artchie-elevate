@@ -7,6 +7,7 @@ import { Approach } from "@/components/Approach";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
 import { ContactForm } from "@/components/ContactForm";
+import { StickyFooterBar } from "@/components/StickyFooterBar";
 
 const Index = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -33,6 +34,7 @@ const Index = () => {
         onClose={() => setIsFormOpen(false)}
         source={formSource}
       />
+      <StickyFooterBar />
     </div>
   );
 };

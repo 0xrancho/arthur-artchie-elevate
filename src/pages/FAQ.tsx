@@ -1,5 +1,9 @@
+import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { ContactForm } from "@/components/ContactForm";
 import {
   Accordion,
   AccordionContent,
@@ -8,11 +12,8 @@ import {
 } from "@/components/ui/accordion";
 
 const FAQ = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const faqs = [
-    {
-      question: "What is the ROGER Framework?",
-      answer: "The ROGER Framework is our four-stage process that transforms relationship data into campaign-ready revenue opportunities. It consists of: Risk & Reciprocity (trust assessment), Opportunity Intelligence (synthesis of trust and CRM data), Growth Enrichment (contact mapping and lookalike targeting), and Revenue Systems (campaign-ready playbooks with ongoing partnership options)."
-    },
     {
       question: "How long does an engagement take?",
       answer: "Standard engagement is 5 weeks from start to finish. Week 1 for assessment and data collection, Weeks 2-3 for analysis and enrichment, Week 4-5 for synthesis and delivery with strategy session. If we run your motions it's typically an additional 6 - 9 weeks."
@@ -73,8 +74,40 @@ const FAQ = () => {
             </Accordion>
           </div>
         </section>
+
+        {/* FAQ CTA Section */}
+        <section className="py-24 bg-card text-center">
+          <div className="max-w-[900px] mx-auto px-6">
+            <h3 className="font-serif text-[32px] text-navy mb-4">
+              Still Have Questions?
+            </h3>
+            <p className="text-lg text-slate leading-relaxed mb-8 max-w-[600px] mx-auto">
+              We're happy to walk through how the Growth Analysis works for your
+              specific situation. Or try the assessment yourself—it takes 5 minutes
+              and you'll see exactly what the output looks like.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                size="lg"
+                className="bg-terracotta hover:bg-[#C0654E] text-cream font-semibold px-8 py-4 text-base rounded-md transition-all hover:-translate-y-0.5"
+                style={{ boxShadow: '0 4px 16px rgba(212, 116, 94, 0.3)' }}
+                onClick={() => setIsFormOpen(true)}
+              >
+                Schedule a Call
+              </Button>
+              <Link to="/assessment" className="text-cyan-600 font-semibold text-base hover:underline transition-all flex items-center px-4">
+                Try the Growth Assessment →
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
+      <ContactForm
+        isOpen={isFormOpen}
+        onClose={() => setIsFormOpen(false)}
+        source="general"
+      />
     </div>
   );
 };

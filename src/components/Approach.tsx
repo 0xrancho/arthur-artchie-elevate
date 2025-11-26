@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 interface ApproachProps {
   onOpenForm: (source: 'general' | 'prototype' | 'revenue') => void;
@@ -148,7 +149,7 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
         </div>
 
         {/* Footer Callout */}
-        <div className="flex justify-center">
+        <div className="flex flex-col items-center gap-4">
           <Button
             size="lg"
             className="bg-terracotta hover:bg-[#C0654E] text-cream font-semibold px-8 py-4 text-base rounded-md transition-all hover:-translate-y-0.5"
@@ -157,6 +158,13 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
           >
             👋 Ask about our killer prototypes!
           </Button>
+          {/* Assessment CTA */}
+          <div className="inline-block px-5 py-3 bg-cyan-400/10 border border-cyan-400/20 rounded-md">
+            <p className="text-sm text-cream/70 mb-2 text-center">Want to see how it works?</p>
+            <Link to="/assessment" className="text-cyan-400 font-semibold text-sm hover:underline transition-all block text-center">
+              Try it on one account →
+            </Link>
+          </div>
         </div>
       </div>
 

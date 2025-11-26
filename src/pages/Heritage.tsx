@@ -1,7 +1,12 @@
+import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { ContactForm } from "@/components/ContactForm";
 
 const Heritage = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const timeline = [
     {
       name: "William A. Austin (1804-1875)",
@@ -71,8 +76,38 @@ const Heritage = () => {
             </div>
           </div>
         </section>
+
+        {/* Heritage CTA Section */}
+        <section className="py-24 bg-card text-center">
+          <div className="max-w-[1200px] mx-auto px-6">
+            <h3 className="text-[32px] font-bold leading-[1.2] mb-3">
+              200 Years of Building <span className="italic text-[#6B9BD1]">Trust-Based Systems</span>
+            </h3>
+            <p className="text-xl text-slate mb-8">
+              Let us show you what that looks like for your firm.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                size="lg"
+                className="bg-terracotta hover:bg-[#C0654E] text-cream font-semibold px-8 py-4 text-base rounded-md transition-all hover:-translate-y-0.5"
+                style={{ boxShadow: '0 4px 16px rgba(212, 116, 94, 0.3)' }}
+                onClick={() => setIsFormOpen(true)}
+              >
+                Schedule a Conversation
+              </Button>
+              <Link to="/assessment" className="text-cyan-600 font-semibold text-base hover:underline transition-all flex items-center px-4">
+                Or Try the Growth Assessment →
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
+      <ContactForm
+        isOpen={isFormOpen}
+        onClose={() => setIsFormOpen(false)}
+        source="general"
+      />
     </div>
   );
 };
