@@ -30,11 +30,11 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
           </div>
 
           <p className="text-2xl text-cream/95 mb-4 max-w-[800px] leading-relaxed">
-            Custom solution firms differentiate through client-level trust.
+            B2B custom solution firms differentiate through client-level trust.
           </p>
 
           <p className="text-xl text-cream/90 mb-8 max-w-[800px] leading-relaxed">
-            We reveal undermonetized accounts, vulnerable relationships, and high-potential prospects. <span className="font-semibold text-cream">5 weeks. 5x ROI in 1 report, or you don't pay.</span>
+            We assess trust, enrich client data, and reveal undermonetized accounts, vulnerable relationships, and high-potential prospects. <span className="font-semibold text-cream">5 weeks. 5x ROI in 1 report, or you don't pay.</span>
           </p>
 
           <div className="mb-12">

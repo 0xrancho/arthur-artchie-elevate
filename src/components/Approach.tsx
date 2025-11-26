@@ -23,11 +23,11 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
         </div>
 
         <h2 className="text-[42px] font-bold leading-[1.2] mb-4 text-cream">
-          The ROGER Framework
+          The SEA Framework
         </h2>
 
         <p className="text-xl text-cream/95 leading-relaxed mb-12 max-w-[900px]">
-          Four stages that transform relationship data into campaign-ready revenue opportunities.
+          Survey your team to quantify trust depth across every account. Enrich your portfolio with market signals and buyer intent. Activate with campaign-ready plays for expansion, retention, and acquisition.
         </p>
 
         {/* Two Column Layout */}
@@ -94,7 +94,7 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
 
           {/* Right: Content */}
           <div className="space-y-8">
-            {/* Risk & Reciprocity */}
+            {/* Survey for Trust */}
             <div className="flex gap-4 items-start">
               <svg width="32" height="32" viewBox="0 0 32 32" className="flex-shrink-0 mt-1">
                 <circle cx="16" cy="16" r="14" fill="none" stroke="#D4745E" strokeWidth="2" opacity="0.3" />
@@ -103,15 +103,15 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
               </svg>
               <div>
                 <h3 className="text-2xl font-bold mb-2 text-cream">
-                  <span className="text-terracotta">R</span>isk & Reciprocity
+                  Survey for <span className="text-terracotta">Trust</span>
                 </h3>
                 <p className="text-lg text-cream/90 leading-relaxed">
-                  Trust assessment across your portfolio—quantifies relationship depth for every account.
+                  Your engineers, PMs, and account managers complete a 20-minute assessment. We quantify two trust signals: how much risk clients delegate to your agency, and how proactively they engage. The result: trust scores and data gaps across every account.
                 </p>
               </div>
             </div>
 
-            {/* Opportunity Intelligence */}
+            {/* Enrich for Intelligence */}
             <div className="flex gap-4 items-start">
               <svg width="32" height="32" viewBox="0 0 32 32" className="flex-shrink-0 mt-1">
                 <circle cx="16" cy="16" r="14" fill="none" stroke="#D4745E" strokeWidth="2" opacity="0.3" />
@@ -120,15 +120,15 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
               </svg>
               <div>
                 <h3 className="text-2xl font-bold mb-2 text-cream">
-                  <span className="text-terracotta">O</span>pportunity Intelligence
+                  Enrich for <span className="text-terracotta">Intelligence</span>
                 </h3>
                 <p className="text-lg text-cream/90 leading-relaxed">
-                  Synthesis of trust data with CRM analysis—reveals undermonetized accounts and vulnerable relationships.
+                  Using Clay, Apollo, and custom AI enrichment workflows, we add market signals to every account: funding, hiring, tech changes, decision-maker mapping. You also get net-new prospect lists with warm intro paths and conversation-ready VBRs (valid business reasons).
                 </p>
               </div>
             </div>
 
-            {/* Growth Enrichment */}
+            {/* Activate for Revenue */}
             <div className="flex gap-4 items-start">
               <svg width="32" height="32" viewBox="0 0 32 32" className="flex-shrink-0 mt-1">
                 <circle cx="16" cy="16" r="14" fill="none" stroke="#D4745E" strokeWidth="2" opacity="0.3" />
@@ -137,27 +137,10 @@ export const Approach = ({ onOpenForm }: ApproachProps) => {
               </svg>
               <div>
                 <h3 className="text-2xl font-bold mb-2 text-cream">
-                  <span className="text-terracotta">G</span>rowth <span className="text-terracotta">E</span>nrichment
+                  Activate for <span className="text-terracotta">Revenue</span>
                 </h3>
                 <p className="text-lg text-cream/90 leading-relaxed">
-                  Contact mapping and lookalike targeting—delivers 50-100 high-conversion expansion contacts plus 200+ prospect companies with intro pathways.
-                </p>
-              </div>
-            </div>
-
-            {/* Revenue Systems */}
-            <div className="flex gap-4 items-start">
-              <svg width="32" height="32" viewBox="0 0 32 32" className="flex-shrink-0 mt-1">
-                <circle cx="16" cy="16" r="14" fill="none" stroke="#D4745E" strokeWidth="2" opacity="0.3" />
-                <circle cx="16" cy="16" r="10" fill="none" stroke="#D4745E" strokeWidth="2" opacity="0.5" />
-                <circle cx="16" cy="16" r="6" fill="#D4745E" />
-              </svg>
-              <div>
-                <h3 className="text-2xl font-bold mb-2 text-cream">
-                  <span className="text-terracotta">R</span>evenue Systems
-                </h3>
-                <p className="text-lg text-cream/90 leading-relaxed">
-                  Campaign-ready playbooks with talk tracks and ROI projections—optional ongoing partnership for institutional adoption and system integration.
+                  We deliver campaign-ready playbooks: Expand high-trust accounts with upsell plays, Protect at-risk relationships with intervention strategies, Acquire lookalike prospects through warm paths. Every motion is prioritized by speed-to-close and ROI potential.
                 </p>
               </div>
             </div>

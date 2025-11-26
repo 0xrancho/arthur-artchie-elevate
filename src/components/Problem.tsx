@@ -23,7 +23,7 @@ export const Problem = () => {
             In 2002, the Oakland A's proved that empirical analysis beats scout intuition. They couldn't outspend the Yankees, so they out-analyzed them. Sabermetrics revealed who actually got on base and who just looked good in batting practice.
           </p>
           <p className="text-xl text-cream/95 leading-relaxed mb-4">
-            Professional services firms are still running BD the old way: gut feel, relationship memory, and good ol' boy networks. Your best rainmakers know their clients deeply. Everyone else is guessing.
+            Professional services firms are still running BD the old way: gut feel, relationship memory, and tribal knowledge. Your best rainmakers know their clients deeply. Everyone else is guessing.
           </p>
           <p className="text-xl text-cream leading-relaxed font-semibold">
             The data exists to change this. You just aren't analyzing it.
@@ -34,21 +34,21 @@ export const Problem = () => {
           <div className="bg-cream p-8 rounded-lg border-l-4 border-navy transition-shadow" style={{ boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2)' }}>
             <h3 className="text-2xl font-bold mb-4 text-navy">Hidden Signals</h3>
             <p className="text-slate leading-relaxed text-base">
-              A small client just raised at a 10x valuation and is on a hiring spree—did you know? Another client mentions budget for a new project in an unrelated Jira ticket to an engineer. Your Engagement Manager doesn't pursue an RFP because he's missing a connection or case study that one of his coworkers might have.
+              A $200K client just raised Series B - you found out on LinkedIn. A CTO mentioned platform rebuild in a retro - your engineer forgot to pass it along. Your BD lead skipped an RFP because they didn't know a coworker had the exact case study. The signals exist. Nobody's connecting them.
             </p>
           </div>
 
           <div className="bg-cream p-8 rounded-lg border-l-4 border-navy transition-shadow" style={{ boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2)' }}>
             <h3 className="text-2xl font-bold mb-4 text-navy">Lagging Success Metrics</h3>
             <p className="text-slate leading-relaxed text-base">
-              You track revenue, hourly utilization, and project deliverables. You don't track delegated authority, risk mitigation, or contact-level reciprocity. Which $150K client would happily spend $600K? Which $1M account is quietly leaving?
+              You track revenue, utilization, and project health. You don't track how much authority clients delegate to you, how proactively they engage, or how deep your relationships actually go. Which $150K client would happily spend $600K? Which $1M account is quietly leaving?
             </p>
           </div>
 
           <div className="bg-cream p-8 rounded-lg border-l-4 border-navy transition-shadow" style={{ boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2)' }}>
             <h3 className="text-2xl font-bold mb-4 text-navy">Coordination Failure</h3>
             <p className="text-slate leading-relaxed text-base">
-              Partners know their clients. Account managers know their book. Delivery teams spot opportunities. Sales has their pipeline. Nobody shares intelligence. Nobody has a complete view. Leadership doesn't know what opportunities exist until projects are close to done.
+              Partners know their clients. Account managers know their book. Delivery teams spot opportunities. Sales has their pipeline. Nobody shares intelligence. Nobody has a complete view. Leadership doesn't know what opportunities exist until someone asks.
             </p>
           </div>
         </div>

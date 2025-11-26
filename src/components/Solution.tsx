@@ -14,12 +14,30 @@ export const Solution = () => {
             <h2 className="text-[42px] font-bold leading-[1.2] mb-6">
               Growth Intelligence for Trust-Based Firms
             </h2>
-            <p className="text-xl text-slate leading-relaxed mb-4">
-              A data analysis service that quantifies client trust, identifies hidden revenue opportunities, and generates campaign-ready growth plans.
+            <p className="text-xl text-terracotta leading-relaxed mb-6">
+              Your team knows which clients trust you deeply and which are quietly slipping. We quantify it, enrich it, and turn it into pipeline.
             </p>
-            <p className="text-xl text-slate leading-relaxed mb-4">
-              We assess relationship depth across your portfolio, analyze your CRM data, and enrich with strategic contact and market intelligence—delivered as high-confidence intent signals across all accounts AND contacts, authority and market gaps, high-ROI growth motions, and new acquisition targets with warm intro paths.
+            <p className="text-lg text-slate leading-relaxed mb-4">
+              We assess relationship depth across your portfolio through structured team assessments - measuring risk delegation and reciprocal engagement to score every account. We enrich with market signals and contact intelligence. You get:
             </p>
+            <ul className="text-lg text-slate leading-relaxed space-y-3 mb-4">
+              <li className="flex items-start">
+                <span className="text-terracotta mr-2 mt-1">•</span>
+                <span><strong>Trust scores</strong> for every account (who to expand, who to protect)</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-terracotta mr-2 mt-1">•</span>
+                <span><strong>Revenue gaps</strong> based on trust depth vs. current spend</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-terracotta mr-2 mt-1">•</span>
+                <span><strong>Net-new prospect lists</strong> with warm intro paths and valid business reasons</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-terracotta mr-2 mt-1">•</span>
+                <span><strong>Campaign-ready playbooks</strong> prioritized by ROI and speed-to-close</span>
+              </li>
+            </ul>
           </div>
 
           {/* Right: Analysis Hub Visualization */}
