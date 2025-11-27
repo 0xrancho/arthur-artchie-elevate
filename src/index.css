@@ -134,6 +134,95 @@ All colors MUST be HSL.
   .animate-pulse-custom {
     animation: pulse 2s infinite;
   }
+
+  /* Fire particle animations - slow particles stay visible longer at base */
+  @keyframes fire-slow {
+    0% {
+      bottom: 0;
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+    20% {
+      bottom: 15%;
+      opacity: 0.8;
+      transform: translateX(-1px) scale(0.9);
+    }
+    40% {
+      bottom: 30%;
+      opacity: 0.5;
+      transform: translateX(1px) scale(0.7);
+    }
+    60% {
+      bottom: 45%;
+      opacity: 0.25;
+      transform: translateX(-1px) scale(0.5);
+    }
+    80% {
+      bottom: 60%;
+      opacity: 0.1;
+      transform: translateX(0) scale(0.3);
+    }
+    100% {
+      bottom: 75%;
+      opacity: 0;
+      transform: translateX(0) scale(0.2);
+    }
+  }
+
+  /* Medium speed particles - rise faster, fade quicker */
+  @keyframes fire-medium {
+    0% {
+      bottom: 0;
+      opacity: 0.8;
+      transform: translateX(0) scale(1);
+    }
+    30% {
+      bottom: 25%;
+      opacity: 0.5;
+      transform: translateX(2px) scale(0.7);
+    }
+    60% {
+      bottom: 50%;
+      opacity: 0.2;
+      transform: translateX(-1px) scale(0.4);
+    }
+    100% {
+      bottom: 85%;
+      opacity: 0;
+      transform: translateX(0) scale(0.2);
+    }
+  }
+
+  /* Fast particles - quick rise, sparse at top */
+  @keyframes fire-fast {
+    0% {
+      bottom: 0;
+      opacity: 0.6;
+      transform: translateX(0) scale(1);
+    }
+    40% {
+      bottom: 40%;
+      opacity: 0.2;
+      transform: translateX(-2px) scale(0.5);
+    }
+    100% {
+      bottom: 100%;
+      opacity: 0;
+      transform: translateX(1px) scale(0.1);
+    }
+  }
+
+  .animate-fire-slow {
+    animation: fire-slow 2.5s ease-out infinite;
+  }
+
+  .animate-fire-medium {
+    animation: fire-medium 1.8s ease-out infinite;
+  }
+
+  .animate-fire-fast {
+    animation: fire-fast 1.2s ease-out infinite;
+  }
   
   /* Custom scrollbar for demo panels */
   .custom-scrollbar::-webkit-scrollbar {

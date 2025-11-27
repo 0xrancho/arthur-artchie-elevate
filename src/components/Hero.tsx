@@ -2,11 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
-interface HeroProps {
-  onOpenForm: (source: 'general' | 'prototype' | 'revenue') => void;
-}
-
-export const Hero = ({ onOpenForm }: HeroProps) => {
+export const Hero = () => {
   return (
     <section className="bg-navy relative overflow-hidden py-8">
       {/* Background pattern */}
@@ -38,22 +34,81 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
             We assess trust, enrich client data, and reveal undermonetized accounts, vulnerable relationships, and high-potential prospects. <span className="font-semibold text-cream">5 weeks. 5x ROI in 1 report, or you don't pay.</span>
           </p>
 
-          <div className="mb-12 flex flex-col sm:flex-row gap-4">
-            <Button
-              size="lg"
-              className="bg-terracotta hover:bg-[#C0654E] text-cream font-semibold px-8 py-4 text-base rounded-md transition-all hover:-translate-y-0.5"
-              style={{ boxShadow: '0 4px 16px rgba(212, 116, 94, 0.3)' }}
-              onClick={() => onOpenForm('general')}
-            >
-              Schedule Discovery Call
-            </Button>
-            <Link to="/assessment">
+          <div className="mb-12">
+            <Link to="/assessment" className="inline-block relative">
+              {/* Terracotta radient glow behind button */}
+              <span
+                className="absolute -inset-3 rounded-xl opacity-60 blur-xl"
+                style={{ background: 'radial-gradient(ellipse at center, rgba(212, 116, 94, 0.5) 0%, rgba(212, 116, 94, 0.2) 50%, transparent 70%)' }}
+              />
               <Button
                 size="lg"
-                variant="outline"
-                className="border-2 border-cream text-cream bg-transparent hover:bg-cream hover:text-navy font-semibold px-8 py-4 text-base rounded-md transition-all w-full sm:w-auto"
+                className="relative bg-terracotta hover:bg-[#C0654E] text-cream font-semibold px-8 py-4 text-base rounded-md transition-all hover:-translate-y-0.5 overflow-hidden"
+                style={{ boxShadow: '0 4px 16px rgba(212, 116, 94, 0.5), 0 0 40px rgba(212, 116, 94, 0.3), inset 0 1px 0 rgba(255,255,255,0.1)' }}
               >
-                Try the Growth Assessment
+                <span className="relative z-10">Try the Growth Assessment!</span>
+                {/* Fire pixel particles - multiple layers for density */}
+                <span className="absolute inset-0 overflow-hidden pointer-events-none">
+                  {/* Slow, bright base particles - Layer 1 */}
+                  <span className="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[15%] animate-fire-slow" style={{ animationDelay: '0s' }} />
+                  <span className="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[35%] animate-fire-slow" style={{ animationDelay: '0.4s' }} />
+                  <span className="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[55%] animate-fire-slow" style={{ animationDelay: '0.8s' }} />
+                  <span className="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[75%] animate-fire-slow" style={{ animationDelay: '1.2s' }} />
+                  <span className="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[25%] animate-fire-slow" style={{ animationDelay: '1.6s' }} />
+                  <span className="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[65%] animate-fire-slow" style={{ animationDelay: '2s' }} />
+                  {/* Slow - Layer 2 */}
+                  <span className="absolute w-1.5 h-1.5 bg-white/65 bottom-0 left-[10%] animate-fire-slow" style={{ animationDelay: '0.2s' }} />
+                  <span className="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[30%] animate-fire-slow" style={{ animationDelay: '0.6s' }} />
+                  <span className="absolute w-1.5 h-1.5 bg-white/65 bottom-0 left-[50%] animate-fire-slow" style={{ animationDelay: '1s' }} />
+                  <span className="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[70%] animate-fire-slow" style={{ animationDelay: '1.4s' }} />
+                  <span className="absolute w-1.5 h-1.5 bg-white/65 bottom-0 left-[85%] animate-fire-slow" style={{ animationDelay: '1.8s' }} />
+                  <span className="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[45%] animate-fire-slow" style={{ animationDelay: '2.2s' }} />
+                  {/* Slow - Layer 3 */}
+                  <span className="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[8%] animate-fire-slow" style={{ animationDelay: '0.3s' }} />
+                  <span className="absolute w-1.5 h-1.5 bg-white/65 bottom-0 left-[22%] animate-fire-slow" style={{ animationDelay: '0.7s' }} />
+                  <span className="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[42%] animate-fire-slow" style={{ animationDelay: '1.1s' }} />
+                  <span className="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[62%] animate-fire-slow" style={{ animationDelay: '1.5s' }} />
+                  <span className="absolute w-1.5 h-1.5 bg-white/65 bottom-0 left-[78%] animate-fire-slow" style={{ animationDelay: '1.9s' }} />
+                  <span className="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[92%] animate-fire-slow" style={{ animationDelay: '2.3s' }} />
+
+                  {/* Medium speed particles - Layer 1 */}
+                  <span className="absolute w-1 h-1 bg-white/50 bottom-0 left-[20%] animate-fire-medium" style={{ animationDelay: '0.2s' }} />
+                  <span className="absolute w-1 h-1 bg-white/45 bottom-0 left-[45%] animate-fire-medium" style={{ animationDelay: '0.6s' }} />
+                  <span className="absolute w-1 h-1 bg-white/50 bottom-0 left-[70%] animate-fire-medium" style={{ animationDelay: '1s' }} />
+                  <span className="absolute w-1 h-1 bg-white/45 bottom-0 left-[30%] animate-fire-medium" style={{ animationDelay: '1.4s' }} />
+                  <span className="absolute w-1 h-1 bg-white/50 bottom-0 left-[60%] animate-fire-medium" style={{ animationDelay: '1.8s' }} />
+                  {/* Medium - Layer 2 */}
+                  <span className="absolute w-1 h-1 bg-white/45 bottom-0 left-[12%] animate-fire-medium" style={{ animationDelay: '0.1s' }} />
+                  <span className="absolute w-1 h-1 bg-white/50 bottom-0 left-[38%] animate-fire-medium" style={{ animationDelay: '0.5s' }} />
+                  <span className="absolute w-1 h-1 bg-white/45 bottom-0 left-[58%] animate-fire-medium" style={{ animationDelay: '0.9s' }} />
+                  <span className="absolute w-1 h-1 bg-white/50 bottom-0 left-[82%] animate-fire-medium" style={{ animationDelay: '1.3s' }} />
+                  <span className="absolute w-1 h-1 bg-white/45 bottom-0 left-[48%] animate-fire-medium" style={{ animationDelay: '1.7s' }} />
+                  {/* Medium - Layer 3 */}
+                  <span className="absolute w-1 h-1 bg-white/50 bottom-0 left-[5%] animate-fire-medium" style={{ animationDelay: '0.3s' }} />
+                  <span className="absolute w-1 h-1 bg-white/45 bottom-0 left-[28%] animate-fire-medium" style={{ animationDelay: '0.7s' }} />
+                  <span className="absolute w-1 h-1 bg-white/50 bottom-0 left-[52%] animate-fire-medium" style={{ animationDelay: '1.1s' }} />
+                  <span className="absolute w-1 h-1 bg-white/45 bottom-0 left-[75%] animate-fire-medium" style={{ animationDelay: '1.5s' }} />
+                  <span className="absolute w-1 h-1 bg-white/50 bottom-0 left-[90%] animate-fire-medium" style={{ animationDelay: '1.9s' }} />
+
+                  {/* Fast, faint top particles - Layer 1 */}
+                  <span className="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[10%] animate-fire-fast" style={{ animationDelay: '0.1s' }} />
+                  <span className="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[40%] animate-fire-fast" style={{ animationDelay: '0.5s' }} />
+                  <span className="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[50%] animate-fire-fast" style={{ animationDelay: '0.9s' }} />
+                  <span className="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[80%] animate-fire-fast" style={{ animationDelay: '1.3s' }} />
+                  <span className="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[85%] animate-fire-fast" style={{ animationDelay: '1.7s' }} />
+                  {/* Fast - Layer 2 */}
+                  <span className="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[18%] animate-fire-fast" style={{ animationDelay: '0.2s' }} />
+                  <span className="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[32%] animate-fire-fast" style={{ animationDelay: '0.6s' }} />
+                  <span className="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[62%] animate-fire-fast" style={{ animationDelay: '1s' }} />
+                  <span className="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[72%] animate-fire-fast" style={{ animationDelay: '1.4s' }} />
+                  <span className="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[95%] animate-fire-fast" style={{ animationDelay: '1.8s' }} />
+                  {/* Fast - Layer 3 */}
+                  <span className="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[5%] animate-fire-fast" style={{ animationDelay: '0.15s' }} />
+                  <span className="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[25%] animate-fire-fast" style={{ animationDelay: '0.55s' }} />
+                  <span className="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[55%] animate-fire-fast" style={{ animationDelay: '0.95s' }} />
+                  <span className="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[68%] animate-fire-fast" style={{ animationDelay: '1.35s' }} />
+                  <span className="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[88%] animate-fire-fast" style={{ animationDelay: '1.75s' }} />
+                </span>
               </Button>
             </Link>
           </div>
@@ -135,10 +190,9 @@ export const Hero = ({ onOpenForm }: HeroProps) => {
 
           {/* ARROW */}
           <div className="flex flex-col justify-center items-center px-4 py-8 lg:py-0">
-            <div className="bg-terracotta rounded-full w-16 h-16 flex items-center justify-center animate-pulse-custom mb-2">
+            <div className="bg-terracotta rounded-full w-16 h-16 flex items-center justify-center">
               <ArrowRight className="text-cream w-8 h-8" />
             </div>
-            <span className="font-mono text-sm font-bold text-cream">5 weeks</span>
           </div>
 
           {/* RIGHT PANEL: TRUST INTELLIGENCE */}

@@ -22,7 +22,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Header />
       <main>
-        <Hero onOpenForm={handleOpenForm} />
+        <Hero />
         <Problem />
         <Solution />
         <Approach onOpenForm={handleOpenForm} />
