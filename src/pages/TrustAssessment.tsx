@@ -19,6 +19,11 @@ const TrustAssessment = () => {
   const [results, setResults] = useState<ScoringResult | null>(null);
   const [assessmentRecordId, setAssessmentRecordId] = useState<string | null>(null);
 
+  // Set page title
+  useEffect(() => {
+    document.title = "Growth Assessment | Arthur & Archie";
+  }, []);
+
   // Scroll to top on stage change and initial mount
   useEffect(() => {
     window.scrollTo(0, 0);

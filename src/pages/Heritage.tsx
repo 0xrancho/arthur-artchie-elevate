@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,10 @@ import { ContactForm } from "@/components/ContactForm";
 
 const Heritage = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
+
+  useEffect(() => {
+    document.title = "Our Legacy | Arthur & Archie";
+  }, []);
   const timeline = [
     {
       name: "William A. Austin (1804-1875)",

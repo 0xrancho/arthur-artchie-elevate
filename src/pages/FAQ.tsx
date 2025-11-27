@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,10 @@ import {
 
 const FAQ = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
+
+  useEffect(() => {
+    document.title = "FAQ | Arthur & Archie";
+  }, []);
   const faqs = [
     {
       question: "How long does an engagement take?",
