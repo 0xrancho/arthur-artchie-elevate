@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ScoringResult } from '@/lib/scoring';
 import { QuadrantVisualization } from './QuadrantVisualization';
-import { submitToAirtable } from '@/lib/airtable';
+import { submitToAirtable, updateAssessmentInAirtable } from '@/lib/airtable';
 
 interface ResultsDisplayProps {
   results: ScoringResult;
@@ -10,9 +10,10 @@ interface ResultsDisplayProps {
   userName: string;
   userEmail: string;
   userCompany: string;
+  assessmentRecordId: string | null;
 }
 
-export const ResultsDisplay = ({ results, accountName, userName, userEmail, userCompany }: ResultsDisplayProps) => {
+export const ResultsDisplay = ({ results, accountName, userName, userEmail, userCompany, assessmentRecordId }: ResultsDisplayProps) => {
   const [visibleLayers, setVisibleLayers] = useState<number[]>([]);
   const [showCTA, setShowCTA] = useState(false);
 
@@ -57,7 +58,15 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
   };
 
   const handleBookCall = async () => {
-    // Submit to Airtable before opening Calendly
+    // Update Assessment record with "Your Read" if we have a recordId
+    if (assessmentRecordId && yourRead) {
+      await updateAssessmentInAirtable({
+        recordId: assessmentRecordId,
+        yourRead: yourRead,
+      });
+    }
+
+    // Also submit to Contact table for CRM tracking
     await submitToAirtable({
       name: userName,
       email: userEmail,
@@ -71,7 +80,7 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
     });
 
     // Open Calendly in new tab
-    window.open('https://calendly.com/arthurandarchie/discovery', '_blank');
+    window.open('https://calendly.com/joelaustin/30min', '_blank');
   };
 
   return (

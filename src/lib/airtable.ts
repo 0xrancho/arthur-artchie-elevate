@@ -45,7 +45,7 @@ interface AssessmentSubmission {
   sourceUrl: string;
 }
 
-export async function submitAssessmentToAirtable(data: AssessmentSubmission): Promise<{ success: boolean; error?: string }> {
+export async function submitAssessmentToAirtable(data: AssessmentSubmission): Promise<{ success: boolean; recordId?: string; error?: string }> {
   try {
     const response = await fetch('/api/assessment', {
       method: 'POST',
@@ -61,9 +61,38 @@ export async function submitAssessmentToAirtable(data: AssessmentSubmission): Pr
       return { success: false, error: errorData.error || 'Failed to submit assessment' };
     }
 
-    return { success: true };
+    const result = await response.json();
+    return { success: true, recordId: result.recordId };
   } catch (error) {
     console.error('Assessment submission error:', error);
+    return { success: false, error: 'Network error' };
+  }
+}
+
+interface AssessmentUpdateData {
+  recordId: string;
+  yourRead: string;
+}
+
+export async function updateAssessmentInAirtable(data: AssessmentUpdateData): Promise<{ success: boolean; error?: string }> {
+  try {
+    const response = await fetch('/api/assessment-update', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error('Assessment update error:', errorData);
+      return { success: false, error: errorData.error || 'Failed to update assessment' };
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error('Assessment update error:', error);
     return { success: false, error: 'Network error' };
   }
 }

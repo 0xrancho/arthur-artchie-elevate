@@ -17,6 +17,7 @@ const TrustAssessment = () => {
   const [accountName, setAccountName] = useState('');
   const [answers, setAnswers] = useState<Partial<AssessmentAnswers>>({});
   const [results, setResults] = useState<ScoringResult | null>(null);
+  const [assessmentRecordId, setAssessmentRecordId] = useState<string | null>(null);
 
   // Scroll to top on stage change and initial mount
   useEffect(() => {
@@ -38,8 +39,8 @@ const TrustAssessment = () => {
     const scoringResult = calculateFullScore(completedAnswers);
     setResults(scoringResult);
 
-    // Submit to Airtable
-    await submitAssessmentToAirtable({
+    // Submit to Airtable and get record ID
+    const airtableResult = await submitAssessmentToAirtable({
       name: userName,
       email: userEmail,
       userCompany: userCompany,
@@ -48,6 +49,10 @@ const TrustAssessment = () => {
       results: scoringResult,
       sourceUrl: window.location.href,
     });
+
+    if (airtableResult.recordId) {
+      setAssessmentRecordId(airtableResult.recordId);
+    }
 
     setStage('results');
   };
@@ -74,6 +79,7 @@ const TrustAssessment = () => {
             userName={userName}
             userEmail={userEmail}
             userCompany={userCompany}
+            assessmentRecordId={assessmentRecordId}
           />
         )}
       </main>

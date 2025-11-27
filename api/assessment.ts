@@ -94,7 +94,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(500).json({ error: 'Failed to submit assessment to Airtable' });
     }
 
-    return res.status(200).json({ success: true });
+    const data = await response.json();
+    const recordId = data.records?.[0]?.id;
+
+    return res.status(200).json({ success: true, recordId });
   } catch (error) {
     console.error('Assessment submission error:', error);
     return res.status(500).json({ error: 'Internal server error' });
