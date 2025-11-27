@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { calculateFullScore, AssessmentAnswers, ScoringResult } from '@/lib/scoring';
@@ -17,6 +17,11 @@ const TrustAssessment = () => {
   const [accountName, setAccountName] = useState('');
   const [answers, setAnswers] = useState<Partial<AssessmentAnswers>>({});
   const [results, setResults] = useState<ScoringResult | null>(null);
+
+  // Scroll to top on stage change and initial mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [stage]);
 
   const handleEntryComplete = (name: string, email: string, company: string) => {
     setUserName(name);
@@ -72,7 +77,7 @@ const TrustAssessment = () => {
           />
         )}
       </main>
-      <Footer />
+      <Footer compact />
     </div>
   );
 };

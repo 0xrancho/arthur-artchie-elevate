@@ -17,16 +17,9 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
   const [showCTA, setShowCTA] = useState(false);
 
   // Contact form state
-  const [keyContacts, setKeyContacts] = useState<Array<{ name: string; title: string; linkedin: string }>>([
-    { name: '', title: '', linkedin: '' },
-    { name: '', title: '', linkedin: '' },
-    { name: '', title: '', linkedin: '' },
-    { name: '', title: '', linkedin: '' },
-    { name: '', title: '', linkedin: '' },
-  ]);
   const [yourRead, setYourRead] = useState('');
 
-  // Animated layer reveal (4 layers: Trust Position, Revenue Opportunity, Strategy, Narrative)
+  // Animated layer reveal (4 layers: Trust Positioning, Revenue Opportunity, Growth Strategy, Narrative)
   useEffect(() => {
     const delays = [300, 600, 900, 1200];
     delays.forEach((delay, index) => {
@@ -63,12 +56,6 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
     return { 'up': '#4ADE80', 'stable': '#F59E0B', 'down': '#EF4444' }[delta];
   };
 
-  const handleContactChange = (index: number, field: 'name' | 'title' | 'linkedin', value: string) => {
-    const newContacts = [...keyContacts];
-    newContacts[index][field] = value;
-    setKeyContacts(newContacts);
-  };
-
   const handleBookCall = async () => {
     // Submit to Airtable before opening Calendly
     await submitToAirtable({
@@ -77,7 +64,7 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
       company: userCompany,
       teamSize: '',
       industry: '',
-      description: `Assessment completed. Client Account: ${accountName}. Strategy: ${results.strategy}. Your read: ${yourRead}. Key contacts: ${keyContacts.filter(c => c.name).map(c => `${c.name} (${c.title})`).join(', ')}`,
+      description: `Assessment completed. Client Account: ${accountName}. Strategy: ${results.strategy}. Your read: ${yourRead}`,
       source: 'assessment',
       sourceUrl: window.location.href,
       sourceCta: 'Book a Strategy Call (Assessment Results)',
@@ -93,21 +80,21 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="font-mono text-3xl md:text-4xl font-bold text-white tracking-wider mb-2">
-            TRUST INTELLIGENCE REPORT
+            GROWTH INTELLIGENCE REPORT
           </h1>
           <p className="text-lg text-gray-300 font-mono">
             {accountName}
           </p>
         </div>
 
-        {/* Layer 1: Trust Position */}
+        {/* Layer 1: Trust Positioning */}
         {visibleLayers.includes(0) && (
           <div
             className="mb-6 bg-[#1E293B] rounded-lg p-6 animate-fadeIn"
             style={{ boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6), 0 -1px 0 rgba(255, 255, 255, 0.05)' }}
           >
             <div className="font-mono text-xs font-bold text-[#22D3EE] tracking-wider mb-4">
-              TRUST POSITION
+              TRUST POSITIONING
             </div>
             <div className="border-t border-gray-700 pt-4">
               {/* Grid layout: Quadrant visualization on left, metrics on right */}
@@ -406,14 +393,14 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
           </div>
         )}
 
-        {/* Layer 3: Strategy (Unified with Enrichment) */}
+        {/* Layer 3: Growth Strategy (Unified with Enrichment) */}
         {visibleLayers.includes(2) && (
           <div
             className="mb-6 bg-[#1E293B] rounded-lg p-6 animate-fadeIn"
             style={{ boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6), 0 -1px 0 rgba(255, 255, 255, 0.05)' }}
           >
             <div className="font-mono text-xs font-bold text-[#22D3EE] tracking-wider mb-4">
-              STRATEGY
+              GROWTH STRATEGY
             </div>
             <div className="border-t border-gray-700 pt-4">
               {(() => {
@@ -1101,6 +1088,15 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
           </div>
         )}
 
+        {/* Results Sent Confirmation */}
+        {showCTA && (
+          <div className="bg-[#0F172A] border border-gray-700 rounded-lg p-4 mb-6 animate-fadeIn">
+            <p className="text-sm text-gray-300 text-center">
+              <span className="text-[#4ADE80]">✓</span> These results have been sent to <span className="text-[#22D3EE] font-mono">{userEmail}</span>
+            </p>
+          </div>
+        )}
+
         {/* CTA Form */}
         {showCTA && (
           <div
@@ -1122,69 +1118,6 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
             </div>
 
             <div className="space-y-6" id="cta-section">
-              {/* Customer's Account Name */}
-              <div>
-                <label className="block font-mono text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">
-                  Your Customer's Account Name
-                </label>
-                <p className="text-xs text-gray-400 mb-2">The client account you assessed</p>
-                <input
-                  type="text"
-                  value={accountName}
-                  disabled
-                  className="w-full bg-[#0F172A] border border-gray-700 rounded px-4 py-3 text-white font-mono text-sm"
-                />
-              </div>
-
-              {/* Your Company */}
-              <div>
-                <label className="block font-mono text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">
-                  Your Company
-                </label>
-                <p className="text-xs text-gray-400 mb-2">Confirm your company name</p>
-                <input
-                  type="text"
-                  value={userCompany}
-                  disabled
-                  className="w-full bg-[#0F172A] border border-gray-700 rounded px-4 py-3 text-white font-mono text-sm"
-                />
-              </div>
-
-              {/* Key Contacts at this Client Account */}
-              <div>
-                <label className="block font-mono text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">
-                  Key Contacts at this Client Account (up to 5)
-                </label>
-                <p className="text-xs text-gray-400 mb-3">Who are the buyers and champions?</p>
-                <div className="space-y-3">
-                  {keyContacts.map((contact, index) => (
-                    <div key={index} className="grid grid-cols-3 gap-2">
-                      <input
-                        type="text"
-                        placeholder="Name"
-                        value={contact.name}
-                        onChange={(e) => handleContactChange(index, 'name', e.target.value)}
-                        className="bg-[#0F172A] border border-gray-700 rounded px-3 py-2 text-white font-mono text-xs focus:outline-none focus:border-[#22D3EE]"
-                      />
-                      <input
-                        type="text"
-                        placeholder="Title"
-                        value={contact.title}
-                        onChange={(e) => handleContactChange(index, 'title', e.target.value)}
-                        className="bg-[#0F172A] border border-gray-700 rounded px-3 py-2 text-white font-mono text-xs focus:outline-none focus:border-[#22D3EE]"
-                      />
-                      <input
-                        type="text"
-                        placeholder="LinkedIn (optional)"
-                        value={contact.linkedin}
-                        onChange={(e) => handleContactChange(index, 'linkedin', e.target.value)}
-                        className="bg-[#0F172A] border border-gray-700 rounded px-3 py-2 text-white font-mono text-xs focus:outline-none focus:border-[#22D3EE]"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
               {/* Your Read */}
               <div>
                 <label className="block font-mono text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">
@@ -1221,8 +1154,23 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
                   <p className="text-xs text-gray-300">• Running assessments across your portfolio</p>
                   <p className="text-xs text-gray-300">• Custom enrichment for priority accounts</p>
                   <p className="text-xs text-gray-300">• Full diagnostic + action planning</p>
-                  <p className="text-xs text-gray-500 mt-4 italic">30 minutes. No pitch deck. Just strategy.</p>
                 </div>
+              </div>
+
+              {/* Navigation Buttons */}
+              <div className="pt-6 mt-6 border-t border-gray-700 flex flex-row gap-4">
+                <a
+                  href="/"
+                  className="flex-1 text-center py-3 border border-gray-600 rounded-lg text-gray-300 hover:text-white hover:border-gray-400 font-mono text-sm transition-all"
+                >
+                  ← Home
+                </a>
+                <button
+                  onClick={() => window.location.reload()}
+                  className="flex-1 py-3 border border-[#22D3EE] rounded-lg text-[#22D3EE] hover:bg-[#22D3EE]/10 font-mono text-sm transition-all"
+                >
+                  Generate New Report →
+                </button>
               </div>
             </div>
           </div>

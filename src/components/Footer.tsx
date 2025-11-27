@@ -1,4 +1,28 @@
-export const Footer = () => {
+interface FooterProps {
+  compact?: boolean;
+}
+
+export const Footer = ({ compact = false }: FooterProps) => {
+  if (compact) {
+    return (
+      <footer className="bg-navy text-cream py-6">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <h2 className="text-white font-bold" style={{ fontFamily: 'IBM Plex Serif, serif', fontSize: '1.25rem' }}>
+              Arthur & Archie
+            </h2>
+            <a href="mailto:hello@arthurandarchie.com" className="text-cream/80 hover:text-cream transition-colors text-sm">
+              hello@arthurandarchie.com
+            </a>
+            <p className="text-cream/60 text-sm">
+              &copy; 2025 Arthur & Archie
+            </p>
+          </div>
+        </div>
+      </footer>
+    );
+  }
+
   return (
     <footer className="bg-navy text-cream py-16">
       <div className="max-w-[1200px] mx-auto px-6">

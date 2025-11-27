@@ -10,7 +10,7 @@ interface QuestionFlowProps {
 }
 
 type Question = {
-  id: keyof AssessmentAnswers | 'accountName' | 'clientName';
+  id: keyof AssessmentAnswers | 'accountName';
   section: string;
   question: string;
   type: 'text' | 'textarea' | 'number' | 'select' | 'multiselect';
@@ -178,14 +178,7 @@ const questions: Question[] = [
     ],
   },
 
-  // Q12-Q19: RRP Module
-  {
-    id: 'clientName',
-    section: 'ACCOUNT CONTEXT',
-    question: 'What company is this assessment for?',
-    type: 'text',
-    placeholder: 'Company name',
-  },
+  // Q12-Q18: RRP Module (Q12 removed - clientName already asked in setup as accountName)
   {
     id: 'solutionsDelivered',
     section: 'ACCOUNT CONTEXT',
@@ -275,19 +268,18 @@ const questionGroups: QuestionGroup[] = [
   { questions: [questions[4], questions[5]], section: 'RELATIONSHIP & RECIPROCITY' },
   { questions: [questions[6], questions[7]], section: 'RELATIONSHIP & RECIPROCITY' },
   { questions: [questions[8], questions[9], questions[10]], section: 'RELATIONSHIP & RECIPROCITY' },
-  { questions: [questions[11], questions[12]], section: 'RELATIONSHIP & RECIPROCITY' },
+  { questions: [questions[11]], section: 'RELATIONSHIP & RECIPROCITY' },
 
-  // Risk & Revenue
-  { questions: [questions[13], questions[14]], section: 'ACCOUNT CONTEXT' },
-  { questions: [questions[15], questions[16]], section: 'RISK DELEGATION' },
-  { questions: [questions[17]], section: 'RISK DELEGATION' },
-  { questions: [questions[18]], section: 'FEE BASELINE' },
-  { questions: [questions[19], questions[20]], section: 'YOUR CONTEXT' },
+  // Risk & Revenue (indices shifted after removing clientName question)
+  { questions: [questions[12], questions[13]], section: 'ACCOUNT CONTEXT' },
+  { questions: [questions[14], questions[15]], section: 'RISK DELEGATION' },
+  { questions: [questions[16]], section: 'FEE BASELINE' },
+  { questions: [questions[17], questions[18]], section: 'YOUR CONTEXT' },
 ];
 
 export const QuestionFlow = ({ onComplete, userName }: QuestionFlowProps) => {
   const [currentGroupIndex, setCurrentGroupIndex] = useState(0);
-  const [answers, setAnswers] = useState<Partial<AssessmentAnswers & { accountName: string; clientName: string }>>({});
+  const [answers, setAnswers] = useState<Partial<AssessmentAnswers & { accountName: string }>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const currentGroup = questionGroups[currentGroupIndex];
@@ -360,7 +352,7 @@ export const QuestionFlow = ({ onComplete, userName }: QuestionFlowProps) => {
       setCurrentGroupIndex(currentGroupIndex + 1);
     } else {
       // Complete the assessment
-      const { accountName, clientName, ...assessmentAnswers } = answers;
+      const { accountName, ...assessmentAnswers } = answers;
       // Use accountName as the primary identifier
       onComplete(assessmentAnswers as AssessmentAnswers, accountName as string);
     }
