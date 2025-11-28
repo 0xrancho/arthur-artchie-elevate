@@ -119,7 +119,7 @@ export const Hero = () => {
           {/* LEFT PANEL: THE GUT FEEL */}
           <div className="relative">
             <div className="absolute -top-3 left-6 bg-navy px-4 py-1.5 rounded border border-terracotta/30 z-10">
-              <span className="font-mono text-xs font-semibold text-terracotta tracking-wide">THE GUT FEEL</span>
+              <span className="font-mono text-xs font-semibold text-terracotta tracking-wide">WHAT YOU HAVE</span>
             </div>
             <div className="bg-[#F8FAFC] p-6 rounded-lg border border-gray-200 h-[550px] overflow-y-auto custom-scrollbar" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06)', transform: 'rotate(-0.5deg)' }}>
 
@@ -198,7 +198,7 @@ export const Hero = () => {
           {/* RIGHT PANEL: TRUST INTELLIGENCE */}
           <div className="relative">
             <div className="absolute -top-3 left-6 bg-navy px-4 py-1.5 rounded border border-cyan-500/30 z-10">
-              <span className="font-mono text-xs font-semibold text-cyan-400 tracking-wide">TRUST INTELLIGENCE</span>
+              <span className="font-mono text-xs font-semibold text-cyan-400 tracking-wide">WHAT YOU GET</span>
             </div>
             <div className="bg-[#0F172A] p-6 rounded-lg border-2 border-[#334155] h-[550px] overflow-y-auto custom-scrollbar custom-scrollbar-slate" style={{ boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)' }}>
 
