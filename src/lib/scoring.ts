@@ -45,7 +45,9 @@ export interface ScoringResult {
   revenueGap: number;
   strategy: string;
   strategyPriority: 'P1' | 'P2' | 'P3';
+  strategyHeadline: string;
   strategyDescription: string;
+  strategyChecklist: string[];
   enrichmentFocus: string[];
   enrichmentDataSources: string[];
   enrichmentActions: string[];
@@ -263,67 +265,198 @@ export function calculateRevenueGap(answers: AssessmentAnswers, rr: number, rrp:
   };
 }
 
+// Growth Narratives: Quadrant × Coverage (8 combinations)
+const GROWTH_NARRATIVES: Record<string, { high: string; low: string }> = {
+  'Strategic Partner': {
+    high: "Deep and wide — you're embedded across the org with mission-critical scope. Protect this position and optimize.",
+    low: "Deep trust in a corner — they trust you with critical work, but you're only known to a fraction of the org. Expand your reach."
+  },
+  'Embedded Utility': {
+    high: "Critical but transactional — you run important systems but they don't engage beyond requirements. Build relationship depth before you become replaceable.",
+    low: "Critical but isolated — high dependency in a small pocket, invisible to the rest of the org. Build relationships while expanding reach."
+  },
+  'Trusted Specialist': {
+    high: "Well-connected but low stakes — everyone knows you, but you're not doing critical work. Earn their trust for bigger scope.",
+    low: "Trusted but narrow — strong relationships in a small circle, but limited scope and reach. Expand both."
+  },
+  'Declining Vendor': {
+    high: "Wide but shallow — you know a lot of people but none deeply, and the work isn't critical. Decide: invest heavily or exit.",
+    low: "Marginal and fading — low trust, low stakes, limited reach. Decide: rescue or graceful exit."
+  }
+};
+
+// Trajectory Modifiers: appended to base narrative
+const TRAJECTORY_MODIFIERS: Record<string, string> = {
+  'Strategic Growth': "Momentum is building — accelerate.",
+  'Commoditization': "The relationship is cooling — act now.",
+  'Specialization': "They're concentrating trust in fewer areas.",
+  'Decay': "You're losing ground — urgent intervention needed.",
+  'Stable': "It's holding steady — opportunity to make a move."
+};
+
+// Headlines: Quadrant × Coverage (8 combinations)
+const NARRATIVE_HEADLINES: Record<string, { high: string; low: string }> = {
+  'Strategic Partner': {
+    high: "Embedded strategic partner",
+    low: "Strategic partner, limited reach"
+  },
+  'Embedded Utility': {
+    high: "Critical vendor, weak relationship",
+    low: "Critical but isolated"
+  },
+  'Trusted Specialist': {
+    high: "Trusted advisor, low stakes",
+    low: "Trusted but narrow"
+  },
+  'Declining Vendor': {
+    high: "Commoditized across the org",
+    low: "Marginal and fading"
+  }
+};
+
+// Enrichment Checklists: Quadrant × Coverage (8 combinations)
+const ENRICHMENT_CHECKLISTS: Record<string, { high: string[]; low: string[] }> = {
+  'Strategic Partner': {
+    high: [
+      'Competitive threats — who else is circling your work?',
+      'Contract timing — renewal dates, expansion windows, budget cycles',
+      'Champion stability — any key contacts at risk of leaving?',
+      'Executive coverage — do you have air cover above your champions?',
+      'Expansion signals — new initiatives you should know about?'
+    ],
+    low: [
+      'Org chart gaps — who else owns decisions in your domain?',
+      'Warm intro paths — which champions can introduce you to other departments?',
+      'Adjacent stakeholders — who is downstream of your critical work?',
+      'Budget owners — who controls spend outside your current scope?',
+      'Hiring signals — relevant roles posted in other business units?'
+    ]
+  },
+  'Embedded Utility': {
+    high: [
+      'Champion candidates — who engages beyond required project work?',
+      'Relationship gaps — which contacts have you never met outside a status call?',
+      'Competitive positioning — who else could do what you do?',
+      'Value storytelling — does leadership know the impact of your work?',
+      'Executive access — who above your contacts should know you by name?'
+    ],
+    low: [
+      'Relationship depth — who in your small circle could become a champion?',
+      'Internal visibility — who knows your critical work exists?',
+      'Org chart expansion — who else should know about your work?',
+      'Risk storytelling — can you articulate business impact outside your pocket?',
+      'Warm intro paths — can your technical contacts introduce you to leadership?'
+    ]
+  },
+  'Trusted Specialist': {
+    high: [
+      'Critical problems — what high-stakes work are they giving to someone else?',
+      'Scope expansion — where could your work become mission-critical?',
+      'Budget for critical work — who controls spend on their most important initiatives?',
+      'Competitor mapping — who handles their high-stakes work today?',
+      'Trust conversion — which relationships can you leverage for bigger scope?'
+    ],
+    low: [
+      'Scope opportunities — where could your work become more critical?',
+      'Stakeholder expansion — who else should you know beyond your current circle?',
+      'Champion leverage — can your trusted contacts introduce you AND vouch for critical work?',
+      'Adjacent needs — who has problems you could solve?',
+      'Hiring signals — roles that suggest growing needs?'
+    ]
+  },
+  'Declining Vendor': {
+    high: [
+      'Salvageable contacts — anyone still responsive or willing to advocate?',
+      'Relationship reset — any new executives who might give you a fresh start?',
+      'Competitive displacement — who are they already talking to?',
+      'Exit cost — revenue at risk vs. effort to rescue?',
+      'Reference value — if you exit gracefully, can you preserve the reference?'
+    ],
+    low: [
+      'Last responsive contact — anyone still taking your calls?',
+      'Rescue path — any new stakeholder who might reset the relationship?',
+      'Revenue at risk — how much are you losing if you walk away?',
+      'Recovery cost — effort required to turn this around?',
+      'Graceful exit — how do you wind down without burning the bridge?'
+    ]
+  }
+};
+
+const COVERAGE_THRESHOLD = 50;
+
 // Strategy Determination
 export function getStrategy(
   quadrant: string,
   trajectory: string,
   revenueGap: number,
-  currentFees: number
+  currentFees: number,
+  coveragePercent: number
 ): {
   strategy: string;
   priority: 'P1' | 'P2' | 'P3';
+  headline: string;
   description: string;
+  checklist: string[];
 } {
   const gapPercentage = revenueGap / currentFees;
   const largeGap = gapPercentage > 0.3;
 
-  // Strategy matrix
+  // Build headline, description, and checklist from quadrant × coverage + trajectory modifier
+  const isHighCoverage = coveragePercent >= COVERAGE_THRESHOLD;
+  const coverageKey = isHighCoverage ? 'high' : 'low';
+  const headline = NARRATIVE_HEADLINES[quadrant]?.[coverageKey] || 'Assessment complete';
+  const baseNarrative = GROWTH_NARRATIVES[quadrant]?.[coverageKey] || 'Review your trust position and recommended strategy below.';
+  const trajectoryModifier = TRAJECTORY_MODIFIERS[trajectory] || '';
+  const description = trajectoryModifier ? `${baseNarrative} ${trajectoryModifier}` : baseNarrative;
+  const checklist = ENRICHMENT_CHECKLISTS[quadrant]?.[coverageKey] || [];
+
+  // Strategy matrix - determines strategy type and priority
   if (quadrant === 'Strategic Partner') {
     if (trajectory === 'Strategic Growth') {
-      return { strategy: 'EXPAND', priority: 'P1', description: 'Maximize momentum — high trust, growing trajectory' };
+      return { strategy: 'EXPAND', priority: 'P1', headline, description, checklist };
     }
     if (trajectory === 'Stable' && largeGap) {
-      return { strategy: 'EXPAND', priority: 'P1', description: 'Trust is there, significant revenue gap to capture' };
+      return { strategy: 'EXPAND', priority: 'P1', headline, description, checklist };
     }
     if (trajectory === 'Stable') {
-      return { strategy: 'PROTECT', priority: 'P2', description: "Optimize and maintain — don't over-invest" };
+      return { strategy: 'PROTECT', priority: 'P2', headline, description, checklist };
     }
     if (trajectory === 'Commoditization') {
-      return { strategy: 'RE-ENGAGE', priority: 'P1', description: 'Relationship cooling — intervene now' };
+      return { strategy: 'RE-ENGAGE', priority: 'P1', headline, description, checklist };
     }
     if (trajectory === 'Decay') {
-      return { strategy: 'TRIAGE', priority: 'P1', description: 'Urgent intervention or managed exit' };
+      return { strategy: 'TRIAGE', priority: 'P1', headline, description, checklist };
     }
   }
 
   if (quadrant === 'Embedded Utility') {
     if (trajectory === 'Strategic Growth') {
-      return { strategy: 'NURTURE', priority: 'P2', description: 'Relationship building — momentum exists, deepen trust' };
+      return { strategy: 'NURTURE', priority: 'P2', headline, description, checklist };
     }
     if (trajectory === 'Stable') {
-      return { strategy: 'RETAIN', priority: 'P3', description: 'Cash cow — maintain with minimal investment' };
+      return { strategy: 'RETAIN', priority: 'P3', headline, description, checklist };
     }
     if (trajectory === 'Decay' || trajectory === 'Commoditization') {
-      return { strategy: 'TRIAGE', priority: 'P2', description: 'Low relationship depth = high churn risk' };
+      return { strategy: 'TRIAGE', priority: 'P2', headline, description, checklist };
     }
   }
 
   if (quadrant === 'Trusted Specialist') {
     if (largeGap) {
-      return { strategy: 'EXPAND', priority: 'P1', description: 'Relationship exists — grow the scope' };
+      return { strategy: 'EXPAND', priority: 'P1', headline, description, checklist };
     }
     if (trajectory === 'Decay') {
-      return { strategy: 'RE-ENGAGE', priority: 'P2', description: 'Lost something — reconnect and rebuild' };
+      return { strategy: 'RE-ENGAGE', priority: 'P2', headline, description, checklist };
     }
-    return { strategy: 'EXPAND', priority: 'P2', description: 'Trusted but narrow — find adjacent opportunities' };
+    return { strategy: 'EXPAND', priority: 'P2', headline, description, checklist };
   }
 
   if (quadrant === 'Declining Vendor') {
-    return { strategy: 'TRIAGE', priority: 'P3', description: 'Evaluate rescue vs. managed exit' };
+    return { strategy: 'TRIAGE', priority: 'P3', headline, description, checklist };
   }
 
   // Default
-  return { strategy: 'ASSESS', priority: 'P2', description: 'Gather more information' };
+  return { strategy: 'ASSESS', priority: 'P2', headline, description, checklist };
 }
 
 // Enrichment Prescription
@@ -444,7 +577,7 @@ export function calculateFullScore(answers: AssessmentAnswers): ScoringResult {
   const quadrant = getQuadrant(rr.score, rrp.score);
   const trajectory = getTrajectory(answers);
   const revenueGap = calculateRevenueGap(answers, rr.score, rrp.score);
-  const strategy = getStrategy(quadrant, trajectory.vector, revenueGap.gap, revenueGap.currentFees);
+  const strategy = getStrategy(quadrant, trajectory.vector, revenueGap.gap, revenueGap.currentFees, coverage.percentage);
   const enrichment = getEnrichmentPrescription(strategy.strategy);
   const color = getStrategyColor(strategy.strategy);
 
@@ -465,7 +598,9 @@ export function calculateFullScore(answers: AssessmentAnswers): ScoringResult {
     revenueGap: revenueGap.gap,
     strategy: strategy.strategy,
     strategyPriority: strategy.priority,
+    strategyHeadline: strategy.headline,
     strategyDescription: strategy.description,
+    strategyChecklist: strategy.checklist,
     enrichmentFocus: enrichment.focus,
     enrichmentDataSources: enrichment.dataSources,
     enrichmentActions: enrichment.actions,

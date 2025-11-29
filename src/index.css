@@ -250,3 +250,70 @@ All colors MUST be HSL.
   .shadow-subtle-navy { box-shadow: 0 2px 8px hsl(var(--navy) / 0.05); }
   .shadow-terracotta-glow { box-shadow: 0 8px 16px hsl(var(--terracotta) / 0.4); }
 }
+
+/* Print styles for PDF export */
+@media print {
+  /* Hide everything except the report */
+  body * {
+    visibility: hidden;
+  }
+
+  #report-content,
+  #report-content * {
+    visibility: visible;
+  }
+
+  #report-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: #0F172A !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Page setup */
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+
+  /* Prevent page breaks inside content blocks */
+  .print-section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Force page break before specific sections if needed */
+  .print-page-break {
+    page-break-before: always;
+    break-before: always;
+  }
+
+  /* Hide elements that shouldn't print */
+  .no-print,
+  button,
+  .animate-fadeIn {
+    animation: none !important;
+  }
+
+  /* Ensure backgrounds print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Remove box shadows for cleaner print */
+  [style*="box-shadow"] {
+    box-shadow: none !important;
+  }
+
+  /* Hide the blur/mask overlays */
+  [style*="backdrop-filter"],
+  [style*="mask-image"] {
+    display: none !important;
+  }
+}

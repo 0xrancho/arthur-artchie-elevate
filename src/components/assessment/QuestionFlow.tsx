@@ -182,37 +182,37 @@ const questions: Question[] = [
   {
     id: 'solutionsDelivered',
     section: 'ACCOUNT CONTEXT',
-    question: 'What have you built or what do you manage for this client? List the major solutions, systems, or service areas.',
+    question: 'What work do you do for this client? List the major services, deliverables, or ongoing responsibilities.',
     type: 'textarea',
-    placeholder: 'Describe the solutions and systems you deliver...',
+    placeholder: 'Describe the services and deliverables you provide...',
   },
   {
     id: 'criticalSolution',
     section: 'RISK DELEGATION',
-    question: "Of everything you deliver for this client, what's the single most business-critical solution or system?",
+    question: "What's the single most critical deliverable or ongoing work you provide this client?",
     type: 'text',
-    placeholder: 'Most critical solution or system',
+    placeholder: 'Most critical deliverable or work',
   },
   {
     id: 'downtimeImpact',
     section: 'RISK DELEGATION',
-    question: "If that critical solution failed completely for 2-3 business days, what's the estimated financial impact to the client?",
+    question: "If that work failed, was wrong, or had to be significantly redone, what would be the business consequence to the client?",
     type: 'select',
     options: [
-      { value: 'minimal', label: 'Minimal (<$25K)' },
-      { value: 'moderate', label: 'Moderate ($25K-$100K)' },
-      { value: 'significant', label: 'Significant ($100K-$500K)' },
-      { value: 'severe', label: 'Severe ($500K-$2M)' },
-      { value: 'catastrophic', label: 'Catastrophic (>$2M)' },
+      { value: 'minimal', label: 'Minor inconvenience (<$25K impact)' },
+      { value: 'moderate', label: 'Moderate disruption ($25K-$100K)' },
+      { value: 'significant', label: 'Significant damage ($100K-$500K)' },
+      { value: 'severe', label: 'Severe consequences ($500K-$2M)' },
+      { value: 'catastrophic', label: 'Catastrophic impact (>$2M)' },
     ],
   },
   {
     id: 'failureVisibility',
     section: 'RISK DELEGATION',
-    question: 'If that solution failed, who at the client would know about it?',
+    question: 'If your work failed, who at the client would know?',
     type: 'select',
     options: [
-      { value: 'technical', label: 'Only the technical team' },
+      { value: 'technical', label: 'Only your direct contact' },
       { value: 'department', label: 'Department leadership' },
       { value: 'executive', label: 'Executive team' },
       { value: 'board', label: 'Board / external stakeholders' },
@@ -371,13 +371,45 @@ export const QuestionFlow = ({ onComplete, userName }: QuestionFlowProps) => {
     switch (question.type) {
       case 'text':
         return (
-          <input
-            type="text"
-            value={currentValue as string || ''}
-            onChange={(e) => handleAnswer(question.id, e.target.value)}
-            className="w-full bg-[#0F172A] border border-gray-700 rounded px-4 py-3 text-white font-mono text-sm focus:outline-none focus:border-[#22D3EE] transition-colors"
-            placeholder={question.placeholder}
-          />
+          <div className="space-y-4">
+            <input
+              type="text"
+              value={currentValue as string || ''}
+              onChange={(e) => handleAnswer(question.id, e.target.value)}
+              className="w-full bg-[#0F172A] border border-gray-700 rounded px-4 py-3 text-white font-mono text-sm focus:outline-none focus:border-[#22D3EE] transition-colors"
+              placeholder={question.placeholder}
+            />
+            {/* Current/Prospect toggle - only show for accountName question */}
+            {question.id === 'accountName' && (
+              <div className="pt-4">
+                <p className="text-sm text-gray-400 mb-3">Is this a current client or prospective client?</p>
+                <div className="flex gap-3">
+                  <button
+                    type="button"
+                    className="flex-1 px-4 py-3 rounded border bg-[#22D3EE]/20 border-[#22D3EE] text-white font-mono text-sm transition-all"
+                  >
+                    <span className="flex items-center justify-center gap-2">
+                      <span className="w-3 h-3 rounded-full bg-[#22D3EE]" />
+                      Current Client
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    disabled
+                    className="flex-1 px-4 py-3 rounded border bg-[#0F172A] border-gray-700 text-gray-500 font-mono text-sm cursor-not-allowed opacity-60 relative"
+                  >
+                    <span className="flex items-center justify-center gap-2">
+                      <span className="w-3 h-3 rounded-full border border-gray-600" />
+                      Prospect
+                    </span>
+                    <span className="absolute -top-2 -right-2 bg-terracotta text-cream text-[10px] font-bold px-2 py-0.5 rounded-full">
+                      COMING SOON
+                    </span>
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         );
 
       case 'textarea':

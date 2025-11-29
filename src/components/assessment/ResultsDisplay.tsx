@@ -3,6 +3,8 @@ import { Button } from '@/components/ui/button';
 import { ScoringResult } from '@/lib/scoring';
 import { QuadrantVisualization } from './QuadrantVisualization';
 import { submitToAirtable, updateAssessmentInAirtable } from '@/lib/airtable';
+import { generateGrowthIntelligenceReport } from '@/lib/generatePDF';
+import { Download } from 'lucide-react';
 
 interface ResultsDisplayProps {
   results: ScoringResult;
@@ -83,23 +85,37 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
     window.open('https://calendly.com/joelaustin/30min', '_blank');
   };
 
+  const handleDownloadReport = () => {
+    generateGrowthIntelligenceReport();
+  };
+
   return (
     <div className="min-h-screen px-6 py-12">
       <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="font-mono text-3xl md:text-4xl font-bold text-white tracking-wider mb-2">
-            GROWTH INTELLIGENCE REPORT
-          </h1>
-          <p className="text-lg text-gray-300 font-mono">
-            {accountName}
-          </p>
-        </div>
+        {/* Report Content - This div is captured for PDF */}
+        <div id="report-content" className="bg-[#0F172A] p-6 rounded-lg">
+          {/* Header */}
+          <div className="text-center mb-8 flex flex-col items-center justify-center print:min-h-[85vh]">
+            <h1 className="font-mono text-3xl md:text-4xl font-bold text-white tracking-wider mb-2">
+              GROWTH INTELLIGENCE REPORT
+            </h1>
+            <p className="text-lg text-gray-300 font-mono">
+              {accountName}
+            </p>
+            <p className="text-sm text-gray-500 font-mono mt-2">
+              Prepared for {userName} at {userCompany}
+            </p>
+            <img
+              src="/Gemini_AAlogo2.png"
+              alt="Arthur & Archie"
+              className="mt-6 h-12 w-auto opacity-70"
+            />
+          </div>
 
-        {/* Layer 1: Trust Positioning */}
+          {/* Layer 1: Trust Positioning */}
         {visibleLayers.includes(0) && (
           <div
-            className="mb-6 bg-[#1E293B] rounded-lg p-6 animate-fadeIn"
+            className="mb-6 bg-[#1E293B] rounded-lg p-6 animate-fadeIn print-section"
             style={{ boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6), 0 -1px 0 rgba(255, 255, 255, 0.05)' }}
           >
             <div className="font-mono text-xs font-bold text-[#22D3EE] tracking-wider mb-4">
@@ -192,7 +208,7 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
         {/* Layer 2: Revenue Opportunity */}
         {visibleLayers.includes(1) && (
           <div
-            className="mb-6 bg-[#1E293B] rounded-lg p-6 animate-fadeIn"
+            className="mb-6 bg-[#1E293B] rounded-lg p-6 animate-fadeIn print-section"
             style={{ boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6), 0 -1px 0 rgba(255, 255, 255, 0.05)' }}
           >
             <div className="font-mono text-xs font-bold text-[#22D3EE] tracking-wider mb-4">
@@ -405,7 +421,7 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
         {/* Layer 3: Growth Strategy (Unified with Enrichment) */}
         {visibleLayers.includes(2) && (
           <div
-            className="mb-6 bg-[#1E293B] rounded-lg p-6 animate-fadeIn"
+            className="mb-6 bg-[#1E293B] rounded-lg p-6 animate-fadeIn print-section"
             style={{ boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6), 0 -1px 0 rgba(255, 255, 255, 0.05)' }}
           >
             <div className="font-mono text-xs font-bold text-[#22D3EE] tracking-wider mb-4">
@@ -418,77 +434,12 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
                 const unmappedContacts = results.totalBuyers - knownContacts;
                 const warmIntroPaths = knownContacts * 2;
 
-                // Strategy one-liners
-                const oneLiners: Record<string, string> = {
-                  'EXPAND': 'Trusted but narrow—find adjacent opportunities',
-                  'RE-ENGAGE': 'Relationship cooling—rebuild engagement first',
-                  'PROTECT': 'Early warning signs—shore up what you have',
-                  'RETAIN': 'Stable and low-risk—maintain with minimal investment',
-                  'NURTURE': 'Operational trust building—deepen relationships first',
-                  'TRIAGE': 'Decision point—invest heavily or manage exit'
-                };
+                // Use dynamic headline and description from scoring
+                const headline = results.strategyHeadline;
+                const context = results.strategyDescription;
 
-                // Context paragraphs
-                const contexts: Record<string, string> = {
-                  'EXPAND': `You've built strong relationships with the buyers you know, but ${unmappedPercent}% of decision-makers are unmapped. The opportunity is coverage expansion, not deeper trust.`,
-                  'RE-ENGAGE': `Relationship cooling while operational trust remains high. Without intervention, you're 12-18 months from price pressure or displacement. Rebuild engagement before expanding.`,
-                  'PROTECT': `This account shows early warning signs. Focus on retention and risk mitigation before any expansion plays. Shore up the relationships you have.`,
-                  'RETAIN': `Stable, low-risk account. Maintain with minimal investment—focus growth energy elsewhere. Monitor for changes.`,
-                  'NURTURE': `Operational trust is building but relationships are still shallow. Invest in relationship depth before expanding scope.`,
-                  'TRIAGE': `This account requires a decision: invest heavily to rescue, or manage a graceful exit. Current trajectory is unsustainable.`
-                };
-
-                // Enrichment checklists
-                const checklists: Record<string, string[]> = {
-                  'EXPAND': [
-                    'Org chart gaps — who else should you know?',
-                    'Hiring signals — are they growing teams you serve?',
-                    'Budget cycles — when do they plan spend?',
-                    'Adjacent business units — where else could you add value?'
-                  ],
-                  'RE-ENGAGE': [
-                    'Champion status — still in seat? Still engaged?',
-                    'New stakeholders — who joined in last 6 months?',
-                    'Competitor signals — are they evaluating alternatives?',
-                    'Org restructure — any consolidation risk?'
-                  ],
-                  'PROTECT': [
-                    'Contract timing — when is renewal?',
-                    'Churn signals — engagement declining?',
-                    'Competitive threats — who\'s circling?',
-                    'Key contact stability — anyone leaving?'
-                  ],
-                  'RETAIN': [
-                    'Contract dates — when to check in',
-                    'Company health — any red flags?',
-                    'Primary contact — still in role?'
-                  ],
-                  'NURTURE': [
-                    'Champion candidates — who could advocate?',
-                    'Relationship paths — warm intro routes?',
-                    'Interest alignment — shared priorities?'
-                  ],
-                  'TRIAGE': [
-                    'Salvageability — any path to recovery?',
-                    'Exit cost — revenue at risk?',
-                    'Rescue options — executive reset possible?'
-                  ]
-                };
-
-                // Data sources
-                const sources: Record<string, string> = {
-                  'EXPAND': 'LinkedIn Sales Nav, Apollo, Clay job scraping, BuiltWith, company careers page',
-                  'RE-ENGAGE': 'LinkedIn (job changes), Apollo org chart, G2 reviews, news alerts',
-                  'PROTECT': 'Internal CRM, LinkedIn alerts, earnings calls, news monitoring',
-                  'RETAIN': 'Contract database, company news (minimal)',
-                  'NURTURE': 'LinkedIn, Apollo, internal engagement data',
-                  'TRIAGE': 'All sources — full assessment needed'
-                };
-
-                const oneLiner = oneLiners[results.strategy] || '';
-                const context = contexts[results.strategy] || '';
-                const checklist = checklists[results.strategy] || [];
-                const dataSource = sources[results.strategy] || '';
+                // Use dynamic checklist from scoring
+                const checklist = results.strategyChecklist;
 
                 return (
                   <div className="space-y-6">
@@ -509,9 +460,9 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
                       </span>
                     </div>
 
-                    {/* One-liner */}
+                    {/* Headline */}
                     <div className="text-lg font-semibold text-white">
-                      {oneLiner}
+                      {headline}
                     </div>
 
                     {/* Context Paragraph */}
@@ -534,11 +485,6 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
                             <span>{item}</span>
                           </div>
                         ))}
-                      </div>
-
-                      {/* Sources */}
-                      <div className="mt-4 text-xs text-gray-500 italic">
-                        <span className="text-gray-400">Sources:</span> {dataSource}
                       </div>
                     </div>
 
@@ -1075,7 +1021,7 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
         {/* Layer 4: AI-Generated Narrative */}
         {visibleLayers.includes(3) && (
           <div
-            className="mb-8 bg-[#1E293B] rounded-lg p-6 animate-fadeIn"
+            className="mb-8 bg-[#1E293B] rounded-lg p-6 animate-fadeIn print-section"
             style={{ boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6), 0 -1px 0 rgba(255, 255, 255, 0.05)' }}
           >
             <div className="font-mono text-xs font-bold text-[#22D3EE] tracking-wider mb-4">
@@ -1096,15 +1042,21 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
             </div>
           </div>
         )}
-
-        {/* Results Sent Confirmation */}
+        {/* Download Button - After Strategic Narrative */}
         {showCTA && (
-          <div className="bg-[#0F172A] border border-gray-700 rounded-lg p-4 mb-6 animate-fadeIn">
-            <p className="text-sm text-gray-300 text-center">
-              <span className="text-[#4ADE80]">✓</span> These results have been sent to <span className="text-[#22D3EE] font-mono">{userEmail}</span>
-            </p>
+          <div className="text-center my-6 no-print">
+            <button
+              onClick={handleDownloadReport}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#1E293B] border border-gray-600 rounded-lg text-gray-300 hover:text-white hover:border-gray-400 font-mono text-sm transition-all"
+            >
+              <Download className="w-4 h-4" />
+              Download Report (PDF)
+            </button>
           </div>
         )}
+
+        </div>
+        {/* End of report-content */}
 
         {/* CTA Form */}
         {showCTA && (
