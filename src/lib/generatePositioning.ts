@@ -8,29 +8,41 @@ interface PositioningInput {
     headline: string;
     description: string;
   };
+  clientName?: string;
 }
 
-function getFallbackPositioning(criticalWork: string): string {
-  return `Your ${criticalWork || 'work'} positions you as a trusted technical partner. To expand, identify stakeholders adjacent to your current scope who could benefit from similar expertise. Your existing work is the conversation opener.`;
-}
+async function attemptFetch(input: PositioningInput): Promise<string | null> {
+  const response = await fetch('/api/generate-positioning', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(input)
+  });
 
-export async function generatePositioning(input: PositioningInput): Promise<string> {
-  try {
-    const response = await fetch('/api/generate-positioning', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(input)
-    });
-
-    if (!response.ok) {
-      throw new Error('Positioning generation failed');
-    }
-
-    const data = await response.json();
-    return data.positioning;
-
-  } catch (error) {
-    console.error('Positioning error, using fallback:', error);
-    return getFallbackPositioning(input.criticalSolution);
+  if (!response.ok) {
+    throw new Error('Positioning generation failed');
   }
+
+  const data = await response.json();
+  return data.positioning || null;
+}
+
+export async function generatePositioning(input: PositioningInput): Promise<string | null> {
+  // Attempt 1
+  try {
+    const result = await attemptFetch(input);
+    if (result) return result;
+  } catch (error) {
+    console.error('Positioning attempt 1 failed:', error);
+  }
+
+  // Attempt 2 (retry once)
+  try {
+    const result = await attemptFetch(input);
+    if (result) return result;
+  } catch (error) {
+    console.error('Positioning attempt 2 failed:', error);
+  }
+
+  // Return null instead of hardcoded fallback
+  return null;
 }

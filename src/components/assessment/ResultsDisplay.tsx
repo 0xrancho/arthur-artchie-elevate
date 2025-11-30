@@ -21,7 +21,7 @@ interface ResultsDisplayProps {
 export const ResultsDisplay = ({ results, answers, accountName, userName, userEmail, userCompany, assessmentRecordId }: ResultsDisplayProps) => {
   const [visibleLayers, setVisibleLayers] = useState<number[]>([]);
   const [showCTA, setShowCTA] = useState(false);
-  const [positioning, setPositioning] = useState<string>('');
+  const [positioning, setPositioning] = useState<string | null>(null);
   const [positioningLoading, setPositioningLoading] = useState(true);
   const [strategicNarrative, setStrategicNarrative] = useState<string>('');
   const [narrativeLoading, setNarrativeLoading] = useState(true);
@@ -56,24 +56,25 @@ export const ResultsDisplay = ({ results, answers, accountName, userName, userEm
           growthNarrative: {
             headline: results.strategyHeadline,
             description: results.strategyDescription
-          }
+          },
+          clientName: accountName
         });
-        setPositioning(positioningText);
+        setPositioning(positioningText); // Can be null
       } catch (error) {
         console.error('Failed to generate positioning:', error);
-        setPositioning(`Your ${answers.criticalSolution || 'work'} positions you as a trusted technical partner. To expand, identify stakeholders adjacent to your current scope who could benefit from similar expertise.`);
+        setPositioning(null);
       }
       setPositioningLoading(false);
     }
 
     loadPositioning();
-  }, [answers, results.strategyHeadline, results.strategyDescription]);
+  }, [answers, results.strategyHeadline, results.strategyDescription, accountName]);
 
   // Fetch AI-enhanced strategic narrative (after positioning is available)
   useEffect(() => {
     async function loadStrategicNarrative() {
-      // Wait for positioning to be available
-      if (!positioning || positioningLoading) {
+      // Wait for positioning loading to complete
+      if (positioningLoading) {
         return;
       }
 
@@ -87,7 +88,7 @@ export const ResultsDisplay = ({ results, answers, accountName, userName, userEm
           coveragePercent: results.coverage,
           currentFees: results.currentFees,
           revenueGap: results.revenueGap,
-          positioningContext: positioning,
+          positioningContext: positioning || 'Professional services engagement',
           growthHeadline: results.strategyHeadline
         });
         setStrategicNarrative(narrativeText);
@@ -542,27 +543,29 @@ export const ResultsDisplay = ({ results, answers, accountName, userName, userEm
                       {context}
                     </div>
 
-                    {/* Your Positioning (AI-enhanced) */}
-                    <div className="mt-6 p-5 rounded-lg" style={{
-                      background: 'rgba(34, 211, 238, 0.05)',
-                      border: '1px solid rgba(34, 211, 238, 0.15)'
-                    }}>
-                      <div className="font-mono text-xs font-bold text-[#22D3EE] tracking-wider mb-3 uppercase">
-                        Your Positioning
-                      </div>
-                      {positioningLoading ? (
-                        <div className="flex items-center gap-1 py-2">
-                          <span className="text-[#22D3EE] animate-pulse">●</span>
-                          <span className="text-[#22D3EE] animate-pulse" style={{ animationDelay: '0.2s' }}>●</span>
-                          <span className="text-[#22D3EE] animate-pulse" style={{ animationDelay: '0.4s' }}>●</span>
-                          <span className="text-gray-500 text-sm italic ml-2">Analyzing your work...</span>
+                    {/* Your Positioning (AI-enhanced) - only show if loading or has content */}
+                    {(positioningLoading || positioning) && (
+                      <div className="mt-6 p-5 rounded-lg" style={{
+                        background: 'rgba(34, 211, 238, 0.05)',
+                        border: '1px solid rgba(34, 211, 238, 0.15)'
+                      }}>
+                        <div className="font-mono text-xs font-bold text-[#22D3EE] tracking-wider mb-3 uppercase">
+                          Your Positioning
                         </div>
-                      ) : (
-                        <p className="text-[15px] leading-relaxed text-gray-200 m-0">
-                          {positioning}
-                        </p>
-                      )}
-                    </div>
+                        {positioningLoading ? (
+                          <div className="flex items-center gap-1 py-2">
+                            <span className="text-[#22D3EE] animate-pulse">●</span>
+                            <span className="text-[#22D3EE] animate-pulse" style={{ animationDelay: '0.2s' }}>●</span>
+                            <span className="text-[#22D3EE] animate-pulse" style={{ animationDelay: '0.4s' }}>●</span>
+                            <span className="text-gray-500 text-sm italic ml-2">Analyzing your work...</span>
+                          </div>
+                        ) : (
+                          <p className="text-[15px] leading-relaxed text-gray-200 m-0">
+                            {positioning}
+                          </p>
+                        )}
+                      </div>
+                    )}
 
                     {/* Separator */}
                     <div className="border-t border-gray-700 mt-6"></div>

@@ -10,10 +10,7 @@ interface PositioningRequest {
     headline: string;
     description: string;
   };
-}
-
-function getFallback(criticalWork: string): string {
-  return `Your ${criticalWork || 'work'} positions you as a trusted technical partner. To expand, identify stakeholders adjacent to your current scope who could benefit from similar expertise. Your existing work is the conversation opener.`;
+  clientName?: string;
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -32,49 +29,52 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   if (!OPENAI_API_KEY) {
     console.error('OPENAI_API_KEY not configured');
-    // Return fallback instead of error for graceful degradation
-    const { criticalSolution } = req.body as PositioningRequest;
-    return res.status(200).json({ positioning: getFallback(criticalSolution) });
+    return res.status(500).json({ error: 'API not configured', positioning: null });
   }
 
   try {
     const body: PositioningRequest = req.body;
-    const { solutionsDelivered, criticalSolution, failureVisibility, growthNarrative } = body;
+    const { solutionsDelivered, criticalSolution, failureVisibility, growthNarrative, clientName } = body;
 
     if (!criticalSolution) {
       return res.status(400).json({ error: 'Missing critical solution' });
     }
 
     const prompt = `
-You are writing a positioning paragraph for a B2B professional services consultant analyzing a client account.
+You are a strategic advisor helping a B2B professional services consultant understand their positioning with a client.
 
-THEIR WORK:
-- Services they provide: "${solutionsDelivered || 'Professional services'}"
-- Most critical work: "${criticalSolution}"
-- When their work fails, who knows: "${failureVisibility}"
+THE CONSULTANT'S SITUATION:
+- Client: ${clientName || 'Not specified'}
+- Services they provide: "${solutionsDelivered || 'Not specified'}"
+- Their most critical work: "${criticalSolution}"
+- If this work fails, who knows: "${failureVisibility}"
 
-THEIR GROWTH SITUATION:
-- Position: "${growthNarrative.headline}"
-- Context: "${growthNarrative.description}"
+THEIR GROWTH CONTEXT:
+- Current position: "${growthNarrative.headline}"
+- What this means: "${growthNarrative.description}"
 
-DOMAIN TAXONOMY (use these terms when naming domains):
-Platform Engineering, Data Infrastructure, Analytics & BI, Cloud & DevOps, Security & Compliance, Application Development, Integration & APIs, IT Operations, AI & Machine Learning, Product Development, Digital Transformation, Enterprise Architecture
+YOUR TASK:
+Read their actual work carefully. Think about what industry they're in, what domain expertise this represents, and what adjacent opportunities naturally exist.
 
-Write exactly 2-3 sentences that:
-1. Name the primary domain their critical work falls into (use taxonomy above)
-2. Identify 1-2 adjacent domains where they could naturally expand
-3. Suggest what types of stakeholders they should target based on their work
-4. Include a brief VBR theme — how their current work opens doors to new conversations
+Then write exactly 2-3 sentences that:
 
-RULES:
-- Use their actual language and specifics from the critical work description
-- Be specific, not generic — reference their actual work
-- If their input is vague (e.g., "IT Services"), make reasonable inferences from whatever specifics exist in the critical work
-- No headers, bullets, or formatting — just a natural paragraph
-- No caveats or hedging language
-- Write as if you're a strategic advisor speaking directly to them
+1. Name what they actually do in plain language — don't force it into tech jargon if it's not tech work. A civil engineer doing flood calculations is a civil engineer, not a "data infrastructure" consultant.
 
-Output plain text only.
+2. Identify 1-2 adjacent service areas where their current expertise creates natural expansion opportunities. These should make sense for THEIR industry. For an engineering firm, this might be other infrastructure work. For a law firm, related practice areas. For a tech consultant, adjacent technical domains.
+
+3. Suggest what types of stakeholders or buyers they should target based on their specific work. Be concrete — if they're doing water infrastructure for a state DOT, who else at that DOT or in that ecosystem should know them?
+
+4. Include a brief positioning hook — how does their critical work open doors? What's the "if you trust us with X, you should trust us with Y" logic?
+
+CRITICAL RULES:
+- Actually read their input. "Storm surge and flood calculations" is civil engineering, not cloud computing.
+- Use their language. If they said "designs for storm surge," say "storm surge" not "data analytics."
+- Be specific to their situation. Generic advice is useless.
+- No buzzwords unless they used them first.
+- No headers or bullets — write a natural paragraph.
+- 2-3 sentences max. Be dense with insight, not fluffy.
+
+Write the positioning paragraph now.
 `;
 
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -84,33 +84,36 @@ Output plain text only.
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'gpt-4o',
         messages: [
           {
             role: 'system',
-            content: 'You write concise, specific positioning paragraphs for B2B consultants. Be direct and actionable.'
+            content: 'You are a sharp strategic advisor. You read carefully, think clearly, and write specifically. You never give generic advice. You never shoehorn inputs into categories that don\'t fit. You use the client\'s actual language.'
           },
           { role: 'user', content: prompt }
         ],
-        temperature: 0.4,
-        max_tokens: 200
+        temperature: 0.5,
+        max_tokens: 250
       }),
     });
 
     if (!response.ok) {
       const errorData = await response.json();
       console.error('OpenAI API error:', errorData);
-      return res.status(200).json({ positioning: getFallback(criticalSolution) });
+      return res.status(500).json({ error: 'OpenAI API error', positioning: null });
     }
 
     const data = await response.json();
-    const positioning = data.choices?.[0]?.message?.content?.trim() || getFallback(criticalSolution);
+    const positioning = data.choices?.[0]?.message?.content?.trim();
+
+    if (!positioning) {
+      return res.status(500).json({ error: 'Empty response from OpenAI', positioning: null });
+    }
 
     return res.status(200).json({ positioning });
 
   } catch (error) {
     console.error('Positioning generation error:', error);
-    const { criticalSolution } = req.body as PositioningRequest;
-    return res.status(200).json({ positioning: getFallback(criticalSolution) });
+    return res.status(500).json({ error: 'Failed to generate positioning', positioning: null });
   }
 }
