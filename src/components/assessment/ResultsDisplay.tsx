@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { ScoringResult } from '@/lib/scoring';
+import { ScoringResult, AssessmentAnswers } from '@/lib/scoring';
 import { QuadrantVisualization } from './QuadrantVisualization';
 import { submitToAirtable, updateAssessmentInAirtable } from '@/lib/airtable';
 import { generateGrowthIntelligenceReport } from '@/lib/generatePDF';
+import { generatePositioning } from '@/lib/generatePositioning';
+import { generateStrategicNarrative } from '@/lib/generateStrategicNarrative';
 import { Download } from 'lucide-react';
 
 interface ResultsDisplayProps {
   results: ScoringResult;
+  answers: AssessmentAnswers;
   accountName: string;
   userName: string;
   userEmail: string;
@@ -15,9 +18,13 @@ interface ResultsDisplayProps {
   assessmentRecordId: string | null;
 }
 
-export const ResultsDisplay = ({ results, accountName, userName, userEmail, userCompany, assessmentRecordId }: ResultsDisplayProps) => {
+export const ResultsDisplay = ({ results, answers, accountName, userName, userEmail, userCompany, assessmentRecordId }: ResultsDisplayProps) => {
   const [visibleLayers, setVisibleLayers] = useState<number[]>([]);
   const [showCTA, setShowCTA] = useState(false);
+  const [positioning, setPositioning] = useState<string>('');
+  const [positioningLoading, setPositioningLoading] = useState(true);
+  const [strategicNarrative, setStrategicNarrative] = useState<string>('');
+  const [narrativeLoading, setNarrativeLoading] = useState(true);
 
   // Contact form state
   const [yourRead, setYourRead] = useState('');
@@ -36,6 +43,71 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
       setShowCTA(true);
     }, 1800);
   }, []);
+
+  // Fetch AI-enhanced positioning
+  useEffect(() => {
+    async function loadPositioning() {
+      setPositioningLoading(true);
+      try {
+        const positioningText = await generatePositioning({
+          solutionsDelivered: answers.solutionsDelivered,
+          criticalSolution: answers.criticalSolution,
+          failureVisibility: answers.failureVisibility,
+          growthNarrative: {
+            headline: results.strategyHeadline,
+            description: results.strategyDescription
+          }
+        });
+        setPositioning(positioningText);
+      } catch (error) {
+        console.error('Failed to generate positioning:', error);
+        setPositioning(`Your ${answers.criticalSolution || 'work'} positions you as a trusted technical partner. To expand, identify stakeholders adjacent to your current scope who could benefit from similar expertise.`);
+      }
+      setPositioningLoading(false);
+    }
+
+    loadPositioning();
+  }, [answers, results.strategyHeadline, results.strategyDescription]);
+
+  // Fetch AI-enhanced strategic narrative (after positioning is available)
+  useEffect(() => {
+    async function loadStrategicNarrative() {
+      // Wait for positioning to be available
+      if (!positioning || positioningLoading) {
+        return;
+      }
+
+      setNarrativeLoading(true);
+      try {
+        const narrativeText = await generateStrategicNarrative({
+          quadrant: results.quadrant,
+          rrScore: results.rrScore,
+          rrpScore: results.rrpScore,
+          trajectory: results.trajectory,
+          coveragePercent: results.coverage,
+          currentFees: results.currentFees,
+          revenueGap: results.revenueGap,
+          positioningContext: positioning,
+          growthHeadline: results.strategyHeadline
+        });
+        setStrategicNarrative(narrativeText);
+      } catch (error) {
+        console.error('Failed to generate strategic narrative:', error);
+        const gapFormatted = results.revenueGap >= 1000000
+          ? `$${(results.revenueGap / 1000000).toFixed(1)}M`
+          : `$${Math.round(results.revenueGap / 1000)}K`;
+        setStrategicNarrative(
+          `You've earned ${results.quadrant} status with ${results.coverage}% org coverage — ` +
+          `${100 - results.coverage}% of decision-makers remain unmapped, representing ${gapFormatted} in potential revenue.\n\n` +
+          `Your priority: expand reach while protecting existing trust.\n\n` +
+          `Unlock enrichment to see the full picture and plan your next move.`
+        );
+      }
+      setNarrativeLoading(false);
+    }
+
+    loadStrategicNarrative();
+  }, [positioning, positioningLoading, results]);
 
   const formatCurrency = (value: number) => {
     if (value >= 1000000) {
@@ -470,8 +542,30 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
                       {context}
                     </div>
 
+                    {/* Your Positioning (AI-enhanced) */}
+                    <div className="mt-6 p-5 rounded-lg" style={{
+                      background: 'rgba(34, 211, 238, 0.05)',
+                      border: '1px solid rgba(34, 211, 238, 0.15)'
+                    }}>
+                      <div className="font-mono text-xs font-bold text-[#22D3EE] tracking-wider mb-3 uppercase">
+                        Your Positioning
+                      </div>
+                      {positioningLoading ? (
+                        <div className="flex items-center gap-1 py-2">
+                          <span className="text-[#22D3EE] animate-pulse">●</span>
+                          <span className="text-[#22D3EE] animate-pulse" style={{ animationDelay: '0.2s' }}>●</span>
+                          <span className="text-[#22D3EE] animate-pulse" style={{ animationDelay: '0.4s' }}>●</span>
+                          <span className="text-gray-500 text-sm italic ml-2">Analyzing your work...</span>
+                        </div>
+                      ) : (
+                        <p className="text-[15px] leading-relaxed text-gray-200 m-0">
+                          {positioning}
+                        </p>
+                      )}
+                    </div>
+
                     {/* Separator */}
-                    <div className="border-t border-gray-700"></div>
+                    <div className="border-t border-gray-700 mt-6"></div>
 
                     {/* Enrichment Checklist */}
                     <div>
@@ -1018,27 +1112,43 @@ export const ResultsDisplay = ({ results, accountName, userName, userEmail, user
           </div>
         )}
 
-        {/* Layer 4: AI-Generated Narrative */}
+        {/* Layer 4: AI-Generated Strategic Narrative */}
         {visibleLayers.includes(3) && (
           <div
-            className="mb-8 bg-[#1E293B] rounded-lg p-6 animate-fadeIn print-section"
-            style={{ boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6), 0 -1px 0 rgba(255, 255, 255, 0.05)' }}
+            className="mb-8 rounded-lg p-8 animate-fadeIn print-section"
+            style={{
+              background: '#1E293B',
+              border: '1px solid #22D3EE',
+              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6), 0 0 20px rgba(34, 211, 238, 0.1)'
+            }}
           >
-            <div className="font-mono text-xs font-bold text-[#22D3EE] tracking-wider mb-4">
-              STRATEGIC NARRATIVE
+            <div className="font-mono text-xs font-bold text-[#22D3EE] tracking-wider mb-4 uppercase">
+              Strategic Narrative
             </div>
-            <div className="border-t border-gray-700 pt-4">
-              <div className="bg-[#0F172A] rounded p-4 border border-gray-700">
-                <p className="text-sm text-gray-300 leading-relaxed italic">
-                  Your {results.quadrant.toLowerCase()} position at {accountName} shows a {results.trajectory.toLowerCase()} trajectory.
-                  With an RR score of {results.rrScore} and RRP of {results.rrpScore}, you've built {results.rrBand.toLowerCase()} trust
-                  while managing {results.rrpBand.toLowerCase()} risk delegation. The {formatCurrency(results.revenueGap)} expansion gap
-                  suggests untapped revenue potential through your {results.strategy.toLowerCase()} strategy.
-                  Your current {results.coverage}% coverage leaves significant whitespace —
-                  {results.totalBuyers - Math.round(results.totalBuyers * results.coverage / 100)} additional decision-makers
-                  could deepen this relationship and accelerate growth.
-                </p>
-              </div>
+            <div className="border-t border-gray-700 pt-6">
+              {narrativeLoading ? (
+                <div className="flex items-center gap-1 py-4">
+                  <span className="text-[#22D3EE] animate-pulse">●</span>
+                  <span className="text-[#22D3EE] animate-pulse" style={{ animationDelay: '0.2s' }}>●</span>
+                  <span className="text-[#22D3EE] animate-pulse" style={{ animationDelay: '0.4s' }}>●</span>
+                  <span className="text-gray-500 text-sm italic ml-2">Generating executive summary...</span>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {strategicNarrative.split('\n\n').map((paragraph, index) => (
+                    <p
+                      key={index}
+                      className={`text-[16px] leading-relaxed ${
+                        paragraph.toLowerCase().startsWith('unlock enrichment')
+                          ? 'text-[#22D3EE] font-medium'
+                          : 'text-gray-200'
+                      }`}
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         )}

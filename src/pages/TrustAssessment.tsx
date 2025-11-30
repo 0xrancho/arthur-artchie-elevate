@@ -80,6 +80,7 @@ const TrustAssessment = () => {
         {stage === 'results' && results && (
           <ResultsDisplay
             results={results}
+            answers={answers as AssessmentAnswers}
             accountName={accountName}
             userName={userName}
             userEmail={userEmail}
