@@ -41,40 +41,33 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const prompt = `
-You are a strategic advisor helping a B2B professional services consultant understand their positioning with a client.
+You are synthesizing a positioning statement for a B2B professional services consultant.
 
-THE CONSULTANT'S SITUATION:
-- Client: ${clientName || 'Not specified'}
-- Services they provide: "${solutionsDelivered || 'Not specified'}"
-- Their most critical work: "${criticalSolution}"
-- If this work fails, who knows: "${failureVisibility}"
-
-THEIR GROWTH CONTEXT:
-- Current position: "${growthNarrative.headline}"
-- What this means: "${growthNarrative.description}"
+INPUTS (treat these as facts):
+- Client: ${clientName || 'their client'}
+- Their work: "${solutionsDelivered || 'professional services'}"
+- Critical deliverable: "${criticalSolution}"
+- If it fails, who knows: ${failureVisibility}
+- Relationship status: ${growthNarrative.headline}
+- Growth context: ${growthNarrative.description}
 
 YOUR TASK:
-Read their actual work carefully. Think about what industry they're in, what domain expertise this represents, and what adjacent opportunities naturally exist.
+Write exactly 2 sentences.
 
-Then write exactly 2-3 sentences that:
+Sentence 1: Synthesize the facts.
+"You provide [their critical work, in their words] for [client] — [one phrase describing the nature/stakes of this work] with [relationship status]."
 
-1. Name what they actually do in plain language — don't force it into tech jargon if it's not tech work. A civil engineer doing flood calculations is a civil engineer, not a "data infrastructure" consultant.
+Sentence 2: One original idea + growth action.
+"Position [one specific adjacent service or conversation that naturally follows from their work] to [action that matches their growth context — expand, protect, reconnect, etc.]."
 
-2. Identify 1-2 adjacent service areas where their current expertise creates natural expansion opportunities. These should make sense for THEIR industry. For an engineering firm, this might be other infrastructure work. For a law firm, related practice areas. For a tech consultant, adjacent technical domains.
+RULES:
+- Use their exact language for what they do. Don't rephrase "storm surge calculations" as "hydrological analytics."
+- The adjacent idea should be specific and plausible — something a smart colleague might suggest.
+- Match the growth action to their situation (expand reach, deepen relationships, protect position, etc.)
+- No fluff. No hedging. No "consider" or "might want to."
+- 2 sentences. Period.
 
-3. Suggest what types of stakeholders or buyers they should target based on their specific work. Be concrete — if they're doing water infrastructure for a state DOT, who else at that DOT or in that ecosystem should know them?
-
-4. Include a brief positioning hook — how does their critical work open doors? What's the "if you trust us with X, you should trust us with Y" logic?
-
-CRITICAL RULES:
-- Actually read their input. "Storm surge and flood calculations" is civil engineering, not cloud computing.
-- Use their language. If they said "designs for storm surge," say "storm surge" not "data analytics."
-- Be specific to their situation. Generic advice is useless.
-- No buzzwords unless they used them first.
-- No headers or bullets — write a natural paragraph.
-- 2-3 sentences max. Be dense with insight, not fluffy.
-
-Write the positioning paragraph now.
+Write the positioning statement now.
 `;
 
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -88,12 +81,12 @@ Write the positioning paragraph now.
         messages: [
           {
             role: 'system',
-            content: 'You are a sharp strategic advisor. You read carefully, think clearly, and write specifically. You never give generic advice. You never shoehorn inputs into categories that don\'t fit. You use the client\'s actual language.'
+            content: 'You synthesize inputs into clear positioning statements. You are concise — 2 sentences max. You add one original insight, not a paragraph of advice. You use the client\'s language, not jargon.'
           },
           { role: 'user', content: prompt }
         ],
         temperature: 0.5,
-        max_tokens: 250
+        max_tokens: 150
       }),
     });
 
