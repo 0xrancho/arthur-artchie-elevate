@@ -6,48 +6,39 @@ interface StrategicNarrativeRequest {
   quadrant: string;
   rrScore: number;
   rrpScore: number;
+  rrBand: string;
+  rrpBand: string;
   trajectory: string;
   coveragePercent: number;
+  knownContacts: number;
+  totalBuyers: number;
   currentFees: number;
   revenueGap: number;
   positioningContext: string;
-  growthHeadline: string;
+  clientName?: string;
+  criticalSolution?: string;
 }
-
-// CTA hooks by quadrant × coverage
-const CTA_HOOKS: Record<string, { high: string; low: string }> = {
-  'Strategic Partner': {
-    high: 'to protect this position and spot threats before they become problems.',
-    low: 'to see who those unmapped stakeholders are, why they should talk to you now, and how to get introduced.'
-  },
-  'Embedded Utility': {
-    high: 'to identify champion candidates and build the trust that protects your position.',
-    low: 'to find advocates who can vouch for you and expand your visibility.'
-  },
-  'Trusted Specialist': {
-    high: 'to find where critical work is going to someone else, and how to position for it.',
-    low: 'to find bigger scope opportunities and stakeholders worth knowing.'
-  },
-  'Declining Vendor': {
-    high: 'to assess salvageability and decide: rescue or exit.',
-    low: 'to make an honest call — who is still responsive and whether this is worth saving.'
-  }
-};
 
 function getFallbackNarrative(input: StrategicNarrativeRequest): string {
   const unmappedPercent = 100 - input.coveragePercent;
-  const isHighCoverage = input.coveragePercent >= 50;
-  const ctaHook = CTA_HOOKS[input.quadrant]?.[isHighCoverage ? 'high' : 'low'] ||
-    'to see the full picture and plan your next move.';
+  const trustImplied = input.currentFees + input.revenueGap;
+
+  const feesFormatted = input.currentFees >= 1000000
+    ? `$${(input.currentFees / 1000000).toFixed(1)}M`
+    : `$${Math.round(input.currentFees / 1000)}K`;
+
+  const impliedFormatted = trustImplied >= 1000000
+    ? `$${(trustImplied / 1000000).toFixed(1)}M`
+    : `$${Math.round(trustImplied / 1000)}K`;
 
   const gapFormatted = input.revenueGap >= 1000000
     ? `$${(input.revenueGap / 1000000).toFixed(1)}M`
     : `$${Math.round(input.revenueGap / 1000)}K`;
 
-  return `You've earned ${input.quadrant} status with ${input.coveragePercent}% org coverage — ` +
-    `${unmappedPercent}% of decision-makers remain unmapped, representing ${gapFormatted} in potential revenue.\n\n` +
-    `Your priority: expand reach while protecting existing trust.\n\n` +
-    `Unlock enrichment ${ctaHook}`;
+  return `You've earned ${input.quadrant} status — ${input.rrBand.toLowerCase()} relationships (RR ${input.rrScore.toFixed(1)}) with ${input.rrpBand.toLowerCase()} risk delegation (RRP ${input.rrpScore.toFixed(1)}). ` +
+    `With ${input.knownContacts} of ${input.totalBuyers} decision-makers mapped, ${unmappedPercent}% of the organization doesn't know your work exists. ` +
+    `At ${feesFormatted} in current fees with trust metrics suggesting ${impliedFormatted} potential, you're leaving ${gapFormatted} uncaptured. ` +
+    `Priority: expand reach while protecting existing trust.`;
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -76,65 +67,87 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       quadrant,
       rrScore,
       rrpScore,
+      rrBand,
+      rrpBand,
       trajectory,
       coveragePercent,
+      knownContacts,
+      totalBuyers,
       currentFees,
       revenueGap,
       positioningContext,
-      growthHeadline
+      clientName,
+      criticalSolution
     } = body;
 
     const unmappedPercent = 100 - coveragePercent;
-    const isHighCoverage = coveragePercent >= 50;
-    const ctaHookTheme = CTA_HOOKS[quadrant]?.[isHighCoverage ? 'high' : 'low'] ||
-      'to see the full picture and plan your next move.';
+    const trustImplied = currentFees + revenueGap;
 
     const feesFormatted = currentFees >= 1000000
       ? `$${(currentFees / 1000000).toFixed(1)}M`
       : `$${Math.round(currentFees / 1000)}K`;
+
+    const impliedFormatted = trustImplied >= 1000000
+      ? `$${(trustImplied / 1000000).toFixed(1)}M`
+      : `$${Math.round(trustImplied / 1000)}K`;
 
     const gapFormatted = revenueGap >= 1000000
       ? `$${(revenueGap / 1000000).toFixed(1)}M`
       : `$${Math.round(revenueGap / 1000)}K`;
 
     const prompt = `
-You are writing a 3-sentence executive summary for a B2B consultant reviewing their client relationship.
+You are writing a strategic summary for a B2B professional services consultant.
 
-TRUST POSITION:
+TRUST METRICS:
+- RR Score: ${rrScore.toFixed(1)} (${rrBand}) — measures relationship depth
+- RRP Score: ${rrpScore.toFixed(1)} (${rrpBand}) — measures risk delegation relative to fees
 - Quadrant: ${quadrant}
-- RR Score: ${rrScore} | RRP Score: ${rrpScore}
 - Trajectory: ${trajectory}
 
 COVERAGE:
-- Known: ${coveragePercent}%
+- Known contacts: ${knownContacts}
+- Estimated decision-makers: ${totalBuyers}
+- Coverage: ${coveragePercent}%
 - Unmapped: ${unmappedPercent}%
 
 REVENUE:
 - Current fees: ${feesFormatted}
-- Gap (opportunity): ${gapFormatted}
+- Trust-implied potential: ${impliedFormatted}
+- Revenue gap: ${gapFormatted}
 
-THEIR WORK:
+POSITIONING (already generated):
 ${positioningContext || 'Professional services engagement'}
 
-GROWTH HEADLINE:
-${growthHeadline}
+CLIENT CONTEXT:
+- Client: ${clientName || 'their client'}
+- Critical work: "${criticalSolution || 'professional services'}"
 
-Write exactly 3 parts:
+YOUR TASK:
+Write exactly 4-5 sentences. Each sentence must reference a specific number, metric, or user-provided term.
 
-1. SITUATION (1-2 sentences): Summarize their trust position and the key tension or opportunity. Use plain language. Reference their specific work if relevant.
+Sentence 1: Translate their trust position into plain language. Reference RR, RRP, and quadrant.
+"You've earned [quadrant] status — [what RR means] but [what RRP means]."
 
-2. PRIORITY (1 sentence): State the single most important action based on their situation. Start with "Your priority:" and be direct.
+Sentence 2: State the coverage reality with specific numbers.
+"With [X] of [Y] decision-makers mapped, [Z%] of [client/org] doesn't know your [their work] exists."
 
-3. CTA HOOK (1 sentence): End with "Unlock enrichment ${ctaHookTheme}"
+Sentence 3: Quantify the revenue implication.
+"At $[fees] with trust metrics suggesting $[implied], you're [leaving $X uncaptured / well-positioned / underpriced by $X]."
+
+Sentence 4: State the priority action, pulling from the positioning.
+"Priority: [specific action from positioning] — [why this matters given their situation]."
+
+Sentence 5 (if trajectory is not Stable): Add timing/urgency.
+"Trajectory is [positive/negative]; [act now / intervene before / maintain momentum]."
 
 RULES:
-- Be direct. No fluff. Use specific numbers where impactful.
-- Reference their actual work from the positioning context
-- The CTA must start with "Unlock enrichment" and match the theme provided
-- Use line breaks between the 3 parts
-- No headers or labels — just the content
+- Every sentence must contain at least one specific number OR a term from their input.
+- No generic advice. No "consider exploring" or "you might want to."
+- Use their language for their work. "Storm surge calculations" not "hydrological services."
+- Be direct. This is a strategic briefing, not a suggestion box.
+- 4-5 sentences max.
 
-Output plain text only.
+Write the strategic narrative now.
 `;
 
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -144,11 +157,11 @@ Output plain text only.
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'gpt-4o',
         messages: [
           {
             role: 'system',
-            content: 'You write concise executive summaries for consultants. Direct, actionable, no jargon. Always end with "Unlock enrichment" CTA.'
+            content: 'You write dense strategic summaries. Every sentence contains specific numbers or client details. You never pad with generic advice. You are direct and actionable.'
           },
           { role: 'user', content: prompt }
         ],

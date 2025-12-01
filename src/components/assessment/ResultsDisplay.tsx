@@ -78,37 +78,51 @@ export const ResultsDisplay = ({ results, answers, accountName, userName, userEm
         return;
       }
 
+      const knownContacts = Math.round(results.totalBuyers * results.coverage / 100);
+
       setNarrativeLoading(true);
       try {
         const narrativeText = await generateStrategicNarrative({
           quadrant: results.quadrant,
           rrScore: results.rrScore,
           rrpScore: results.rrpScore,
+          rrBand: results.rrBand,
+          rrpBand: results.rrpBand,
           trajectory: results.trajectory,
           coveragePercent: results.coverage,
+          knownContacts,
+          totalBuyers: results.totalBuyers,
           currentFees: results.currentFees,
           revenueGap: results.revenueGap,
           positioningContext: positioning || 'Professional services engagement',
-          growthHeadline: results.strategyHeadline
+          clientName: accountName,
+          criticalSolution: answers.criticalSolution
         });
         setStrategicNarrative(narrativeText);
       } catch (error) {
         console.error('Failed to generate strategic narrative:', error);
+        const trustImplied = results.currentFees + results.revenueGap;
+        const feesFormatted = results.currentFees >= 1000000
+          ? `$${(results.currentFees / 1000000).toFixed(1)}M`
+          : `$${Math.round(results.currentFees / 1000)}K`;
+        const impliedFormatted = trustImplied >= 1000000
+          ? `$${(trustImplied / 1000000).toFixed(1)}M`
+          : `$${Math.round(trustImplied / 1000)}K`;
         const gapFormatted = results.revenueGap >= 1000000
           ? `$${(results.revenueGap / 1000000).toFixed(1)}M`
           : `$${Math.round(results.revenueGap / 1000)}K`;
         setStrategicNarrative(
-          `You've earned ${results.quadrant} status with ${results.coverage}% org coverage — ` +
-          `${100 - results.coverage}% of decision-makers remain unmapped, representing ${gapFormatted} in potential revenue.\n\n` +
-          `Your priority: expand reach while protecting existing trust.\n\n` +
-          `Unlock enrichment to see the full picture and plan your next move.`
+          `You've earned ${results.quadrant} status — ${results.rrBand.toLowerCase()} relationships (RR ${results.rrScore.toFixed(1)}) with ${results.rrpBand.toLowerCase()} risk delegation (RRP ${results.rrpScore.toFixed(1)}). ` +
+          `With ${knownContacts} of ${results.totalBuyers} decision-makers mapped, ${100 - results.coverage}% of the organization doesn't know your work exists. ` +
+          `At ${feesFormatted} in current fees with trust metrics suggesting ${impliedFormatted} potential, you're leaving ${gapFormatted} uncaptured. ` +
+          `Priority: expand reach while protecting existing trust.`
         );
       }
       setNarrativeLoading(false);
     }
 
     loadStrategicNarrative();
-  }, [positioning, positioningLoading, results]);
+  }, [positioning, positioningLoading, results, accountName, answers.criticalSolution]);
 
   const formatCurrency = (value: number) => {
     if (value >= 1000000) {
