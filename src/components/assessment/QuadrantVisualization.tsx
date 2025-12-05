@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 interface QuadrantVisualizationProps {
   rrScore: number; // 0-5
   rrpScore: number; // 0-15 (bands: <3, 3-8, 8-15, >15)
@@ -5,17 +7,55 @@ interface QuadrantVisualizationProps {
   trajectory: string;
 }
 
+// Hook to detect mobile viewport
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  return isMobile;
+};
+
 export const QuadrantVisualization = ({
   rrScore,
   rrpScore,
   quadrant,
   trajectory,
 }: QuadrantVisualizationProps) => {
+  const isMobile = useIsMobile();
+
   // SVG dimensions
   const width = 400;
   const height = 400;
   const padding = 60;
   const gridSize = width - padding * 2;
+
+  // Calculate viewBox to zoom into the relevant quadrant on mobile
+  const getViewBox = () => {
+    if (!isMobile) return `0 0 ${width} ${height}`;
+
+    const margin = 30; // Extra margin for labels
+    const quadSize = gridSize / 2;
+
+    // Determine viewBox based on quadrant position
+    const viewBoxes: Record<string, string> = {
+      // Top-left: Trusted Specialist (Low RRP, High RR)
+      'Trusted Specialist': `${padding - margin} ${padding - margin} ${quadSize + margin * 2.5} ${quadSize + margin * 2.5}`,
+      // Top-right: Strategic Partner (High RRP, High RR)
+      'Strategic Partner': `${padding + quadSize - margin * 1.5} ${padding - margin} ${quadSize + margin * 2.5} ${quadSize + margin * 2.5}`,
+      // Bottom-left: Declining Vendor (Low RRP, Low RR)
+      'Declining Vendor': `${padding - margin} ${padding + quadSize - margin * 1.5} ${quadSize + margin * 2.5} ${quadSize + margin * 2.5}`,
+      // Bottom-right: Embedded Utility (High RRP, Low RR)
+      'Embedded Utility': `${padding + quadSize - margin * 1.5} ${padding + quadSize - margin * 1.5} ${quadSize + margin * 2.5} ${quadSize + margin * 2.5}`,
+    };
+
+    return viewBoxes[quadrant] || `0 0 ${width} ${height}`;
+  };
 
   // Calculate position (X = RRP: 0-15, Y = RR: 0-5)
   const calculatePosition = (rr: number, rrp: number) => {
@@ -60,10 +100,9 @@ export const QuadrantVisualization = ({
   return (
     <div className="flex flex-col items-center">
       <svg
-        width={width}
-        height={height}
-        className="font-mono"
-        style={{ maxWidth: '100%', height: 'auto' }}
+        viewBox={getViewBox()}
+        className="font-mono w-full max-w-[400px] h-auto"
+        preserveAspectRatio="xMidYMid meet"
       >
         {/* Background quadrants */}
         <rect
