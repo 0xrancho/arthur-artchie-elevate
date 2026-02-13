@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agentic Forms — Forms that Close.</title>
+  <meta name="description" content="AI-powered agentic forms that turn your expertise into experiences your clients can't ignore. Custom-built for professional services firms.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ======================================================
+       AGENTIC FORMS — WARM CORAL v2.3.2
+       Hero schema animation, clean outcome cards
+       ====================================================== */
+
+    :root {
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F0EFEC;
+      --bg-warm: #FDF8F6;
+      --text-primary: #18181B;
+      --text-secondary: #52525B;
+      --text-tertiary: #A1A1AA;
+      --accent: #D44030;
+      --accent-hover: #BE3828;
+      --accent-light: #FEF2F0;
+      --border: #E4E4E7;
+      --surface: #FFFFFF;
+      --grid-color: rgba(0, 0, 0, 0.045);
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'Fira Code', 'SF Mono', 'Consolas', monospace;
+    }
+
+    /* === RESET === */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-size: 16.5px;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      background: var(--bg-primary);
+      overflow-x: hidden;
+    }
+
+    /* === GRID BACKGROUND PATTERN === */
+    .has-grid {
+      position: relative;
+    }
+
+    .has-grid::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .has-grid > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* === UTILITY === */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding: 0 40px;
+      }
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-tertiary);
+      margin-bottom: 16px;
+    }
+
+    .section-header {
+      font-family: var(--font-sans);
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .section-header {
+        font-size: 40px;
+      }
+    }
+
+    /* === NAVIGATION === */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s ease;
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    @media (min-width: 768px) {
+      .nav-inner {
+        padding: 0 40px;
+      }
+    }
+
+    .nav-wordmark {
+      font-family: var(--font-sans);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-wordmark .dot {
+      color: var(--accent);
+    }
+
+    .nav-wordmark .tld {
+      color: var(--text-tertiary);
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+
+    .nav-links a {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-links a.nav-cta {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .nav-links a.nav-cta:hover {
+      color: var(--accent-hover);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    @media (min-width: 768px) {
+      .hamburger {
+        display: none;
+      }
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 1px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 24px;
+      z-index: 99;
+    }
+
+    .mobile-menu.active {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mobile-menu a:last-child {
+      border-bottom: none;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* === HERO === */
+    .hero {
+      background: var(--bg-primary);
+      padding: 140px 0 88px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        padding: 160px 0 88px;
+      }
+    }
+
+    .hero-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero > .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero .eyebrow {
+      margin-bottom: 20px;
+    }
+
+    .hero-headline {
+      font-family: var(--font-sans);
+      font-size: 52px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .hero-headline {
+        font-size: 68px;
+      }
+    }
+
+    .hero-subline {
+      font-family: var(--font-sans);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 0 auto 36px;
+    }
+
+    @media (min-width: 768px) {
+      .hero-subline {
+        font-size: 19px;
+      }
+    }
+
+    .hero-subline strong {
+      font-weight: 400;
+      color: var(--text-primary);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      border: none;
+      border-radius: 8px;
+      padding: 14px 28px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(212, 64, 48, 0.3);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .hero-secondary {
+      display: block;
+      margin-top: 16px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-tertiary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .hero-secondary:hover {
+      color: var(--text-secondary);
+    }
+
+    /* === SECTION: THE PROBLEM === */
+    .problem {
+      background: var(--bg-secondary);
+      padding: 56px 0;
+    }
+
+    @media (min-width: 768px) {
+      .problem {
+        padding: 88px 0;
+      }
+    }
+
+    .problem-body {
+      max-width: 640px;
+    }
+
+    .problem-body p {
+      margin-bottom: 20px;
+    }
+
+    .problem-body p:last-child {
+      margin-bottom: 0;
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 17px;
+    }
+
+    /* === SECTION: THE SHIFT === */
+    .shift {
+      background: var(--bg-primary);
+      padding: 56px 0;
+    }
+
+    @media (min-width: 768px) {
+      .shift {
+        padding: 88px 0;
+      }
+    }
+
+    .shift-body {
+      max-width: 640px;
+      margin-bottom: 48px;
+    }
+
+    .shift-body p {
+      margin-bottom: 20px;
+    }
+
+    .shift-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .outcome-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .outcome-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .outcome-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px;
+      transition: all 0.25s ease;
+    }
+
+    .outcome-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .outcome-card-marker {
+      display: block;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+
+    .outcome-card-title {
+      font-family: var(--font-sans);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .outcome-card-body {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    /* === SECTION: THE PROCESS === */
+    .process {
+      background: var(--bg-secondary);
+      padding: 56px 0;
+    }
+
+    @media (min-width: 768px) {
+      .process {
+        padding: 88px 0;
+      }
+    }
+
+    .process-flow {
+      margin-top: 48px;
+    }
+
+    @media (min-width: 900px) {
+      .process-flow {
+        display: grid;
+        grid-template-columns: repeat(7, auto);
+        align-items: flex-start;
+        gap: 0;
+      }
+    }
+
+    .process-step {
+      position: relative;
+    }
+
+    .process-step-number {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .process-step-name {
+      font-family: var(--font-sans);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .process-step-divider {
+      width: 20px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 1px;
+      margin: 10px 0 12px;
+    }
+
+    .process-step-desc {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    /* Mobile: vertical timeline */
+    @media (max-width: 899px) {
+      .process-flow {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        position: relative;
+        padding-left: 28px;
+      }
+
+      .process-flow::before {
+        content: '';
+        position: absolute;
+        left: 4px;
+        top: 6px;
+        bottom: 6px;
+        width: 1px;
+        border-left: 1px dashed #D4D4D8;
+      }
+
+      .process-step {
+        padding-bottom: 36px;
+        position: relative;
+      }
+
+      .process-step:last-of-type {
+        padding-bottom: 0;
+      }
+
+      .process-step::before {
+        content: '';
+        position: absolute;
+        left: -28px;
+        top: 6px;
+        width: 9px;
+        height: 9px;
+        background: var(--accent);
+        border-radius: 50%;
+        border: 2px solid var(--bg-secondary);
+      }
+
+      .process-connector {
+        display: none;
+      }
+    }
+
+    /* Desktop connectors */
+    .process-connector {
+      display: none;
+    }
+
+    @media (min-width: 900px) {
+      .process-connector {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 8px;
+        align-self: center;
+        margin-top: -40px;
+      }
+
+      .process-connector-line {
+        position: relative;
+        width: 40px;
+        height: 1px;
+        border-top: 1px dashed #D4D4D8;
+      }
+
+      .process-connector-line::after {
+        content: '';
+        position: absolute;
+        right: -1px;
+        top: -4px;
+        width: 0;
+        height: 0;
+        border-top: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+        border-left: 6px solid #D4D4D8;
+      }
+    }
+
+    /* === SECTION: WHY US === */
+    .why-us {
+      background: var(--bg-primary);
+      padding: 56px 0;
+    }
+
+    @media (min-width: 768px) {
+      .why-us {
+        padding: 88px 0;
+      }
+    }
+
+    .why-us-body {
+      max-width: 680px;
+    }
+
+    .why-us-body p {
+      margin-bottom: 20px;
+    }
+
+    .why-us-body p:first-child {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .proof-line {
+      max-width: 680px;
+      margin-top: 40px;
+      padding: 20px 0 20px 24px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .proof-line p {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      font-style: italic;
+    }
+
+    /* === SECTION: TESTIMONIAL === */
+    .testimonial {
+      background: var(--bg-warm);
+      padding: 56px 0;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .testimonial {
+        padding: 88px 0;
+      }
+    }
+
+    .testimonial-quote-mark {
+      font-family: var(--font-sans);
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 12px;
+      opacity: 0.7;
+    }
+
+    .testimonial-quote {
+      font-family: var(--font-sans);
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.7;
+      max-width: 640px;
+      margin: 0 auto 24px;
+    }
+
+    @media (min-width: 768px) {
+      .testimonial-quote {
+        font-size: 21px;
+      }
+    }
+
+    .testimonial-attr {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-tertiary);
+    }
+
+    /* === SECTION: BOTTOM CTA === */
+    .bottom-cta {
+      background: var(--bg-primary);
+      position: relative;
+    }
+
+    .bottom-cta-band {
+      width: 100%;
+      height: 4px;
+      background: var(--accent);
+    }
+
+    .bottom-cta-inner {
+      text-align: center;
+      padding: 80px 0;
+    }
+
+    @media (min-width: 768px) {
+      .bottom-cta-inner {
+        padding: 120px 0;
+      }
+    }
+
+    .bottom-cta-header {
+      font-family: var(--font-sans);
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--text-primary);
+      max-width: 560px;
+      margin: 0 auto 20px;
+    }
+
+    @media (min-width: 768px) {
+      .bottom-cta-header {
+        font-size: 36px;
+      }
+    }
+
+    .bottom-cta-subline {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin: 0 auto 36px;
+    }
+
+    @media (min-width: 768px) {
+      .bottom-cta-subline {
+        font-size: 17px;
+      }
+    }
+
+    .btn-primary-lg {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-sans);
+      font-size: 18px;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--accent);
+      border: none;
+      border-radius: 10px;
+      padding: 18px 36px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(212, 64, 48, 0.2);
+    }
+
+    .btn-primary-lg:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 64, 48, 0.3);
+    }
+
+    .btn-primary-lg:active {
+      transform: translateY(0);
+    }
+
+    .bottom-cta-fine {
+      display: block;
+      margin-top: 16px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-tertiary);
+    }
+
+    /* === FOOTER === */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    .footer-left {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-tertiary);
+    }
+
+    .footer-right {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-tertiary);
+    }
+
+    /* === BOTTOM CTA SCHEMA CANVAS === */
+    .bottom-cta-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* === SELECTION COLOR === */
+    ::selection {
+      background: var(--accent-light);
+      color: var(--text-primary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-wordmark">agenticforms<span class="dot">.</span><span class="tld">io</span></a>
+      <div class="nav-links">
+        <a href="#process">How It Works</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#cta" class="nav-cta">See It In Action</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#process" onclick="closeMobile()">How It Works</a>
+    <a href="#why-us" onclick="closeMobile()">Why Us</a>
+    <a href="#cta" onclick="closeMobile()">See It In Action</a>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero has-grid">
+    <canvas class="hero-canvas" id="heroCanvas"></canvas>
+    <div class="container">
+      <div class="eyebrow">Agentic Service Design</div>
+      <h1 class="hero-headline">Forms that Close.</h1>
+      <p class="hero-subline">AI-powered presales experiences that qualify, educate, onboard, and convert.</p>
+      <a href="#cta" class="btn-primary">See It In Action &rarr;</a>
+      <span class="hero-secondary">Your expertise, their experience.</span>
+    </div>
+  </section>
+
+  <!-- ============ THE PROBLEM ============ -->
+  <section class="problem" id="problem">
+    <div class="container">
+      <div class="eyebrow">The Problem</div>
+      <h2 class="section-header">Your Best Thinking Is Invisible</h2>
+      <div class="problem-body">
+        <p>You've spent years building expertise your clients trust with their biggest decisions. But your prospects don't experience that expertise — they read about it in a capabilities deck, hear about it secondhand in a referral, or sit through a pitch that sounds like everyone else's.</p>
+        <p>Your methodology lives in partner conversations. Your frameworks live in internal docs. Your diagnostic instincts live in the heads of your best people.</p>
+        <p>Meanwhile, your prospects are comparing you to three other firms using the only thing they can see: your website, your proposal, and a 30-minute call.</p>
+        <p>What if they could experience your expertise before you ever get on the phone?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE SHIFT ============ -->
+  <section class="shift" id="shift">
+    <div class="container">
+      <div class="eyebrow">The Shift</div>
+      <h2 class="section-header">Give Your Client a 1-1 CTA.</h2>
+      <div class="shift-body">
+        <p>An agentic form isn't a survey. It isn't a contact form. It isn't a chatbot.</p>
+        <p>It's an AI-powered experience built on your methodology that shows each prospect their data, their gaps, and their next steps — personalized, immediate, and impossible to ignore.</p>
+        <p>The prospect gets value before they buy. You get a qualified lead who already understands what you do and why it matters. The form doesn't just capture interest. It earns trust.</p>
+      </div>
+
+      <div class="outcome-grid">
+        <div class="outcome-card">
+          <span class="outcome-card-marker"></span>
+          <h3 class="outcome-card-title">Increase perceived value.</h3>
+          <p class="outcome-card-body">Your prospect experiences your thinking before the first call. They arrive pre-educated, pre-qualified, and convinced you understand their world better than anyone else.</p>
+        </div>
+        <div class="outcome-card">
+          <span class="outcome-card-marker"></span>
+          <h3 class="outcome-card-title">Compress time-to-value.</h3>
+          <p class="outcome-card-body">Whether it's presale or onboarding, the experience replaces weeks of back-and-forth with an intelligent interaction that moves the relationship forward in minutes.</p>
+        </div>
+        <div class="outcome-card">
+          <span class="outcome-card-marker"></span>
+          <h3 class="outcome-card-title">Generate demand on its own.</h3>
+          <p class="outcome-card-body">The form lives on your site, in your outbound, in your partnerships — working around the clock as a demand gen asset your marketing team didn't have to build from scratch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE PROCESS ============ -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="eyebrow">Process</div>
+      <h2 class="section-header">How We Build It</h2>
+
+      <div class="process-flow">
+        <div class="process-step">
+          <div class="process-step-number">01</div>
+          <div class="process-step-name">Discovery</div>
+          <div class="process-step-divider"></div>
+          <p class="process-step-desc">We learn how you sell, how you diagnose, and what makes your best client conversations work. We're looking for the expertise that's trapped inside your team's heads — the stuff that never makes it into a deck.</p>
+        </div>
+
+        <div class="process-connector">
+          <div class="process-connector-line"></div>
+        </div>
+
+        <div class="process-step">
+          <div class="process-step-number">02</div>
+          <div class="process-step-name">Design</div>
+          <div class="process-step-divider"></div>
+          <p class="process-step-desc">We architect the experience — the flow, the logic, the scoring, the output. Every form is built on your methodology, not a template. The result feels like your best partner walked the prospect through a diagnostic, not like they filled out a questionnaire.</p>
+        </div>
+
+        <div class="process-connector">
+          <div class="process-connector-line"></div>
+        </div>
+
+        <div class="process-step">
+          <div class="process-step-number">03</div>
+          <div class="process-step-name">Build</div>
+          <div class="process-step-divider"></div>
+          <p class="process-step-desc">We engineer the agentic system — AI-powered, integrated with your CRM and workflows, producing structured outputs your team can act on immediately. Assessments, proposals, roadmaps, onboarding plans — whatever the engagement requires.</p>
+        </div>
+
+        <div class="process-connector">
+          <div class="process-connector-line"></div>
+        </div>
+
+        <div class="process-step">
+          <div class="process-step-number">04</div>
+          <div class="process-step-name">Deploy</div>
+          <div class="process-step-divider"></div>
+          <p class="process-step-desc">We launch, measure, and optimize. The form becomes a living part of your growth system — generating leads, qualifying prospects, compressing onboarding, and producing data your team has never had access to before.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY US ============ -->
+  <section class="why-us" id="why-us">
+    <div class="container">
+      <div class="eyebrow">Why Us</div>
+      <h2 class="section-header">Service Design Meets AI Engineering</h2>
+      <div class="why-us-body">
+        <p>Most agencies build you a form. We build you a growth system.</p>
+        <p>We come from a decade inside GTM, RevOps, and sales operations for professional services firms. We've built the integrations, run the playbooks, and sat in the rooms where deals are won and lost. We know what your presale process actually looks like — not the version in your CRM, the real one.</p>
+        <p>That operational depth is what makes our agentic forms work. We don't just design experiences — we engineer the systems that power them, integrate them into your stack, and partner with you to make sure they produce results.</p>
+        <p>We're not a platform. We're not a template library. We're a boutique agency that builds custom AI-powered experiences for firms that compete on trust, expertise, and relationships.</p>
+      </div>
+      <div class="proof-line">
+        <p>We work with consulting firms, membership organizations, and professional services companies who sell on expertise — not volume.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIAL ============ -->
+  <section class="testimonial" id="testimonial">
+    <div class="container">
+      <div class="testimonial-quote-mark">&ldquo;</div>
+      <blockquote class="testimonial-quote">We knew our methodology was strong. Agentic Forms turned it into something our prospects could actually experience — and the pipeline impact was immediate.</blockquote>
+      <div class="testimonial-attr">— Client, Professional Services Firm</div>
+    </div>
+  </section>
+
+  <!-- ============ BOTTOM CTA ============ -->
+  <section class="bottom-cta has-grid" id="cta">
+    <div class="bottom-cta-band"></div>
+    <canvas class="bottom-cta-canvas" id="ctaCanvas"></canvas>
+    <div class="container">
+      <div class="bottom-cta-inner">
+        <h2 class="bottom-cta-header">See What Your Expertise Looks Like as an Experience.</h2>
+        <p class="bottom-cta-subline">Take our Trust Assessment — the same kind of agentic form we build for our clients. Five minutes. Your data. Your gaps. Your next steps.</p>
+        <a href="#" class="btn-primary-lg">Take the Assessment &rarr;</a>
+        <span class="bottom-cta-fine">Five minutes. Completely free. No sales call.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer has-grid">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">&copy; 2025 Agentic Forms</div>
+        <div class="footer-right">an Arthur &amp; Archie company</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ JAVASCRIPT ============ -->
+  <script>
+    // ---- Mobile menu toggle ----
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+      this.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+
+    function closeMobile() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+    }
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 768) closeMobile();
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          closeMobile();
+        }
+      });
+    });
+
+    // ---- Schema Generation Animation (reusable) ----
+    // Renders form-like data schema elements: record lists, dropdowns,
+    // connecting lines, cascading options — suggesting intelligent form generation.
+    // Collision detection prevents elements from overlapping.
+    function SchemaAnim(canvasId, opts) {
+      var canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var W, H, dpr;
+      var elements = [];
+      var frame = 0;
+      var G = 24; // grid snap
+      var color = opts.color || '161, 161, 170';
+      var excludeCenter = opts.excludeCenter !== false;
+      var maxOpRange = opts.maxOpacity || [0.12, 0.14];
+
+      function snap(v) { return Math.round(v / G) * G; }
+
+      function resize() {
+        var rect = canvas.parentElement.getBoundingClientRect();
+        dpr = window.devicePixelRatio || 1;
+        W = rect.width;
+        H = rect.height;
+        canvas.width = W * dpr;
+        canvas.height = H * dpr;
+        canvas.style.width = W + 'px';
+        canvas.style.height = H + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      // Estimate bounding box for an element
+      function getBounds(el) {
+        var pad = 12; // breathing room
+        var x = el.x - pad;
+        var y = el.y - pad;
+        var w, h;
+        switch (el.type) {
+          case 'recordList':
+            w = el.fieldW + pad * 2;
+            h = el.fieldH * (el.rows + 1) + pad * 2;
+            break;
+          case 'dropdown':
+            w = el.fieldW + pad * 2;
+            h = el.fieldH * (1 + el.options) + pad * 2 + 2;
+            break;
+          case 'fieldRow':
+            w = el.fieldW + pad * 2;
+            h = el.fieldH + 12 + pad * 2;
+            break;
+          case 'connector':
+            var ex = el.x + el.len * el.direction;
+            x = Math.min(el.x, ex) - pad;
+            w = Math.abs(el.len) + pad * 2;
+            h = G * 2 + pad * 2;
+            break;
+          case 'checkbox':
+            w = 10 + 8 + 80 + pad * 2;
+            h = G * el.rows + pad * 2;
+            break;
+          case 'cascadeList':
+            w = el.fieldW * 0.6 + 18 + pad * 2;
+            h = 16 + G * (el.options + 1) + pad * 2;
+            break;
+          case 'bracket':
+            w = 14 + 100 + pad * 2;
+            h = el.rows * G + pad * 2;
+            break;
+          default:
+            w = 100; h = 60;
+        }
+        return { x: x, y: y, w: w, h: h };
+      }
+
+      function overlaps(a, b) {
+        return a.x < b.x + b.w && a.x + a.w > b.x &&
+               a.y < b.y + b.h && a.y + a.h > b.y;
+      }
+
+      function createEl() {
+        var types = [
+          'recordList', 'dropdown', 'fieldRow', 'connector',
+          'checkbox', 'cascadeList', 'bracket'
+        ];
+        var type = types[Math.floor(Math.random() * types.length)];
+        var margin = 48;
+        var maxLife = 300 + Math.floor(Math.random() * 500);
+
+        var el = {
+          type: type,
+          x: 0, y: 0,
+          opacity: 0,
+          maxOpacity: maxOpRange[0] + Math.random() * maxOpRange[1],
+          life: 0,
+          maxLife: maxLife,
+          born: frame + Math.floor(Math.random() * 120),
+          rows: 2 + Math.floor(Math.random() * 4),
+          cols: 2 + Math.floor(Math.random() * 3),
+          fieldW: (3 + Math.floor(Math.random() * 5)) * G,
+          fieldH: G,
+          options: 2 + Math.floor(Math.random() * 4),
+          direction: Math.random() > 0.5 ? 1 : -1,
+          len: (3 + Math.floor(Math.random() * 8)) * G,
+        };
+
+        // Try positions, avoiding overlaps with live elements and center zone
+        var placed = false;
+        for (var a = 0; a < 40; a++) {
+          el.x = snap(margin + Math.random() * (W - margin * 2));
+          el.y = snap(margin + Math.random() * (H - margin * 2));
+
+          // Center exclusion
+          if (excludeCenter) {
+            var cx = W / 2, cy = H / 2;
+            if (Math.abs(el.x - cx) < W * 0.28 && Math.abs(el.y - cy) < H * 0.22) continue;
+          }
+
+          // Collision check against all visible elements
+          var bounds = getBounds(el);
+          var hit = false;
+          for (var j = 0; j < elements.length; j++) {
+            var other = elements[j];
+            if (other.life >= other.maxLife) continue; // dying, ignore
+            if (frame < other.born) continue; // not born yet
+            var ob = getBounds(other);
+            if (overlaps(bounds, ob)) { hit = true; break; }
+          }
+          if (!hit) { placed = true; break; }
+        }
+
+        // If we couldn't place it after 40 tries, push it offscreen to skip
+        if (!placed) { el.x = -9999; el.y = -9999; el.maxLife = 1; }
+
+        return el;
+      }
+
+      function seed() {
+        elements = [];
+        var area = W * H;
+        var count = Math.max(6, Math.min(30, Math.floor(area / 35000)));
+        for (var i = 0; i < count; i++) {
+          elements.push(createEl());
+        }
+      }
+
+      function fadeVal(el) {
+        var fadeIn = 50, fadeOut = 80;
+        if (el.life < fadeIn) return (el.life / fadeIn) * el.maxOpacity;
+        if (el.life > el.maxLife - fadeOut) return ((el.maxLife - el.life) / fadeOut) * el.maxOpacity;
+        return el.maxOpacity;
+      }
+
+      var C = color;
+
+      function drawRecordList(el) {
+        var w = el.fieldW, rowH = el.fieldH, totalH = rowH * (el.rows + 1);
+        ctx.strokeStyle = 'rgba(' + C + ', 1)';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(el.x + 0.5, el.y + 0.5, w, totalH);
+        ctx.fillStyle = 'rgba(' + C + ', 0.15)';
+        ctx.fillRect(el.x + 1, el.y + 1, w - 1, rowH - 1);
+        var colW = w / el.cols;
+        for (var c = 1; c < el.cols; c++) {
+          ctx.beginPath();
+          ctx.moveTo(snap(el.x + colW * c) + 0.5, el.y);
+          ctx.lineTo(snap(el.x + colW * c) + 0.5, el.y + totalH);
+          ctx.stroke();
+        }
+        for (var r = 1; r <= el.rows; r++) {
+          ctx.beginPath();
+          ctx.moveTo(el.x, el.y + rowH * r + 0.5);
+          ctx.lineTo(el.x + w, el.y + rowH * r + 0.5);
+          ctx.stroke();
+        }
+        ctx.fillStyle = 'rgba(' + C + ', 0.3)';
+        for (var r = 1; r <= el.rows; r++) {
+          for (var c = 0; c < el.cols; c++) {
+            ctx.fillRect(el.x + colW * c + 6, el.y + rowH * r + rowH / 2 - 2, colW * 0.6, 4);
+          }
+        }
+      }
+
+      function drawDropdown(el) {
+        var w = el.fieldW, h = el.fieldH;
+        ctx.strokeStyle = 'rgba(' + C + ', 1)';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(el.x + 0.5, el.y + 0.5, w, h);
+        ctx.fillStyle = 'rgba(' + C + ', 0.35)';
+        ctx.fillRect(el.x + 8, el.y + h / 2 - 2, w * 0.5, 4);
+        var chx = el.x + w - 12, chy = el.y + h / 2;
+        ctx.beginPath();
+        ctx.moveTo(chx - 4, chy - 2); ctx.lineTo(chx, chy + 2); ctx.lineTo(chx + 4, chy - 2);
+        ctx.stroke();
+        var reveal = Math.min(1, (el.life - 30) / 60);
+        if (reveal > 0) {
+          ctx.strokeRect(el.x + 0.5, el.y + h + 2 + 0.5, w, h * el.options * reveal);
+          var vis = Math.floor(el.options * reveal);
+          for (var i = 0; i < vis; i++) {
+            var oy = el.y + h + 2 + h * i;
+            if (i > 0) {
+              ctx.beginPath(); ctx.setLineDash([2, 2]);
+              ctx.moveTo(el.x + 4, oy + 0.5); ctx.lineTo(el.x + w - 4, oy + 0.5);
+              ctx.stroke(); ctx.setLineDash([]);
+            }
+            ctx.fillStyle = 'rgba(' + C + ', 0.25)';
+            ctx.fillRect(el.x + 8, oy + h / 2 - 2, w * (0.3 + Math.random() * 0.35), 4);
+          }
+        }
+      }
+
+      function drawFieldRow(el) {
+        var w = el.fieldW, h = el.fieldH;
+        ctx.fillStyle = 'rgba(' + C + ', 0.3)';
+        ctx.fillRect(el.x, el.y, w * 0.3, 4);
+        ctx.strokeStyle = 'rgba(' + C + ', 1)';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(el.x + 0.5, el.y + 12 + 0.5, w, h);
+        ctx.fillStyle = 'rgba(' + C + ', 0.2)';
+        ctx.fillRect(el.x + 8, el.y + 12 + h / 2 - 2, w * 0.55, 4);
+      }
+
+      function drawConnector(el) {
+        ctx.strokeStyle = 'rgba(' + C + ', 1)';
+        ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+        var endX = el.x + el.len * el.direction, midY = el.y + G * 2;
+        ctx.beginPath(); ctx.moveTo(el.x, el.y); ctx.lineTo(el.x, midY); ctx.lineTo(endX, midY);
+        ctx.stroke(); ctx.setLineDash([]);
+        ctx.fillStyle = 'rgba(' + C + ', 1)';
+        ctx.beginPath(); ctx.arc(el.x, el.y, 3, 0, Math.PI * 2); ctx.fill();
+        var d = el.direction;
+        ctx.beginPath(); ctx.moveTo(endX, midY - 3); ctx.lineTo(endX + 5 * d, midY); ctx.lineTo(endX, midY + 3);
+        ctx.closePath(); ctx.fill();
+      }
+
+      function drawCheckbox(el) {
+        for (var i = 0; i < el.rows; i++) {
+          var ry = el.y + G * i;
+          ctx.strokeStyle = 'rgba(' + C + ', 1)'; ctx.lineWidth = 1;
+          ctx.strokeRect(el.x + 0.5, ry + 0.5, 10, 10);
+          if (i % 2 === 0) {
+            ctx.strokeStyle = 'rgba(' + C + ', 0.6)';
+            ctx.beginPath();
+            ctx.moveTo(el.x + 2, ry + 5); ctx.lineTo(el.x + 4, ry + 8); ctx.lineTo(el.x + 9, ry + 2);
+            ctx.stroke();
+          }
+          ctx.fillStyle = 'rgba(' + C + ', 0.3)';
+          ctx.fillRect(el.x + 18, ry + 3, 30 + Math.random() * 50, 4);
+        }
+      }
+
+      function drawCascadeList(el) {
+        var nw = el.fieldW * 0.6, nh = 16;
+        ctx.fillStyle = 'rgba(' + C + ', 0.12)';
+        ctx.strokeStyle = 'rgba(' + C + ', 1)'; ctx.lineWidth = 1;
+        ctx.fillRect(el.x, el.y, nw, nh);
+        ctx.strokeRect(el.x + 0.5, el.y + 0.5, nw, nh);
+        ctx.fillStyle = 'rgba(' + C + ', 0.4)';
+        ctx.fillRect(el.x + 6, el.y + nh / 2 - 2, nw * 0.6, 4);
+        var tx = el.x + 12, tt = el.y + nh;
+        ctx.strokeStyle = 'rgba(' + C + ', 0.6)';
+        ctx.beginPath(); ctx.moveTo(tx + 0.5, tt); ctx.lineTo(tx + 0.5, tt + G * el.options); ctx.stroke();
+        for (var i = 0; i < el.options; i++) {
+          var cy = tt + G * (i + 1);
+          ctx.beginPath(); ctx.moveTo(tx, cy + 0.5); ctx.lineTo(tx + 16, cy + 0.5); ctx.stroke();
+          var cw = nw * 0.7;
+          ctx.strokeRect(tx + 18 + 0.5, cy - nh / 2 + 0.5, cw, nh);
+          ctx.fillStyle = 'rgba(' + C + ', 0.25)';
+          ctx.fillRect(tx + 24, cy - 2, cw * 0.5, 4);
+        }
+      }
+
+      function drawBracket(el) {
+        var h = el.rows * G, bx = el.x, by = el.y, r = 6;
+        ctx.strokeStyle = 'rgba(' + C + ', 0.7)'; ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(bx + r, by);
+        ctx.quadraticCurveTo(bx, by, bx, by + r);
+        ctx.lineTo(bx, by + h / 2 - r);
+        ctx.quadraticCurveTo(bx, by + h / 2, bx - r, by + h / 2);
+        ctx.quadraticCurveTo(bx, by + h / 2, bx, by + h / 2 + r);
+        ctx.lineTo(bx, by + h - r);
+        ctx.quadraticCurveTo(bx, by + h, bx + r, by + h);
+        ctx.stroke();
+        ctx.fillStyle = 'rgba(' + C + ', 0.3)';
+        for (var i = 0; i < el.rows; i++) {
+          var fy = by + G * i + G / 2 - 2;
+          var fw = 20 + Math.random() * 40;
+          ctx.fillRect(bx + 14, fy, fw, 4);
+          ctx.fillRect(bx + 14 + fw + 4, fy, 2, 4);
+          ctx.fillStyle = 'rgba(' + C + ', 0.18)';
+          ctx.fillRect(bx + 14 + fw + 10, fy, 20 + Math.random() * 30, 4);
+          ctx.fillStyle = 'rgba(' + C + ', 0.3)';
+        }
+      }
+
+      var drawFns = {
+        recordList: drawRecordList, dropdown: drawDropdown, fieldRow: drawFieldRow,
+        connector: drawConnector, checkbox: drawCheckbox, cascadeList: drawCascadeList,
+        bracket: drawBracket
+      };
+
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        for (var i = 0; i < elements.length; i++) {
+          var el = elements[i];
+          if (frame < el.born) continue;
+          el.life++;
+          el.opacity = fadeVal(el);
+          if (el.life >= el.maxLife) {
+            elements[i] = createEl();
+            elements[i].born = frame;
+            continue;
+          }
+          ctx.globalAlpha = el.opacity;
+          if (drawFns[el.type]) drawFns[el.type](el);
+        }
+        ctx.globalAlpha = 1;
+        frame++;
+        requestAnimationFrame(draw);
+      }
+
+      resize();
+      seed();
+      draw();
+      window.addEventListener('resize', function () { resize(); seed(); });
+    }
+
+    // Hero: grey schema elements, center exclusion
+    SchemaAnim('heroCanvas', {
+      color: '161, 161, 170',
+      excludeCenter: true,
+      maxOpacity: [0.12, 0.14]
+    });
+
+    // Bottom CTA: coral/red schema elements, center exclusion
+    SchemaAnim('ctaCanvas', {
+      color: '212, 64, 48',
+      excludeCenter: true,
+      maxOpacity: [0.14, 0.16]
+    });
+  </script>
+
+</body>
+</html>
