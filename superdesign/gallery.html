@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A&A v2 Wireframe Options</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+            background: #111;
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 24px;
+        }
+
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #718096;
+            font-size: 0.875rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+            gap: 24px;
+            max-width: 1500px;
+        }
+
+        .design-card {
+            background: #1a202c;
+            border: 1px solid #2d3748;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .design-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+        }
+
+        .design-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #2d3748;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .design-title h3 {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .design-type {
+            background: #2d3748;
+            color: #a0aec0;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-left: 8px;
+        }
+
+        .design-desc {
+            font-size: 0.75rem;
+            color: #718096;
+            margin-top: 4px;
+        }
+
+        .design-preview {
+            height: 350px;
+            position: relative;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .design-preview iframe {
+            border: none;
+            transform: scale(0.4);
+            transform-origin: top left;
+            width: 250%;
+            height: 250%;
+        }
+
+        .design-actions {
+            padding: 16px 20px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: #4299e1;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .btn-primary:hover { background: #3182ce; }
+
+        .btn-secondary {
+            background: #2d3748;
+            color: #a0aec0;
+            border: 1px solid #4a5568;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .btn-secondary:hover { background: #4a5568; }
+
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+            .design-preview { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>A&A v2 — Wireframe Options</h1>
+        <p>3 layout approaches for the Growth Intelligence site. Click "View Full" to scroll each one.</p>
+    </div>
+
+    <div class="gallery-grid">
+        <div class="design-card">
+            <div class="design-header">
+                <div class="design-title">
+                    <h3>A. The Editorial<span class="design-type">WIREFRAME</span></h3>
+                    <p class="design-desc">Asymmetric grids, large typography, generous whitespace. Stripe meets McKinsey.</p>
+                </div>
+            </div>
+            <div class="design-preview">
+                <iframe src="./design_iterations/editorial_1.html" loading="lazy"></iframe>
+            </div>
+            <div class="design-actions">
+                <button onclick="window.open('./design_iterations/editorial_1.html', '_blank')" class="btn-primary">View Full</button>
+                <button onclick="navigator.clipboard.writeText('editorial_1.html')" class="btn-secondary">Copy Name</button>
+            </div>
+        </div>
+
+        <div class="design-card">
+            <div class="design-header">
+                <div class="design-title">
+                    <h3>B. The Engineer<span class="design-type">WIREFRAME</span></h3>
+                    <p class="design-desc">Grid-precise, modular, dashboard-like. Linear meets Palantir.</p>
+                </div>
+            </div>
+            <div class="design-preview">
+                <iframe src="./design_iterations/engineer_1.html" loading="lazy"></iframe>
+            </div>
+            <div class="design-actions">
+                <button onclick="window.open('./design_iterations/engineer_1.html', '_blank')" class="btn-primary">View Full</button>
+                <button onclick="navigator.clipboard.writeText('engineer_1.html')" class="btn-secondary">Copy Name</button>
+            </div>
+        </div>
+
+        <div class="design-card">
+            <div class="design-header">
+                <div class="design-title">
+                    <h3>C. The Narrative<span class="design-type">WIREFRAME</span></h3>
+                    <p class="design-desc">Full-width cinematic storytelling, alternating dark/light. Apple meets architecture firm.</p>
+                </div>
+            </div>
+            <div class="design-preview">
+                <iframe src="./design_iterations/narrative_1.html" loading="lazy"></iframe>
+            </div>
+            <div class="design-actions">
+                <button onclick="window.open('./design_iterations/narrative_1.html', '_blank')" class="btn-primary">View Full</button>
+                <button onclick="navigator.clipboard.writeText('narrative_1.html')" class="btn-secondary">Copy Name</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

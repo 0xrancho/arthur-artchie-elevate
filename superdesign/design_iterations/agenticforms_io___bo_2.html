@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agentic Forms — Forms that Close.</title>
+  <meta name="description" content="AI-powered agentic forms that turn your expertise into experiences your clients can't ignore. Built to convert.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-dark': '#0D1117',
+            'brand-gold': '#C9A84C',
+            'brand-bg': '#FAFAF8',
+            'brand-surface-dark': '#161B22',
+            'brand-surface-light': '#F3F2EE',
+            'brand-text': '#1A1A2E',
+            'brand-text-secondary': '#6B7280',
+            'brand-text-light': '#E6E6E6',
+            'brand-border': '#E5E5E0',
+            'brand-border-dark': '#30363D',
+          },
+          fontFamily: {
+            'display': ['"Playfair Display"', 'Georgia', 'serif'],
+            'body': ['"Inter"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    /* Custom scrollbar for dark theme consistency */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0D1117;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #30363D;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #C9A84C;
+    }
+  </style>
+</head>
+<body class="font-body text-brand-text bg-brand-bg">
+
+  <!-- ========================================== -->
+  <!-- NAVIGATION — Dark sticky header            -->
+  <!-- ========================================== -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-brand-dark/95 backdrop-blur-sm border-b border-brand-border-dark">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <!-- Brand -->
+        <a href="#" class="text-brand-text-light font-body font-600 text-sm tracking-[0.25em] uppercase">
+          AGENTICFORMS
+        </a>
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-10">
+          <a href="#how-it-works" class="text-brand-text-light/70 hover:text-brand-text-light text-sm font-medium transition-colors duration-300">
+            How It Works
+          </a>
+          <a href="#why-us" class="text-brand-text-light/70 hover:text-brand-text-light text-sm font-medium transition-colors duration-300">
+            Why Us
+          </a>
+          <a href="#cta-bottom" class="inline-flex items-center px-5 py-2.5 bg-brand-gold text-brand-dark text-sm font-semibold rounded hover:bg-brand-gold/90 transition-all duration-300 hover:shadow-lg hover:shadow-brand-gold/20">
+            See It In Action
+          </a>
+        </div>
+        <!-- Mobile Menu Button -->
+        <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden text-brand-text-light p-2" aria-label="Toggle menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden pb-6 border-t border-brand-border-dark pt-4">
+        <div class="flex flex-col gap-4">
+          <a href="#how-it-works" class="text-brand-text-light/70 hover:text-brand-text-light text-sm font-medium transition-colors duration-300">
+            How It Works
+          </a>
+          <a href="#why-us" class="text-brand-text-light/70 hover:text-brand-text-light text-sm font-medium transition-colors duration-300">
+            Why Us
+          </a>
+          <a href="#cta-bottom" class="inline-flex items-center justify-center px-5 py-2.5 bg-brand-gold text-brand-dark text-sm font-semibold rounded hover:bg-brand-gold/90 transition-all duration-300">
+            See It In Action
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ========================================== -->
+  <!-- SECTION 1: HERO — Dark background          -->
+  <!-- ========================================== -->
+  <section class="relative bg-brand-dark overflow-hidden">
+    <!-- Subtle grid pattern overlay -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#C9A84C 1px, transparent 1px), linear-gradient(90deg, #C9A84C 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8 pt-36 pb-28 lg:pt-48 lg:pb-36">
+      <div class="max-w-3xl">
+        <!-- Eyebrow -->
+        <p class="text-brand-gold text-xs sm:text-sm font-semibold tracking-[0.3em] uppercase mb-8">
+          AGENTIC SERVICE DESIGN
+        </p>
+        <!-- Headline -->
+        <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-700 text-white leading-[1.05] mb-8">
+          Forms that Close.
+        </h1>
+        <!-- Subline -->
+        <p class="font-display text-xl sm:text-2xl lg:text-3xl font-400 text-brand-text-light/80 leading-relaxed mb-4 italic">
+          Built to Convert.
+        </p>
+        <p class="text-base sm:text-lg lg:text-xl text-brand-text-light/60 leading-relaxed max-w-2xl mb-12">
+          Turn the Expertise You Already Have into Experiences Your Clients Can't Ignore.
+        </p>
+        <!-- CTA -->
+        <a href="#cta-bottom" class="inline-flex items-center px-8 py-4 bg-brand-gold text-brand-dark text-base font-semibold rounded hover:bg-brand-gold/90 transition-all duration-300 hover:shadow-xl hover:shadow-brand-gold/20 hover:-translate-y-0.5">
+          See It In Action
+          <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+      <!-- Decorative gold line -->
+      <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-brand-gold/40 via-brand-gold/10 to-transparent"></div>
+    </div>
+  </section>
+
+
+  <!-- ========================================== -->
+  <!-- SECTION 2: THE PROBLEM — Light background   -->
+  <!-- ========================================== -->
+  <section class="bg-brand-bg">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-20">
+        <!-- Header column -->
+        <div class="lg:col-span-4">
+          <div class="lg:sticky lg:top-32">
+            <div class="w-12 h-px bg-brand-gold mb-8"></div>
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-700 text-brand-text leading-tight">
+              Your Best Thinking Is Invisible
+            </h2>
+          </div>
+        </div>
+        <!-- Body column -->
+        <div class="lg:col-span-8">
+          <div class="max-w-2xl space-y-6 text-brand-text-secondary text-base sm:text-lg leading-relaxed">
+            <p>
+              You've spent years building expertise your clients trust with their biggest decisions. But your prospects don't experience that expertise — they read about it in a capabilities deck, hear about it secondhand in a referral, or sit through a pitch that sounds like everyone else's.
+            </p>
+            <p>
+              Your methodology lives in partner conversations. Your frameworks live in internal docs. Your diagnostic instincts live in the heads of your best people.
+            </p>
+            <p>
+              Meanwhile, your prospects are comparing you to three other firms using the only thing they can see: your website, your proposal, and a 30-minute call.
+            </p>
+            <p class="text-brand-text font-medium text-lg sm:text-xl">
+              What if they could experience your expertise before you ever get on the phone?
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================== -->
+  <!-- SECTION 3: THE SHIFT — Light background     -->
+  <!-- ========================================== -->
+  <section class="bg-brand-surface-light">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+      <!-- Section intro -->
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 mb-20 lg:mb-28">
+        <div class="lg:col-span-4">
+          <div class="lg:sticky lg:top-32">
+            <div class="w-12 h-px bg-brand-gold mb-8"></div>
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-700 text-brand-text leading-tight">
+              Give Your Client a 1-1 CTA.
+            </h2>
+          </div>
+        </div>
+        <div class="lg:col-span-8">
+          <div class="max-w-2xl space-y-6 text-brand-text-secondary text-base sm:text-lg leading-relaxed">
+            <p>
+              An agentic form isn't a survey. It isn't a contact form. It isn't a chatbot.
+            </p>
+            <p>
+              It's an AI-powered experience built on your methodology that shows each prospect their data, their gaps, and their next steps — personalized, immediate, and impossible to ignore.
+            </p>
+            <p>
+              The prospect gets value before they buy. You get a qualified lead who already understands what you do and why it matters. The form doesn't just capture interest. It earns trust.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Outcome Cards — dark background, gold left border -->
+      <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+        <!-- Card 1 -->
+        <div class="bg-brand-dark rounded-lg p-8 lg:p-10 border-l-4 border-brand-gold relative group hover:bg-brand-surface-dark transition-colors duration-500">
+          <div class="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">01</div>
+          <h3 class="font-display text-xl lg:text-2xl font-600 text-white mb-4">
+            Increase perceived value.
+          </h3>
+          <p class="text-brand-text-light/60 text-sm sm:text-base leading-relaxed">
+            Your prospect experiences your thinking before the first call. They arrive pre-educated, pre-qualified, and convinced you understand their world better than anyone else.
+          </p>
+        </div>
+        <!-- Card 2 -->
+        <div class="bg-brand-dark rounded-lg p-8 lg:p-10 border-l-4 border-brand-gold relative group hover:bg-brand-surface-dark transition-colors duration-500">
+          <div class="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">02</div>
+          <h3 class="font-display text-xl lg:text-2xl font-600 text-white mb-4">
+            Compress time-to-value.
+          </h3>
+          <p class="text-brand-text-light/60 text-sm sm:text-base leading-relaxed">
+            Whether it's presale or onboarding, the experience replaces weeks of back-and-forth with an intelligent interaction that moves the relationship forward in minutes.
+          </p>
+        </div>
+        <!-- Card 3 -->
+        <div class="bg-brand-dark rounded-lg p-8 lg:p-10 border-l-4 border-brand-gold relative group hover:bg-brand-surface-dark transition-colors duration-500">
+          <div class="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">03</div>
+          <h3 class="font-display text-xl lg:text-2xl font-600 text-white mb-4">
+            Generate demand on its own.
+          </h3>
+          <p class="text-brand-text-light/60 text-sm sm:text-base leading-relaxed">
+            The form lives on your site, in your outbound, in your partnerships — working around the clock as a demand gen asset your marketing team didn't have to build from scratch.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================== -->
+  <!-- SECTION 4: THE PROCESS — Dark background    -->
+  <!-- ========================================== -->
+  <section id="how-it-works" class="bg-brand-dark relative">
+    <!-- Top accent line -->
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-36">
+      <!-- Section header -->
+      <div class="mb-16 lg:mb-24">
+        <div class="w-12 h-px bg-brand-gold mb-8"></div>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-700 text-white leading-tight">
+          How We Build It
+        </h2>
+      </div>
+
+      <!-- 4-column process grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+        <!-- Step 01 -->
+        <div class="relative">
+          <div class="border-t border-brand-border-dark pt-8">
+            <span class="font-display text-5xl lg:text-6xl font-700 text-brand-gold/30 leading-none block mb-6">01</span>
+            <h3 class="font-display text-xl font-600 text-white mb-4">Discovery</h3>
+            <p class="text-brand-text-light/50 text-sm leading-relaxed">
+              We learn how you sell, how you diagnose, and what makes your best client conversations work. We're looking for the expertise that's trapped inside your team's heads — the stuff that never makes it into a deck.
+            </p>
+          </div>
+        </div>
+        <!-- Step 02 -->
+        <div class="relative">
+          <div class="border-t border-brand-border-dark pt-8">
+            <span class="font-display text-5xl lg:text-6xl font-700 text-brand-gold/30 leading-none block mb-6">02</span>
+            <h3 class="font-display text-xl font-600 text-white mb-4">Design</h3>
+            <p class="text-brand-text-light/50 text-sm leading-relaxed">
+              We architect the experience — the flow, the logic, the scoring, the output. Every form is built on your methodology, not a template. The result feels like your best partner walked the prospect through a diagnostic, not like they filled out a questionnaire.
+            </p>
+          </div>
+        </div>
+        <!-- Step 03 -->
+        <div class="relative">
+          <div class="border-t border-brand-border-dark pt-8">
+            <span class="font-display text-5xl lg:text-6xl font-700 text-brand-gold/30 leading-none block mb-6">03</span>
+            <h3 class="font-display text-xl font-600 text-white mb-4">Build</h3>
+            <p class="text-brand-text-light/50 text-sm leading-relaxed">
+              We engineer the agentic system — AI-powered, integrated with your CRM and workflows, producing structured outputs your team can act on immediately. Assessments, proposals, roadmaps, onboarding plans — whatever the engagement requires.
+            </p>
+          </div>
+        </div>
+        <!-- Step 04 -->
+        <div class="relative">
+          <div class="border-t border-brand-border-dark pt-8">
+            <span class="font-display text-5xl lg:text-6xl font-700 text-brand-gold/30 leading-none block mb-6">04</span>
+            <h3 class="font-display text-xl font-600 text-white mb-4">Deploy</h3>
+            <p class="text-brand-text-light/50 text-sm leading-relaxed">
+              We launch, measure, and optimize. The form becomes a living part of your growth system — generating leads, qualifying prospects, compressing onboarding, and producing data your team has never had access to before.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bottom accent line -->
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent"></div>
+  </section>
+
+
+  <!-- ========================================== -->
+  <!-- SECTION 5: WHY US — Light background        -->
+  <!-- ========================================== -->
+  <section id="why-us" class="bg-brand-bg">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-36">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-20">
+        <!-- Header column -->
+        <div class="lg:col-span-4">
+          <div class="lg:sticky lg:top-32">
+            <div class="w-12 h-px bg-brand-gold mb-8"></div>
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-700 text-brand-text leading-tight">
+              Service Design Meets AI Engineering
+            </h2>
+          </div>
+        </div>
+        <!-- Body column -->
+        <div class="lg:col-span-8">
+          <div class="max-w-2xl space-y-6 text-brand-text-secondary text-base sm:text-lg leading-relaxed">
+            <p class="text-brand-text font-medium text-lg sm:text-xl">
+              Most agencies build you a form. We build you a growth system.
+            </p>
+            <p>
+              We come from a decade inside GTM, RevOps, and sales operations for professional services firms. We've built the integrations, run the playbooks, and sat in the rooms where deals are won and lost. We know what your presale process actually looks like — not the version in your CRM, the real one.
+            </p>
+            <p>
+              That operational depth is what makes our agentic forms work. We don't just design experiences — we engineer the systems that power them, integrate them into your stack, and partner with you to make sure they produce results.
+            </p>
+            <p>
+              We're not a platform. We're not a template library. We're a boutique agency that builds custom AI-powered experiences for firms that compete on trust, expertise, and relationships.
+            </p>
+            <!-- Proof line -->
+            <div class="mt-10 pt-8 border-t border-brand-border">
+              <p class="text-brand-text font-medium text-base sm:text-lg italic">
+                "We work with consulting firms, membership organizations, and professional services companies who sell on expertise — not volume."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================== -->
+  <!-- SECTION 6: TESTIMONIAL — Dark background    -->
+  <!-- ========================================== -->
+  <section class="bg-brand-dark relative">
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-36">
+      <div class="max-w-4xl mx-auto text-center relative">
+        <!-- Large decorative quotation mark -->
+        <div class="font-display text-[8rem] sm:text-[10rem] lg:text-[14rem] text-brand-gold/15 leading-none absolute -top-8 sm:-top-12 lg:-top-16 left-1/2 -translate-x-1/2 select-none pointer-events-none" aria-hidden="true">
+          &ldquo;
+        </div>
+        <!-- Quote -->
+        <blockquote class="relative z-10">
+          <p class="font-display text-xl sm:text-2xl lg:text-3xl font-400 text-white leading-relaxed mb-10 italic">
+            "We knew our methodology was strong. Agentic Forms turned it into something our prospects could actually experience — and the pipeline impact was immediate."
+          </p>
+          <footer>
+            <cite class="not-italic text-brand-text-light/50 text-sm sm:text-base tracking-wide">
+              — Client, Professional Services Firm
+            </cite>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent"></div>
+  </section>
+
+
+  <!-- ========================================== -->
+  <!-- SECTION 7: BOTTOM CTA — Dark background     -->
+  <!-- ========================================== -->
+  <section id="cta-bottom" class="bg-brand-surface-dark relative">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-36">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="w-12 h-px bg-brand-gold mx-auto mb-10"></div>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-700 text-white leading-tight mb-6">
+          See What Your Expertise Looks Like as an Experience.
+        </h2>
+        <p class="text-brand-text-light/60 text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl mx-auto mb-12">
+          Take our Trust Assessment — the same kind of agentic form we build for our clients. Five minutes. Your data. Your gaps. Your next steps.
+        </p>
+        <a href="#" class="inline-flex items-center px-10 py-5 bg-brand-gold text-brand-dark text-base sm:text-lg font-semibold rounded hover:bg-brand-gold/90 transition-all duration-300 hover:shadow-2xl hover:shadow-brand-gold/25 hover:-translate-y-0.5">
+          Take the Assessment
+          <svg class="ml-3 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================== -->
+  <!-- FOOTER                                      -->
+  <!-- ========================================== -->
+  <footer class="bg-brand-dark border-t border-brand-border-dark">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-8 lg:py-10">
+      <p class="text-brand-text-light/40 text-sm text-center">
+        &copy; 2025 Agentic Forms. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

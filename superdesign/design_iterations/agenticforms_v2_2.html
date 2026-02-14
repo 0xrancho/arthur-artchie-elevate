@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agentic Forms — Forms that Close.</title>
+  <meta name="description" content="AI-powered agentic forms that turn your expertise into experiences your clients can't ignore. Custom-built for professional services firms.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #FAFAFA;
+      --bg-dark: #111827;
+      --text-primary: #111827;
+      --text-secondary: #4B5563;
+      --text-tertiary: #9CA3AF;
+      --text-on-dark: #F9FAFB;
+      --accent: #0D9488;
+      --accent-hover: #0F766E;
+      --accent-light: #F0FDFA;
+      --border: #E5E7EB;
+      --border-dark: #374151;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    .mono {
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    /* ─── NAV ─── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-links a.nav-cta {
+      color: var(--accent);
+    }
+
+    .nav-links a.nav-cta:hover {
+      color: var(--accent-hover);
+    }
+
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      width: 32px;
+      height: 32px;
+      position: relative;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--text-primary);
+      position: absolute;
+      left: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-hamburger span:nth-child(1) { top: 9px; }
+    .nav-hamburger span:nth-child(2) { top: 15px; }
+    .nav-hamburger span:nth-child(3) { top: 21px; }
+
+    .nav-hamburger.active span:nth-child(1) {
+      top: 15px;
+      transform: rotate(45deg);
+    }
+
+    .nav-hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-hamburger.active span:nth-child(3) {
+      top: 15px;
+      transform: rotate(-45deg);
+    }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px 24px;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 99;
+    }
+
+    .nav-mobile.active {
+      display: flex;
+    }
+
+    .nav-mobile a {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 8px 0;
+    }
+
+    .nav-mobile a.nav-cta {
+      color: var(--accent);
+    }
+
+    /* ─── CONTAINER ─── */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ─── EYEBROW ─── */
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    /* ─── SECTION PADDING ─── */
+    .section {
+      padding: 100px 0;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding-top: 164px;
+      padding-bottom: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-dot-pattern {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 45%;
+      height: 100%;
+      background-image: radial-gradient(circle, var(--accent) 1px, transparent 1px);
+      background-size: 24px 24px;
+      opacity: 0.06;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 80px;
+      line-height: 1.0;
+      letter-spacing: -0.04em;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+    }
+
+    .hero-accent-line {
+      width: 64px;
+      height: 2px;
+      background: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .hero-sub {
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 560px;
+      margin-bottom: 36px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary-lg {
+      font-size: 18px;
+      padding: 18px 36px;
+    }
+
+    /* ─── SECTION 2: THE PROBLEM ─── */
+    .problem-section {
+      background: var(--bg-secondary);
+    }
+
+    .problem-section h2 {
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 40px;
+      color: var(--text-primary);
+    }
+
+    .problem-body {
+      max-width: 640px;
+    }
+
+    .problem-body p {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .problem-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .problem-body p.pivot {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    /* ─── SECTION 3: THE SHIFT ─── */
+    .shift-section h2 {
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 32px;
+      color: var(--text-primary);
+    }
+
+    .shift-intro {
+      max-width: 640px;
+      margin-bottom: 64px;
+    }
+
+    .shift-intro p {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .shift-intro p:last-child {
+      margin-bottom: 0;
+    }
+
+    .outcome-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .outcome-card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .outcome-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent);
+    }
+
+    .outcome-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(13, 148, 136, 0.08);
+    }
+
+    .outcome-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .outcome-card p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ─── SECTION 4: THE PROCESS ─── */
+    .process-section {
+      background: var(--bg-dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .process-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(13, 148, 136, 0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .process-section .eyebrow {
+      position: relative;
+      z-index: 2;
+    }
+
+    .process-section h2 {
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--text-on-dark);
+      margin-bottom: 56px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .process-step {
+      position: relative;
+    }
+
+    .process-step::after {
+      content: '';
+      position: absolute;
+      top: 12px;
+      right: -16px;
+      width: calc(100% - 32px);
+      height: 0;
+      border-top: 1px dashed var(--border-dark);
+      display: none;
+    }
+
+    @media (min-width: 769px) {
+      .process-step:not(:last-child)::after {
+        display: block;
+        width: 32px;
+        right: -32px;
+      }
+    }
+
+    .step-number {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .step-name {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-on-dark);
+      margin-bottom: 14px;
+    }
+
+    .step-line {
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .step-desc {
+      font-size: 15px;
+      color: var(--text-tertiary);
+      line-height: 1.65;
+    }
+
+    /* ─── SECTION 5: WHY US ─── */
+    .why-section h2 {
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 32px;
+      color: var(--text-primary);
+    }
+
+    .why-body {
+      max-width: 680px;
+    }
+
+    .why-body p {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .why-body p:first-child {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .why-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .proof-bar {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 20px 28px;
+      margin-top: 40px;
+      border-radius: 0 8px 8px 0;
+      max-width: 680px;
+    }
+
+    .proof-bar p {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ─── SECTION 6: TESTIMONIAL ─── */
+    .testimonial-section {
+      background: var(--bg-secondary);
+    }
+
+    .testimonial-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .testimonial-accent {
+      width: 3px;
+      height: 48px;
+      background: var(--accent);
+      margin: 0 auto 32px;
+    }
+
+    .testimonial-quote {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.55;
+      font-style: normal;
+      margin-bottom: 24px;
+    }
+
+    .testimonial-attr {
+      font-size: 14px;
+      color: var(--text-tertiary);
+    }
+
+    /* ─── SECTION 7: BOTTOM CTA ─── */
+    .cta-section {
+      text-align: center;
+    }
+
+    .cta-container {
+      max-width: 640px;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 56px 48px;
+      background: var(--bg-primary);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .cta-container h2 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+    }
+
+    .cta-container .cta-sub {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-container .btn-primary {
+      margin-bottom: 16px;
+    }
+
+    .cta-fine {
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-left {
+      font-size: 14px;
+      color: var(--text-tertiary);
+    }
+
+    .footer-right {
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 32px;
+      }
+
+      .process-step::after {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-hamburger {
+        display: block;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .hero {
+        padding-top: 136px;
+        padding-bottom: 72px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-dot-pattern {
+        width: 100%;
+        height: 100%;
+        opacity: 0.03;
+      }
+
+      .hero h1 {
+        font-size: 56px;
+      }
+
+      .hero-sub {
+        font-size: 18px;
+      }
+
+      .problem-section h2,
+      .shift-section h2,
+      .process-section h2,
+      .why-section h2 {
+        font-size: 36px;
+      }
+
+      .outcome-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .cta-container {
+        padding: 40px 28px;
+      }
+
+      .cta-container h2 {
+        font-size: 28px;
+      }
+
+      .testimonial-quote {
+        font-size: 19px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 44px;
+      }
+
+      .cta-container h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       NAV
+  ════════════════════════════════════════════════════════════════════ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">agenticforms</a>
+      <div class="nav-links">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#cta" class="nav-cta">See It In Action</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="mobileMenu">
+      <a href="#how-it-works" class="mobile-link">How It Works</a>
+      <a href="#why-us" class="mobile-link">Why Us</a>
+      <a href="#cta" class="nav-cta mobile-link">See It In Action</a>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-dot-pattern"></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow">Agentic Service Design</div>
+          <h1>Forms that Close.</h1>
+          <div class="hero-accent-line"></div>
+          <p class="hero-sub">Built to Convert. Turn the Expertise You Already Have into Experiences Your Clients Can't Ignore.</p>
+          <a href="#cta" class="btn-primary">See It In Action <span>&rarr;</span></a>
+        </div>
+        <div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       THE PROBLEM
+  ════════════════════════════════════════════════════════════════════ -->
+  <section class="section problem-section">
+    <div class="container">
+      <h2>Your Best Thinking Is Invisible</h2>
+      <div class="problem-body">
+        <p>You've spent years building expertise your clients trust with their biggest decisions. But your prospects don't experience that expertise &mdash; they read about it in a capabilities deck, hear about it secondhand in a referral, or sit through a pitch that sounds like everyone else's.</p>
+        <p>Your methodology lives in partner conversations. Your frameworks live in internal docs. Your diagnostic instincts live in the heads of your best people.</p>
+        <p>Meanwhile, your prospects are comparing you to three other firms using the only thing they can see: your website, your proposal, and a 30-minute call.</p>
+        <p class="pivot">What if they could experience your expertise before you ever get on the phone?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       THE SHIFT
+  ════════════════════════════════════════════════════════════════════ -->
+  <section class="section shift-section">
+    <div class="container">
+      <h2>Give Your Client a 1-1 CTA.</h2>
+      <div class="shift-intro">
+        <p>An agentic form isn't a survey. It isn't a contact form. It isn't a chatbot.</p>
+        <p>It's an AI-powered experience built on your methodology that shows each prospect their data, their gaps, and their next steps &mdash; personalized, immediate, and impossible to ignore.</p>
+        <p>The prospect gets value before they buy. You get a qualified lead who already understands what you do and why it matters. The form doesn't just capture interest. It earns trust.</p>
+      </div>
+
+      <div class="outcome-grid">
+        <div class="outcome-card">
+          <h3>Increase perceived value.</h3>
+          <p>Your prospect experiences your thinking before the first call. They arrive pre-educated, pre-qualified, and convinced you understand their world better than anyone else.</p>
+        </div>
+        <div class="outcome-card">
+          <h3>Compress time-to-value.</h3>
+          <p>Whether it's presale or onboarding, the experience replaces weeks of back-and-forth with an intelligent interaction that moves the relationship forward in minutes.</p>
+        </div>
+        <div class="outcome-card">
+          <h3>Generate demand on its own.</h3>
+          <p>The form lives on your site, in your outbound, in your partnerships &mdash; working around the clock as a demand gen asset your marketing team didn't have to build from scratch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       THE PROCESS
+  ════════════════════════════════════════════════════════════════════ -->
+  <section class="section process-section" id="how-it-works">
+    <div class="container">
+      <div class="eyebrow">Process</div>
+      <h2>How We Build It</h2>
+
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="step-number mono">01</div>
+          <div class="step-name">Discovery</div>
+          <div class="step-line"></div>
+          <p class="step-desc">We learn how you sell, how you diagnose, and what makes your best client conversations work. We're looking for the expertise that's trapped inside your team's heads &mdash; the stuff that never makes it into a deck.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number mono">02</div>
+          <div class="step-name">Design</div>
+          <div class="step-line"></div>
+          <p class="step-desc">We architect the experience &mdash; the flow, the logic, the scoring, the output. Every form is built on your methodology, not a template. The result feels like your best partner walked the prospect through a diagnostic, not like they filled out a questionnaire.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number mono">03</div>
+          <div class="step-name">Build</div>
+          <div class="step-line"></div>
+          <p class="step-desc">We engineer the agentic system &mdash; AI-powered, integrated with your CRM and workflows, producing structured outputs your team can act on immediately. Assessments, proposals, roadmaps, onboarding plans &mdash; whatever the engagement requires.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number mono">04</div>
+          <div class="step-name">Deploy</div>
+          <div class="step-line"></div>
+          <p class="step-desc">We launch, measure, and optimize. The form becomes a living part of your growth system &mdash; generating leads, qualifying prospects, compressing onboarding, and producing data your team has never had access to before.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       WHY US
+  ════════════════════════════════════════════════════════════════════ -->
+  <section class="section why-section" id="why-us">
+    <div class="container">
+      <h2>Service Design Meets AI Engineering</h2>
+      <div class="why-body">
+        <p>Most agencies build you a form. We build you a growth system.</p>
+        <p>We come from a decade inside GTM, RevOps, and sales operations for professional services firms. We've built the integrations, run the playbooks, and sat in the rooms where deals are won and lost. We know what your presale process actually looks like &mdash; not the version in your CRM, the real one.</p>
+        <p>That operational depth is what makes our agentic forms work. We don't just design experiences &mdash; we engineer the systems that power them, integrate them into your stack, and partner with you to make sure they produce results.</p>
+        <p>We're not a platform. We're not a template library. We're a boutique agency that builds custom AI-powered experiences for firms that compete on trust, expertise, and relationships.</p>
+      </div>
+      <div class="proof-bar">
+        <p>We work with consulting firms, membership organizations, and professional services companies who sell on expertise &mdash; not volume.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       TESTIMONIAL
+  ════════════════════════════════════════════════════════════════════ -->
+  <section class="section testimonial-section">
+    <div class="container">
+      <div class="testimonial-inner">
+        <div class="testimonial-accent"></div>
+        <blockquote class="testimonial-quote">&ldquo;We knew our methodology was strong. Agentic Forms turned it into something our prospects could actually experience &mdash; and the pipeline impact was immediate.&rdquo;</blockquote>
+        <p class="testimonial-attr">&mdash; Client, Professional Services Firm</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       BOTTOM CTA
+  ════════════════════════════════════════════════════════════════════ -->
+  <section class="section cta-section" id="cta">
+    <div class="container">
+      <div class="cta-container">
+        <h2>See What Your Expertise Looks Like as an Experience.</h2>
+        <p class="cta-sub">Take our Trust Assessment &mdash; the same kind of agentic form we build for our clients. Five minutes. Your data. Your gaps. Your next steps.</p>
+        <a href="#" class="btn-primary btn-primary-lg">Take the Assessment <span>&rarr;</span></a>
+        <p class="cta-fine">Five minutes. No sales call required.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-left">&copy; 2025 Agentic Forms</span>
+        <span class="footer-right">an Arthur &amp; Archie company</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       JS
+  ════════════════════════════════════════════════════════════════════ -->
+  <script>
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+      });
+    });
+
+    // Close mobile menu on scroll
+    let lastScrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+      if (Math.abs(window.scrollY - lastScrollY) > 50) {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        lastScrollY = window.scrollY;
+      }
+    });
+  </script>
+
+</body>
+</html>
