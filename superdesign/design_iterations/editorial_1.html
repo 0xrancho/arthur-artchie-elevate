@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A&A v2 Wireframe — Editorial</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f5f5f0;
+    color: #1a1a1a;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* Marquee */
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .marquee-track {
+    display: flex;
+    animation: scroll-left 30s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+  .marquee-container {
+    overflow: hidden;
+    position: relative;
+  }
+  .marquee-container::before,
+  .marquee-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .marquee-container::before {
+    left: 0;
+    background: linear-gradient(to right, #f5f5f0, transparent);
+  }
+  .marquee-container::after {
+    right: 0;
+    background: linear-gradient(to left, #f5f5f0, transparent);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="flex items-center justify-between px-8 lg:px-16 py-6 border-b border-gray-200">
+  <div class="text-lg font-semibold tracking-tight" style="font-family:'Crimson Pro',serif;">Arthur & Archie</div>
+  <div class="hidden md:flex items-center gap-8 text-sm text-gray-500">
+    <a href="#" class="hover:text-black">Approach</a>
+    <a href="#" class="hover:text-black">Heritage</a>
+    <a href="#" class="hover:text-black">Contact</a>
+  </div>
+  <button class="text-sm border border-black px-5 py-2 hover:bg-black hover:text-white transition-colors">Book a Call</button>
+</nav>
+
+<!-- SECTION 1: HERO -->
+<section class="px-8 lg:px-16 pt-24 pb-32 lg:pt-40 lg:pb-48">
+  <div class="max-w-5xl">
+    <p class="mono text-xs tracking-widest uppercase text-gray-400 mb-6">Growth Intelligence for Professional Services</p>
+    <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight mb-8">
+      Growth<br/>Intelligence,<br/>Engineered.
+    </h1>
+    <p class="text-lg md:text-xl text-gray-500 max-w-xl mb-12 leading-relaxed">
+      Custom agentic systems that increase your value to your clients, compress your time-to-value, and generate demand without headcount.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <button class="bg-black text-white px-8 py-4 text-sm tracking-wide hover:bg-gray-800 transition-colors">See What This Looks Like</button>
+      <button class="border border-gray-300 px-8 py-4 text-sm tracking-wide text-gray-600 hover:border-black hover:text-black transition-colors">Book a Strategy Call</button>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: SCROLLING DELIVERABLES -->
+<section class="py-6 border-t border-b border-gray-200">
+  <div class="marquee-container">
+    <div class="marquee-track">
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">Presale Assessments</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">Proposal Generators</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">Knowledge Bases</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">Client Surveys</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">Data Enrichment Engines</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">Engagement Workflows</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">CRM Integrations</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">Lead Magnets</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">Interactive Demos</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">Pitch Builders</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">ROI Calculators</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">Pipeline Dashboards</span>
+      <span class="text-gray-300 px-2">/</span>
+      <!-- duplicate for seamless loop -->
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">Presale Assessments</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">Proposal Generators</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">Knowledge Bases</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">Client Surveys</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">Data Enrichment Engines</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">Engagement Workflows</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">CRM Integrations</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">Lead Magnets</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">Interactive Demos</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">Pitch Builders</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">ROI Calculators</span>
+      <span class="text-gray-300 px-2">/</span>
+      <span class="mono text-sm text-gray-400 tracking-wide px-6">Pipeline Dashboards</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: THREE OUTCOMES -->
+<section class="px-8 lg:px-16 py-24 lg:py-32">
+  <p class="mono text-xs tracking-widest uppercase text-gray-400 mb-4">Every Engagement</p>
+  <h2 class="text-3xl md:text-4xl font-semibold mb-16 max-w-md">Three outcomes.<br/>No exceptions.</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+    <div class="border-t-2 border-black pt-6">
+      <h3 class="text-xl font-semibold mb-3">Value Amplification</h3>
+      <p class="text-gray-500 text-sm leading-relaxed">Increase your value to your clients. Bigger deals, deeper retention, higher LTV.</p>
+    </div>
+    <div class="border-t-2 border-black pt-6">
+      <h3 class="text-xl font-semibold mb-3">Time Compression</h3>
+      <p class="text-gray-500 text-sm leading-relaxed">What took weeks takes days. Capacity unlocked, sales cycles shortened.</p>
+    </div>
+    <div class="border-t-2 border-black pt-6">
+      <h3 class="text-xl font-semibold mb-3">Demand Generation</h3>
+      <p class="text-gray-500 text-sm leading-relaxed">A running system that creates qualified inbound without additional headcount.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: PROBLEM STATEMENT -->
+<section class="px-8 lg:px-16 py-24 lg:py-32 border-t border-gray-200">
+  <div class="max-w-4xl">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div class="lg:col-span-5">
+        <h2 class="text-4xl md:text-5xl font-bold leading-tight">Your sales ops stack wasn't built for this.</h2>
+      </div>
+      <div class="lg:col-span-6 lg:col-start-7">
+        <p class="text-gray-500 text-lg leading-relaxed mb-6">
+          Enterprise platforms gave you a CRM, a BI dashboard, and a contact database. They told you that was enough.
+        </p>
+        <p class="text-gray-500 text-lg leading-relaxed mb-6">
+          It's not.
+        </p>
+        <p class="text-gray-500 leading-relaxed mb-8">
+          Your best people still spend days building proposals from scratch. Tribal knowledge walks out the door. Your presale process runs on gut feel, recycled decks, and heroic individual effort.
+        </p>
+        <p class="text-black font-medium text-lg border-l-2 border-black pl-6">
+          The firms that build growth intelligence first will compound the advantage. The rest will wonder what happened.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: HOW IT WORKS -->
+<section class="px-8 lg:px-16 py-24 lg:py-32 bg-black text-white">
+  <p class="mono text-xs tracking-widest uppercase text-gray-500 mb-4">How It Works</p>
+  <h2 class="text-3xl md:text-4xl font-semibold mb-20 max-w-lg">Your initiative,<br/>our engine.</h2>
+
+  <div class="max-w-4xl space-y-16 lg:space-y-24">
+    <!-- Beat 1 -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-2">
+        <span class="mono text-5xl text-gray-600">01</span>
+      </div>
+      <div class="lg:col-span-8">
+        <h3 class="text-2xl font-semibold mb-4">Intelligence Discovery</h3>
+        <p class="text-gray-400 leading-relaxed">You define the growth initiative. We run targeted diagnostics — a specific investigation of the intelligence you're missing. Output: a shared growth thesis and system architecture.</p>
+        <p class="mono text-xs text-gray-600 mt-4">Weeks 1–3</p>
+      </div>
+    </div>
+    <!-- Beat 2 -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-2">
+        <span class="mono text-5xl text-gray-600">02</span>
+      </div>
+      <div class="lg:col-span-8 lg:col-start-4">
+        <h3 class="text-2xl font-semibold mb-4">System Build</h3>
+        <p class="text-gray-400 leading-relaxed">We compose the system from modular intelligence capabilities — tuned to your methodology, your clients' language, your data. You're in the build weekly.</p>
+        <p class="mono text-xs text-gray-600 mt-4">Weeks 4–8</p>
+      </div>
+    </div>
+    <!-- Beat 3 -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-2">
+        <span class="mono text-5xl text-gray-600">03</span>
+      </div>
+      <div class="lg:col-span-8 lg:col-start-5">
+        <h3 class="text-2xl font-semibold mb-4">Activation & Compound</h3>
+        <p class="text-gray-400 leading-relaxed">System goes live. We measure against the three outcomes. The system compounds — and the question shifts from "is it done?" to "what do we add next?"</p>
+        <p class="mono text-xs text-gray-600 mt-4">Weeks 9–12</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: COMPARISON -->
+<section class="px-8 lg:px-16 py-24 lg:py-32">
+  <h2 class="text-3xl md:text-4xl font-semibold mb-16">This isn't enterprise software.<br/>And it isn't consulting.</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+    <div class="p-8 border border-gray-200">
+      <p class="mono text-xs tracking-widest uppercase text-gray-400 mb-4">Enterprise Platforms</p>
+      <p class="text-gray-500 text-sm leading-relaxed">Their data model. Their dashboards. Their view of your business. You bend your process to fit their assumptions.</p>
+    </div>
+    <div class="p-8 border border-gray-200">
+      <p class="mono text-xs tracking-widest uppercase text-gray-400 mb-4">Traditional Consulting</p>
+      <p class="text-gray-500 text-sm leading-relaxed">A deck and a recommendations list. Smart people for 6 weeks. Then they leave, and you implement alone.</p>
+    </div>
+    <div class="p-8 border-2 border-black">
+      <p class="mono text-xs tracking-widest uppercase text-black mb-4">Growth Intelligence</p>
+      <p class="text-black text-sm leading-relaxed font-medium">A running system built around your business — your methodology, your clients, your data. Engineered to compound.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: PREREQUISITES -->
+<section class="px-8 lg:px-16 py-24 lg:py-32 border-t border-gray-200">
+  <div class="max-w-4xl">
+    <h2 class="text-3xl md:text-4xl font-semibold mb-4">Growth Intelligence works when the foundation is right.</h2>
+    <p class="text-gray-500 mb-16 max-w-lg">Agentic systems produce real outcomes when three things are in place.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div>
+        <div class="w-10 h-10 border-2 border-black rounded-full flex items-center justify-center mb-4 mono text-sm">1</div>
+        <h3 class="text-lg font-semibold mb-2">Growth Goal</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Without it, the system automates motion, not progress.</p>
+      </div>
+      <div>
+        <div class="w-10 h-10 border-2 border-black rounded-full flex items-center justify-center mb-4 mono text-sm">2</div>
+        <h3 class="text-lg font-semibold mb-2">GTM Strategy</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Without it, the system doesn't know who to target or what to say.</p>
+      </div>
+      <div>
+        <div class="w-10 h-10 border-2 border-black rounded-full flex items-center justify-center mb-4 mono text-sm">3</div>
+        <h3 class="text-lg font-semibold mb-2">Data Governance</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Without it, the system can't trust its own inputs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8: HERITAGE -->
+<section class="px-8 lg:px-16 py-24 lg:py-32 bg-black text-white">
+  <p class="mono text-xs tracking-widest uppercase text-gray-500 mb-12">200+ Years of Professional Service</p>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+    <div>
+      <span class="mono text-3xl lg:text-4xl text-gray-500">1804</span>
+      <p class="text-sm text-gray-400 mt-2">William A. Austin</p>
+      <p class="text-xs text-gray-600 mt-1">Justice of Peace</p>
+    </div>
+    <div>
+      <span class="mono text-3xl lg:text-4xl text-gray-500">1886</span>
+      <p class="text-sm text-gray-400 mt-2">Howard B. Austin</p>
+      <p class="text-xs text-gray-600 mt-1">IL Poet Laureate</p>
+    </div>
+    <div>
+      <span class="mono text-3xl lg:text-4xl text-gray-500">1929</span>
+      <p class="text-sm text-gray-400 mt-2">Arthur Dean Austin</p>
+      <p class="text-xs text-gray-600 mt-1">Tech-enabled accounting</p>
+    </div>
+    <div>
+      <span class="mono text-3xl lg:text-4xl text-white">2024</span>
+      <p class="text-sm text-gray-300 mt-2">Joel Austin</p>
+      <p class="text-xs text-gray-500 mt-1">Growth Intelligence</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 9: FINAL CTA -->
+<section class="px-8 lg:px-16 py-24 lg:py-40">
+  <div class="max-w-3xl">
+    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8">See what Growth Intelligence looks like for your firm.</h2>
+    <p class="text-gray-500 text-lg mb-12 max-w-lg">Every firm's growth challenge is different. The system we'd build for you depends on where you are and where you want to go.</p>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <button class="bg-black text-white px-8 py-4 text-sm tracking-wide hover:bg-gray-800 transition-colors">Book a Strategy Call</button>
+      <button class="border border-gray-300 px-8 py-4 text-sm tracking-wide text-gray-600 hover:border-black hover:text-black transition-colors">Try Our Growth Intelligence Demo</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="px-8 lg:px-16 py-8 border-t border-gray-200">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+    <div class="text-sm text-gray-400" style="font-family:'Crimson Pro',serif;">Arthur & Archie</div>
+    <div class="mono text-xs text-gray-400">Growth Intelligence, Engineered.</div>
+  </div>
+</footer>
+
+</body>
+</html>

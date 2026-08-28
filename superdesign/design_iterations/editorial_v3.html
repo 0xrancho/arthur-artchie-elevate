@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentic Forms — Forms that Close.</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: '#1C3654',
+          'navy-deep': '#142640',
+          'navy-light': '#2A4A6B',
+          terracotta: '#C97B5D',
+          'terracotta-dark': '#B5694D',
+          'terracotta-light': '#D4907A',
+          cream: '#F5F0EB',
+          'cream-dark': '#EBE5DE',
+          mist: '#E2E4E8',
+          'mist-dark': '#D8DADF',
+          slate: '#667085',
+          forest: '#3F544A',
+          gold: '#B9A065',
+        },
+        fontFamily: {
+          serif: ['Crimson Pro', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+          mono: ['IBM Plex Mono', 'monospace'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #F5F0EB;
+    color: #1C3654;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Crimson Pro', serif;
+    color: #1C3654;
+  }
+
+  .mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* Marquee */
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .marquee-track {
+    display: flex;
+    animation: scroll-left 30s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+  .marquee-container {
+    overflow: hidden;
+    position: relative;
+  }
+  .marquee-container::before,
+  .marquee-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .marquee-container::before {
+    left: 0;
+    background: linear-gradient(to right, #E2E4E8, transparent);
+  }
+  .marquee-container::after {
+    right: 0;
+    background: linear-gradient(to left, #E2E4E8, transparent);
+  }
+
+  /* Fire particle animations */
+  @keyframes fire-slow {
+    0% { bottom: 0; opacity: 1; transform: translateX(0) scale(1); }
+    20% { bottom: 15%; opacity: 0.8; transform: translateX(-1px) scale(0.9); }
+    40% { bottom: 30%; opacity: 0.5; transform: translateX(1px) scale(0.7); }
+    60% { bottom: 45%; opacity: 0.25; transform: translateX(-1px) scale(0.5); }
+    80% { bottom: 60%; opacity: 0.1; transform: translateX(0) scale(0.3); }
+    100% { bottom: 75%; opacity: 0; transform: translateX(0) scale(0.2); }
+  }
+  @keyframes fire-medium {
+    0% { bottom: 0; opacity: 0.8; transform: translateX(0) scale(1); }
+    30% { bottom: 25%; opacity: 0.5; transform: translateX(2px) scale(0.7); }
+    60% { bottom: 50%; opacity: 0.2; transform: translateX(-1px) scale(0.4); }
+    100% { bottom: 85%; opacity: 0; transform: translateX(0) scale(0.2); }
+  }
+  @keyframes fire-fast {
+    0% { bottom: 0; opacity: 0.6; transform: translateX(0) scale(1); }
+    40% { bottom: 40%; opacity: 0.2; transform: translateX(-2px) scale(0.5); }
+    100% { bottom: 100%; opacity: 0; transform: translateX(1px) scale(0.1); }
+  }
+  .fire-slow { animation: fire-slow 2.5s ease-out infinite; }
+  .fire-medium { animation: fire-medium 1.8s ease-out infinite; }
+  .fire-fast { animation: fire-fast 1.2s ease-out infinite; }
+
+  /* Fire CTA button */
+  .fire-btn {
+    position: relative;
+    background: #C97B5D;
+    color: #FAF9F7;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 16px rgba(201, 123, 93, 0.5), 0 0 40px rgba(201, 123, 93, 0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .fire-btn:hover {
+    background: #B5694D;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(201, 123, 93, 0.6), 0 0 60px rgba(201, 123, 93, 0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+  }
+  .fire-btn-on-dark {
+    box-shadow: 0 4px 16px rgba(201, 123, 93, 0.6), 0 0 50px rgba(201, 123, 93, 0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .fire-btn-on-dark:hover {
+    box-shadow: 0 6px 24px rgba(201, 123, 93, 0.7), 0 0 70px rgba(201, 123, 93, 0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  }
+
+  /* Subtle grid background for dark sections */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(250,249,247,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(250,249,247,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Smooth scroll */
+  html { scroll-behavior: smooth; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="flex items-center justify-between px-8 lg:px-16 py-5 fixed top-0 left-0 right-0 z-50 bg-navy/90 backdrop-blur-sm border-b border-white/5">
+  <div class="flex items-center gap-3">
+    <span class="text-lg font-semibold tracking-tight font-serif text-cream">Agentic Forms</span>
+  </div>
+  <div class="hidden md:flex items-center gap-8 text-sm text-cream/60">
+    <a href="#how-it-works" class="hover:text-cream transition-colors">How It Works</a>
+    <a href="#why-us" class="hover:text-cream transition-colors">Why Us</a>
+    <a href="#cta" class="hover:text-cream transition-colors">See It In Action</a>
+  </div>
+  <button class="text-sm border border-cream/30 text-cream/80 px-5 py-2 hover:bg-cream hover:text-navy transition-all rounded">See It In Action</button>
+</nav>
+
+<!-- SECTION 1: HERO — Navy background -->
+<section class="px-8 lg:px-16 pt-36 pb-32 lg:pt-48 lg:pb-48 bg-navy grid-bg">
+  <div class="max-w-5xl">
+    <p class="mono text-xs tracking-widest uppercase text-terracotta-light mb-6">Agentic Service Design</p>
+    <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight mb-8 text-cream">
+      Forms<br/>that Close.
+    </h1>
+    <p class="text-lg md:text-xl text-cream/60 max-w-xl mb-12 leading-relaxed">
+      Built to Convert. Turn the Expertise You Already Have into Experiences Your Clients Can't Ignore.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <!-- Fire CTA -->
+      <button class="fire-btn fire-btn-on-dark px-8 py-4 text-sm tracking-wide font-medium rounded relative">
+        <span class="relative z-10">See It In Action</span>
+        <span class="absolute inset-0 overflow-hidden pointer-events-none">
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[15%] fire-slow" style="animation-delay:0s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[35%] fire-slow" style="animation-delay:0.4s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[55%] fire-slow" style="animation-delay:0.8s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[75%] fire-slow" style="animation-delay:1.2s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[25%] fire-slow" style="animation-delay:1.6s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[65%] fire-slow" style="animation-delay:2s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/65 bottom-0 left-[10%] fire-slow" style="animation-delay:0.2s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[30%] fire-slow" style="animation-delay:0.6s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/65 bottom-0 left-[50%] fire-slow" style="animation-delay:1s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[70%] fire-slow" style="animation-delay:1.4s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/65 bottom-0 left-[85%] fire-slow" style="animation-delay:1.8s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[45%] fire-slow" style="animation-delay:2.2s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[8%] fire-slow" style="animation-delay:0.3s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/65 bottom-0 left-[22%] fire-slow" style="animation-delay:0.7s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[42%] fire-slow" style="animation-delay:1.1s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[62%] fire-slow" style="animation-delay:1.5s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/65 bottom-0 left-[78%] fire-slow" style="animation-delay:1.9s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[92%] fire-slow" style="animation-delay:2.3s"></span>
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[20%] fire-medium" style="animation-delay:0.2s"></span>
+          <span class="absolute w-1 h-1 bg-white/45 bottom-0 left-[45%] fire-medium" style="animation-delay:0.6s"></span>
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[70%] fire-medium" style="animation-delay:1s"></span>
+          <span class="absolute w-1 h-1 bg-white/45 bottom-0 left-[30%] fire-medium" style="animation-delay:1.4s"></span>
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[60%] fire-medium" style="animation-delay:1.8s"></span>
+          <span class="absolute w-1 h-1 bg-white/45 bottom-0 left-[12%] fire-medium" style="animation-delay:0.1s"></span>
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[38%] fire-medium" style="animation-delay:0.5s"></span>
+          <span class="absolute w-1 h-1 bg-white/45 bottom-0 left-[58%] fire-medium" style="animation-delay:0.9s"></span>
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[82%] fire-medium" style="animation-delay:1.3s"></span>
+          <span class="absolute w-1 h-1 bg-white/45 bottom-0 left-[48%] fire-medium" style="animation-delay:1.7s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[10%] fire-fast" style="animation-delay:0.1s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[40%] fire-fast" style="animation-delay:0.5s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[50%] fire-fast" style="animation-delay:0.9s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[80%] fire-fast" style="animation-delay:1.3s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[85%] fire-fast" style="animation-delay:1.7s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[18%] fire-fast" style="animation-delay:0.2s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[32%] fire-fast" style="animation-delay:0.6s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[62%] fire-fast" style="animation-delay:1s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[72%] fire-fast" style="animation-delay:1.4s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[95%] fire-fast" style="animation-delay:1.8s"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- SCROLLING MARQUEE — Mist background -->
+<section class="py-8 bg-mist">
+  <div class="marquee-container">
+    <div class="marquee-track">
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">Presale Assessments</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">Trust Diagnostics</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">Onboarding Flows</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">Proposal Generators</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">Lead Magnets</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">Client Intake</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">Demand Gen Assets</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">CRM Integrations</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">ROI Calculators</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">Qualification Engines</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">Interactive Demos</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">Roadmap Builders</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <!-- duplicate for seamless loop -->
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">Presale Assessments</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">Trust Diagnostics</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">Onboarding Flows</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">Proposal Generators</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">Lead Magnets</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">Client Intake</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">Demand Gen Assets</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">CRM Integrations</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">ROI Calculators</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">Qualification Engines</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">Interactive Demos</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/70 tracking-wide px-6">Roadmap Builders</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: THE PROBLEM — Mist background -->
+<section class="px-8 lg:px-16 py-24 lg:py-32 bg-mist">
+  <div class="max-w-4xl">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div class="lg:col-span-5">
+        <h2 class="text-4xl md:text-5xl font-bold leading-tight text-navy">Your Best Thinking Is Invisible.</h2>
+      </div>
+      <div class="lg:col-span-6 lg:col-start-7">
+        <p class="text-slate text-lg leading-relaxed mb-6">
+          You've spent years building expertise your clients trust with their biggest decisions. But your prospects don't experience that expertise — they read about it in a capabilities deck, hear about it secondhand in a referral, or sit through a pitch that sounds like everyone else's.
+        </p>
+        <p class="text-slate leading-relaxed mb-6">
+          Your methodology lives in partner conversations. Your frameworks live in internal docs. Your diagnostic instincts live in the heads of your best people.
+        </p>
+        <p class="text-slate leading-relaxed mb-8">
+          Meanwhile, your prospects are comparing you to three other firms using the only thing they can see: your website, your proposal, and a 30-minute call.
+        </p>
+        <p class="text-navy font-medium text-lg border-l-2 border-terracotta pl-6">
+          What if they could experience your expertise before you ever get on the phone?
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: THE SHIFT — Cream background -->
+<section class="px-8 lg:px-16 py-24 lg:py-32 bg-cream">
+  <div class="max-w-4xl mb-20">
+    <p class="mono text-xs tracking-widest uppercase text-terracotta mb-4">The Shift</p>
+    <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-8 text-navy">Give Your Client a 1-1 CTA.</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div class="lg:col-span-10">
+        <p class="text-slate text-lg leading-relaxed mb-6">
+          An agentic form isn't a survey. It isn't a contact form. It isn't a chatbot.
+        </p>
+        <p class="text-slate text-lg leading-relaxed mb-6">
+          It's an AI-powered experience built on your methodology that shows each prospect their data, their gaps, and their next steps — personalized, immediate, and impossible to ignore.
+        </p>
+        <p class="text-navy font-medium text-lg">
+          The prospect gets value before they buy. You get a qualified lead who already understands what you do and why it matters. The form doesn't just capture interest. It earns trust.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Three Outcomes Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+    <div class="border-t-2 border-terracotta pt-6">
+      <h3 class="text-xl font-semibold mb-3 text-navy">Increase perceived value.</h3>
+      <p class="text-slate text-sm leading-relaxed">Your prospect experiences your thinking before the first call. They arrive pre-educated, pre-qualified, and convinced you understand their world better than anyone else.</p>
+    </div>
+    <div class="border-t-2 border-terracotta pt-6">
+      <h3 class="text-xl font-semibold mb-3 text-navy">Compress time-to-value.</h3>
+      <p class="text-slate text-sm leading-relaxed">Whether it's presale or onboarding, the experience replaces weeks of back-and-forth with an intelligent interaction that moves the relationship forward in minutes.</p>
+    </div>
+    <div class="border-t-2 border-terracotta pt-6">
+      <h3 class="text-xl font-semibold mb-3 text-navy">Generate demand on its own.</h3>
+      <p class="text-slate text-sm leading-relaxed">The form lives on your site, in your outbound, in your partnerships — working around the clock as a demand gen asset your marketing team didn't have to build from scratch.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: THE PROCESS — Navy background -->
+<section id="how-it-works" class="px-8 lg:px-16 py-24 lg:py-32 bg-navy text-cream grid-bg">
+  <p class="mono text-xs tracking-widest uppercase text-terracotta-light mb-4">The Process</p>
+  <h2 class="text-3xl md:text-4xl font-semibold mb-20 max-w-lg text-cream">How We Build It</h2>
+
+  <div class="max-w-4xl space-y-16 lg:space-y-24">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-2">
+        <span class="mono text-5xl text-navy-light">01</span>
+      </div>
+      <div class="lg:col-span-8">
+        <h3 class="text-2xl font-semibold mb-4 text-cream">Discovery</h3>
+        <p class="text-cream/60 leading-relaxed">We learn how you sell, how you diagnose, and what makes your best client conversations work. We're looking for the expertise that's trapped inside your team's heads — the stuff that never makes it into a deck.</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-2">
+        <span class="mono text-5xl text-navy-light">02</span>
+      </div>
+      <div class="lg:col-span-8 lg:col-start-4">
+        <h3 class="text-2xl font-semibold mb-4 text-cream">Design</h3>
+        <p class="text-cream/60 leading-relaxed">We architect the experience — the flow, the logic, the scoring, the output. Every form is built on your methodology, not a template. The result feels like your best partner walked the prospect through a diagnostic, not like they filled out a questionnaire.</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-2">
+        <span class="mono text-5xl text-navy-light">03</span>
+      </div>
+      <div class="lg:col-span-8 lg:col-start-5">
+        <h3 class="text-2xl font-semibold mb-4 text-cream">Build</h3>
+        <p class="text-cream/60 leading-relaxed">We engineer the agentic system — AI-powered, integrated with your CRM and workflows, producing structured outputs your team can act on immediately. Assessments, proposals, roadmaps, onboarding plans — whatever the engagement requires.</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-2">
+        <span class="mono text-5xl text-navy-light">04</span>
+      </div>
+      <div class="lg:col-span-8 lg:col-start-5">
+        <h3 class="text-2xl font-semibold mb-4 text-cream">Deploy</h3>
+        <p class="text-cream/60 leading-relaxed">We launch, measure, and optimize. The form becomes a living part of your growth system — generating leads, qualifying prospects, compressing onboarding, and producing data your team has never had access to before.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: WHY US — Cream background -->
+<section id="why-us" class="px-8 lg:px-16 py-24 lg:py-32 bg-cream">
+  <div class="max-w-4xl">
+    <p class="mono text-xs tracking-widest uppercase text-terracotta mb-4">Why Us</p>
+    <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-8 text-navy">Service Design Meets AI Engineering.</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div class="lg:col-span-10">
+        <p class="text-slate text-lg leading-relaxed mb-6">
+          Most agencies build you a form. We build you a growth system.
+        </p>
+        <p class="text-slate leading-relaxed mb-6">
+          We come from a decade inside GTM, RevOps, and sales operations for professional services firms. We've built the integrations, run the playbooks, and sat in the rooms where deals are won and lost. We know what your presale process actually looks like — not the version in your CRM, the real one.
+        </p>
+        <p class="text-slate leading-relaxed mb-6">
+          That operational depth is what makes our forms work. We don't just design experiences — we engineer the systems that power them, integrate them into your stack, and partner with you to make sure they produce results.
+        </p>
+        <p class="text-navy font-medium text-lg border-l-2 border-terracotta pl-6">
+          We're not a platform. We're not a template library. We're a boutique agency that builds custom AI-powered experiences for firms that compete on trust, expertise, and relationships.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: PROOF — Mist background -->
+<section class="px-8 lg:px-16 py-24 lg:py-32 bg-mist">
+  <div class="max-w-3xl">
+    <p class="mono text-xs tracking-widest uppercase text-slate mb-8">Who We Work With</p>
+    <p class="text-navy text-lg leading-relaxed font-medium mb-12">
+      We work with consulting firms, membership organizations, and professional services companies who sell on expertise — not volume.
+    </p>
+
+    <!-- Testimonial -->
+    <div class="p-8 bg-cream rounded border-2 border-terracotta" style="box-shadow: 0 4px 16px rgba(201, 123, 93, 0.12);">
+      <p class="text-navy text-lg leading-relaxed font-serif italic mb-6">
+        "We knew our methodology was strong. Agentic Forms turned it into something our prospects could actually experience — and the pipeline impact was immediate."
+      </p>
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-terracotta/20 rounded-full flex items-center justify-center">
+          <span class="mono text-xs text-terracotta font-medium">JP</span>
+        </div>
+        <div>
+          <p class="text-sm font-medium text-navy">Jeremy Portillo</p>
+          <p class="mono text-xs text-slate">Client Partner</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: BOTTOM CTA — Navy background -->
+<section id="cta" class="px-8 lg:px-16 py-24 lg:py-40 bg-navy grid-bg">
+  <div class="max-w-3xl">
+    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8 text-cream">See What Your Expertise Looks Like as an Experience.</h2>
+    <p class="text-cream/60 text-lg mb-12 max-w-lg leading-relaxed">
+      Take our Trust Assessment — the same kind of agentic form we build for our clients. Five minutes. Your data. Your gaps. Your next steps.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <button class="fire-btn fire-btn-on-dark px-8 py-4 text-sm tracking-wide font-medium rounded relative">
+        <span class="relative z-10">Take the Assessment</span>
+        <span class="absolute inset-0 overflow-hidden pointer-events-none">
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[15%] fire-slow" style="animation-delay:0s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[35%] fire-slow" style="animation-delay:0.4s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[55%] fire-slow" style="animation-delay:0.8s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[75%] fire-slow" style="animation-delay:1.2s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[25%] fire-slow" style="animation-delay:1.6s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[65%] fire-slow" style="animation-delay:2s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/65 bottom-0 left-[10%] fire-slow" style="animation-delay:0.2s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[50%] fire-slow" style="animation-delay:1s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/65 bottom-0 left-[85%] fire-slow" style="animation-delay:1.8s"></span>
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[20%] fire-medium" style="animation-delay:0.2s"></span>
+          <span class="absolute w-1 h-1 bg-white/45 bottom-0 left-[45%] fire-medium" style="animation-delay:0.6s"></span>
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[70%] fire-medium" style="animation-delay:1s"></span>
+          <span class="absolute w-1 h-1 bg-white/45 bottom-0 left-[30%] fire-medium" style="animation-delay:1.4s"></span>
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[60%] fire-medium" style="animation-delay:1.8s"></span>
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[82%] fire-medium" style="animation-delay:1.3s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[10%] fire-fast" style="animation-delay:0.1s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[40%] fire-fast" style="animation-delay:0.5s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[50%] fire-fast" style="animation-delay:0.9s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[80%] fire-fast" style="animation-delay:1.3s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[62%] fire-fast" style="animation-delay:1s"></span>
+        </span>
+      </button>
+    </div>
+    <p class="mono text-xs text-cream/30 mt-6">Five minutes. Personalized results. See the experience your clients would get.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="px-8 lg:px-16 py-8 bg-navy border-t border-white/5">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+    <div class="flex items-center gap-3">
+      <span class="text-sm text-cream/50 font-serif">Agentic Forms</span>
+    </div>
+    <div class="mono text-xs text-cream/30">Forms that Close.</div>
+  </div>
+</footer>
+
+</body>
+</html>

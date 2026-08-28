@@ -30,3 +30,9 @@ dist-ssr
 
 # Backup and archive folders
 arthurandarchie/
+
+# Local Netlify folder
+.netlify
+
+# Vendored third-party MCP tool (has its own git repo)
+claude-talk-to-figma-mcp/

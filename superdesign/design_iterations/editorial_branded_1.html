@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arthur & Archie — Growth Intelligence, Engineered.</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: '#1C3654',
+          'navy-deep': '#142640',
+          'navy-light': '#2A4A6B',
+          terracotta: '#C97B5D',
+          'terracotta-dark': '#B5694D',
+          'terracotta-light': '#D4907A',
+          cream: '#FAF9F7',
+          'cream-dark': '#F0EDE8',
+          slate: '#667085',
+          forest: '#3F544A',
+          gold: '#B9A065',
+        },
+        fontFamily: {
+          serif: ['Crimson Pro', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+          mono: ['IBM Plex Mono', 'monospace'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #FAF9F7;
+    color: #1C3654;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Crimson Pro', serif;
+    color: #1C3654;
+  }
+
+  .mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* Marquee */
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .marquee-track {
+    display: flex;
+    animation: scroll-left 30s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+  .marquee-container {
+    overflow: hidden;
+    position: relative;
+  }
+  .marquee-container::before,
+  .marquee-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .marquee-container::before {
+    left: 0;
+    background: linear-gradient(to right, #FAF9F7, transparent);
+  }
+  .marquee-container::after {
+    right: 0;
+    background: linear-gradient(to left, #FAF9F7, transparent);
+  }
+
+  /* Fire particle animations */
+  @keyframes fire-slow {
+    0% { bottom: 0; opacity: 1; transform: translateX(0) scale(1); }
+    20% { bottom: 15%; opacity: 0.8; transform: translateX(-1px) scale(0.9); }
+    40% { bottom: 30%; opacity: 0.5; transform: translateX(1px) scale(0.7); }
+    60% { bottom: 45%; opacity: 0.25; transform: translateX(-1px) scale(0.5); }
+    80% { bottom: 60%; opacity: 0.1; transform: translateX(0) scale(0.3); }
+    100% { bottom: 75%; opacity: 0; transform: translateX(0) scale(0.2); }
+  }
+  @keyframes fire-medium {
+    0% { bottom: 0; opacity: 0.8; transform: translateX(0) scale(1); }
+    30% { bottom: 25%; opacity: 0.5; transform: translateX(2px) scale(0.7); }
+    60% { bottom: 50%; opacity: 0.2; transform: translateX(-1px) scale(0.4); }
+    100% { bottom: 85%; opacity: 0; transform: translateX(0) scale(0.2); }
+  }
+  @keyframes fire-fast {
+    0% { bottom: 0; opacity: 0.6; transform: translateX(0) scale(1); }
+    40% { bottom: 40%; opacity: 0.2; transform: translateX(-2px) scale(0.5); }
+    100% { bottom: 100%; opacity: 0; transform: translateX(1px) scale(0.1); }
+  }
+  .fire-slow { animation: fire-slow 2.5s ease-out infinite; }
+  .fire-medium { animation: fire-medium 1.8s ease-out infinite; }
+  .fire-fast { animation: fire-fast 1.2s ease-out infinite; }
+
+  /* Fire CTA button */
+  .fire-btn {
+    position: relative;
+    background: #C97B5D;
+    color: #FAF9F7;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 16px rgba(201, 123, 93, 0.5), 0 0 40px rgba(201, 123, 93, 0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .fire-btn:hover {
+    background: #B5694D;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(201, 123, 93, 0.6), 0 0 60px rgba(201, 123, 93, 0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+  }
+
+  /* Subtle grid background for dark sections */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(250,249,247,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(250,249,247,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Smooth scroll */
+  html { scroll-behavior: smooth; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="flex items-center justify-between px-8 lg:px-16 py-5 border-b border-cream-dark bg-cream/90 backdrop-blur-sm sticky top-0 z-50">
+  <div class="flex items-center gap-3">
+    <img src="../v2-site/assets/logo-header-transparent.png" alt="Arthur & Archie" class="h-8" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    <span class="text-lg font-semibold tracking-tight font-serif text-navy hidden">Arthur & Archie</span>
+  </div>
+  <div class="hidden md:flex items-center gap-8 text-sm text-slate">
+    <a href="#approach" class="hover:text-navy transition-colors">Approach</a>
+    <a href="#heritage" class="hover:text-navy transition-colors">Heritage</a>
+    <a href="#contact" class="hover:text-navy transition-colors">Contact</a>
+  </div>
+  <button class="text-sm border border-navy text-navy px-5 py-2 hover:bg-navy hover:text-cream transition-all rounded">Book a Call</button>
+</nav>
+
+<!-- SECTION 1: HERO -->
+<section class="px-8 lg:px-16 pt-24 pb-32 lg:pt-40 lg:pb-48">
+  <div class="max-w-5xl">
+    <p class="mono text-xs tracking-widest uppercase text-slate mb-6">Growth Intelligence for Professional Services</p>
+    <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight mb-8 text-navy">
+      Growth<br/>Intelligence,<br/>Engineered.
+    </h1>
+    <p class="text-lg md:text-xl text-slate max-w-xl mb-12 leading-relaxed">
+      Custom agentic systems that increase your value to your clients, compress your time-to-value, and generate demand without headcount.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <!-- Fire CTA -->
+      <button class="fire-btn px-8 py-4 text-sm tracking-wide font-medium rounded relative">
+        <span class="relative z-10">See What This Looks Like</span>
+        <span class="absolute inset-0 overflow-hidden pointer-events-none">
+          <!-- Slow particles -->
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[15%] fire-slow" style="animation-delay:0s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[35%] fire-slow" style="animation-delay:0.4s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[55%] fire-slow" style="animation-delay:0.8s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[75%] fire-slow" style="animation-delay:1.2s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[25%] fire-slow" style="animation-delay:1.6s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[65%] fire-slow" style="animation-delay:2s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/65 bottom-0 left-[10%] fire-slow" style="animation-delay:0.2s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[30%] fire-slow" style="animation-delay:0.6s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/65 bottom-0 left-[50%] fire-slow" style="animation-delay:1s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[70%] fire-slow" style="animation-delay:1.4s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/65 bottom-0 left-[85%] fire-slow" style="animation-delay:1.8s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[45%] fire-slow" style="animation-delay:2.2s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[8%] fire-slow" style="animation-delay:0.3s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/65 bottom-0 left-[22%] fire-slow" style="animation-delay:0.7s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[42%] fire-slow" style="animation-delay:1.1s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[62%] fire-slow" style="animation-delay:1.5s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/65 bottom-0 left-[78%] fire-slow" style="animation-delay:1.9s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[92%] fire-slow" style="animation-delay:2.3s"></span>
+          <!-- Medium particles -->
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[20%] fire-medium" style="animation-delay:0.2s"></span>
+          <span class="absolute w-1 h-1 bg-white/45 bottom-0 left-[45%] fire-medium" style="animation-delay:0.6s"></span>
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[70%] fire-medium" style="animation-delay:1s"></span>
+          <span class="absolute w-1 h-1 bg-white/45 bottom-0 left-[30%] fire-medium" style="animation-delay:1.4s"></span>
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[60%] fire-medium" style="animation-delay:1.8s"></span>
+          <span class="absolute w-1 h-1 bg-white/45 bottom-0 left-[12%] fire-medium" style="animation-delay:0.1s"></span>
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[38%] fire-medium" style="animation-delay:0.5s"></span>
+          <span class="absolute w-1 h-1 bg-white/45 bottom-0 left-[58%] fire-medium" style="animation-delay:0.9s"></span>
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[82%] fire-medium" style="animation-delay:1.3s"></span>
+          <span class="absolute w-1 h-1 bg-white/45 bottom-0 left-[48%] fire-medium" style="animation-delay:1.7s"></span>
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[5%] fire-medium" style="animation-delay:0.3s"></span>
+          <span class="absolute w-1 h-1 bg-white/45 bottom-0 left-[28%] fire-medium" style="animation-delay:0.7s"></span>
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[52%] fire-medium" style="animation-delay:1.1s"></span>
+          <span class="absolute w-1 h-1 bg-white/45 bottom-0 left-[75%] fire-medium" style="animation-delay:1.5s"></span>
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[90%] fire-medium" style="animation-delay:1.9s"></span>
+          <!-- Fast particles -->
+          <span class="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[10%] fire-fast" style="animation-delay:0.1s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[40%] fire-fast" style="animation-delay:0.5s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[50%] fire-fast" style="animation-delay:0.9s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[80%] fire-fast" style="animation-delay:1.3s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[85%] fire-fast" style="animation-delay:1.7s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[18%] fire-fast" style="animation-delay:0.2s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[32%] fire-fast" style="animation-delay:0.6s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[62%] fire-fast" style="animation-delay:1s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[72%] fire-fast" style="animation-delay:1.4s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[95%] fire-fast" style="animation-delay:1.8s"></span>
+        </span>
+      </button>
+      <button class="border border-slate/30 px-8 py-4 text-sm tracking-wide text-slate hover:border-navy hover:text-navy transition-all rounded">Book a Strategy Call</button>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: SCROLLING DELIVERABLES -->
+<section class="py-6 border-t border-b border-cream-dark">
+  <div class="marquee-container">
+    <div class="marquee-track">
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Presale Assessments</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Proposal Generators</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Knowledge Bases</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Client Surveys</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Data Enrichment Engines</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Engagement Workflows</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">CRM Integrations</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Lead Magnets</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Interactive Demos</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Pitch Builders</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">ROI Calculators</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Pipeline Dashboards</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Competitive Battlecards</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <!-- duplicate for seamless loop -->
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Presale Assessments</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Proposal Generators</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Knowledge Bases</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Client Surveys</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Data Enrichment Engines</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Engagement Workflows</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">CRM Integrations</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Lead Magnets</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Interactive Demos</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Pitch Builders</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">ROI Calculators</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Pipeline Dashboards</span>
+      <span class="text-terracotta/30 px-2">/</span>
+      <span class="mono text-sm text-terracotta/60 tracking-wide px-6">Competitive Battlecards</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: THREE OUTCOMES -->
+<section class="px-8 lg:px-16 py-24 lg:py-32">
+  <p class="mono text-xs tracking-widest uppercase text-terracotta mb-4">Every Engagement</p>
+  <h2 class="text-3xl md:text-4xl font-semibold mb-16 max-w-md text-navy">Three outcomes.<br/>No exceptions.</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+    <div class="border-t-2 border-terracotta pt-6">
+      <h3 class="text-xl font-semibold mb-3 text-navy">Value Amplification</h3>
+      <p class="text-slate text-sm leading-relaxed">Increase your value to your clients. Bigger deals, deeper retention, higher LTV — because your presale process demonstrates understanding your competitors can't match.</p>
+    </div>
+    <div class="border-t-2 border-terracotta pt-6">
+      <h3 class="text-xl font-semibold mb-3 text-navy">Time Compression</h3>
+      <p class="text-slate text-sm leading-relaxed">What took weeks takes days. What took days takes hours. Capacity unlocked, sales cycles shortened, clients onboarded faster.</p>
+    </div>
+    <div class="border-t-2 border-terracotta pt-6">
+      <h3 class="text-xl font-semibold mb-3 text-navy">Demand Generation</h3>
+      <p class="text-slate text-sm leading-relaxed">A running system that creates qualified inbound without additional headcount. Not a report in a drawer — infrastructure that works while you sleep.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: PROBLEM STATEMENT -->
+<section class="px-8 lg:px-16 py-24 lg:py-32 border-t border-cream-dark">
+  <div class="max-w-4xl">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div class="lg:col-span-5">
+        <h2 class="text-4xl md:text-5xl font-bold leading-tight text-navy">Your sales ops stack wasn't built for this.</h2>
+      </div>
+      <div class="lg:col-span-6 lg:col-start-7">
+        <p class="text-slate text-lg leading-relaxed mb-6">
+          Enterprise platforms gave you a CRM, a BI dashboard, and a contact database. They told you that was enough.
+        </p>
+        <p class="text-navy text-lg leading-relaxed mb-6 font-medium">
+          It's not.
+        </p>
+        <p class="text-slate leading-relaxed mb-8">
+          Your best people still spend days building proposals from scratch. Tribal knowledge walks out the door every time someone leaves. Your presale process — the thing that wins or loses every deal — runs on gut feel, recycled decks, and heroic individual effort.
+        </p>
+        <p class="text-navy font-medium text-lg border-l-2 border-terracotta pl-6">
+          The firms that build growth intelligence first will compound the advantage. The rest will wonder what happened.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: HOW IT WORKS -->
+<section id="approach" class="px-8 lg:px-16 py-24 lg:py-32 bg-navy text-cream grid-bg">
+  <p class="mono text-xs tracking-widest uppercase text-terracotta-light mb-4">How It Works</p>
+  <h2 class="text-3xl md:text-4xl font-semibold mb-20 max-w-lg text-cream">Your initiative,<br/>our engine.</h2>
+
+  <div class="max-w-4xl space-y-16 lg:space-y-24">
+    <!-- Beat 1 -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-2">
+        <span class="mono text-5xl text-navy-light">01</span>
+      </div>
+      <div class="lg:col-span-8">
+        <h3 class="text-2xl font-semibold mb-4 text-cream">Intelligence Discovery</h3>
+        <p class="text-cream/60 leading-relaxed">You define the growth initiative. We run targeted diagnostics — not a generic audit, but a specific investigation of the intelligence you're missing to get where you said you want to go. Output: a shared growth thesis and system architecture.</p>
+        <p class="mono text-xs text-terracotta/70 mt-4">Weeks 1–3</p>
+      </div>
+    </div>
+    <!-- Beat 2 -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-2">
+        <span class="mono text-5xl text-navy-light">02</span>
+      </div>
+      <div class="lg:col-span-8 lg:col-start-4">
+        <h3 class="text-2xl font-semibold mb-4 text-cream">System Build</h3>
+        <p class="text-cream/60 leading-relaxed">We compose the system from modular intelligence capabilities — tuned to your methodology, your clients' language, your data. You're in the build with us weekly, shaping what gets built.</p>
+        <p class="mono text-xs text-terracotta/70 mt-4">Weeks 4–8</p>
+      </div>
+    </div>
+    <!-- Beat 3 -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-2">
+        <span class="mono text-5xl text-navy-light">03</span>
+      </div>
+      <div class="lg:col-span-8 lg:col-start-5">
+        <h3 class="text-2xl font-semibold mb-4 text-cream">Activation & Compound</h3>
+        <p class="text-cream/60 leading-relaxed">System goes live. We measure against the three outcomes. The system starts compounding — generating leads, improving proposals, building your competitive moat. The question shifts from "is it done?" to "what do we add next?"</p>
+        <p class="mono text-xs text-terracotta/70 mt-4">Weeks 9–12</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: COMPARISON -->
+<section class="px-8 lg:px-16 py-24 lg:py-32">
+  <h2 class="text-3xl md:text-4xl font-semibold mb-16 text-navy">This isn't enterprise software.<br/>And it isn't consulting.</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+    <div class="p-8 border border-cream-dark rounded">
+      <p class="mono text-xs tracking-widest uppercase text-slate mb-4">Enterprise Platforms</p>
+      <p class="text-slate text-sm leading-relaxed">Their data model. Their dashboards. Their view of your business. You bend your process to fit their assumptions. When you need something custom, you're in a queue behind 10,000 other customers.</p>
+    </div>
+    <div class="p-8 border border-cream-dark rounded">
+      <p class="mono text-xs tracking-widest uppercase text-slate mb-4">Traditional Consulting</p>
+      <p class="text-slate text-sm leading-relaxed">A deck and a recommendations list. Smart people in a room for 6 weeks. Then they leave, and you're on your own to implement.</p>
+    </div>
+    <div class="p-8 border-2 border-terracotta rounded" style="box-shadow: 0 4px 16px rgba(201, 123, 93, 0.15);">
+      <p class="mono text-xs tracking-widest uppercase text-terracotta mb-4">Growth Intelligence</p>
+      <p class="text-navy text-sm leading-relaxed font-medium">A running system built around your specific business — your methodology, your clients, your data. Engineered by someone who understands both the technology and your growth challenge. And it compounds.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: PREREQUISITES -->
+<section class="px-8 lg:px-16 py-24 lg:py-32 border-t border-cream-dark">
+  <div class="max-w-4xl">
+    <h2 class="text-3xl md:text-4xl font-semibold mb-4 text-navy">Growth Intelligence works when the foundation is right.</h2>
+    <p class="text-slate mb-16 max-w-lg">We don't pretend AI solves everything. Agentic systems produce real outcomes when three things are in place.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div>
+        <div class="w-10 h-10 border-2 border-navy rounded-full flex items-center justify-center mb-4 mono text-sm text-navy">1</div>
+        <h3 class="text-lg font-semibold mb-2 text-navy">Growth Goal</h3>
+        <p class="text-slate text-sm leading-relaxed">Without it, the system automates motion, not progress.</p>
+      </div>
+      <div>
+        <div class="w-10 h-10 border-2 border-navy rounded-full flex items-center justify-center mb-4 mono text-sm text-navy">2</div>
+        <h3 class="text-lg font-semibold mb-2 text-navy">GTM Strategy</h3>
+        <p class="text-slate text-sm leading-relaxed">Without it, the system doesn't know who to target or what to say.</p>
+      </div>
+      <div>
+        <div class="w-10 h-10 border-2 border-navy rounded-full flex items-center justify-center mb-4 mono text-sm text-navy">3</div>
+        <h3 class="text-lg font-semibold mb-2 text-navy">Data Governance</h3>
+        <p class="text-slate text-sm leading-relaxed">Without it, the system can't trust its own inputs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8: HERITAGE -->
+<section id="heritage" class="px-8 lg:px-16 py-24 lg:py-32 bg-navy text-cream grid-bg">
+  <p class="mono text-xs tracking-widest uppercase text-gold mb-12">200+ Years of Professional Service</p>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+    <div>
+      <span class="mono text-3xl lg:text-4xl text-gold/50">1804</span>
+      <p class="text-sm text-cream/70 mt-2">William A. Austin</p>
+      <p class="text-xs text-cream/40 mt-1">Justice of Peace</p>
+    </div>
+    <div>
+      <span class="mono text-3xl lg:text-4xl text-gold/50">1886</span>
+      <p class="text-sm text-cream/70 mt-2">Howard B. Austin</p>
+      <p class="text-xs text-cream/40 mt-1">IL Poet Laureate</p>
+    </div>
+    <div>
+      <span class="mono text-3xl lg:text-4xl text-gold/50">1929</span>
+      <p class="text-sm text-cream/70 mt-2">Arthur Dean Austin</p>
+      <p class="text-xs text-cream/40 mt-1">Tech-enabled accounting</p>
+    </div>
+    <div>
+      <span class="mono text-3xl lg:text-4xl text-gold">2024</span>
+      <p class="text-sm text-cream mt-2">Joel Austin</p>
+      <p class="text-xs text-terracotta-light mt-1">Growth Intelligence</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 9: FINAL CTA -->
+<section id="contact" class="px-8 lg:px-16 py-24 lg:py-40">
+  <div class="max-w-3xl">
+    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8 text-navy">See what Growth Intelligence looks like for your firm.</h2>
+    <p class="text-slate text-lg mb-12 max-w-lg">Every firm's growth challenge is different. The system we'd build for you depends on where you are, where you want to go, and what intelligence you're missing.</p>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <!-- Fire CTA -->
+      <button class="fire-btn px-8 py-4 text-sm tracking-wide font-medium rounded relative">
+        <span class="relative z-10">Book a Strategy Call</span>
+        <span class="absolute inset-0 overflow-hidden pointer-events-none">
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[15%] fire-slow" style="animation-delay:0s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[35%] fire-slow" style="animation-delay:0.4s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[55%] fire-slow" style="animation-delay:0.8s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[75%] fire-slow" style="animation-delay:1.2s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[25%] fire-slow" style="animation-delay:1.6s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/60 bottom-0 left-[65%] fire-slow" style="animation-delay:2s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/65 bottom-0 left-[10%] fire-slow" style="animation-delay:0.2s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/70 bottom-0 left-[50%] fire-slow" style="animation-delay:1s"></span>
+          <span class="absolute w-1.5 h-1.5 bg-white/65 bottom-0 left-[85%] fire-slow" style="animation-delay:1.8s"></span>
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[20%] fire-medium" style="animation-delay:0.2s"></span>
+          <span class="absolute w-1 h-1 bg-white/45 bottom-0 left-[45%] fire-medium" style="animation-delay:0.6s"></span>
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[70%] fire-medium" style="animation-delay:1s"></span>
+          <span class="absolute w-1 h-1 bg-white/45 bottom-0 left-[30%] fire-medium" style="animation-delay:1.4s"></span>
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[60%] fire-medium" style="animation-delay:1.8s"></span>
+          <span class="absolute w-1 h-1 bg-white/50 bottom-0 left-[82%] fire-medium" style="animation-delay:1.3s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[10%] fire-fast" style="animation-delay:0.1s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[40%] fire-fast" style="animation-delay:0.5s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[50%] fire-fast" style="animation-delay:0.9s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/25 bottom-0 left-[80%] fire-fast" style="animation-delay:1.3s"></span>
+          <span class="absolute w-0.5 h-0.5 bg-white/30 bottom-0 left-[62%] fire-fast" style="animation-delay:1s"></span>
+        </span>
+      </button>
+      <button class="border border-slate/30 px-8 py-4 text-sm tracking-wide text-slate hover:border-navy hover:text-navy transition-all rounded">Try Our Growth Intelligence Demo</button>
+    </div>
+    <p class="mono text-xs text-slate/60 mt-6">This demo is one reference implementation. Imagine it tuned to your methodology.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="px-8 lg:px-16 py-8 border-t border-cream-dark">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+    <div class="flex items-center gap-3">
+      <img src="../v2-site/assets/logo-header-transparent.png" alt="Arthur & Archie" class="h-6 opacity-50" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <span class="text-sm text-slate hidden" style="font-family:'Crimson Pro',serif;">Arthur & Archie</span>
+    </div>
+    <div class="mono text-xs text-slate/50">Growth Intelligence, Engineered.</div>
+  </div>
+</footer>
+
+</body>
+</html>
