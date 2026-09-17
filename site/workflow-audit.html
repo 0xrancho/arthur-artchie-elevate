@@ -421,7 +421,7 @@ a:not(.btn):not(.nav-brand):not(.nav-cta):not(.foot-nap a){color:var(--aa-blue-d
       <p style="margin-top:1.6em">You get all five as a private site your team browses and a PDF your board reads. No jargon, no scoring, nothing that needs us in the room to interpret.</p>
       <p class="caption">From a complete sample audit of Ashgrove Development Partners, a fictitious firm. Every name and number is invented; the findings are real classes of defect from real audits.</p>
       <div class="actions" style="margin-top:1.4em">
-        <a class="btn btn-quiet" href="https://sample.reports.arthurarchie.com">Read the whole sample audit</a>
+        <a class="btn btn-quiet" href="https://sample.reports.arthurarchie.com" target="_blank" rel="noopener">Read the whole sample audit</a>
       </div>
     </div>
   </section>
@@ -532,6 +532,7 @@ a:not(.btn):not(.nav-brand):not(.nav-cta):not(.foot-nap a){color:var(--aa-blue-d
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
   function markThankYou(){var t=document.getElementById('schedule-thank-you');t.classList.add('open');t.scrollIntoView({block:'center'});}
   if(params.get('thanks')==='schedule')markThankYou();
+  if(params.get('book')==='1')openModal();
 
   function $(id){return document.getElementById(id);}
   function loadSlots(){
