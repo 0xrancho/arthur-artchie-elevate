@@ -194,7 +194,11 @@ p{margin:0}
 .foot-nap a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.18)}
 .foot-nap .sep{margin:0 .5em;color:rgba(255,255,255,.28)}
 .foot-copy{font-size:.7rem;color:rgba(255,255,255,.42)}
-@media (max-width:600px){.hero-card{padding:3rem 1.25rem 2.5rem}}
+@media (max-width:480px){
+  .nav{margin-inline:-1.5rem;padding-inline:1rem}
+  .nav-brand{font-size:1.15rem}
+  .nav-cta{font-size:.72rem;padding:.4rem .75rem;white-space:nowrap}
+}
 a:not(.btn):not(.nav-brand):not(.nav-cta):not(.foot-nap a){color:var(--aa-blue-dark)}
 .band.teal a:not(.btn),.band.charcoal a:not(.btn){color:#fff;text-decoration:underline;text-underline-offset:3px}
 :focus-visible{outline:2px solid var(--aa-blue);outline-offset:3px}
@@ -276,7 +280,12 @@ a:not(.btn):not(.nav-brand):not(.nav-cta):not(.foot-nap a){color:var(--aa-blue-d
 @media (max-width:700px){.form-grid{grid-template-columns:1fr}.modal-body,.modal-header{padding-left:1rem;padding-right:1rem}.cal-day{font-size:.75rem;padding:.45rem 0}.slot-times{grid-template-columns:repeat(auto-fill,minmax(90px,1fr))}}
 
 @media (max-width:720px){
-  .band{grid-template-columns:1fr;gap:16px;padding-block:3rem}
+  .band,.band.wide{grid-template-columns:1fr;gap:16px;padding-block:3rem}
+  .cards{margin-top:1.2em}
+  .hero-card{padding:2.5rem 1.25rem 2.25rem}
+  .hero h1{font-size:2.15rem}
+  .hero .lede{font-size:1.02rem}
+  .hero .terms{line-height:1.6}
   .mark{padding-top:0}
   .slots div{grid-template-columns:1fr;gap:1px}
   .slots dt{padding-top:0}
@@ -305,7 +314,7 @@ a:not(.btn):not(.nav-brand):not(.nav-cta):not(.foot-nap a){color:var(--aa-blue-d
         <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
         <p class="kicker">The Workflow Audit</p>
         <h1>Your firm <span class="caps">WORKS</span><span class="dots">&hellip;</span><em>somehow.</em></h1>
-        <p class="lede">A service design blueprint of how your program runs, and detailed technical analysis of gaps and opportunities for process transformation. You get an actionable document every leader understands.</p>
+        <p class="lede">A service design blueprint of how your program runs, and detailed analysis of gaps and opportunities for process transformation. You get an actionable document every leader understands.</p>
         <div class="actions">
           <button type="button" class="btn" data-open-modal="schedule-modal">Book a scoping call</button>
           <a class="btn btn-quiet" href="#inside">See what's inside one</a>
