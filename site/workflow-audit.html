@@ -26,10 +26,8 @@
   --font-body:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 
   --bg:var(--aa-white);
-  --band:var(--aa-white);
-  --g-light:#f5f7f8;
-  --g-blue:#eef6fa;
-  --g-cream:#f9f7f2;
+  --teal:#2a6d8a;
+  --teal-deep:#1d5e79;
   --surface:var(--aa-white);
   --heading:var(--aa-charcoal-deep);
   --body:var(--aa-text);
@@ -73,32 +71,15 @@ h1 em{font-style:italic;font-weight:500;letter-spacing:-.005em}
 p{margin:0}
 
 .band{display:grid;grid-template-columns:136px minmax(0,1fr);gap:0 44px;padding-block:5rem;position:relative;isolation:isolate}
-.band::before{content:"";position:absolute;inset:0 -100vmax;z-index:-1;background:var(--ground,transparent)}
-/* Middle grounds: one continuous drift from the white hero, through blue-grey, a warm
-   cream pause at the disqualifier, a blue-tinted deliverable, and back to white for the close. */
-.band.g1{--ground:linear-gradient(180deg,var(--aa-white) 0%,var(--g-light) 100%)}
-.band.g2{--ground:linear-gradient(180deg,var(--g-light) 0%,var(--g-blue) 100%)}
-.band.g3{--ground:linear-gradient(180deg,var(--g-blue) 0%,var(--g-cream) 22%,var(--g-cream) 78%,var(--g-blue) 100%)}
-.band.g4{--ground:linear-gradient(180deg,var(--g-blue) 0%,var(--g-light) 100%)}
-.band.g5{--ground:linear-gradient(180deg,var(--g-light) 0%,var(--aa-white) 100%)}
 .mark{font-size:11px;font-weight:600;letter-spacing:.17em;text-transform:uppercase;color:var(--muted);padding-top:.8em}
 .col{max-width:64ch}
 .col > * + *{margin-top:1.15em}
 .lede{font-size:1.15rem;line-height:1.55;color:var(--body)}
 
-.hero,.close,.foot{box-shadow:0 0 0 100vmax var(--band);clip-path:inset(0 -100vmax)}
-.hero{padding-block:4rem 4.5rem;background:var(--band)}
-.hero.has-grid::before,.close.has-grid::before,.foot.has-grid::before{inset:0 -100vmax}
-.brand{
-  font-family:var(--font-display);font-size:1.22rem;font-weight:500;
-  color:var(--heading);letter-spacing:-.005em;display:inline-block;
-  margin-bottom:2.6rem;text-decoration:none;font-variation-settings:'opsz' 72;
-}
 .kicker{
   font-size:11.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
   color:var(--aa-blue-dark);margin-bottom:1.3rem;
 }
-.hero .lede{margin-top:1.45em;max-width:58ch;font-size:1.22rem}
 .actions{display:flex;flex-wrap:wrap;gap:14px 16px;align-items:center;margin-top:2.3em}
 .btn{
   display:inline-block;background:var(--cta);color:var(--cta-ink);
@@ -163,37 +144,129 @@ p{margin:0}
 .strip figcaption b{color:var(--heading);font-weight:600}
 @media (max-width:720px){.strip-row{grid-template-columns:1fr}}
 
-.close{padding-block:4.5rem 5.5rem;border-top:1px solid var(--rule-soft);background:var(--band)}
-.close h2{max-width:20ch}
-.foot{border-top:1px solid var(--rule-soft);padding-block:26px 44px;background:var(--band);display:flex;flex-wrap:wrap;gap:8px 28px;font-size:12px;color:var(--muted);letter-spacing:.03em}
-a:not(.btn){color:var(--aa-blue-dark)}
+
+/* ---------- arthurarchie.com production system ---------- */
+/* Nav: thin, sticky, logo home. */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--aa-border);margin-inline:-1.5rem;padding-inline:1.5rem}
+.nav-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-brand{font-family:var(--font-display);font-size:1.35rem;font-weight:400;color:var(--aa-charcoal);text-decoration:none;letter-spacing:.01em}
+.nav-brand .amp{font-weight:300}
+.nav-cta{font-size:.8rem;font-weight:600;color:#fff;background:var(--aa-blue);padding:.45rem 1.1rem;border-radius:6px;text-decoration:none}
+.nav-cta:hover{background:var(--aa-blue-dark)}
+
+/* Hero + closing CTA: the production hero block. Full-width faint grid, a cell frame,
+   decorated corner cells, and a solid white centered card with amber corner brackets. */
+.hero{padding:0}
+.hero.has-grid::before{inset:0 -100vmax}
+.hero-grid{display:block}
+.hero-cell{border:1px solid var(--grid-color);min-height:48px;position:relative}
+.hero-deco,.hero-row{display:none}
+.deco-dots{background-image:radial-gradient(circle,rgba(0,0,0,.08) 1px,transparent 1px);background-size:8px 8px;background-position:4px 4px}
+.deco-lines{background-image:repeating-linear-gradient(45deg,transparent,transparent 6px,rgba(0,0,0,.03) 6px,rgba(0,0,0,.03) 7px)}
+.deco-cross{background-image:
+  repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(0,0,0,.024) 10px,rgba(0,0,0,.024) 11px),
+  repeating-linear-gradient(-45deg,transparent,transparent 10px,rgba(0,0,0,.024) 10px,rgba(0,0,0,.024) 11px)}
+.hero-card{position:relative;padding:2.75rem 2.5rem 2.5rem;background:var(--aa-white);border:1px solid var(--grid-color);text-align:center}
+.corner{position:absolute;width:20px;height:20px}
+.corner::before,.corner::after{content:"";position:absolute;background:var(--aa-amber)}
+.corner.tl{top:-1px;left:-1px}.corner.tl::before{top:0;left:0;width:20px;height:2px}.corner.tl::after{top:0;left:0;width:2px;height:20px}
+.corner.tr{top:-1px;right:-1px}.corner.tr::before{top:0;right:0;width:20px;height:2px}.corner.tr::after{top:0;right:0;width:2px;height:20px}
+.corner.bl{bottom:-1px;left:-1px}.corner.bl::before{bottom:0;left:0;width:20px;height:2px}.corner.bl::after{bottom:0;left:0;width:2px;height:20px}
+.corner.br{bottom:-1px;right:-1px}.corner.br::before{bottom:0;right:0;width:20px;height:2px}.corner.br::after{bottom:0;right:0;width:2px;height:20px}
+@media (min-width:768px){
+  .hero-grid{display:grid;grid-template-columns:1fr 640px 1fr}
+  .hero-deco{display:block}
+  .hero-row{display:contents}
+}
+.hero .kicker{margin-bottom:1rem}
+.hero h1{font-size:clamp(2.3rem,5vw,3.4rem);font-weight:400;line-height:1.1;letter-spacing:-.01em;margin-bottom:1.1rem}
+.hero .lede{max-width:52ch;margin:0 auto;font-size:1.1rem;color:var(--body)}
+.hero .actions{justify-content:center;margin-top:1.8em}
+.hero .terms{margin-top:1.6em}
+.hero h2{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:500;margin-bottom:.9rem}
+
+/* Middle bands: production alternation. Teal gradient with white grid, solid light
+   blue-grey, deep charcoal, light again, teal grid, then the hero block closes. */
+.band::before{content:"";position:absolute;inset:0 -100vmax;z-index:-1;background:var(--ground,transparent)}
+.band.light{--ground:var(--aa-light);border-top:1px solid var(--aa-border);border-bottom:1px solid var(--aa-border)}
+.band.teal::before{
+  background-image:
+    linear-gradient(to right,rgba(255,255,255,.10) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(255,255,255,.10) 1px,transparent 1px),
+    linear-gradient(180deg,var(--teal) 0%,var(--teal-deep) 100%);
+  background-size:48px 48px,48px 48px,auto}
+.band.charcoal{--ground:var(--aa-charcoal-deep)}
+.band.teal,.band.charcoal{
+  --heading:#fff;--body:rgba(255,255,255,.82);--muted:rgba(255,255,255,.66);
+  --rule:rgba(255,255,255,.22);--rule-soft:rgba(255,255,255,.14);color:var(--body)}
+.band.teal .mark,.band.charcoal .mark{color:rgba(255,255,255,.72)}
+.band.teal .lede,.band.charcoal .lede,.band.teal p,.band.charcoal p{color:var(--body)}
+.band.teal .triggers h3,.band.charcoal h3{color:#fff}
+.band.teal .triggers .n{color:var(--aa-amber)}
+.band.teal .gets b,.band.charcoal .col p b{color:#fff}
+
+/* Footer: production charcoal footer. */
+.foot{position:relative;isolation:isolate;text-align:center;padding:2.5rem 0;font-size:.8rem;color:rgba(255,255,255,.68)}
+.foot::before{content:"";position:absolute;inset:0 -100vmax;z-index:-1;background:var(--aa-charcoal-deep);border-top:1px solid rgba(255,255,255,.08)}
+.foot-brand{font-family:var(--font-display);font-size:1.1rem;color:#fff;margin-bottom:.25rem}
+.foot-tag{font-size:.75rem;margin-bottom:1rem;color:rgba(255,255,255,.72)}
+.foot-nap{font-size:.7rem;color:rgba(255,255,255,.55);margin-bottom:.5rem}
+.foot-nap a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.18)}
+.foot-nap .sep{margin:0 .5em;color:rgba(255,255,255,.28)}
+.foot-copy{font-size:.7rem;color:rgba(255,255,255,.42)}
+@media (max-width:600px){.hero-card{padding:3rem 1.25rem 2.5rem}}
+a:not(.btn):not(.nav-brand):not(.nav-cta):not(.foot-nap a){color:var(--aa-blue-dark)}
+.band.teal a:not(.btn),.band.charcoal a:not(.btn){color:#fff;text-decoration:underline;text-underline-offset:3px}
 :focus-visible{outline:2px solid var(--aa-blue);outline-offset:3px}
 
 @media (max-width:720px){
   .band{grid-template-columns:1fr;gap:16px;padding-block:3rem}
   .mark{padding-top:0}
-  .hero{padding-block:3rem}
   .slots div{grid-template-columns:1fr;gap:1px}
   .slots dt{padding-top:0}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="https://arthurarchie.com">Arthur <span class="amp">&amp;</span> Archie</a>
+    <a class="nav-cta" href="#start">Book a scoping call</a>
+  </div>
+</nav>
+
 <div class="wrap">
 
-  <header class="hero has-grid">
-    <a class="brand" href="https://arthurarchie.com">Arthur <span class="amp">&amp;</span> Archie</a>
-    <p class="kicker">The Workflow Audit</p>
-    <h1>Your firm <span class="caps">WORKS</span>&hellip;<em>somehow.</em></h1>
-    <p class="lede">A service design blueprint of how your program runs, and detailed technical analysis of gaps and opportunities for process transformation. You get an actionable document every leader understands.</p>
-    <div class="actions">
-      <a class="btn" href="#start">Book a scoping call</a>
-      <a class="btn btn-quiet" href="#inside">See what's inside one</a>
+  <section class="hero has-grid">
+    <div class="hero-grid">
+      <div class="hero-row">
+        <div class="hero-cell hero-deco deco-dots" style="min-height:144px"></div>
+        <div class="hero-cell" style="min-height:144px;border-left:none;border-right:none"></div>
+        <div class="hero-cell hero-deco deco-lines" style="min-height:144px"></div>
+      </div>
+      <div class="hero-cell hero-deco deco-cross"></div>
+      <div class="hero-card">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+        <p class="kicker">The Workflow Audit</p>
+        <h1>Your firm <span class="caps">WORKS</span>&hellip;<em>somehow.</em></h1>
+        <p class="lede">A service design blueprint of how your program runs, and detailed technical analysis of gaps and opportunities for process transformation. You get an actionable document every leader understands.</p>
+        <div class="actions">
+          <a class="btn" href="#start">Book a scoping call</a>
+          <a class="btn btn-quiet" href="#inside">See what's inside one</a>
+        </div>
+        <p class="terms">Fixed fee &middot; Three to four weeks &middot; Nothing to install</p>
+      </div>
+      <div class="hero-cell hero-deco deco-dots"></div>
+      <div class="hero-row">
+        <div class="hero-cell hero-deco" style="min-height:96px"></div>
+        <div class="hero-cell" style="min-height:96px;border-left:none;border-right:none"></div>
+        <div class="hero-cell hero-deco deco-cross" style="min-height:96px"></div>
+      </div>
     </div>
-    <p class="terms">Fixed fee &middot; Three to four weeks &middot; Nothing to install</p>
-  </header>
+  </section>
 
-  <section class="band g1">
+  <section class="band teal">
     <div class="mark">Why firms call</div>
     <div class="col">
       <h2>Three decisions, all stuck.</h2>
@@ -223,7 +296,7 @@ a:not(.btn){color:var(--aa-blue-dark)}
     </div>
   </section>
 
-  <section class="band g2">
+  <section class="band light">
     <div class="mark">Who it's for</div>
     <div class="col">
       <h2>Firms that win on what their people know.</h2>
@@ -232,7 +305,7 @@ a:not(.btn){color:var(--aa-blue-dark)}
     </div>
   </section>
 
-  <section class="band g3">
+  <section class="band charcoal">
     <div class="mark">Not a good fit</div>
     <div class="col">
       <h2>Some firms should not buy this.</h2>
@@ -240,7 +313,7 @@ a:not(.btn){color:var(--aa-blue-dark)}
     </div>
   </section>
 
-  <section class="band g4" id="inside">
+  <section class="band light" id="inside">
     <div class="mark">What we deliver</div>
     <div class="col">
       <h2>A service blueprint of how your program actually runs, and a findings register of what to fix first.</h2>
@@ -279,7 +352,7 @@ a:not(.btn){color:var(--aa-blue-dark)}
     </div>
   </section>
 
-  <section class="band g5">
+  <section class="band teal">
     <div class="mark">The limit</div>
     <div class="col">
       <h2>An audit does not fix anything.</h2>
@@ -288,18 +361,37 @@ a:not(.btn){color:var(--aa-blue-dark)}
     </div>
   </section>
 
-  <section class="close has-grid" id="start">
-    <h2>Start with a conversation.</h2>
-    <p class="lede" style="margin-top:1em;max-width:54ch">Thirty minutes, no deck. We will tell you whether an audit is the right instrument for what you are facing, and if it is not, what is.</p>
-    <div class="actions">
-      <a class="btn" href="mailto:hello@arthurarchie.com?subject=Workflow%20Audit">Email hello@arthurarchie.com</a>
+  <section class="hero close has-grid" id="start">
+    <div class="hero-grid">
+      <div class="hero-row">
+        <div class="hero-cell hero-deco deco-dots" style="min-height:144px"></div>
+        <div class="hero-cell" style="min-height:144px;border-left:none;border-right:none"></div>
+        <div class="hero-cell hero-deco deco-lines" style="min-height:144px"></div>
+      </div>
+      <div class="hero-cell hero-deco deco-cross"></div>
+      <div class="hero-card">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+        <p class="kicker">Start here</p>
+        <h2>Start with a conversation.</h2>
+        <p class="lede">Thirty minutes, no deck. We will tell you whether an audit is the right instrument for what you are facing, and if it is not, what is.</p>
+        <div class="actions">
+          <a class="btn" href="mailto:hello@arthurarchie.com?subject=Workflow%20Audit">Email hello@arthurarchie.com</a>
+        </div>
+      </div>
+      <div class="hero-cell hero-deco deco-dots"></div>
+      <div class="hero-row">
+        <div class="hero-cell hero-deco" style="min-height:96px"></div>
+        <div class="hero-cell" style="min-height:96px;border-left:none;border-right:none"></div>
+        <div class="hero-cell hero-deco deco-cross" style="min-height:96px"></div>
+      </div>
     </div>
   </section>
 
-  <footer class="foot has-grid">
-    <span>Arthur &amp; Archie</span>
-    <span>6151 Central Ave, Suite 120 &middot; Indianapolis, IN 46220</span>
-    <span>hello@arthurarchie.com</span>
+  <footer class="foot">
+    <div class="foot-brand">Arthur <span class="amp">&amp;</span> Archie</div>
+    <div class="foot-tag">Agentic Services Partner for firms that grow on trust</div>
+    <div class="foot-nap">6151 Central Ave, Suite 120 &middot; Indianapolis, IN 46220<span class="sep">&middot;</span><a href="mailto:hello@arthurarchie.com">hello@arthurarchie.com</a></div>
+    <div class="foot-copy">&copy; 2026 Arthur &amp; Archie. All rights reserved. Made in Indianapolis.</div>
   </footer>
 
 </div>
