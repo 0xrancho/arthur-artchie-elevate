@@ -19,14 +19,17 @@
   --aa-text-light:#6B7D88;
   --aa-border:#e2e7ea;
   --aa-white:#ffffff;
-  --grid-color:rgba(29,161,212,0.16);
+  --grid-color:rgba(0,0,0,0.045);
   --max-w:1120px;
 
   --font-display:'Fraunces',Georgia,serif;
   --font-body:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 
   --bg:var(--aa-white);
-  --band:var(--aa-light);
+  --band:var(--aa-white);
+  --g-light:#f5f7f8;
+  --g-blue:#eef6fa;
+  --g-cream:#f9f7f2;
   --surface:var(--aa-white);
   --heading:var(--aa-charcoal-deep);
   --body:var(--aa-text);
@@ -69,7 +72,15 @@ h1 .caps{letter-spacing:.012em;font-weight:600}
 h1 em{font-style:italic;font-weight:500;letter-spacing:-.005em}
 p{margin:0}
 
-.band{display:grid;grid-template-columns:136px minmax(0,1fr);gap:0 44px;padding-block:5rem;border-top:1px solid var(--rule-soft)}
+.band{display:grid;grid-template-columns:136px minmax(0,1fr);gap:0 44px;padding-block:5rem;position:relative;isolation:isolate}
+.band::before{content:"";position:absolute;inset:0 -100vmax;z-index:-1;background:var(--ground,transparent)}
+/* Middle grounds: one continuous drift from the white hero, through blue-grey, a warm
+   cream pause at the disqualifier, a blue-tinted deliverable, and back to white for the close. */
+.band.g1{--ground:linear-gradient(180deg,var(--aa-white) 0%,var(--g-light) 100%)}
+.band.g2{--ground:linear-gradient(180deg,var(--g-light) 0%,var(--g-blue) 100%)}
+.band.g3{--ground:linear-gradient(180deg,var(--g-blue) 0%,var(--g-cream) 22%,var(--g-cream) 78%,var(--g-blue) 100%)}
+.band.g4{--ground:linear-gradient(180deg,var(--g-blue) 0%,var(--g-light) 100%)}
+.band.g5{--ground:linear-gradient(180deg,var(--g-light) 0%,var(--aa-white) 100%)}
 .mark{font-size:11px;font-weight:600;letter-spacing:.17em;text-transform:uppercase;color:var(--muted);padding-top:.8em}
 .col{max-width:64ch}
 .col > * + *{margin-top:1.15em}
@@ -152,7 +163,7 @@ p{margin:0}
 .strip figcaption b{color:var(--heading);font-weight:600}
 @media (max-width:720px){.strip-row{grid-template-columns:1fr}}
 
-.close{padding-block:4.5rem 5.5rem;border-top:1px solid var(--rule);background:var(--band)}
+.close{padding-block:4.5rem 5.5rem;border-top:1px solid var(--rule-soft);background:var(--band)}
 .close h2{max-width:20ch}
 .foot{border-top:1px solid var(--rule-soft);padding-block:26px 44px;background:var(--band);display:flex;flex-wrap:wrap;gap:8px 28px;font-size:12px;color:var(--muted);letter-spacing:.03em}
 a:not(.btn){color:var(--aa-blue-dark)}
@@ -182,7 +193,7 @@ a:not(.btn){color:var(--aa-blue-dark)}
     <p class="terms">Fixed fee &middot; Three to four weeks &middot; Nothing to install</p>
   </header>
 
-  <section class="band">
+  <section class="band g1">
     <div class="mark">Why firms call</div>
     <div class="col">
       <h2>Three decisions, all stuck.</h2>
@@ -212,7 +223,7 @@ a:not(.btn){color:var(--aa-blue-dark)}
     </div>
   </section>
 
-  <section class="band">
+  <section class="band g2">
     <div class="mark">Who it's for</div>
     <div class="col">
       <h2>Firms that win on what their people know.</h2>
@@ -221,7 +232,7 @@ a:not(.btn){color:var(--aa-blue-dark)}
     </div>
   </section>
 
-  <section class="band">
+  <section class="band g3">
     <div class="mark">Not a good fit</div>
     <div class="col">
       <h2>Some firms should not buy this.</h2>
@@ -229,7 +240,7 @@ a:not(.btn){color:var(--aa-blue-dark)}
     </div>
   </section>
 
-  <section class="band" id="inside">
+  <section class="band g4" id="inside">
     <div class="mark">What we deliver</div>
     <div class="col">
       <h2>A service blueprint of how your program actually runs, and a findings register of what to fix first.</h2>
@@ -268,7 +279,7 @@ a:not(.btn){color:var(--aa-blue-dark)}
     </div>
   </section>
 
-  <section class="band">
+  <section class="band g5">
     <div class="mark">The limit</div>
     <div class="col">
       <h2>An audit does not fix anything.</h2>
