@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arthur &amp; Archie | Agentic Services Partner</title>
+  <meta name="description" content="Arthur & Archie is an agentic services partner for firms that grow on trust.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Arthur & Archie | Agentic Services Partner">
+  <meta property="og:description" content="We deploy AI agencies for professional services firms that grow on trust.">
+  <meta property="og:image" content="https://arthurarchie.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Arthur & Archie — Agentic Services Partner">
+  <meta property="og:url" content="https://arthurarchie.com">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Arthur & Archie">
+
+  <!-- Twitter / SMS / iMessage -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Arthur & Archie | Agentic Services Partner">
+  <meta name="twitter:description" content="We deploy AI agencies for professional services firms that grow on trust.">
+  <meta name="twitter:image" content="https://arthurarchie.com/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Arthur & Archie",
+    "alternateName": "Arthur and Archie",
+    "url": "https://www.arthurarchie.com",
+    "logo": "https://arthurarchie.com/og-image.png",
+    "image": "https://arthurarchie.com/og-image.png",
+    "description": "Agentic services partner for professional services firms that grow on trust. We deploy managed AI agencies that encode firm methodology and values.",
+    "slogan": "For firms that grow on Trust",
+    "email": "hello@arthurarchie.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "6151 Central Ave Suite 120",
+      "addressLocality": "Indianapolis",
+      "addressRegion": "IN",
+      "postalCode": "46220",
+      "addressCountry": "US"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "hello@arthurarchie.com",
+      "availableLanguage": "English"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "knowsAbout": [
+      "Agentic AI",
+      "AI Enablement",
+      "Professional Services Automation",
+      "Managed AI Services",
+      "Enterprise AI Strategy"
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --aa-blue: #1DA1D4;
+      --aa-blue-dark: #1789B5;
+      --aa-blue-soft: rgba(29,161,212,0.10);
+      --aa-blue-pale: #eaf6fb;
+      --aa-amber: #F2B35E;
+      --aa-amber-soft: rgba(242,179,94,0.10);
+      --aa-charcoal: #3A4A54;
+      --aa-charcoal-deep: #2E3C44;
+      --aa-light: #f5f7f8;
+      --aa-border: #e2e7ea;
+      --aa-text: #3A4A54;
+      --aa-text-light: #6B7D88;
+      --aa-white: #ffffff;
+      --aa-cream: #f9f7f2;
+      --aa-cream-deep: #f1ede3;
+      --aa-neo-green: #7dd87d;
+      --aa-neo-violet: #9184ff;
+      --aa-neo-cyan: #57d6ff;
+      --grid-color: rgba(0, 0, 0, 0.045);
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --max-w: 1120px;
+      --section-pad: 5rem 1.5rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { font-family: var(--font-body); font-size: 1rem; line-height: 1.7; color: var(--aa-text); background: var(--aa-white); }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--aa-border);
+      padding: 0 1.5rem;
+    }
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-brand {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--aa-charcoal);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .nav-brand .amp { color: var(--aa-amber); font-style: italic; font-weight: 300; font-variation-settings: 'opsz' 144; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--aa-text-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--aa-charcoal); }
+    .nav-cta {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--aa-white) !important;
+      background: var(--aa-blue);
+      padding: 0.45rem 1.1rem;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--aa-blue-dark); color: var(--aa-white) !important; }
+
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--aa-charcoal); margin: 5px 0; transition: 0.3s; }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .nav-links {
+        display: none; flex-direction: column; gap: 0;
+        position: absolute; top: 64px; left: 0; right: 0;
+        background: var(--aa-white); border-bottom: 1px solid var(--aa-border);
+        padding: 1rem 1.5rem;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { padding: 0.5rem 0; }
+      .nav-cta { margin-top: 0.5rem; text-align: center; display: block; }
+    }
+
+    section { padding: var(--section-pad); }
+    .container { max-width: var(--max-w); margin: 0 auto; }
+    h1, h2, h3, h4 { font-family: var(--font-display); color: var(--aa-charcoal); }
+    h2 { font-size: 2rem; font-weight: 500; line-height: 1.25; margin-bottom: 1rem; }
+    h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.35rem; }
+    p { margin-bottom: 1rem; }
+    a { color: var(--aa-blue); text-decoration: none; }
+    a:hover { color: var(--aa-blue-dark); }
+
+    .has-grid { position: relative; }
+    .has-grid::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none; z-index: 0;
+    }
+    .has-grid > * { position: relative; z-index: 1; }
+
+    .hero { padding: 0; }
+    .hero-grid-wrapper { display: block; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .hero-grid-cell { border: 1px solid var(--grid-color); min-height: 48px; position: relative; }
+    .hero-grid-cell-deco, .hero-grid-row-deco { display: none; }
+    .hero-deco-dots {
+      background-image: radial-gradient(circle, rgba(0,0,0,0.08) 1px, transparent 1px);
+      background-size: 8px 8px; background-position: 4px 4px;
+    }
+    .hero-deco-lines {
+      background-image: repeating-linear-gradient(45deg, transparent, transparent 6px, rgba(0,0,0,0.03) 6px, rgba(0,0,0,0.03) 7px);
+    }
+    .hero-deco-crosshatch {
+      background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.024) 10px, rgba(0,0,0,0.024) 11px),
+        repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0,0,0,0.024) 10px, rgba(0,0,0,0.024) 11px);
+    }
+    .hero-grid-center { padding: 0; }
+    .hero-content-grid {
+      position: relative;
+      padding: 2.75rem 2.5rem 2.5rem;
+      background: var(--aa-white);
+      border: 1px solid var(--grid-color);
+      text-align: center;
+    }
+    .hero-corner-accent { position: absolute; width: 20px; height: 20px; }
+    .hero-corner-accent::before, .hero-corner-accent::after { content: ""; position: absolute; background: var(--aa-amber); }
+    .hero-corner-tl { top: -1px; left: -1px; }
+    .hero-corner-tl::before { top: 0; left: 0; width: 20px; height: 2px; }
+    .hero-corner-tl::after  { top: 0; left: 0; width: 2px; height: 20px; }
+    .hero-corner-tr { top: -1px; right: -1px; }
+    .hero-corner-tr::before { top: 0; right: 0; width: 20px; height: 2px; }
+    .hero-corner-tr::after  { top: 0; right: 0; width: 2px; height: 20px; }
+    .hero-corner-bl { bottom: -1px; left: -1px; }
+    .hero-corner-bl::before { bottom: 0; left: 0; width: 20px; height: 2px; }
+    .hero-corner-bl::after  { bottom: 0; left: 0; width: 2px; height: 20px; }
+    .hero-corner-br { bottom: -1px; right: -1px; }
+    .hero-corner-br::before { bottom: 0; right: 0; width: 20px; height: 2px; }
+    .hero-corner-br::after  { bottom: 0; right: 0; width: 2px; height: 20px; }
+    @media (min-width: 768px) {
+      .hero-grid-wrapper { display: grid; grid-template-columns: 1fr 520px 1fr; }
+      .hero-grid-cell-deco { display: block; }
+      .hero-grid-row-deco { display: contents; }
+    }
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.75rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.18em;
+      color: var(--aa-blue); margin-bottom: 1rem;
+      display: inline-flex; align-items: center; justify-content: center; flex-wrap: wrap;
+      column-gap: 0.62em; row-gap: 0.2rem;
+    }
+    .hero-eyebrow-static { color: var(--aa-blue); }
+    .hero-eyebrow-rotator {
+      display: inline-flex; align-items: center; justify-content: flex-start;
+      min-width: 11ch; color: var(--aa-charcoal);
+    }
+    .hero-eyebrow-word { display: inline-block; color: var(--aa-charcoal); }
+    .hero-eyebrow-word.is-entering { animation: eyebrowSwap 320ms ease; }
+    @keyframes eyebrowSwap {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero h1 {
+      font-size: 3.5rem; font-weight: 400;
+      line-height: 1.1; margin-bottom: 1.25rem; letter-spacing: -0.01em;
+    }
+    .hero h1 .amp { color: var(--aa-amber); font-style: italic; font-weight: 300; font-size: inherit; }
+    .hero-tag {
+      font-family: var(--font-display);
+      font-size: 1.2rem; font-weight: 400; font-style: italic;
+      color: var(--aa-text-light); margin-bottom: 2rem;
+    }
+    .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--font-body);
+      font-size: 0.9rem; font-weight: 600;
+      padding: 0.75rem 1.75rem; border-radius: 6px;
+      text-decoration: none; transition: all 0.2s;
+      border: none; cursor: pointer;
+    }
+    .btn-primary { background: var(--aa-blue); color: var(--aa-white); }
+    .btn-primary:hover { background: var(--aa-blue-dark); color: var(--aa-white); }
+    .btn-secondary { background: none; color: var(--aa-charcoal); border: 1.5px solid var(--aa-border); }
+    .btn-secondary:hover { border-color: var(--aa-charcoal); }
+    .btn-secondary-solid { background: var(--aa-blue); color: var(--aa-white); border-color: var(--aa-blue); }
+    .btn-secondary-solid:hover { background: var(--aa-blue-dark); border-color: var(--aa-blue-dark); color: var(--aa-white); }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2.4rem; }
+      .hero-tag { font-size: 1rem; }
+      .hero-content-grid { padding: 3.5rem 1.5rem 3rem; }
+    }
+
+    .about { background: var(--aa-light); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .about-label {
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.15em; color: var(--aa-blue); margin-bottom: 0.75rem;
+    }
+    .about p { font-size: 0.95rem; color: var(--aa-text); }
+    .about-stat-row { display: flex; gap: 2.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .about-stat .num { font-family: var(--font-display); font-size: 1.75rem; font-weight: 600; color: var(--aa-amber); line-height: 1; }
+    .about-stat .label { font-size: 0.75rem; color: var(--aa-text-light); margin-top: 0.2rem; }
+    @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+    .services {
+      background: linear-gradient(180deg, #2a6d8a 0%, #1d5e79 100%);
+      border-top: 1px solid var(--aa-border);
+      border-bottom: 1px solid var(--aa-border);
+      position: relative;
+    }
+    .services::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.10) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.10) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .services > * { position: relative; z-index: 1; }
+    .services .about-label { color: rgba(255,255,255,0.72); }
+    .services h2 { color: var(--aa-white); }
+    .services-intro {
+      max-width: 760px;
+      margin-bottom: 2.25rem;
+    }
+    .services-copy { max-width: 760px; }
+    .services-copy p { color: rgba(255,255,255,0.80); font-size: 1rem; }
+    .services-shift-frame {
+      margin-top: 2.25rem;
+    }
+    .services-outcomes {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .service-outcome {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 8px;
+      padding: 1.4rem;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 1rem;
+      box-shadow: inset 0 3px 10px rgba(0,0,0,0.12), inset 0 1px 3px rgba(0,0,0,0.08), 0 1px 0 rgba(255,255,255,0.06);
+      position: relative;
+    }
+    .service-glyph {
+      font-family: var(--font-body);
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--aa-blue);
+      font-weight: 300;
+    }
+    .service-outcome:nth-child(3) .service-glyph { color: var(--aa-amber); }
+    .service-outcome h3 { margin-bottom: 0.2rem; font-size: 1.2rem; }
+    .service-outcome p { margin: 0; font-size: 0.95rem; color: var(--aa-text-light); }
+    .services-note {
+      margin-top: 1.25rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.58);
+    }
+    @media (max-width: 900px) {
+      .services-outcomes { grid-template-columns: 1fr; }
+      .service-outcome { min-height: auto; }
+    }
+
+    .partnership {
+      padding: 4.75rem 1.5rem;
+      background: var(--aa-light);
+      border-top: 1px solid var(--aa-border);
+      border-bottom: 1px solid var(--aa-border);
+    }
+    @media (min-width: 768px) {
+      .partnership { padding: 5.5rem 1.5rem; }
+    }
+    .partnership-inner { max-width: 760px; margin: 0 auto; }
+    .partnership-label {
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.18em; color: var(--aa-blue); margin-bottom: 0.85rem;
+    }
+    .partnership-header { max-width: 760px; }
+    .partnership-copy > p {
+      max-width: 760px;
+      margin: 1rem 0 0;
+      color: var(--aa-text-light);
+    }
+
+    /* Vertical accordion */
+    .partnership-accordion {
+      margin-top: 2.5rem;
+      position: relative;
+    }
+    .partnership-accordion::before {
+      content: '';
+      position: absolute;
+      left: 17px;
+      top: 18px;
+      bottom: 18px;
+      width: 2px;
+      background: var(--aa-blue);
+      opacity: 0.25;
+      z-index: 0;
+    }
+    .partnership-item {
+      position: relative;
+      padding-left: 52px;
+    }
+    .partnership-item-circle {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--aa-blue);
+      background: var(--aa-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--aa-blue);
+      z-index: 1;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .partnership-item.active .partnership-item-circle {
+      background: var(--aa-blue);
+      color: var(--aa-white);
+    }
+    .partnership-item-header {
+      display: flex;
+      align-items: center;
+      min-height: 36px;
+      cursor: pointer;
+      padding: 6px 0;
+    }
+    .partnership-item-name {
+      font-family: var(--font-body);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--aa-text-light);
+      transition: color 0.3s ease;
+      line-height: 1.3;
+      user-select: none;
+    }
+    .partnership-item.active .partnership-item-name {
+      color: var(--aa-blue);
+    }
+    .partnership-item-header:hover .partnership-item-name {
+      color: var(--aa-charcoal);
+    }
+    .partnership-item.active .partnership-item-header:hover .partnership-item-name {
+      color: var(--aa-blue);
+    }
+    .partnership-item-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0 0;
+    }
+    .partnership-item.active .partnership-item-body {
+      max-height: 500px;
+      padding: 12px 0 40px;
+    }
+    .partnership-item-output {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 400;
+      line-height: 1.8;
+      color: var(--aa-text);
+    }
+    .partnership-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background: var(--aa-blue);
+      margin-left: 2px;
+      vertical-align: text-bottom;
+      animation: cursor-blink 0.8s ease infinite;
+    }
+    .partnership-cursor.typing {
+      animation: none;
+      opacity: 1;
+    }
+    .partnership-cursor.hidden {
+      display: none;
+    }
+    @keyframes cursor-blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .work {
+      background: var(--aa-charcoal-deep);
+      color: rgba(255,255,255,0.78);
+    }
+    .work h2, .work p, .work strong { color: var(--aa-white); }
+    .work-sub { max-width: 760px; color: rgba(255,255,255,0.72); }
+    .logo-marquee {
+      margin-top: 2.5rem;
+      overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      padding: 1rem 0;
+      position: relative;
+    }
+    .logo-track {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      width: max-content;
+      animation: logo-marquee 46s linear infinite;
+    }
+    .logo-wordmark {
+      min-width: 140px;
+      height: 48px;
+      padding: 0 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+    .logo-wordmark img {
+      max-height: 32px;
+      max-width: 120px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.50;
+      transition: opacity 0.3s ease;
+    }
+    @keyframes logo-marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @media (max-width: 640px) {
+      .logo-track { animation-duration: 58s; gap: 0.9rem; }
+      .logo-wordmark { min-width: 120px; height: 40px; padding: 0 1rem; }
+      .logo-wordmark img { max-height: 26px; max-width: 100px; }
+    }
+
+    .operating-model {
+      background: var(--aa-charcoal);
+      color: rgba(255,255,255,0.82);
+      padding: 5.5rem 1.5rem;
+    }
+    .operating-model h2 { color: var(--aa-white); }
+    .operating-model .about-label { color: var(--aa-amber); }
+    .operating-model-intro {
+      max-width: 760px;
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 3.5rem;
+      line-height: 1.7;
+    }
+    .operating-model-exhibit {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    /* Concentric arcs SVG */
+    .operating-model-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .operating-model-visual svg {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+    }
+    @keyframes rotateRight {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes rotateLeft {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
+    }
+    /* Legend items */
+    .operating-model-legend {
+      display: grid;
+      gap: 0;
+    }
+    .om-legend-item {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+    .om-legend-item:first-child {
+      border-top: 1px solid rgba(255,255,255,0.10);
+    }
+    .om-legend-kicker {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 0.35rem;
+    }
+    .om-legend-kicker.trust { color: var(--aa-amber); }
+    .om-legend-kicker.intelligence { color: var(--aa-blue); }
+    .om-legend-kicker.agency { color: rgba(255,255,255,0.50); }
+    .om-legend-name {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--aa-white);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .om-legend-desc {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.65);
+    }
+    @media (max-width: 860px) {
+      .operating-model-exhibit {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .operating-model-visual svg { max-width: 320px; }
+    }
+    .connect {
+      text-align: center;
+      background: #2a6d8a;
+      position: relative;
+    }
+    .connect::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none; z-index: 0;
+    }
+    .connect > * { position: relative; z-index: 1; }
+    .connect h2, .connect .about-label, .connect-sub { color: var(--aa-white); }
+    .connect-sub { max-width: 700px; margin: 0 auto 2rem; color: rgba(255,255,255,0.8); }
+    .connect-links {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .connect-link {
+      border: 1px solid rgba(255,255,255,0.14);
+      padding: 1.25rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      color: var(--aa-white);
+      background: var(--aa-blue);
+      transition: border-color 0.2s, transform 0.2s, background 0.2s;
+    }
+    .connect-link:hover { border-color: rgba(255,255,255,0.32); background: var(--aa-blue-dark); transform: translateY(-1px); color: var(--aa-white); }
+    .connect-link svg { width: 20px; height: 20px; color: var(--aa-white); }
+    @media (max-width: 700px) { .connect-links { grid-template-columns: 1fr; } }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(46, 60, 68, 0.62);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      z-index: 200;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-panel {
+      width: min(760px, 100%);
+      background: var(--aa-white);
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.22);
+      overflow: hidden;
+      position: relative;
+    }
+    .modal-panel.contact-panel {
+      width: min(640px, 100%);
+    }
+    .modal-header {
+      padding: 1.25rem 1.5rem 0.5rem;
+      border-bottom: 1px solid var(--aa-border);
+    }
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      line-height: 1.2;
+      margin-bottom: 0.35rem;
+    }
+    .modal-subtitle {
+      color: var(--aa-text-light);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--aa-border);
+      background: var(--aa-white);
+      border-radius: 999px;
+      font-size: 1.25rem;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--aa-charcoal);
+    }
+    .modal-body {
+      padding: 1.5rem;
+    }
+    .slot-msg { text-align: center; padding: 2rem 1rem; color: var(--aa-text-light); font-size: 0.9rem; }
+    .cal-nav { display: flex; align-items: center; justify-content: space-between; padding: 0 0 0.75rem; }
+    .cal-nav-btn { background: none; border: 1px solid var(--aa-border); border-radius: 6px; width: 32px; height: 32px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--aa-charcoal); transition: border-color 0.2s; font-size: 1rem; }
+    .cal-nav-btn:hover { border-color: var(--aa-blue); }
+    .cal-nav-btn:disabled { opacity: 0.25; pointer-events: none; }
+    .cal-month-label { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; font-style: italic; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; text-align: center; }
+    .cal-head { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--aa-text-light); padding: 0.4rem 0; }
+    .cal-day { padding: 0.55rem 0; border-radius: 8px; font-size: 0.82rem; font-weight: 500; color: var(--aa-text-light); cursor: default; transition: background 0.15s, color 0.15s, border-color 0.15s; border: 1px solid transparent; }
+    .cal-day.other-month { color: rgba(107,125,136,0.3); }
+    .cal-day.today { border-color: var(--aa-border); }
+    .cal-day.has-slots { color: var(--aa-charcoal); font-weight: 700; cursor: pointer; background: rgba(29,161,212,0.08); border-color: rgba(29,161,212,0.18); }
+    .cal-day.has-slots:hover { background: rgba(29,161,212,0.16); border-color: var(--aa-blue); }
+    .cal-day.selected { background: var(--aa-blue); color: #fff; border-color: var(--aa-blue); }
+    .slot-times { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 0.5rem; padding: 0.75rem 0 1rem; }
+    .slot-times-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--aa-text-light); padding-top: 0.5rem; }
+    .slot-time-btn { padding: 0.6rem 0.5rem; border-radius: 8px; border: 1px solid var(--aa-border); background: var(--aa-light); cursor: pointer; text-align: center; font-size: 0.85rem; font-weight: 600; transition: border-color 0.2s, background 0.2s, color 0.2s; }
+    .slot-time-btn:hover { border-color: var(--aa-blue); background: rgba(29,161,212,0.08); }
+    .slot-time-btn.selected { border-color: var(--aa-blue); background: var(--aa-blue); color: #fff; }
+    .booking-selected { padding: 0.6rem 1rem; border-radius: 8px; background: rgba(29,161,212,0.08); border: 1px solid rgba(29,161,212,0.2); font-size: 0.85rem; font-weight: 600; color: var(--aa-charcoal); margin-bottom: 1rem; text-align: center; }
+    .btn-back { background: transparent; border: 1px solid var(--aa-border); color: var(--aa-text-light); padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer; font-size: 0.85rem; }
+    .btn-back:hover { border-color: var(--aa-charcoal); color: var(--aa-charcoal); }
+    .contact-form {
+      display: grid;
+      gap: 1rem;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .form-field {
+      display: grid;
+      gap: 0.4rem;
+      text-align: left;
+    }
+    .form-field.full {
+      grid-column: 1 / -1;
+    }
+    .form-field label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--aa-charcoal);
+      letter-spacing: 0.02em;
+    }
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      padding: 0.8rem 0.9rem;
+      border: 1px solid var(--aa-border);
+      border-radius: 8px;
+      font: inherit;
+      color: var(--aa-text);
+      background: var(--aa-white);
+    }
+    .form-field textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+    .form-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.25rem;
+    }
+    .form-status {
+      font-size: 0.9rem;
+      color: var(--aa-text-light);
+    }
+    .thank-you-state {
+      display: none;
+      max-width: 760px;
+      margin: 2rem auto 0;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 12px;
+      padding: 1.5rem;
+      color: var(--aa-white);
+      text-align: left;
+    }
+    .thank-you-state.open { display: block; }
+    .thank-you-state h3 {
+      color: var(--aa-white);
+      margin-bottom: 0.5rem;
+    }
+    .thank-you-state p:last-child { margin-bottom: 0; }
+    @media (max-width: 700px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .modal-body, .modal-header { padding-left: 1rem; padding-right: 1rem; }
+      .cal-day { font-size: 0.75rem; padding: 0.45rem 0; }
+      .slot-times { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
+    }
+
+    footer {
+      background: var(--aa-charcoal-deep);
+      color: rgba(255,255,255,0.68);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    footer .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-weight: 400;
+      color: var(--aa-white);
+      margin-bottom: 0.25rem;
+    }
+    footer .footer-brand .amp { color: var(--aa-amber); font-style: italic; font-weight: 300; font-variation-settings: 'opsz' 144; }
+    footer .footer-tag { font-size: 0.75rem; margin-bottom: 1rem; color: rgba(255,255,255,0.72); }
+    footer .footer-nap { font-size: 0.7rem; color: rgba(255,255,255,0.55); margin-bottom: 0.5rem; letter-spacing: 0.01em; }
+    footer .footer-nap a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.18); transition: border-color 160ms ease, color 160ms ease; }
+    footer .footer-nap a:hover { color: var(--aa-amber); border-bottom-color: var(--aa-amber); }
+    footer .footer-nap .sep { margin: 0 0.5em; color: rgba(255,255,255,0.28); }
+    footer .footer-copy { font-size: 0.7rem; color: rgba(255,255,255,0.42); }
+  
+    /* 2026-09-17 — the hero, the closing container and the footer share one ground:
+       the light blue-grey with the 48px grid. Overrides sit here so the original
+       rules above stay legible; remove this block to restore the teal/charcoal close. */
+    .hero { background: var(--aa-light); }
+    .connect { background: var(--aa-light); }
+    .connect::before {
+      background-image:
+        linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+    }
+    .connect h2 { color: var(--aa-charcoal); }
+    .connect .about-label { color: var(--aa-blue); }
+    .connect-sub { color: var(--aa-text); }
+    .connect-link { border-color: var(--aa-blue); }
+    .connect-link:hover { border-color: var(--aa-blue-dark); }
+    footer {
+      background: var(--aa-light); color: var(--aa-text-light);
+      border-top: 1px solid var(--aa-border); position: relative;
+    }
+    footer::before {
+      content: ""; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+      background-size: 48px 48px; pointer-events: none; z-index: 0;
+    }
+    footer > * { position: relative; z-index: 1; }
+    footer .footer-brand { color: var(--aa-charcoal); }
+    footer .footer-tag { color: var(--aa-text-light); }
+    footer .footer-nap { color: var(--aa-text-light); }
+    footer .footer-nap a { border-bottom-color: var(--aa-border); }
+    footer .footer-nap a:hover { color: var(--aa-blue-dark); border-bottom-color: var(--aa-blue-dark); }
+    footer .footer-nap .sep { color: var(--aa-border); }
+    footer .footer-copy { color: var(--aa-text-light); }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">Arthur <span class="amp">&amp;</span> Archie</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#services">What We Do</a></li>
+      <li><a href="#partnership">Our Partnership</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#about">Our Story</a></li>
+      <li><a href="#connect" class="nav-cta">Explore a partnership</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero has-grid" id="top">
+  <div class="hero-grid-wrapper">
+    <div class="hero-grid-row-deco">
+      <div class="hero-grid-cell hero-grid-cell-deco hero-deco-dots" style="min-height:144px;"></div>
+      <div class="hero-grid-cell" style="min-height:144px; border-left:none; border-right:none;"></div>
+      <div class="hero-grid-cell hero-grid-cell-deco hero-deco-lines" style="min-height:144px;"></div>
+    </div>
+    <div class="hero-grid-cell hero-grid-cell-deco hero-deco-crosshatch"></div>
+    <div class="hero-grid-center">
+      <div class="hero-content-grid">
+        <div class="hero-corner-accent hero-corner-tl"></div>
+        <div class="hero-corner-accent hero-corner-tr"></div>
+        <div class="hero-corner-accent hero-corner-bl"></div>
+        <div class="hero-corner-accent hero-corner-br"></div>
+        <div class="hero-eyebrow"><span class="hero-eyebrow-static">Agentic Service</span> <span class="hero-eyebrow-rotator"><span class="hero-eyebrow-word" id="hero-eyebrow-word">Design</span></span></div>
+        <h1>Arthur <span class="amp">&amp;</span> Archie</h1>
+        <p class="hero-tag">For firms that grow on Trust</p>
+        <div class="hero-ctas">
+          <a href="#connect" class="btn btn-primary">Explore a partnership</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-grid-cell hero-grid-cell-deco hero-deco-dots"></div>
+    <div class="hero-grid-row-deco">
+      <div class="hero-grid-cell hero-grid-cell-deco" style="min-height:96px;"></div>
+      <div class="hero-grid-cell" style="min-height:96px; border-left:none; border-right:none;"></div>
+      <div class="hero-grid-cell hero-grid-cell-deco hero-deco-crosshatch" style="min-height:96px;"></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-intro">
+      <div class="about-label">What We Do</div>
+      <h2>We deploy AI agencies for professional services firms that grow on trust.</h2>
+    </div>
+    <div class="services-copy">
+      <p>Keep service quality, and scale your firm without relying on additional headcount. We empower you to encode the company&#39;s methods and values into code. We deploy AI agent assistants that grow rich client context to maximize engagement, client experience, and service excellence that differentiates your firm.</p>
+    </div>
+    <div class="services-shift-frame">
+      <div class="services-outcomes">
+        <article class="service-outcome">
+<div class="service-glyph">+</div>
+          <div>
+            <h3>Rich Client Context</h3>
+            <p>Our agents live between your systems of record and user interfaces. Their persistent memory manages relationship rich semantic data about every engagement and project, retrievable across the firm.</p>
+          </div>
+        </article>
+        <article class="service-outcome">
+<div class="service-glyph">+</div>
+          <div>
+            <h3>Unified Client Experience</h3>
+            <p>Rich client context gives senior level knowledge to younger team members who also have access to encoded values, brand and firm methodology.</p>
+          </div>
+        </article>
+        <article class="service-outcome">
+<div class="service-glyph">−</div>
+          <div>
+            <h3>Time-To-Value</h3>
+            <p>Services firms are no longer limited to sales cycles that depend entirely on human-human collaboration. An agentic team can augment expert productivity tremendously by executing workflows that no longer require a human in the loop.</p>
+          </div>
+        </article>
+      </div>
+      <div class="services-note">Three outcomes. One managed agency.</div>
+    </div>
+  </div>
+</section>
+
+<section class="partnership" id="partnership">
+  <div class="partnership-inner">
+    <div class="partnership-label">Our Partnership</div>
+    <div class="partnership-header">
+      <h2>We want to be your enterprise AI strategy partner.</h2>
+    </div>
+    <div class="partnership-copy">
+      <p>Arthur &amp; Archie operates as a managed services provider and custom software consultancy, with a scope tailored to the firm&#39;s environment, growth constraints, and stage of AI adoption. We do not disappear after the build. The work is designed to generate context, connect decisions, and give the firm a managed operating rhythm.</p>
+    </div>
+
+    <div class="partnership-accordion">
+      <div class="partnership-item" data-step="0">
+        <div class="partnership-item-circle">01</div>
+        <div class="partnership-item-header">
+          <span class="partnership-item-name">Managed Service Excellence</span>
+        </div>
+        <div class="partnership-item-body">
+          <span class="partnership-item-output"></span><span class="partnership-cursor hidden"></span>
+        </div>
+      </div>
+
+      <div class="partnership-item" data-step="1">
+        <div class="partnership-item-circle">02</div>
+        <div class="partnership-item-header">
+          <span class="partnership-item-name">Design and Build</span>
+        </div>
+        <div class="partnership-item-body">
+          <span class="partnership-item-output"></span><span class="partnership-cursor hidden"></span>
+        </div>
+      </div>
+
+      <div class="partnership-item" data-step="2">
+        <div class="partnership-item-circle">03</div>
+        <div class="partnership-item-header">
+          <span class="partnership-item-name">Active Advisory</span>
+        </div>
+        <div class="partnership-item-body">
+          <span class="partnership-item-output"></span><span class="partnership-cursor hidden"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="experience">
+  <div class="container">
+    <div style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--aa-amber); margin-bottom: 0.75rem;">Experience</div>
+    <h2>We build for service firms where trust, judgement, and continuity shape engagement success. We’ve been doing so for nearly 20 years.</h2>
+    <p class="work-sub">Growth engineering, systems integration, sales operations, and service design.</p>
+
+    <div class="logo-marquee">
+      <div class="logo-track" aria-label="Selected experience logos">
+        <div class="logo-wordmark"><img src="https://www.retrofit.design/assets/logo-asset3-BOC-Sihf.png" alt="RetroFit Design" loading="lazy"></div>
+        <div class="logo-wordmark"><img src="https://restoredleader.com/wp-content/uploads/2020/06/Untitled-design-2025-04-21T104249.583.png" alt="Restored Leader" loading="lazy"></div>
+        <div class="logo-wordmark"><img src="https://www.c12indy.com/assets/C12_2-CFAWCQRW.png" alt="C12 Indianapolis" loading="lazy"></div>
+        <div class="logo-wordmark"><img src="https://cdn.prod.website-files.com/6002179bc8122d6e38e31eef/6002179bc8122dc7c0e31f7c_praxis-logo-white.svg" alt="Praxis" loading="lazy"></div>
+        <div class="logo-wordmark"><img src="https://openinsights.ci/wp-content/uploads/2025/01/openinsights-light-horizontal-600x100-1.png" alt="OpenINSIGHTS" loading="lazy"></div>
+        <div class="logo-wordmark"><img src="https://www.retrofit.design/assets/logo-asset3-BOC-Sihf.png" alt="RetroFit Design" loading="lazy"></div>
+        <div class="logo-wordmark"><img src="https://restoredleader.com/wp-content/uploads/2020/06/Untitled-design-2025-04-21T104249.583.png" alt="Restored Leader" loading="lazy"></div>
+        <div class="logo-wordmark"><img src="https://www.c12indy.com/assets/C12_2-CFAWCQRW.png" alt="C12 Indianapolis" loading="lazy"></div>
+        <div class="logo-wordmark"><img src="https://cdn.prod.website-files.com/6002179bc8122d6e38e31eef/6002179bc8122dc7c0e31f7c_praxis-logo-white.svg" alt="Praxis" loading="lazy"></div>
+        <div class="logo-wordmark"><img src="https://openinsights.ci/wp-content/uploads/2025/01/openinsights-light-horizontal-600x100-1.png" alt="OpenINSIGHTS" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="operating-model" id="operating-model">
+  <div class="container">
+    <div class="about-label">The Operating Model</div>
+    <h2>Each client gets a managed agency — bounded, governed, and continuously improving.</h2>
+    <p class="operating-model-intro">A Client Managed Agency is an isolated agentic system provisioned by ChesedClaw™, our headless orchestration harness, with defined access points, composable tools, and clear managed boundaries. Enterprise cloud or dedicated hardware. No external dependencies. We stay in the work.</p>
+
+    <div class="operating-model-exhibit">
+      <div class="operating-model-visual">
+        <svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <!-- Outer arc — AGENCY — muted white -->
+          <path d="M 200 50 A 150 150 0 1 1 112 79" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="3" stroke-linecap="round" style="filter: drop-shadow(0 0 8px rgba(255,255,255,0.15)); animation: rotateRight 30s linear infinite; transform-origin: 200px 200px;" />
+          <!-- Middle arc — INTELLIGENCE — blue -->
+          <path d="M 200 100 A 100 100 0 1 1 109 158" fill="none" stroke="#1DA1D4" stroke-width="3" stroke-linecap="round" opacity="0.85" style="filter: drop-shadow(0 0 8px rgba(29,161,212,0.5)); animation: rotateLeft 20s linear infinite; transform-origin: 200px 200px;" />
+          <!-- Inner arc — TRUST — amber -->
+          <path d="M 200 150 A 50 50 0 1 1 150 200" fill="none" stroke="#F2B35E" stroke-width="3" stroke-linecap="round" style="filter: drop-shadow(0 0 8px rgba(242,179,94,0.6)); animation: rotateRight 15s linear infinite; transform-origin: 200px 200px;" />
+          <!-- Labels -->
+          <text x="200" y="40" text-anchor="middle" fill="rgba(255,255,255,0.40)" font-size="13" font-weight="700" font-family="'IBM Plex Sans', sans-serif" letter-spacing="3">AGENCY</text>
+          <text x="200" y="90" text-anchor="middle" fill="#1DA1D4" font-size="12" font-weight="700" font-family="'IBM Plex Sans', sans-serif" letter-spacing="3">INTELLIGENCE</text>
+          <text x="200" y="205" text-anchor="middle" fill="#F2B35E" font-size="12" font-weight="700" font-family="'IBM Plex Sans', sans-serif" letter-spacing="3">TRUST</text>
+        </svg>
+      </div>
+
+      <div class="operating-model-legend">
+        <div class="om-legend-item">
+          <div class="om-legend-kicker trust">Trust</div>
+          <div class="om-legend-name">The Partnership</div>
+          <div class="om-legend-desc">Arthur & Archie and client leadership collaborate on direction, scope, and guardrails. Every decision about what gets encoded and what stays human is made together. Trust is the center because it governs everything else.</div>
+        </div>
+        <div class="om-legend-item">
+          <div class="om-legend-kicker intelligence">Intelligence</div>
+          <div class="om-legend-name">ChesedClaw Agent Harness</div>
+          <div class="om-legend-desc">Our in-house infrastructure that provisions each agency, monitors performance, and continuously improves agent capabilities. It reads signals, reports to the partnership, and grows the system over time.</div>
+        </div>
+        <div class="om-legend-item">
+          <div class="om-legend-kicker agency">Agency</div>
+          <div class="om-legend-name">Your Agentic Solution</div>
+          <div class="om-legend-desc">A bounded team of specialized agents operating inside your environment — handling the coordination, communication, and knowledge work that slows your team down today. Isolated runtime, scoped access, governed boundaries.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="about-label">Our Story</div>
+        <h2>Arthur &amp; Archie is a legacy company.</h2>
+        <p>Our values — Trust, Faithfulness, and Revelation — come from a seven-generation heritage of exemplary servant leadership documented through 1849. Our ancestors were digital processor consultants, engineers, superintendents, accountants, lawyers, justices, county officials, surveyors, and even mentors to a young Abraham Lincoln. Today, we bring agentic systems into production with discipline, responsibility, and a standard for excellence that professional services firms require.</p>
+      </div>
+      <div>
+        <div class="about-label">By the Numbers</div>
+        <div class="about-stat-row">
+          <div class="about-stat">
+            <div class="num">1849</div>
+            <div class="label">Earliest documented service</div>
+          </div>
+          <div class="about-stat">
+            <div class="num">7</div>
+            <div class="label">Generations of service leadership</div>
+          </div>
+        </div>
+        <div class="about-stat-row">
+          <div class="about-stat">
+            <div class="num">20</div>
+            <div class="label">Years building enterprise solutions</div>
+          </div>
+          <div class="about-stat">
+            <div class="num">4</div>
+            <div class="label">Active client partnerships</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="connect" id="connect">
+  <div class="container">
+    <div class="about-label" style="text-align: center;">Start Here</div>
+    <h2>Explore a partnership</h2>
+    <p class="connect-sub">Your firm's expertise deserves infrastructure that compounds it. Let's talk about what that looks like.</p>
+
+    <div class="connect-links">
+      <button type="button" class="connect-link" data-open-modal="schedule-modal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Explore a partnership
+      </button>
+      <button type="button" class="connect-link" data-open-modal="contact-modal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
+        Contact us
+      </button>
+    </div>
+
+    <div class="thank-you-state" id="schedule-thank-you" aria-live="polite">
+      <h3>Thank you.</h3>
+      <p>Your scheduling request is underway. If the time is confirmed, we will pick up from there with the right context attached.</p>
+    </div>
+
+    <div class="thank-you-state" id="contact-thank-you" aria-live="polite">
+      <h3>Thank you.</h3>
+      <p>Your note is in. We captured the context around how you arrived here so we can attribute the conversion cleanly.</p>
+    </div>
+  </div>
+</section>
+
+<div class="modal-overlay" id="schedule-modal" aria-hidden="true">
+  <div class="modal-panel">
+    <button type="button" class="modal-close" data-close-modal aria-label="Close">×</button>
+    <div class="modal-header">
+      <div class="modal-title">Explore a partnership</div>
+      <div class="modal-subtitle">Pick a time. 30 minutes, no pitch deck.</div>
+    </div>
+    <div class="modal-body">
+      <div id="slot-picker">
+        <div id="slot-loading" class="slot-msg">Loading availability...</div>
+        <div id="slot-error" class="slot-msg" style="display:none;">Scheduling temporarily unavailable. Please use the contact form.</div>
+        <div id="slot-calendar" style="display:none;">
+          <div class="cal-nav">
+            <button type="button" class="cal-nav-btn" id="cal-prev" aria-label="Previous month">&#8249;</button>
+            <span class="cal-month-label" id="cal-month-label"></span>
+            <button type="button" class="cal-nav-btn" id="cal-next" aria-label="Next month">&#8250;</button>
+          </div>
+          <div class="cal-grid" id="cal-grid"></div>
+        </div>
+        <div id="slot-times-label" class="slot-times-label" style="display:none;"></div>
+        <div id="slot-times" class="slot-times" style="display:none;"></div>
+        <form id="booking-form" class="contact-form" style="display:none;">
+          <div id="booking-selected" class="booking-selected"></div>
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="book-name">Name</label>
+              <input id="book-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="form-field">
+              <label for="book-email">Work email</label>
+              <input id="book-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="form-field full">
+              <label for="book-company">Company</label>
+              <input id="book-company" name="company" type="text" autocomplete="organization">
+            </div>
+            <div class="form-field full">
+              <label for="book-message">What are you exploring?</label>
+              <textarea id="book-message" name="message"></textarea>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn btn-back" id="booking-back">Back</button>
+            <button type="submit" class="btn btn-primary">Book Meeting</button>
+            <div class="form-status" id="booking-status"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="contact-modal" aria-hidden="true">
+  <div class="modal-panel contact-panel">
+    <button type="button" class="modal-close" data-close-modal aria-label="Close">×</button>
+    <div class="modal-header">
+      <div class="modal-title">Contact us</div>
+      <div class="modal-subtitle">Minimal on purpose. Enough to route and attribute properly.</div>
+    </div>
+    <div class="modal-body">
+      <form class="contact-form" id="contact-form">
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="contact-name">Name</label>
+            <input id="contact-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="form-field">
+            <label for="contact-email">Work email</label>
+            <input id="contact-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="form-field full">
+            <label for="contact-company">Company</label>
+            <input id="contact-company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="form-field full">
+            <label for="contact-message">What are you exploring?</label>
+            <textarea id="contact-message" name="message" required></textarea>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <div class="form-status" id="contact-form-status"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">Arthur <span class="amp">&amp;</span> Archie</div>
+  <div class="footer-tag">Agentic Services Partner for firms that grow on trust</div>
+  <div class="footer-nap">6151 Central Ave, Suite 120 · Indianapolis, IN 46220<span class="sep">·</span><a href="mailto:hello@arthurarchie.com">hello@arthurarchie.com</a></div>
+  <div class="footer-copy">&copy; 2026 Arthur &amp; Archie. All rights reserved. Made in Indianapolis.</div>
+</footer>
+
+<script>
+  document.querySelector('.nav-toggle').addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.toggle('open');
+  });
+
+  const heroEyebrowWord = document.getElementById('hero-eyebrow-word');
+  const heroEyebrowWords = ['Design', 'Strategy', 'Management', 'Partnership'];
+  let heroEyebrowIndex = 0;
+  let heroEyebrowTimer = null;
+
+  function rotateHeroEyebrow() {
+    if (!heroEyebrowWord) return;
+    heroEyebrowIndex = (heroEyebrowIndex + 1) % heroEyebrowWords.length;
+    heroEyebrowWord.textContent = heroEyebrowWords[heroEyebrowIndex];
+    heroEyebrowWord.classList.remove('is-entering');
+    void heroEyebrowWord.offsetWidth;
+    heroEyebrowWord.classList.add('is-entering');
+  }
+
+  function startHeroEyebrowRotation() {
+    if (!heroEyebrowWord || heroEyebrowTimer) return;
+    heroEyebrowWord.textContent = heroEyebrowWords[heroEyebrowIndex];
+    heroEyebrowTimer = window.setInterval(rotateHeroEyebrow, 2000);
+  }
+
+  startHeroEyebrowRotation();
+
+  const attribution = {
+    utm_source: '',
+    utm_medium: '',
+    utm_campaign: '',
+    utm_term: '',
+    utm_content: '',
+    referrer: document.referrer || '',
+    landingPage: window.location.href,
+    submittedAt: ''
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(function(key) {
+    attribution[key] = params.get(key) || '';
+  });
+
+  function markThankYou(kind) {
+    const scheduleThanks = document.getElementById('schedule-thank-you');
+    const contactThanks = document.getElementById('contact-thank-you');
+    if (kind === 'schedule') {
+      scheduleThanks.classList.add('open');
+      contactThanks.classList.remove('open');
+    }
+    if (kind === 'contact') {
+      contactThanks.classList.add('open');
+      scheduleThanks.classList.remove('open');
+    }
+  }
+
+  const modalOverlays = document.querySelectorAll('.modal-overlay');
+  const openButtons = document.querySelectorAll('[data-open-modal]');
+  const closeButtons = document.querySelectorAll('[data-close-modal]');
+  let slotsLoaded = false;
+  let slotsData = [];
+  let selectedSlot = null;
+
+  function openModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    if (id === 'schedule-modal' && !slotsLoaded) {
+      loadSlots();
+    }
+  }
+
+  function closeModal(modal) {
+    if (!modal) return;
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    if (![...modalOverlays].some(function(el) { return el.classList.contains('open'); })) {
+      document.body.style.overflow = '';
+    }
+  }
+
+  openButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      openModal(button.getAttribute('data-open-modal'));
+    });
+  });
+
+  closeButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      closeModal(button.closest('.modal-overlay'));
+    });
+  });
+
+  modalOverlays.forEach(function(overlay) {
+    overlay.addEventListener('click', function(event) {
+      if (event.target === overlay) closeModal(overlay);
+    });
+  });
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      modalOverlays.forEach(function(overlay) { closeModal(overlay); });
+    }
+  });
+
+  const initialThanks = params.get('thanks');
+  if (initialThanks === 'schedule' || initialThanks === 'contact') {
+    markThankYou(initialThanks);
+  }
+
+  // Slot picker — calendar month view
+  var TZ = 'America/Indiana/Indianapolis';
+  var calViewMonth = null; // current month being viewed
+  var slotsByDay = {};     // { 'YYYY-MM-DD': [slot, ...] }
+
+  function loadSlots() {
+    var loading = document.getElementById('slot-loading');
+    var errorEl = document.getElementById('slot-error');
+    var calEl = document.getElementById('slot-calendar');
+    var timesEl = document.getElementById('slot-times');
+    var timesLabel = document.getElementById('slot-times-label');
+    var formEl = document.getElementById('booking-form');
+    loading.style.display = ''; errorEl.style.display = 'none';
+    calEl.style.display = 'none'; timesEl.style.display = 'none';
+    timesLabel.style.display = 'none'; formEl.style.display = 'none';
+
+    fetch('/api/aa-availability?days=30')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (!data.slots || data.slots.length === 0) {
+          loading.style.display = 'none';
+          errorEl.textContent = 'No availability in the next 30 days. Please use the contact form.';
+          errorEl.style.display = '';
+          return;
+        }
+        slotsData = data.slots;
+        slotsLoaded = true;
+        loading.style.display = 'none';
+
+        // Group slots by day key (in ET)
+        slotsByDay = {};
+        slotsData.forEach(function(s) {
+          var d = new Date(s.start);
+          var key = d.toLocaleDateString('en-CA', { timeZone: TZ });
+          if (!slotsByDay[key]) slotsByDay[key] = [];
+          slotsByDay[key].push(s);
+        });
+
+        // Start on the month of the first available slot
+        var firstDate = new Date(slotsData[0].start);
+        calViewMonth = new Date(firstDate.toLocaleDateString('en-CA', { timeZone: TZ }) + 'T12:00:00');
+        calViewMonth.setDate(1);
+
+        calEl.style.display = '';
+        renderCalendar();
+      })
+      .catch(function() {
+        loading.style.display = 'none';
+        errorEl.style.display = '';
+      });
+  }
+
+  function renderCalendar() {
+    var grid = document.getElementById('cal-grid');
+    var label = document.getElementById('cal-month-label');
+    var prevBtn = document.getElementById('cal-prev');
+    var nextBtn = document.getElementById('cal-next');
+
+    var year = calViewMonth.getFullYear();
+    var month = calViewMonth.getMonth();
+
+    label.textContent = calViewMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+
+    // Determine range of months with slots
+    var slotDays = Object.keys(slotsByDay).sort();
+    var firstSlotMonth = slotDays[0].slice(0, 7);
+    var lastSlotMonth = slotDays[slotDays.length - 1].slice(0, 7);
+    var curMonth = year + '-' + String(month + 1).padStart(2, '0');
+    prevBtn.disabled = curMonth <= firstSlotMonth;
+    nextBtn.disabled = curMonth >= lastSlotMonth;
+
+    grid.innerHTML = '';
+
+    // Day-of-week headers
+    ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].forEach(function(d) {
+      var h = document.createElement('div');
+      h.className = 'cal-head';
+      h.textContent = d;
+      grid.appendChild(h);
+    });
+
+    // First day of month and padding
+    var firstDay = new Date(year, month, 1).getDay();
+    var daysInMonth = new Date(year, month + 1, 0).getDate();
+    var daysInPrevMonth = new Date(year, month, 0).getDate();
+
+    var todayStr = new Date().toLocaleDateString('en-CA', { timeZone: TZ });
+
+    // Previous month padding
+    for (var p = firstDay - 1; p >= 0; p--) {
+      var cell = document.createElement('div');
+      cell.className = 'cal-day other-month';
+      cell.textContent = daysInPrevMonth - p;
+      grid.appendChild(cell);
+    }
+
+    // Days of current month
+    for (var d = 1; d <= daysInMonth; d++) {
+      var dateStr = year + '-' + String(month + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0');
+      var cell = document.createElement('div');
+      cell.className = 'cal-day';
+      cell.textContent = d;
+
+      if (dateStr === todayStr) cell.classList.add('today');
+
+      if (slotsByDay[dateStr] && slotsByDay[dateStr].length > 0) {
+        cell.classList.add('has-slots');
+        cell.setAttribute('data-date', dateStr);
+        cell.addEventListener('click', (function(key) {
+          return function() {
+            // Highlight selected day
+            grid.querySelectorAll('.cal-day').forEach(function(c) { c.classList.remove('selected'); });
+            this.classList.add('selected');
+            renderTimes(slotsByDay[key], key);
+          };
+        })(dateStr));
+      }
+
+      grid.appendChild(cell);
+    }
+
+    // Next month padding (fill to complete the grid row)
+    var totalCells = firstDay + daysInMonth;
+    var remaining = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
+    for (var n = 1; n <= remaining; n++) {
+      var cell = document.createElement('div');
+      cell.className = 'cal-day other-month';
+      cell.textContent = n;
+      grid.appendChild(cell);
+    }
+
+    // Hide times when switching months
+    document.getElementById('slot-times').style.display = 'none';
+    document.getElementById('slot-times-label').style.display = 'none';
+    document.getElementById('booking-form').style.display = 'none';
+    selectedSlot = null;
+  }
+
+  document.getElementById('cal-prev').addEventListener('click', function() {
+    calViewMonth.setMonth(calViewMonth.getMonth() - 1);
+    renderCalendar();
+  });
+  document.getElementById('cal-next').addEventListener('click', function() {
+    calViewMonth.setMonth(calViewMonth.getMonth() + 1);
+    renderCalendar();
+  });
+
+  function renderTimes(slots, dateKey) {
+    var timesEl = document.getElementById('slot-times');
+    var timesLabel = document.getElementById('slot-times-label');
+    timesEl.innerHTML = ''; timesEl.style.display = '';
+    document.getElementById('booking-form').style.display = 'none';
+    selectedSlot = null;
+
+    var d = new Date(dateKey + 'T12:00:00');
+    timesLabel.textContent = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+    timesLabel.style.display = '';
+
+    slots.forEach(function(s) {
+      var dt = new Date(s.start);
+      var label = dt.toLocaleTimeString('en-US', { timeZone: TZ, hour: 'numeric', minute: '2-digit' });
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'slot-time-btn';
+      btn.textContent = label;
+      btn.addEventListener('click', function() {
+        timesEl.querySelectorAll('.slot-time-btn').forEach(function(b) { b.classList.remove('selected'); });
+        btn.classList.add('selected');
+        selectedSlot = s;
+        showBookingForm(s);
+      });
+      timesEl.appendChild(btn);
+    });
+  }
+
+  function showBookingForm(slot) {
+    var formEl = document.getElementById('booking-form');
+    var selectedEl = document.getElementById('booking-selected');
+    var d = new Date(slot.start);
+    selectedEl.textContent = d.toLocaleDateString('en-US', { timeZone: TZ, weekday: 'long', month: 'long', day: 'numeric' })
+      + ' at ' + d.toLocaleTimeString('en-US', { timeZone: TZ, hour: 'numeric', minute: '2-digit' }) + ' ET';
+    formEl.style.display = '';
+    document.getElementById('booking-status').textContent = '';
+  }
+
+  document.getElementById('booking-back').addEventListener('click', function() {
+    document.getElementById('booking-form').style.display = 'none';
+    document.getElementById('slot-times').querySelectorAll('.slot-time-btn').forEach(function(b) { b.classList.remove('selected'); });
+    selectedSlot = null;
+  });
+
+  document.getElementById('booking-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (!selectedSlot) return;
+
+    var statusEl = document.getElementById('booking-status');
+    statusEl.textContent = 'Booking...';
+    attribution.submittedAt = new Date().toISOString();
+
+    var payload = {
+      slot: selectedSlot.start,
+      name: document.getElementById('book-name').value.trim(),
+      email: document.getElementById('book-email').value.trim(),
+      company: document.getElementById('book-company').value.trim(),
+      message: document.getElementById('book-message').value.trim(),
+      attribution: attribution
+    };
+
+    fetch('/api/aa-book', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(r) { return r.json().then(function(d) { return { status: r.status, data: d }; }); })
+    .then(function(res) {
+      if (res.data.error === 'slot_taken') {
+        statusEl.textContent = 'That slot was just taken. Refreshing...';
+        slotsLoaded = false;
+        setTimeout(loadSlots, 1500);
+        return;
+      }
+      if (!res.data.ok) {
+        statusEl.textContent = res.data.error || 'Something went wrong.';
+        return;
+      }
+      document.getElementById('booking-form').reset();
+      closeModal(document.getElementById('schedule-modal'));
+      markThankYou('schedule');
+      var next = new URL(window.location.href);
+      next.searchParams.set('thanks', 'schedule');
+      window.history.replaceState({}, '', next.toString());
+    })
+    .catch(function() {
+      statusEl.textContent = 'Something went wrong. Please try again.';
+    });
+  });
+
+  const contactForm = document.getElementById('contact-form');
+  const contactFormStatus = document.getElementById('contact-form-status');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(event) {
+      event.preventDefault();
+      attribution.submittedAt = new Date().toISOString();
+      contactFormStatus.textContent = 'Submitting...';
+
+      const formData = new FormData(contactForm);
+      const payload = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        company: formData.get('company'),
+        message: formData.get('message'),
+        sourceUrl: window.location.href,
+        attribution: attribution
+      };
+
+      try {
+        const response = await fetch('/api/aa-contact-submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+        if (!response.ok || !result.ok) {
+          throw new Error(result.error || 'Submission failed');
+        }
+
+        contactForm.reset();
+        contactFormStatus.textContent = 'Submitted.';
+        closeModal(document.getElementById('contact-modal'));
+        markThankYou('contact');
+        const next = new URL(window.location.href);
+        next.searchParams.set('thanks', 'contact');
+        window.history.replaceState({}, '', next.toString());
+      } catch (error) {
+        contactFormStatus.textContent = error.message || 'Something went wrong.';
+      }
+    });
+  }
+
+  // Partnership accordion — typewriter pattern from AgenticForms process section
+  (function() {
+    var partnershipSteps = [
+      "We desire to be your strategic AI implementation partner across the org. Arthur & Archie stays in the system after it goes live. We manage the operating rhythm, preserve context across engagements, and keep adoption tied to actual service quality instead of novelty. Stewardship across workflows, approvals, and organizational change. Long-lived context that compounds instead of resetting by engagement. Managed optimization so the system stays useful as the firm evolves.",
+      "We offer custom agentic solutions, tightly bound to roles, goals, and constraints specific to your firm\u2019s growth needs. When the right move is a bounded build, we map the workflow, capture the deterministic logic, and turn it into a usable operating surface. Focused scoping around one role, one workflow, or one engagement motion. A build that can stand alone now and mature into a managed system later.",
+      "The work doesn\u2019t end with a pitch-deck. We deliver what we propose, whether it\u2019s our solution or another vendor. We are proactive with roadmap clarity, stewardship, and accountability. Decision support grounded in delivery reality and client experience. A practical next step that can be executed cleanly when the firm is ready."
+    ];
+
+    var pItems = document.querySelectorAll('.partnership-item');
+    var pActiveIndex = -1;
+    var pStreamTimeout = null;
+    var pHasTriggered = false;
+
+    function openPartnershipStep(index) {
+      if (pStreamTimeout) {
+        clearTimeout(pStreamTimeout);
+        pStreamTimeout = null;
+      }
+
+      pItems.forEach(function(item, i) {
+        item.classList.remove('active');
+        var output = item.querySelector('.partnership-item-output');
+        var cursor = item.querySelector('.partnership-cursor');
+        if (i !== index) {
+          output.textContent = '';
+          cursor.classList.add('hidden');
+          cursor.classList.remove('typing');
+        }
+      });
+
+      var targetItem = pItems[index];
+      targetItem.classList.add('active');
+      pActiveIndex = index;
+
+      var output = targetItem.querySelector('.partnership-item-output');
+      var cursor = targetItem.querySelector('.partnership-cursor');
+      var text = partnershipSteps[index];
+      var charIndex = 0;
+
+      output.textContent = '';
+      cursor.classList.remove('hidden');
+      cursor.classList.add('typing');
+
+      var chunkSize = 2;
+      var baseDelay = 16;
+
+      function typeNext() {
+        if (charIndex < text.length) {
+          var ch = text[charIndex];
+          var delay = baseDelay;
+          var nextChunk = chunkSize;
+
+          if (ch === '.' || ch === ',') {
+            delay = 45;
+            nextChunk = 1;
+          } else if (ch === ' ' && Math.random() < 0.12) {
+            delay = 28;
+          }
+
+          charIndex += nextChunk;
+          output.textContent = text.substring(0, Math.min(charIndex, text.length));
+          pStreamTimeout = setTimeout(typeNext, delay);
+        } else {
+          output.textContent = text;
+          cursor.classList.remove('typing');
+        }
+      }
+
+      pStreamTimeout = setTimeout(typeNext, 250);
+    }
+
+    pItems.forEach(function(item, i) {
+      item.querySelector('.partnership-item-header').addEventListener('click', function() {
+        if (pActiveIndex !== i) {
+          openPartnershipStep(i);
+        }
+      });
+    });
+
+    var partnershipSection = document.getElementById('partnership');
+    var pObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !pHasTriggered) {
+          pHasTriggered = true;
+          openPartnershipStep(0);
+          pObserver.unobserve(partnershipSection);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    pObserver.observe(partnershipSection);
+  })();
+</script>
+</body>
+</html>
